@@ -1,0 +1,151 @@
+<!DOCTYPE fontscolors PUBLIC
+    "-//NetBeans//DTD Editor Fonts and Colors settings 1.1//EN"
+    "http://www.netbeans.org/dtds/EditorFontsColors-1_1.dtd">
+<fontscolors>
+	<!-- ============ keywords ================================ -->
+	<fontcolor name="PkgId" default="identifier" foreColor="green">
+		<font style="bold"/>
+	</fontcolor>
+	<fontcolor name="Package" default="keyword" foreColor="blue">
+		<font style="bold"/>
+	</fontcolor>
+	<fontcolor name="States" default="keyword" foreColor="blue">
+		<font style="bold"/>
+	</fontcolor>
+	<fontcolor name="Helpers" default="keyword" foreColor="blue">
+		<font style="bold"/>
+	</fontcolor>
+	<fontcolor name="Tokens"  default="keyword" foreColor="blue">
+		<font style="bold"/>
+	</fontcolor>
+	<fontcolor name="Ignored" default="keyword" foreColor="blue">
+		<font style="bold"/>
+	</fontcolor>
+	<fontcolor name="Productions" default="keyword" foreColor="blue">
+		<font style="bold"/>
+	</fontcolor>
+	<fontcolor name="Abstract" default="keyword" foreColor="blue">
+		<font style="bold"/>
+	</fontcolor>
+	<fontcolor name="Syntax" default="keyword" foreColor="blue">
+		<font style="bold"/>
+	</fontcolor>
+	<fontcolor name="Tree" default="keyword" foreColor="blue">
+		<font style="bold"/>
+	</fontcolor>
+	<fontcolor name="New" default="keyword" foreColor="blue">
+		<font style="bold"/>
+	</fontcolor>
+	<fontcolor name="Null" default="keyword" foreColor="blue">
+		<font style="bold"/>
+	</fontcolor>
+	
+	<!-- ============ identifyer ================================ -->
+	<fontcolor name="TokenSpecifier" default="identifier"/>
+	<fontcolor name="ProductionSpecifier" default="identifier"/>
+	
+	<!-- ============ separator ================================= -->
+	<fontcolor name="Semicolon" default="separator">
+		<font style="bold"/>
+	</fontcolor>
+	
+	<fontcolor name="Colon" default="separator">
+		<font style="bold"/>
+	</fontcolor>
+	
+	<fontcolor name="Comma" default="separator">
+		<font style="bold"/>
+	</fontcolor>
+	
+	<fontcolor name="Dot" default="operator">
+		<font style="bold"/>
+	</fontcolor>	
+	
+	<!-- ============ operator ================================== -->
+	<fontcolor name="DDot" default="operator">
+		<font style="bold"/>
+	</fontcolor>
+	
+	<fontcolor name="Equal" default="operator" foreColor="870000">
+		<font style="bold"/>
+	</fontcolor>
+
+	<fontcolor name="Plus" default="operator"
+		foreColor="00D56A">
+		<font style="bold"/>
+	</fontcolor>
+
+	<fontcolor name="Minus" default="operator"
+		foreColor="00D56A">
+		<font style="bold"/>
+	</fontcolor>
+
+	<fontcolor name="QMark" default="operator"
+		foreColor="00D56A">
+		<font style="bold"/>
+	</fontcolor>
+
+	<fontcolor name="Star" default="operator"
+		foreColor="00D56A">
+		<font style="bold"/>
+	</fontcolor>
+
+	<fontcolor name="Bar" default="operator" foreColor="870000">
+		<font style="bold"/>
+	</fontcolor>
+	
+	<fontcolor name="Slash" default="operator" foreColor="870000">
+		<font style="bold"/>
+	</fontcolor>
+
+	<fontcolor name="Arrow" default="operator" foreColor="00D500">
+		<font style="bold"/>
+	</fontcolor>	
+	
+	<!-- ============= brace ======================================= -->	
+	<fontcolor name="LBkt" default="brace" foreColor="D55000"> 
+		<font style="bold"/>
+	</fontcolor>
+	<fontcolor name="RBkt" default="brace" foreColor="D55000">
+		<font style="bold"/>
+	</fontcolor>
+	
+	<fontcolor name="LPar" default="brace" foreColor="D55000">
+		<font style="bold"/>
+	</fontcolor>
+	<fontcolor name="RPar" default="brace" foreColor="D55000">
+		<font style="bold"/>
+	</fontcolor>
+	
+	<fontcolor name="LBrace" default="brace" foreColor="D55000">
+		<font style="bold"/>
+	</fontcolor>
+	<fontcolor name="RBrace" default="brace" foreColor="D55000">
+		<font style="bold"/>
+	</fontcolor>
+
+
+	<fontcolor name="Id" default="identifier" foreColor="black"/>
+
+	<fontcolor name="Char" default="character" foreColor="5f0000"/>
+		
+	<fontcolor name="Comment" default="comment"/>
+	<fontcolor name="DecChar" default="character" foreColor="006AD5"/>
+	<fontcolor name="HexChar" default="character" foreColor="FF55AA"/>
+		
+	<fontcolor name="String" default="string"/>
+
+	<fontcolor name="Blank" default="whitespace"/>
+
+	<fontcolor name="String" default="string"/>
+	<fontcolor name="Comment" default="comment"/>
+
+	<fontcolor name="EOF" default="whitespace"/>
+	<fontcolor name="ERROR" default="error"/>
+
+	<fontcolor name="TokenSpecifier" default="specifier" foreColor="FF0B0B">
+	</fontcolor>
+
+	<fontcolor name="ProductionSpecifier" default="specifier" foreColor="FF0B0B">
+	</fontcolor>
+</fontscolors>

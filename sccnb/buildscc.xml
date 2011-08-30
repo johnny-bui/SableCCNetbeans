@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<project name="Grammar" default="build-grammars" basedir=".">
+		<description>
+			generiert java dateien
+		</description>
+<!-- Name Conventional -->
+<!-- 
+	+ Test file for a language: testGrammar.${grammar} 
+	 example: testGrammar.uil
+
+	+ Files, which are relevant with a grammar, not from
+	 SableCC generated, and generate Code,
+	 are be saved in ${grammar}CodeGen. This directory is
+	 not deleted from buil.xml script.
+	+ In directory ${grammar}CodeGen, the executable file (main Methode)
+	 should have name Compiler.java (if not is OK too, but you cannot
+	 use ant script)
+-->
+
+
+	<!-- set global properties for this build -->
+	<property name="src" location="src"/>
+	<property name="build" location="build"/>
+	<property name="dist" location="dist"/>
+
+	<target name="initgrammar">
+		<mkdir dir="${build}"/>
+	</target>
+	
+	<target name="devinit" depends="cleanscc">
+		<mkdir dir="${build}"/>
+	</target>
+	
+	<target name="build-grammars" depends="initgrammar,scc">
+		
+	</target>
+
+	<target name="clean-grammars" depends="cleanscc">
+	</target>
+
+<!-- ============================================================= -->
+<!-- =================== scc compiler ============================ -->
+	<target name="scc">
+		<antcall target="-common-task">
+			<!--
+			package: destinated package, which is declared in sablecc file
+			grammar: the sablecc file (grammar specification) without
+			suffix scc
+			-->
+			<param name="package" value="org/sableccsupport/sccautogen"/>
+			<param name="grammar" value="sablecc-3x"/>
+		</antcall>
+
+		<!-- compile scc (target specific) -->
+		<!-- nothing to do here
+		<javac srcdir="${src}" destdir="${build}" failonerror="true">
+			<include name="uilCodeGen/*.java"/>
+			<include name="uilCodeGen/*/*.java"/>
+		</javac>
+		-->
+		
+	</target>
+	<target name="cleanscc" depends="-clean-common">
+		<antcall target="-clean-language">
+			<param name="grammar" value="org/sableccsupport/sccautogen"/>
+		</antcall>
+	</target>
+
+
+<!-- ============================================================= -->
+<!-- ======== encapsulate common tasks in a task with a param ==== -->
+	<target name="-common-task">
+		<!-- make java file -->
+		<antcall target="-gen-compiler">
+			<param name="grammar" value="${grammar}"/>
+		</antcall>
+
+		<!-- copy parser.dat, lexer.dat -->
+		<!-- by module project netbeans copies parser.dat and lexer.dat 
+		     automatically, so nothing to do here -->
+		<!--
+		<antcall target="-copy-dat">
+			<param name="package" value="${package}"/>
+			<param name="grammar" value=""/>
+		</antcall>
+		-->
+		
+		<!-- compile Compiler -->
+		<!-- netbeans compiles these files automatically -->
+		<!--
+		<antcall target="-compile-compiler">
+			<param name="grammar" value="${grammar}"/>
+		</antcall>
+		-->
+	</target>
+
+<!-- ======= common used targets with context parameter ======= -->
+<!-- ========================================================== -->
+	<target name="-gen-compiler" 
+			description="generate compiler files (*.java)">
+		<exec executable="sablecc" failonerror="true">
+			<arg value="${src}/${grammar}.scc"/>
+		</exec>
+	</target>
+
+	<target name="-copy-dat"
+			description="copy sablecc specific parser.dat und lexer.dat">
+		<copy file="${src}/${package}/${grammar}/parser/parser.dat"
+			tofile="${build}/${package}/${grammar}/parser/parser.dat" failonerror="true">
+		</copy>
+		<copy file="${src}/${package}/${grammar}/lexer/lexer.dat" 
+			tofile="${build}/${package}/${grammar}/lexer/lexer.dat" failonerror="true">
+		</copy>
+	</target>
+	
+	<target name="-compile-compiler">
+		<javac srcdir="${src}" destdir="${build}" includeantruntime="true">
+			<include name="${package}/${grammar}/*/*.java"/>
+		</javac>
+	</target>
+
+
+<!-- ================= clean build/dist directory ============= -->
+<!-- ========================================================== -->
+	<target name="-clean-common">
+		<delete dir="${build}">
+		</delete>
+		<delete dir="${dist}">
+		</delete>
+	</target>
+	
+	<target name="-clean-language">
+		<delete dir="${src}/${grammar}"/>
+	</target>
+
+<!-- ================== compile generic packages ============== -->
+<!-- ========================================================== -->
+	<target name="genericTreeBuilder">
+		<javac srcdir="${src}" destdir="${build}" includeantruntime="true">
+			<include name="genericTreeBuilder/*.java"/>
+		</javac>
+	</target>
+</project>
+

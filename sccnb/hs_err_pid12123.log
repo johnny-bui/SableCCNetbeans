@@ -1,0 +1,894 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0xb76c96b6, pid=12123, tid=2197797744
+#
+# JRE version: 6.0_23-b05
+# Java VM: Java HotSpot(TM) Client VM (19.0-b09 mixed mode linux-x86 )
+# Problematic frame:
+# C  [libc.so.6+0x1106b6]
+#
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x81b3bc00):  JavaThread "Flush UI Logs" daemon [_thread_in_native, id=12512, stack(0x82dfb000,0x82ffc000)]
+
+siginfo:si_signo=SIGSEGV: si_errno=0, si_code=1 (SEGV_MAPERR), si_addr=0x8513c000
+
+Registers:
+EAX=0x8513bef0, EBX=0xb76f35b0, ECX=0x00004b13, EDX=0x08d01610
+ESP=0x82ffa304, EBP=0x82ffa338, ESI=0x85134bf4, EDI=0x00000100
+EIP=0xb76c96b6, CR2=0x8513c000, EFLAGS=0x00010202
+
+Register to memory mapping:
+
+EAX=0x8513bef0
+0x8513bef0 is pointing to unknown location
+
+EBX=0xb76f35b0
+0xb76f35b0: <offset 0x13a5b0> in /lib/tls/i686/cmov/libc.so.6 at 0xb75b9000
+
+ECX=0x00004b13
+0x00004b13 is pointing to unknown location
+
+EDX=0x08d01610
+0x08d01610 is pointing to unknown location
+
+ESP=0x82ffa304
+0x82ffa304 is pointing into the stack for thread: 0x81b3bc00
+"Flush UI Logs" daemon prio=10 tid=0x81b3bc00 nid=0x30e0 runnable [0x82ffa000]
+   java.lang.Thread.State: RUNNABLE
+
+EBP=0x82ffa338
+0x82ffa338 is pointing into the stack for thread: 0x81b3bc00
+"Flush UI Logs" daemon prio=10 tid=0x81b3bc00 nid=0x30e0 runnable [0x82ffa000]
+   java.lang.Thread.State: RUNNABLE
+
+ESI=0x85134bf4
+0x85134bf4 is pointing to unknown location
+
+EDI=0x00000100
+0x00000100 is pointing to unknown location
+
+
+Top of Stack: (sp=0x82ffa304)
+0x82ffa304:   091a9278 b6a67abc b6a630ac 08d01600
+0x82ffa314:   8513bee7 00004c43 08eb69d4 00004c43
+0x82ffa324:   00004353 00002f72 b6a67abc 84f8a180
+0x82ffa334:   00000000 82ffa368 b6a632fb 84f89ea0
+0x82ffa344:   84f8a180 00000000 05020100 6b000000
+0x82ffa354:   01000200 34140408 b6a67abc 82ffa3b0
+0x82ffa364:   81b3bd18 82ffa7d8 b6a5a0f9 84f89ea0
+0x82ffa374:   82ffa3b0 00000027 00000027 82ffa3b0 
+
+Instructions: (pc=0xb76c96b6)
+0xb76c96a6:   8d 40 f9 0f 28 08 31 ff 8d 49 e0 f3 0f 7f 06 5e
+0xb76c96b6:   66 0f 6f 54 38 10 83 e9 20 66 0f 6f 5c 38 20 66 
+
+Stack: [0x82dfb000,0x82ffc000],  sp=0x82ffa304,  free space=2044k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [libc.so.6+0x1106b6]
+C  [libzip.so+0xc2fb]  ZIP_GetEntry+0x10b
+C  [libzip.so+0x30f9]  Java_java_util_zip_ZipFile_getEntry+0xc9
+J  java.util.zip.ZipFile.getEntry(JLjava/lang/String;Z)J
+J  java.util.zip.ZipFile.getEntry(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+j  org.netbeans.lib.uihandler.LogFormatter.format(Ljava/util/logging/LogRecord;)Ljava/lang/String;+448
+j  org.netbeans.lib.uihandler.LogRecords.write(Ljava/io/OutputStream;Ljava/util/logging/LogRecord;)V+4
+j  org.netbeans.modules.uihandler.Installer.writeOut(Ljava/util/logging/LogRecord;)V+10
+j  org.netbeans.modules.uihandler.UIHandler$1WriteOut.run()V+4
+j  org.openide.util.RequestProcessor$Task.run()V+15
+j  org.openide.util.RequestProcessor$Processor.run()V+218
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x237c81]
+V  [libjvm.so+0x368fc8]
+V  [libjvm.so+0x237517]
+V  [libjvm.so+0x2375b8]
+V  [libjvm.so+0x2b8265]
+V  [libjvm.so+0x411d1f]
+V  [libjvm.so+0x36a5be]
+C  [libpthread.so.0+0x596e]
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+J  java.util.zip.ZipFile.getEntry(JLjava/lang/String;Z)J
+J  java.util.zip.ZipFile.getEntry(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+J  java.util.jar.JarFile.getEntry(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+J  org.netbeans.JarClassLoader$JarSource.resource(Ljava/lang/String;)[B
+J  org.netbeans.Archive.getData(Lorg/netbeans/ArchiveResources;Ljava/lang/String;)[B
+J  org.netbeans.JarClassLoader$JarSource.doGetResource(Ljava/lang/String;)Ljava/net/URL;
+J  org.netbeans.JarClassLoader.findResource(Ljava/lang/String;)Ljava/net/URL;
+J  org.netbeans.ProxyClassLoader.getResourceImpl(Ljava/lang/String;)Ljava/net/URL;
+J  org.netbeans.ProxyClassLoader.getResource(Ljava/lang/String;)Ljava/net/URL;
+J  org.netbeans.lib.uihandler.LogFormatter.printFrame(Ljava/lang/StackTraceElement;Ljava/lang/StringBuffer;)V
+j  org.netbeans.lib.uihandler.LogFormatter.printThrown(Ljava/lang/Throwable;Ljava/lang/StringBuffer;)V+51
+j  org.netbeans.lib.uihandler.LogFormatter.format(Ljava/util/logging/LogRecord;)Ljava/lang/String;+448
+j  org.netbeans.lib.uihandler.LogRecords.write(Ljava/io/OutputStream;Ljava/util/logging/LogRecord;)V+4
+j  org.netbeans.modules.uihandler.Installer.writeOut(Ljava/util/logging/LogRecord;)V+10
+j  org.netbeans.modules.uihandler.UIHandler$1WriteOut.run()V+4
+j  org.openide.util.RequestProcessor$Task.run()V+15
+j  org.openide.util.RequestProcessor$Processor.run()V+218
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x822cd400 JavaThread "Inactive RequestProcessor thread [Was:JavaSourceTaskFactory/org.netbeans.api.java.source.JavaSourceTaskFactory$1]" daemon [_thread_blocked, id=12513, stack(0x847a6000,0x849a7000)]
+=>0x81b3bc00 JavaThread "Flush UI Logs" daemon [_thread_in_native, id=12512, stack(0x82dfb000,0x82ffc000)]
+  0x83902000 JavaThread "Parsing & Indexing Loop (201007282301)" daemon [_thread_blocked, id=12158, stack(0x8263f000,0x82840000)]
+  0x86703400 JavaThread "DestroyJavaVM" [_thread_blocked, id=12124, stack(0xb6a9e000,0xb6c9f000)]
+  0x84f2b400 JavaThread "AWT-EventQueue-1" [_thread_in_Java, id=12150, stack(0x835ff000,0x83800000)]
+  0x86e29400 JavaThread "TimerQueue" daemon [_thread_blocked, id=12149, stack(0x85340000,0x85541000)]
+  0x84f48400 JavaThread "Thread-2" daemon [_thread_blocked, id=12148, stack(0x845a5000,0x847a6000)]
+  0x08e27800 JavaThread "AWT-Shutdown" [_thread_blocked, id=12145, stack(0x85541000,0x85742000)]
+  0x867d4000 JavaThread "AWT-XAWT" daemon [_thread_in_native, id=12144, stack(0x85742000,0x85943000)]
+  0x08dc0000 JavaThread "Java2D Disposer" daemon [_thread_blocked, id=12143, stack(0x85a73000,0x85c74000)]
+  0x08d76c00 JavaThread "CLI Requests Server" daemon [_thread_in_native, id=12140, stack(0x862fe000,0x864ff000)]
+  0x8671e400 JavaThread "Active Reference Queue Daemon" daemon [_thread_blocked, id=12139, stack(0x864ff000,0x86700000)]
+  0x86e8c800 JavaThread "Timer-0" daemon [_thread_blocked, id=12138, stack(0x868f9000,0x86afa000)]
+  0x86e00800 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=12136, stack(0x86b7e000,0x86d7f000)]
+  0x08d43400 JavaThread "CompilerThread0" daemon [_thread_blocked, id=12135, stack(0x86d7f000,0x86e00000)]
+  0x08d37800 JavaThread "JDWP Command Reader" daemon [_thread_in_native, id=12133, stack(0x86f25000,0x87126000)]
+  0x08d35c00 JavaThread "JDWP Event Helper Thread" daemon [_thread_blocked, id=12131, stack(0x87126000,0x87327000)]
+  0x08d33400 JavaThread "JDWP Transport Listener: dt_socket" daemon [_thread_blocked, id=12129, stack(0x87327000,0x87528000)]
+  0x08d2b400 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=12128, stack(0x8752c000,0x8772d000)]
+  0x08d18c00 JavaThread "Finalizer" daemon [_thread_blocked, id=12127, stack(0x8772d000,0x8792e000)]
+  0x08d17800 JavaThread "Reference Handler" daemon [_thread_blocked, id=12126, stack(0x8792e000,0x87b2f000)]
+
+Other Threads:
+  0x08d14c00 VMThread [stack: 0x87b2f000,0x87bb0000] [id=12125]
+  0x86e03000 WatcherThread [stack: 0x86afd000,0x86b7e000] [id=12137]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ def new generation   total 31488K, used 12603K [0x87ff0000, 0x8a210000, 0x92a90000)
+  eden space 28032K,  39% used [0x87ff0000, 0x88ab8918, 0x89b50000)
+  from space 3456K,  45% used [0x89b50000, 0x89cd6648, 0x89eb0000)
+  to   space 3456K,   0% used [0x89eb0000, 0x89eb0000, 0x8a210000)
+ tenured generation   total 69776K, used 51238K [0x92a90000, 0x96eb4000, 0xa7ff0000)
+   the space 69776K,  73% used [0x92a90000, 0x95c99980, 0x95c99a00, 0x96eb4000)
+ compacting perm gen  total 50432K, used 50247K [0xa7ff0000, 0xab130000, 0xb47f0000)
+   the space 50432K,  99% used [0xa7ff0000, 0xab101fb8, 0xab102000, 0xab130000)
+No shared spaces configured.
+
+Dynamic libraries:
+08048000-08052000 r-xp 00000000 08:06 789265     /opt/jdk1.6.0_23/bin/java
+08052000-08053000 rwxp 00009000 08:06 789265     /opt/jdk1.6.0_23/bin/java
+08cc3000-09793000 rwxp 00000000 00:00 0          [heap]
+80cff000-80d02000 ---p 00000000 00:00 0 
+80d02000-80f00000 rwxp 00000000 00:00 0 
+80f00000-80f54000 rwxp 00000000 00:00 0 
+80f54000-81000000 ---p 00000000 00:00 0 
+810fe000-81100000 r-xs 00010000 08:03 2362004    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/flute-1.3.jar
+81100000-811fc000 rwxp 00000000 00:00 0 
+811fc000-81200000 ---p 00000000 00:00 0 
+81200000-812f9000 rwxp 00000000 00:00 0 
+812f9000-81300000 ---p 00000000 00:00 0 
+81300000-813fb000 rwxp 00000000 00:00 0 
+813fb000-81400000 ---p 00000000 00:00 0 
+81400000-81500000 rwxp 00000000 00:00 0 
+81500000-815f9000 rwxp 00000000 00:00 0 
+815f9000-81600000 ---p 00000000 00:00 0 
+81600000-816fe000 rwxp 00000000 00:00 0 
+816fe000-81700000 ---p 00000000 00:00 0 
+81700000-817f9000 rwxp 00000000 00:00 0 
+817f9000-81800000 ---p 00000000 00:00 0 
+81800000-818f9000 rwxp 00000000 00:00 0 
+818f9000-81900000 ---p 00000000 00:00 0 
+81900000-819f9000 rwxp 00000000 00:00 0 
+819f9000-81a00000 ---p 00000000 00:00 0 
+81a00000-81b00000 rwxp 00000000 00:00 0 
+81b00000-81bf1000 rwxp 00000000 00:00 0 
+81bf1000-81c00000 ---p 00000000 00:00 0 
+81c00000-81cf9000 rwxp 00000000 00:00 0 
+81cf9000-81d00000 ---p 00000000 00:00 0 
+81d00000-81df9000 rwxp 00000000 00:00 0 
+81df9000-81e00000 ---p 00000000 00:00 0 
+81e00000-81efb000 rwxp 00000000 00:00 0 
+81efb000-81f00000 ---p 00000000 00:00 0 
+81f00000-81ffe000 rwxp 00000000 00:00 0 
+81ffe000-82000000 ---p 00000000 00:00 0 
+82000000-820fc000 rwxp 00000000 00:00 0 
+820fc000-82100000 ---p 00000000 00:00 0 
+82100000-821f9000 rwxp 00000000 00:00 0 
+821f9000-82200000 ---p 00000000 00:00 0 
+82200000-822fe000 rwxp 00000000 00:00 0 
+822fe000-82300000 ---p 00000000 00:00 0 
+82300000-823fa000 rwxp 00000000 00:00 0 
+823fa000-82400000 ---p 00000000 00:00 0 
+8243e000-82441000 ---p 00000000 00:00 0 
+82441000-8263f000 rwxp 00000000 00:00 0 
+8263f000-82642000 ---p 00000000 00:00 0 
+82642000-82840000 rwxp 00000000 00:00 0 
+82840000-82843000 ---p 00000000 00:00 0 
+82843000-82a41000 rwxp 00000000 00:00 0 
+82a41000-82a44000 ---p 00000000 00:00 0 
+82a44000-82c42000 rwxp 00000000 00:00 0 
+82c42000-82dfb000 rwxs 00000000 00:04 3768340    /SYSV00000000 (deleted)
+82dfb000-82dfe000 ---p 00000000 00:00 0 
+82dfe000-82ffc000 rwxp 00000000 00:00 0 
+82ffc000-82fff000 ---p 00000000 00:00 0 
+82fff000-831fd000 rwxp 00000000 00:00 0 
+831fd000-83200000 ---p 00000000 00:00 0 
+83200000-833fe000 rwxp 00000000 00:00 0 
+833fe000-83401000 ---p 00000000 00:00 0 
+83401000-835ff000 rwxp 00000000 00:00 0 
+835ff000-83602000 ---p 00000000 00:00 0 
+83602000-83800000 rwxp 00000000 00:00 0 
+83800000-83851000 rwxp 00000000 00:00 0 
+83851000-83900000 ---p 00000000 00:00 0 
+83900000-839fc000 rwxp 00000000 00:00 0 
+839fc000-83a00000 ---p 00000000 00:00 0 
+83a00000-83af9000 rwxp 00000000 00:00 0 
+83af9000-83b00000 ---p 00000000 00:00 0 
+83b00000-83c00000 rwxp 00000000 00:00 0 
+83c00000-83cfd000 rwxp 00000000 00:00 0 
+83cfd000-83d00000 ---p 00000000 00:00 0 
+83d00000-83dfb000 rwxp 00000000 00:00 0 
+83dfb000-83e00000 ---p 00000000 00:00 0 
+83e00000-83efc000 rwxp 00000000 00:00 0 
+83efc000-83f00000 ---p 00000000 00:00 0 
+83f00000-84000000 rwxp 00000000 00:00 0 
+84000000-840f9000 rwxp 00000000 00:00 0 
+840f9000-84100000 ---p 00000000 00:00 0 
+84100000-841fc000 rwxp 00000000 00:00 0 
+841fc000-84200000 ---p 00000000 00:00 0 
+84200000-842ff000 rwxp 00000000 00:00 0 
+842ff000-84300000 ---p 00000000 00:00 0 
+84300000-843fa000 rwxp 00000000 00:00 0 
+843fa000-84400000 ---p 00000000 00:00 0 
+84400000-844fa000 rwxp 00000000 00:00 0 
+844fa000-84500000 ---p 00000000 00:00 0 
+8457d000-84592000 r-xp 00000000 08:06 788027     /opt/jdk1.6.0_23/jre/lib/i386/libdcpr.so
+84592000-845a5000 rwxp 00014000 08:06 788027     /opt/jdk1.6.0_23/jre/lib/i386/libdcpr.so
+845a5000-845a8000 ---p 00000000 00:00 0 
+845a8000-847a6000 rwxp 00000000 00:00 0 
+847a6000-847a9000 ---p 00000000 00:00 0 
+847a9000-849a7000 rwxp 00000000 00:00 0 
+849a7000-849c3000 r-xs 001e3000 08:03 3018602    /home/phucluoi/opt/netbeans-6.9.1/ergonomics/modules/org-netbeans-modules-ide-ergonomics.jar
+849c3000-849e4000 r-xs 00233000 08:03 2362575    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/toplink/toplink-essentials.jar
+849e4000-84a21000 r-xs 00280000 08:03 2362594    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/spring/spring-2.5.6.SEC01.jar
+84a21000-84a37000 r-xs 006a4000 08:03 2363932    /home/phucluoi/opt/netbeans-6.9.1/enterprise/modules/org-netbeans-modules-j2ee-dd.jar
+84a37000-84a58000 r-xs 001fd000 08:03 2362658    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/hibernate/hibernate3.jar
+84a58000-84a7f000 r-xs 0048c000 08:03 2362644    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-form.jar
+84a96000-84ace000 r-xs 002b6000 08:03 2362338    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/maven-embedder-2.1-20080623-patched.jar
+84ace000-84aeb000 r-xs 00342000 08:03 2362828    /home/phucluoi/opt/netbeans-6.9.1/apisupport/modules/org-netbeans-modules-apisupport-project.jar
+84aeb000-84af4000 r-xs 000bf000 08:03 2361477    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-xml-wsdl-model.jar
+84af4000-84b1b000 r-xs 003b9000 08:03 2363234    /home/phucluoi/opt/netbeans-6.9.1/profiler/modules/org-netbeans-modules-profiler.jar
+84b1b000-84b2f000 r-xs 0016d000 08:03 2362646    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/javac-impl-nb-7.0-b07.jar
+84b2f000-84b3b000 r-xs 001b3000 08:03 2360433    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-netbeans-core-windows.jar
+84b3b000-84b4e000 r-xs 002bb000 08:03 2362524    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-java-source.jar
+84b4e000-84b4f000 r-xs 00003000 08:03 2361637    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-usersguide.jar
+84b51000-84b59000 r-xs 000b7000 08:03 2361126    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-dlight-nativeexecution.jar
+84b59000-84b5c000 r-xs 000be000 08:03 2360547    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/ext/jna-3.0.9.jar
+84b5e000-84b5f000 r-xs 00000000 08:03 2361562    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-tasklist-kit.jar
+84b5f000-84b60000 r-xs 00008000 08:03 2361274    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-tasklist-projectint.jar
+84b60000-84b65000 r-xs 00068000 08:03 2361594    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-tasklist-ui.jar
+84b65000-84b6a000 r-xs 0009b000 08:03 2361673    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-utilities.jar
+84b70000-84b72000 r-xs 0001a000 08:03 2361821    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-image.jar
+84b72000-84b74000 r-xs 00006000 08:03 2361492    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-languages-diff.jar
+84b78000-84b7e000 r-xs 0005c000 08:03 2362005    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/webserver.jar
+84b7e000-84b80000 r-xs 00011000 08:03 2361635    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-httpserver.jar
+84b80000-84b82000 r-xs 00008000 08:03 2361996    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/servlet-2.2.jar
+84b82000-84b83000 r-xs 00000000 08:03 2361642    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-servletapi.jar
+84b85000-84b87000 r-xs 00002000 08:03 2362008    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/sac-1.3.jar
+84b87000-84b91000 r-xs 000ab000 08:03 2361645    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-css-visual.jar
+84b91000-84ba0000 r-xs 000d1000 08:03 2361984    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/core-renderer.jar
+84ba0000-84ba1000 r-xs 00001000 08:03 2361409    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-web-flyingsaucer.jar
+84ba4000-84ba6000 r-xs 00021000 08:03 2361479    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-languages-yaml.jar
+84bac000-84bad000 r-xs 00000000 08:03 2361850    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-libs-jvyamlb.jar
+84baf000-84bb0000 r-xs 00000000 08:03 2361828    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-libs-bytelist.jar
+84bb0000-84bb1000 r-xs 00003000 08:03 2361493    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-editor-actions.jar
+84bb1000-84bb3000 r-xs 00000000 08:03 2361476    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-javascript-kit.jar
+84bb3000-84bb5000 r-xs 0001b000 08:03 2361384    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-javascript-hints.jar
+84bb5000-84bb8000 r-xs 00037000 08:03 2361130    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-javascript-refactoring.jar
+84bbb000-84bbd000 r-xs 0002a000 08:03 2361723    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-swing-dirchooser.jar
+84bc1000-84bcf000 r-xs 000ce000 08:03 2361761    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-spi-debugger-ui.jar
+84bcf000-84bd0000 r-xs 0000f000 08:03 2362429    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-java-source-ant.jar
+84bd0000-84bd2000 r-xs 0002d000 08:03 2362500    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-javawebstart.jar
+84bd2000-84bd4000 r-xs 00021000 08:03 2362553    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-java-debug.jar
+84bd4000-84bda000 r-xs 0007e000 08:03 2362643    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-i18n.jar
+84bda000-84bdf000 r-xs 00094000 08:03 2361643    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-properties.jar
+84be1000-84be8000 r-xs 00094000 08:03 2362669    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/beansbinding-1.2.1.jar
+84be8000-84be9000 r-xs 00000000 08:03 2362650    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-jdesktop-beansbinding.jar
+84bf2000-84bf5000 r-xs 00011000 08:03 2362703    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/jaxws22/http.jar
+84bf5000-84bf7000 r-xs 0000d000 08:03 2362656    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/jaxws22/streambuffer.jar
+84bfc000-84c02000 r-xs 00040000 08:03 2362676    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/jaxws22/saaj-impl.jar
+84c02000-84c06000 r-xs 00022000 08:03 2362693    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/jaxws22/policy.jar
+84c06000-84c08000 r-xs 00004000 08:03 2362636    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/jaxws22/gmbal-api-only.jar
+84c08000-84c0a000 r-xs 00008000 08:03 2362682    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/jaxws22/mimepull.jar
+84c0c000-84c27000 r-xs 0014a000 08:03 2362681    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/jaxws22/jaxws-rt.jar
+84c27000-84c28000 r-xs 00002000 08:03 2362689    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/jaxws22/stax-ex.jar
+84c28000-84c2e000 r-xs 00074000 08:03 2362683    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/jaxws22/woodstox.jar
+84c2f000-84c30000 r-xs 00001000 08:03 2362633    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/jaxws22/api/jsr181-api.jar
+84c30000-84c33000 r-xs 0000b000 08:03 2362645    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/jaxws22/api/jaxws-api.jar
+84c36000-84c38000 r-xs 00000000 08:03 2362376    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-websvc-jaxws21api.jar
+84c38000-84c4a000 r-xs 00166000 08:03 2362405    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-debugger-jpda-ui.jar
+84c4a000-84c60000 r-xs 000d7000 08:03 2361966    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/jaxb/jaxb1-impl.jar
+84c60000-84c9a000 r-xs 002b3000 08:03 2361980    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/jaxb/jaxb-xjc.jar
+84c9b000-84c9d000 r-xs 0000e000 08:03 2361967    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/jaxb/activation.jar
+84c9d000-84c9f000 r-xs 00004000 08:03 2361911    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/jaxb/api/jsr173_api.jar
+84c9f000-84ca3000 r-xs 00016000 08:03 2361944    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/jaxb/api/jaxb-api.jar
+84ca3000-84ca5000 r-xs 00000000 08:03 2361549    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-xml-jaxb-api.jar
+84ca5000-84ca6000 r-xs 00007000 08:03 2362133    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-spellchecker-bindings-java.jar
+84caa000-84cb1000 r-xs 0004e000 08:03 2362596    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/hibernate/hibernate-tools.jar
+84cb1000-84cb7000 r-xs 0002b000 08:03 2360545    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/ext/junit-4.5.jar
+84cbb000-84cbf000 r-xs 0002e000 08:03 2361570    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-extexecution.jar
+84cbf000-84cc5000 r-xs 0003e000 08:03 2362647    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/hibernate/cglib-2.1.3.jar
+84cc5000-84ccc000 r-xs 000da000 08:03 2362398    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-java-j2seproject.jar
+84ccc000-84cce000 r-xs 00000000 08:03 2362442    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-ant-browsetask.jar
+84cce000-84ccf000 r-xs 00001000 08:03 2362389    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-debugger-jpda-ant.jar
+84cd3000-84cd7000 r-xs 00054000 08:03 2361825    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-spi-viewmodel.jar
+84cdb000-84ce2000 r-xs 00057000 08:03 2362318    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-j2ee-persistenceapi.jar
+84ce2000-84ce5000 r-xs 00019000 08:03 2362116    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-j2ee-metadata-model-support.jar
+84ce7000-84cf7000 r-xs 00237000 08:03 2362548    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-java-hints.jar
+84cf9000-84cfd000 r-xs 0005b000 08:03 2362134    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-projectimport-eclipse-core.jar
+84d01000-84d07000 r-xs 0008b000 08:03 2362417    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-java-api-common.jar
+84d0c000-84d10000 r-xs 00051000 08:03 2362495    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-ant-freeform.jar
+84d1a000-84d28000 r-xs 001c0000 08:03 2362529    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-java-editor.jar
+84d29000-84d34000 r-xs 00150000 08:03 2362401    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-refactoring-java.jar
+84d3c000-84d3e000 r-xs 0001e000 08:03 2363217    /home/phucluoi/opt/netbeans-6.9.1/profiler/modules/org-netbeans-modules-profiler-oql.jar
+84d3e000-84d43000 r-xs 0005d000 08:03 2363184    /home/phucluoi/opt/netbeans-6.9.1/profiler/modules/org-netbeans-modules-profiler-attach.jar
+84d43000-84d51000 r-xs 00167000 08:03 2363236    /home/phucluoi/opt/netbeans-6.9.1/profiler/modules/org-netbeans-lib-profiler-ui.jar
+84d55000-84d5b000 r-xs 0008f000 08:03 2362491    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-java-project.jar
+84d5b000-84d61000 r-xs 000a3000 08:03 2361592    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-project-ant.jar
+84d61000-84d65000 r-xs 00046000 08:03 2361604    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-xml-catalog.jar
+84d65000-84d6a000 r-xs 0007b000 08:03 2362619    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-apache-tools-ant-module.jar
+84d6a000-84d6c000 r-xs 0001b000 08:03 2363222    /home/phucluoi/opt/netbeans-6.9.1/profiler/modules/org-netbeans-lib-profiler-common.jar
+84d81000-84d8e000 r-xs 0013e000 08:03 2360466    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-netbeans-api-visual.jar
+84d8e000-84d90000 r-xs 00011000 08:03 2361161    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-editor-indent-project.jar
+84d90000-84d97000 r-xs 00092000 08:03 2362599    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-dbschema.jar
+84d97000-84d9d000 r-xs 00151000 08:03 2361561    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-schema2beans.jar
+84d9d000-84da5000 r-xs 000a6000 08:03 2362527    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-maven-model.jar
+84da8000-84daa000 r-xs 0000c000 08:03 2362552    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-java-lexer.jar
+84dad000-84daf000 r-xs 00004000 08:03 2362220    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-java-preprocessorbridge.jar
+84daf000-84db4000 r-xs 0001a000 08:03 2362657    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/javac-api-nb-7.0-b07.jar
+84db5000-84db7000 r-xs 00006000 08:03 2362675    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-api-java.jar
+84db7000-84db8000 r-xs 00029000 08:03 2362815    /home/phucluoi/opt/netbeans-6.9.1/apisupport/modules/org-netbeans-modules-apisupport-crudsample.jar
+84dbb000-84dbe000 r-xs 00028000 08:03 2361826    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-derby.jar
+84dbe000-84dc0000 r-xs 0000e000 08:03 2361514    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-tasklist-todo.jar
+84dc3000-84dd3000 r-xp 00000000 08:02 1442646    /lib/tls/i686/cmov/libresolv-2.11.1.so
+84dd3000-84dd4000 r-xp 00010000 08:02 1442646    /lib/tls/i686/cmov/libresolv-2.11.1.so
+84dd4000-84dd5000 rwxp 00011000 08:02 1442646    /lib/tls/i686/cmov/libresolv-2.11.1.so
+84dd5000-84dd7000 rwxp 00000000 00:00 0 
+84dd7000-84ddb000 r-xs 00069000 08:03 2361882    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-spi-palette.jar
+84de4000-84de5000 r-xs 0000a000 08:03 2361641    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-html-lexer.jar
+84de5000-84df4000 r-xs 001f7000 08:03 2361650    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-editor-lib.jar
+84df4000-84e0b000 r-xs 0010b000 08:03 2361989    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/xerces-2.8.0.jar
+84e0c000-84e12000 r-xs 0007e000 08:03 2361879    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-xml.jar
+84e12000-84e15000 r-xs 00040000 08:03 2361517    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-xml-retriever.jar
+84e15000-84e17000 r-xs 00014000 08:03 2361987    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/resolver-1.2.jar
+84e17000-84e18000 r-xs 00000000 08:03 2361906    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-apache-xml-resolver.jar
+84e18000-84e1b000 r-xs 00028000 08:03 2361512    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-editor-macros.jar
+84e1b000-84e20000 r-xs 00034000 08:03 2362810    /home/phucluoi/opt/netbeans-6.9.1/apisupport/modules/docs/org-netbeans-modules-apisupport-project.jar
+84e23000-84e25000 r-xs 00003000 08:03 2362666    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/hibernate/asm-attrs.jar
+84e25000-84e27000 r-xs 00006000 08:03 2362503    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-hudson-maven.jar
+84e29000-84e2e000 r-xs 00064000 08:03 2361729    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-db-mysql.jar
+84e2e000-84e31000 r-xs 0000a000 08:03 2362576    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/hibernate/ejb3-persistence.jar
+84e31000-84e34000 r-xs 00036000 08:03 2361981    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/ValidationAPI.jar
+84e34000-84e38000 r-xs 0002b000 08:03 2361725    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-terminal.jar
+84e38000-84e3e000 r-xs 00067000 08:03 2361551    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-lib-terminalemulator.jar
+84e4a000-84e4c000 r-xs 00023000 08:03 2362715    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/jdom-1.0.jar
+84e4c000-84e5a000 r-xs 0014a000 08:03 2361908    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-db.jar
+84e5a000-84e5d000 r-xs 00034000 08:03 2361334    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-db-metadata-model.jar
+84e5d000-84e5e000 r-xs 00001000 08:03 2361382    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-editor-plain-lib.jar
+84e5f000-84e61000 r-xs 00005000 08:03 2361408    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-swing-validation.jar
+84e61000-84e65000 r-xs 00020000 08:03 2362574    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/nexus-indexer-2.0.0-shaded.jar
+84e65000-84e67000 r-xs 00014000 08:03 2361160    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-editor-bracesmatching.jar
+84e68000-84e6a000 r-xs 00007000 08:03 2362595    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/maven-dependency-tree-1.2.jar
+84e6a000-84e6b000 r-xs 00007000 08:03 2361683    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-xml-lexer.jar
+84e6b000-84e78000 r-xs 00119000 08:03 2361752    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-csl-api.jar
+84e78000-84e7a000 r-xs 0000e000 08:03 2361827    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-spi-navigator.jar
+84e7a000-84e80000 r-xs 00077000 08:03 2361431    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-refactoring-api.jar
+84e80000-84e82000 r-xs 00013000 08:03 2361527    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-editor-guards.jar
+84e86000-84e8e000 r-xs 000e9000 08:03 2361595    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-parsing-api.jar
+84e8e000-84e9c000 r-xs 000b9000 08:03 2361947    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/lucene-core-2.4.1.jar
+84e9f000-84ea3000 r-xs 0003d000 08:03 2361722    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-spi-editor-hints.jar
+84ea3000-84ea6000 r-xs 0003f000 08:03 2361332    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-editor-completion.jar
+84ea6000-84ea8000 r-xs 00021000 08:03 2361724    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-xml-core.jar
+84ea8000-84eaa000 r-xs 00016000 08:03 2361956    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-api-xml.jar
+84eaa000-84eac000 r-xs 00017000 08:03 2360646    /home/phucluoi/opt/netbeans-6.9.1/websvccommon/modules/org-netbeans-modules-websvc-saas-services-zillow.jar
+84eac000-84ead000 r-xs 00007000 08:03 2361386    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-versioning-kenai.jar
+84eb2000-84ebd000 r-xs 000de000 08:03 2363850    /home/phucluoi/opt/netbeans-6.9.1/enterprise/modules/org-netbeans-modules-j2eeserver.jar
+84ebd000-84ec1000 r-xs 0001c000 08:03 2361429    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/docs/org-netbeans-modules-subversion.jar
+84ec1000-84ed7000 r-xs 002bd000 08:03 2361639    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-subversion.jar
+84ed7000-84eda000 r-xs 00013000 08:03 2361968    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/svnjavahl-1.6.0.jar
+84edd000-84ede000 r-xs 00002000 08:03 2361509    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-libs-svnClientAdapter.jar
+84ede000-84ee2000 r-xs 0001e000 08:03 2360953    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/docs/org-netbeans-modules-versioning-system-cvss.jar
+84eeb000-84ef9000 r-xs 00679000 08:06 788759     /opt/jdk1.6.0_23/jre/lib/charsets.jar
+84ef9000-84f00000 r-xs 000b3000 08:03 2361819    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-lib-cvsclient.jar
+84f00000-84fff000 rwxp 00000000 00:00 0 
+84fff000-85000000 ---p 00000000 00:00 0 
+85000000-850fa000 rwxp 00000000 00:00 0 
+850fa000-85100000 ---p 00000000 00:00 0 
+85100000-85101000 r-xs 00002000 08:03 2361550    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-print-editor.jar
+85101000-85102000 r-xs 00003000 08:03 2363153    /home/phucluoi/opt/netbeans-6.9.1/profiler/modules/org-netbeans-modules-profiler-utilities.jar
+85103000-85104000 r-xs 00000000 08:03 2361878    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-libs-lucene.jar
+8510b000-8510e000 r-xs 0001b000 08:03 2361360    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-bugtracking-kenai.jar
+8510e000-85110000 r-xs 0001a000 08:03 2362578    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-i18n-form.jar
+85110000-85115000 r-xs 00050000 08:03 2362294    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-j2ee-jpa-verification.jar
+85117000-8511c000 r-xs 00055000 08:03 2361510    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-xml-multiview.jar
+8511c000-8511d000 r-xs 00001000 08:03 2361877    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-libs-swingx.jar
+8511f000-8512e000 r-xs 001dc000 08:03 2361682    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-mercurial.jar
+85132000-85134000 r-xs 00006000 08:03 2360906    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-spellchecker-bindings-htmlxml.jar
+85134000-85138000 r-xs 00099000 08:05 4232146    /home/phucluoi/doc/job/mathcoach/sableccSupport/build/cluster/modules/org-sableccsupport.jar
+85138000-8513c000 r-xs 00063000 08:03 2361644    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-versioning.jar
+8513d000-8513f000 r-xs 00015000 08:03 2363148    /home/phucluoi/opt/netbeans-6.9.1/profiler/modules/org-netbeans-modules-profiler-j2ee-sunas.jar
+8513f000-85143000 r-xs 00098000 08:03 2362592    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-swingapp.jar
+85143000-85148000 r-xs 0003c000 08:03 2360354    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-netbeans-core-nativeaccess.jar
+85148000-8514c000 r-xs 00053000 08:03 2360372    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-netbeans-modules-masterfs.jar
+8514c000-8514e000 r-xs 00020000 08:03 2360410    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-netbeans-core-execution.jar
+8514e000-85151000 r-xs 0003d000 08:03 2360376    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-netbeans-modules-settings.jar
+85151000-85155000 r-xs 00039000 08:03 2361552    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-localhistory.jar
+85155000-85157000 r-xs 00020000 08:03 2361790    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-server.jar
+85157000-8515c000 r-xs 00069000 08:03 2360695    /home/phucluoi/opt/netbeans-6.9.1/websvccommon/modules/org-netbeans-modules-websvc-saas-api.jar
+8515c000-8515e000 r-xs 00002000 08:03 2360664    /home/phucluoi/opt/netbeans-6.9.1/websvccommon/modules/org-netbeans-modules-websvc-jaxwsmodelapi.jar
+8515e000-85160000 r-xs 00020000 08:03 2362819    /home/phucluoi/opt/netbeans-6.9.1/apisupport/modules/org-netbeans-modules-apisupport-installer.jar
+85161000-85162000 r-xs 00000000 08:03 2362610    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-ant-kit.jar
+85162000-85168000 r-xs 0003f000 08:03 2362012    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/smack.jar
+85168000-85169000 r-xs 00000000 08:03 2361913    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-libs-smack.jar
+85169000-8516b000 r-xs 00011000 08:03 2360373    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-netbeans-modules-sendopts.jar
+8516b000-85175000 r-xs 000ef000 08:03 2361597    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-bugtracking.jar
+85185000-85198000 r-xp 00000000 08:05 4468367    /home/phucluoi/doc/job/mathcoach/sableccSupport/build/testuserdir/var/cache/jna/libjnidispatch.so
+85198000-85199000 rwxp 00013000 08:05 4468367    /home/phucluoi/doc/job/mathcoach/sableccSupport/build/testuserdir/var/cache/jna/libjnidispatch.so
+8519a000-851a1000 r-xs 000e3000 08:03 2361638    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-css-editor.jar
+851a1000-851a8000 r-xs 00094000 08:06 788054     /opt/jdk1.6.0_23/jre/lib/jsse.jar
+851aa000-851b4000 r-xs 000c1000 08:03 2361789    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-editor.jar
+851b4000-851ba000 r-xp 00000000 08:06 788020     /opt/jdk1.6.0_23/jre/lib/i386/libmanagement.so
+851ba000-851bb000 rwxp 00005000 08:06 788020     /opt/jdk1.6.0_23/jre/lib/i386/libmanagement.so
+851bc000-851c0000 r-xp 00000000 08:02 1442633    /lib/tls/i686/cmov/libnss_dns-2.11.1.so
+851c0000-851c1000 r-xp 00004000 08:02 1442633    /lib/tls/i686/cmov/libnss_dns-2.11.1.so
+851c1000-851c2000 rwxp 00005000 08:02 1442633    /lib/tls/i686/cmov/libnss_dns-2.11.1.so
+851c2000-851c9000 r-xs 00094000 08:06 788054     /opt/jdk1.6.0_23/jre/lib/jsse.jar
+851c9000-851cb000 r-xp 00000000 08:02 1310841    /lib/libnss_mdns4_minimal.so.2
+851cb000-851cc000 r-xp 00001000 08:02 1310841    /lib/libnss_mdns4_minimal.so.2
+851cc000-851cd000 rwxp 00002000 08:02 1310841    /lib/libnss_mdns4_minimal.so.2
+851d3000-851db000 r-xs 0008d000 08:03 2362430    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-java-navigation.jar
+851db000-851df000 r-xs 00035000 08:06 787990     /opt/jdk1.6.0_23/jre/lib/ext/sunpkcs11.jar
+851e0000-851e4000 r-xs 00044000 08:03 2362399    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-maven-repository.jar
+851e4000-851e7000 r-xs 00027000 08:06 787989     /opt/jdk1.6.0_23/jre/lib/ext/sunjce_provider.jar
+851e8000-851eb000 r-xs 0001d000 08:03 2361646    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-api-java-classpath.jar
+851eb000-851f3000 r-xs 00115000 08:06 788110     /opt/jdk1.6.0_23/jre/lib/resources.jar
+851f4000-851f7000 r-xs 000cb000 08:06 788779     /opt/jdk1.6.0_23/jre/lib/ext/localedata.jar
+851f8000-851fb000 r-xs 0004d000 08:03 2361210    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-editor-codetemplates.jar
+851fb000-851fe000 r-xs 00013000 08:06 788064     /opt/jdk1.6.0_23/jre/lib/jce.jar
+851fe000-85200000 r-xs 00001000 08:06 787991     /opt/jdk1.6.0_23/jre/lib/ext/dnsns.jar
+85200000-852fa000 rwxp 00000000 00:00 0 
+852fa000-85300000 ---p 00000000 00:00 0 
+85300000-85302000 r-xs 00023000 08:03 2361652    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-extbrowser.jar
+85303000-85307000 r-xs 0003e000 08:03 2360423    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-netbeans-modules-print.jar
+85307000-85308000 r-xs 00000000 08:03 2362974    /home/phucluoi/opt/netbeans-6.9.1/harness/modules/org-netbeans-libs-nbi-engine.jar
+85308000-8530a000 r-xs 00004000 08:03 2363987    /home/phucluoi/opt/netbeans-6.9.1/enterprise/modules/ext/jsr88javax.jar
+8530a000-8530f000 r-xs 00056000 08:03 2361511    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-db-sql-editor.jar
+8530f000-85310000 r-xs 0000a000 08:03 2361852    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-spi-tasklist.jar
+85310000-85312000 r-xs 000b6000 08:03 2363775    /home/phucluoi/opt/netbeans-6.9.1/enterprise/modules/org-netbeans-modules-maven-samples.jar
+85312000-85316000 r-xs 0003d000 08:03 2362668    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/appframework-1.0.3.jar
+85316000-85318000 r-xs 00010000 08:03 2363139    /home/phucluoi/opt/netbeans-6.9.1/profiler/modules/org-netbeans-modules-profiler-j2ee-tomcat.jar
+85318000-85319000 r-xs 00000000 08:03 2360722    /home/phucluoi/opt/netbeans-6.9.1/nb/modules/locale/org-netbeans-core-windows_nb.jar
+85319000-8531a000 r-xs 00003000 08:03 2361554    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-editor-plain.jar
+8531a000-8531c000 r-xs 0000d000 08:03 2361426    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-target-iterator.jar
+8531d000-8531f000 r-xs 00006000 08:03 2363195    /home/phucluoi/opt/netbeans-6.9.1/profiler/modules/org-netbeans-modules-maven-profiler.jar
+8531f000-85321000 r-xs 00039000 08:03 2362195    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-websvc-saas-codegen-java.jar
+85322000-85323000 r-xs 00001000 08:03 2361379    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-spellchecker-kit.jar
+85323000-85326000 r-xs 00031000 08:03 2361553    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-spellchecker.jar
+85326000-8532c000 r-xs 00044000 08:03 2361824    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/commons-httpclient-3.1.jar
+8532c000-8532e000 r-xs 0000f000 08:03 2361634    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/org.eclipse.mylyn.commons.net_3.3.0.jar
+8532e000-85332000 r-xs 00038000 08:03 2361959    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/commons-lang-2.3.jar
+85332000-85334000 r-xs 00005000 08:03 2361591    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/org.eclipse.mylyn.commons.core_3.3.1.jar
+85334000-85337000 r-xs 00018000 08:03 2361973    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/commons-io-1.4.jar
+85337000-8533d000 r-xs 0003d000 08:03 2362711    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/cglib-2.2.jar
+8533d000-85340000 r-xs 00015000 08:03 2360527    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/ext/osgi.core-4.2.jar
+85340000-85343000 ---p 00000000 00:00 0 
+85343000-85541000 rwxp 00000000 00:00 0 
+85541000-85544000 ---p 00000000 00:00 0 
+85544000-85742000 rwxp 00000000 00:00 0 
+85742000-85745000 ---p 00000000 00:00 0 
+85745000-85943000 rwxp 00000000 00:00 0 
+85943000-85944000 r-xs 00000000 08:02 923640     /var/cache/fontconfig/26de28bc8622bbc1fb67fd234c21975f-le32d4.cache-3
+85944000-85945000 r-xs 00000000 08:02 917569     /var/cache/fontconfig/c05880de57d1f5e948fdfacc138775d9-le32d4.cache-3
+85945000-8594b000 r-xs 00000000 08:02 917566     /var/cache/fontconfig/945677eb7aeaf62f1d50efc3fb3ec7d8-le32d4.cache-3
+8594b000-8594e000 r-xs 00000000 08:02 933285     /var/cache/fontconfig/99e8ed0e538f840c565b6ed5dad60d56-le32d4.cache-3
+8594e000-85951000 r-xs 00000000 08:02 917576     /var/cache/fontconfig/e383d7ea5fbe662a33d9b44caf393297-le32d4.cache-3
+85951000-85952000 r-xs 00000000 08:02 923269     /var/cache/fontconfig/fd9505950c048a77dc4b710eb6a628ed-le32d4.cache-3
+85952000-85954000 r-xs 00000000 08:02 923268     /var/cache/fontconfig/ddc79d3ea06a7c6ffa86ede85f3bb5df-le32d4.cache-3
+85954000-85956000 r-xs 00000000 08:02 923267     /var/cache/fontconfig/ea47318ec9849e1a71e80a5d69d13859-le32d4.cache-3
+85956000-85957000 r-xs 00000000 08:02 917577     /var/cache/fontconfig/e7071f4a29fa870f4323321c154eba04-le32d4.cache-3
+85957000-85958000 r-xs 00000000 08:02 923266     /var/cache/fontconfig/a2ab74764b07279e7c36ddb1d302cf26-le32d4.cache-3
+85958000-8595a000 r-xs 00000000 08:02 923265     /var/cache/fontconfig/c69f04ab05004e31a6d5e715764f16d8-le32d4.cache-3
+8595a000-8595c000 r-xs 00000000 08:02 933305     /var/cache/fontconfig/b5ea634b0fb353b8ea17632d1f9ef766-le32d4.cache-3
+8595c000-8595f000 r-xs 00000000 08:02 917563     /var/cache/fontconfig/6eb3985aa4124903f6ff08ba781cd364-le32d4.cache-3
+8595f000-85960000 r-xs 00000000 08:02 917559     /var/cache/fontconfig/4c73fe0c47614734b17d736dbde7580a-le32d4.cache-3
+85960000-85961000 r-xs 00000000 08:02 917553     /var/cache/fontconfig/0d8c3b2ac0904cb8a57a757ad11a4a08-le32d4.cache-3
+85961000-85963000 r-xs 00000000 08:02 922812     /var/cache/fontconfig/646addb8444faa74ee138aa00ab0b6a0-le32d4.cache-3
+85963000-85964000 r-xs 00000000 08:02 917561     /var/cache/fontconfig/6a53c69dea097a2d716e069445527da8-le32d4.cache-3
+85964000-85968000 r-xs 00000000 08:02 917568     /var/cache/fontconfig/a755afe4a08bf5b97852ceb7400b47bc-le32d4.cache-3
+85968000-8596a000 r-xs 00000000 08:02 922811     /var/cache/fontconfig/20bd79ad97094406f7d1b9654bfbd926-le32d4.cache-3
+8596a000-8596e000 r-xs 00000000 08:02 926203     /var/cache/fontconfig/515ca1ebc4b18308bea979be5704f9db-le32d4.cache-3
+8596e000-85971000 r-xs 00000000 08:02 922376     /var/cache/fontconfig/9c0624108b9a2ae8552f664125be8356-le32d4.cache-3
+85971000-85978000 r-xs 00000000 08:02 922690     /var/cache/fontconfig/6d41288fd70b0be22e8c3a91e032eec0-le32d4.cache-3
+85978000-8597a000 r-xs 00000000 08:02 922379     /var/cache/fontconfig/da1bd5ca8443ffe22927a23ce431d198-le32d4.cache-3
+8597a000-85985000 r-xs 00000000 08:02 917554     /var/cache/fontconfig/0f34bcd4b6ee430af32735b75db7f02b-le32d4.cache-3
+85985000-85988000 r-xs 00000000 08:02 917573     /var/cache/fontconfig/d60319d88cac85ba9e1a07bd06cfbb8c-le32d4.cache-3
+85988000-85989000 r-xs 00000000 08:02 917557     /var/cache/fontconfig/4794a0821666d79190d59a36cb4f44b5-le32d4.cache-3
+85989000-85991000 r-xs 00000000 08:02 917572     /var/cache/fontconfig/d52a8644073d54c13679302ca1180695-le32d4.cache-3
+85992000-85994000 r-xs 0001f000 08:03 2362836    /home/phucluoi/opt/netbeans-6.9.1/apisupport/modules/org-netbeans-modules-maven-apisupport.jar
+85994000-85996000 r-xs 0000a000 08:03 2361757    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/apache-commons-codec-1.3.jar
+85996000-85997000 r-xs 00000000 08:03 2361653    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-libs-commons_codec.jar
+85997000-85999000 r-xs 00036000 08:03 2365122    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/ext/updater.jar
+85999000-8599a000 r-xs 00001000 08:03 2362609    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/hibernate/jdbc2_0-stdext.jar
+8599a000-8599c000 r-xs 00019000 08:03 2362825    /home/phucluoi/opt/netbeans-6.9.1/apisupport/modules/org-netbeans-modules-apisupport-paintapp.jar
+8599c000-8599d000 r-xs 00004000 08:03 2363167    /home/phucluoi/opt/netbeans-6.9.1/profiler/modules/org-netbeans-modules-profiler-nbmodule.jar
+8599d000-8599e000 r-xs 00004000 08:03 2362497    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-libs-springframework.jar
+8599f000-859a8000 r-xs 00106000 08:03 2361851    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-diff.jar
+859a8000-859ac000 r-xs 0006c000 08:03 2361494    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-options-editor.jar
+859ac000-859b0000 r-xs 00049000 08:03 2360283    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-netbeans-modules-options-keymap.jar
+859b0000-859b2000 r-xs 00006000 08:03 2362522    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-java-guards.jar
+859b4000-859b6000 r-xs 0000a000 08:03 2362528    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-maven-junit.jar
+859b6000-859ba000 r-xs 00039000 08:03 2362525    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-maven-hints.jar
+859ba000-859bc000 r-xs 00012000 08:03 2361513    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-editor-indent.jar
+859bc000-859bd000 r-xs 0000f000 08:03 2361979    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-openidex-util.jar
+859be000-859c0000 r-xs 00000000 08:03 2360506    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-jdesktop-layout.jar
+859c0000-859c3000 r-xs 00051000 08:03 2361076    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-editor-settings-storage.jar
+859c3000-859cb000 r-xs 00071000 08:03 2360546    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/ext/jh-2.0_05.jar
+859cb000-859ce000 r-xs 00044000 08:03 2360739    /home/phucluoi/opt/netbeans-6.9.1/nb/modules/org-netbeans-modules-uihandler.jar
+859ce000-859d2000 r-xs 00041000 08:03 2360536    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/ext/felix-2.0.3.jar
+859d2000-859d3000 r-xs 00001000 08:03 2361041    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-versioning-indexingbridge.jar
+859d3000-859d5000 r-xs 00003000 08:03 2362135    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-projectimport-eclipse-j2se.jar
+859d6000-859d7000 r-xs 00000000 08:03 2360747    /home/phucluoi/opt/netbeans-6.9.1/nb/modules/locale/org-netbeans-core_nb.jar
+859d7000-859dd000 r-xs 0008b000 08:03 2360525    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-netbeans-core.jar
+859dd000-859e0000 r-xs 00036000 08:03 2360467    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-netbeans-swing-plaf.jar
+859e0000-859e1000 r-xs 00000000 08:03 2360675    /home/phucluoi/opt/netbeans-6.9.1/nb/modules/org-netbeans-modules-uihandler-exceptionreporter.jar
+859e1000-859e2000 r-xs 00000000 08:03 2363912    /home/phucluoi/opt/netbeans-6.9.1/enterprise/modules/org-netbeans-modules-j2eeapis.jar
+859e2000-859e3000 r-xs 00000000 08:03 2362990    /home/phucluoi/opt/netbeans-6.9.1/harness/modules/org-netbeans-libs-nbi-ant.jar
+859e4000-859e5000 r-xs 00000000 08:03 2362302    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-j2ee-persistence-kit.jar
+859e5000-859e8000 r-xs 00022000 08:03 2360394    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-netbeans-spi-quicksearch.jar
+859e8000-859ea000 r-xs 00007000 08:03 2362380    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-maven-persistence.jar
+859ea000-859ec000 r-xs 00016000 08:03 2363117    /home/phucluoi/opt/netbeans-6.9.1/profiler/modules/org-netbeans-modules-profiler-selector-java.jar
+859ec000-859ee000 r-xs 00018000 08:03 2363114    /home/phucluoi/opt/netbeans-6.9.1/profiler/modules/org-netbeans-modules-debugger-jpda-heapwalk.jar
+859ee000-859ef000 r-xs 00000000 08:03 2360718    /home/phucluoi/opt/netbeans-6.9.1/nb/modules/org-netbeans-modules-ide-branding-kit.jar
+859ef000-859f0000 r-xs 00002000 08:03 2362420    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-j2ee-toplinklib.jar
+859f0000-859f3000 r-xs 0004a000 08:03 2362577    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-form-j2ee.jar
+859f3000-859f5000 r-xs 00011000 08:03 2494894    /home/phucluoi/opt/netbeans-6.9.1/dlight/modules/org-netbeans-modules-dlight-procfs.jar
+859f5000-859f6000 r-xs 0000c000 08:03 2360727    /home/phucluoi/opt/netbeans-6.9.1/nb/modules/org-netbeans-modules-registration.jar
+859f6000-859f7000 r-xs 00001000 08:03 2363319    /home/phucluoi/opt/netbeans-6.9.1/enterprise/modules/org-netbeans-modules-web-client-javascript-debugger-ant.jar
+859f7000-859f9000 r-xs 0001c000 08:03 2362300    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-j2ee-jpa-refactoring.jar
+859f9000-859fb000 r-xs 00022000 08:03 2361599    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-editor-fold.jar
+859fb000-859fc000 r-xs 00008000 08:03 2363799    /home/phucluoi/opt/netbeans-6.9.1/enterprise/modules/org-netbeans-modules-hibernateweb.jar
+859fc000-859fd000 r-xs 0000b000 08:03 2363138    /home/phucluoi/opt/netbeans-6.9.1/profiler/modules/org-netbeans-modules-profiler-selector-ui.jar
+859fd000-85a00000 r-xs 00014000 08:03 2363126    /home/phucluoi/opt/netbeans-6.9.1/profiler/modules/org-netbeans-modules-profiler-selector-spi.jar
+85a00000-85a02000 r-xs 0001a000 08:03 2363109    /home/phucluoi/opt/netbeans-6.9.1/profiler/modules/org-netbeans-modules-profiler-projectsupport.jar
+85a02000-85a04000 r-xs 0000b000 08:03 2361430    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-editor-settings.jar
+85a04000-85a08000 r-xs 00085000 08:03 2361818    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-lexer.jar
+85a08000-85a0a000 r-xs 00005000 08:03 2362700    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/hibernate/asm.jar
+85a0a000-85a0c000 r-xs 0000f000 08:03 2360191    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-netbeans-modules-editor-mimelookup-impl.jar
+85a0c000-85a0e000 r-xs 00005000 08:03 2362499    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-maven-search.jar
+85a0e000-85a0f000 r-xs 00001000 08:03 2362571    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-maven-kit.jar
+85a0f000-85a10000 r-xs 0000c000 08:03 2363147    /home/phucluoi/opt/netbeans-6.9.1/profiler/modules/org-netbeans-modules-profiler-j2ee-jboss.jar
+85a10000-85a12000 r-xs 00008000 08:03 2362521    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-ant-grammar.jar
+85a12000-85a13000 r-xs 00002000 08:03 2363890    /home/phucluoi/opt/netbeans-6.9.1/enterprise/modules/org-netbeans-modules-j2ee-core.jar
+85a13000-85a16000 r-xs 0002f000 08:03 2360510    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-openide-actions.jar
+85a16000-85a19000 r-xs 0005b000 08:03 2360532    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-openide-text.jar
+85a19000-85a25000 r-xs 00198000 08:03 2360493    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-openide-explorer.jar
+85a25000-85a28000 r-xs 00036000 08:03 2360422    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-netbeans-swing-outline.jar
+85a28000-85a2a000 r-xs 00054000 08:03 2360624    /home/phucluoi/opt/netbeans-6.9.1/websvccommon/modules/org-netbeans-modules-websvc-saas-services-facebook.jar
+85a2a000-85a2d000 r-xs 00030000 08:03 2360698    /home/phucluoi/opt/netbeans-6.9.1/websvccommon/modules/org-netbeans-modules-websvc-saas-ui.jar
+85a2d000-85a2e000 r-xs 00015000 08:03 2360630    /home/phucluoi/opt/netbeans-6.9.1/websvccommon/modules/org-netbeans-modules-websvc-saas-services-twitter.jar
+85a2e000-85a2f000 r-xs 00000000 08:03 2362598    /home/phucluoi/opt/netbeans-6.9.1/java/modules/org-netbeans-modules-form-kit.jar
+85a2f000-85a30000 r-xs 00010000 08:03 2360644    /home/phucluoi/opt/netbeans-6.9.1/websvccommon/modules/org-netbeans-modules-websvc-saas-services-google.jar
+85a30000-85a31000 r-xs 00009000 08:03 2360615    /home/phucluoi/opt/netbeans-6.9.1/websvccommon/modules/org-netbeans-modules-websvc-saas-services-delicious.jar
+85a31000-85a32000 r-xs 0000d000 08:03 2360642    /home/phucluoi/opt/netbeans-6.9.1/websvccommon/modules/org-netbeans-modules-websvc-saas-services-zvents.jar
+85a32000-85a34000 r-xs 0000a000 08:03 2360607    /home/phucluoi/opt/netbeans-6.9.1/websvccommon/modules/org-netbeans-modules-websvc-saas-services-weatherbug.jar
+85a34000-85a35000 r-xs 00007000 08:03 2361331    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-hudson-subversion.jar
+85a35000-85a37000 r-xs 00003000 08:03 2361333    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-utilities-project.jar
+85a37000-85a3c000 r-xs 00046000 08:03 2362649    /home/phucluoi/opt/netbeans-6.9.1/java/modules/ext/hibernate/dom4j-1.6.1.jar
+85a3c000-85a3e000 r-xs 00031000 08:03 2360511    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-openide-dialogs.jar
+85a3e000-85a40000 r-xs 00010000 08:03 2360437    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-netbeans-api-progress.jar
+85a40000-85a44000 r-xp 00000000 08:02 2231097    /usr/lib/libXfixes.so.3.1.0
+85a44000-85a45000 r-xp 00003000 08:02 2231097    /usr/lib/libXfixes.so.3.1.0
+85a45000-85a46000 rwxp 00004000 08:02 2231097    /usr/lib/libXfixes.so.3.1.0
+85a46000-85a4e000 r-xp 00000000 08:02 2231117    /usr/lib/libXrender.so.1.3.0
+85a4e000-85a4f000 r-xp 00007000 08:02 2231117    /usr/lib/libXrender.so.1.3.0
+85a4f000-85a50000 rwxp 00008000 08:02 2231117    /usr/lib/libXrender.so.1.3.0
+85a50000-85a58000 r-xp 00000000 08:02 2231089    /usr/lib/libXcursor.so.1.0.2
+85a58000-85a59000 r-xp 00007000 08:02 2231089    /usr/lib/libXcursor.so.1.0.2
+85a59000-85a5a000 rwxp 00008000 08:02 2231089    /usr/lib/libXcursor.so.1.0.2
+85a5a000-85a5b000 r-xs 00006000 08:03 2360261    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-netbeans-modules-editor-mimelookup.jar
+85a5b000-85a5d000 r-xs 0000a000 08:03 2360395    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-netbeans-modules-queries.jar
+85a5d000-85a63000 r-xs 0007e000 08:03 2360537    /home/phucluoi/opt/netbeans-6.9.1/platform/modules/org-openide-awt.jar
+85a63000-85a6a000 r-xs 00000000 08:02 2234836    /usr/lib/gconv/gconv-modules.cache
+85a6a000-85a6b000 r-xs 00002000 08:03 2361128    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-editor-errorstripe-api.jar
+85a6b000-85a72000 r-xp 00000000 08:06 788019     /opt/jdk1.6.0_23/jre/lib/i386/libnio.so
+85a72000-85a73000 rwxp 00006000 08:06 788019     /opt/jdk1.6.0_23/jre/lib/i386/libnio.so
+85a73000-85a76000 ---p 00000000 00:00 0 
+85a76000-85c74000 rwxp 00000000 00:00 0 
+85c74000-85ced000 r-xp 00000000 08:06 788037     /opt/jdk1.6.0_23/jre/lib/i386/libfontmanager.so
+85ced000-85cf7000 rwxp 00078000 08:06 788037     /opt/jdk1.6.0_23/jre/lib/i386/libfontmanager.so
+85cf7000-85cfc000 rwxp 00000000 00:00 0 
+85cfc000-85d00000 r-xp 00000000 08:02 2231093    /usr/lib/libXdmcp.so.6.0.0
+85d00000-85d01000 r-xp 00003000 08:02 2231093    /usr/lib/libXdmcp.so.6.0.0
+85d01000-85d02000 rwxp 00004000 08:02 2231093    /usr/lib/libXdmcp.so.6.0.0
+85d02000-85d1a000 r-xp 00000000 08:02 2232089    /usr/lib/libxcb.so.1.1.0
+85d1a000-85d1b000 r-xp 00017000 08:02 2232089    /usr/lib/libxcb.so.1.1.0
+85d1b000-85d1c000 rwxp 00018000 08:02 2232089    /usr/lib/libxcb.so.1.1.0
+85d1c000-85d28000 r-xp 00000000 08:02 2231103    /usr/lib/libXi.so.6.1.0
+85d28000-85d29000 r-xp 0000c000 08:02 2231103    /usr/lib/libXi.so.6.1.0
+85d29000-85d2a000 rwxp 0000d000 08:02 2231103    /usr/lib/libXi.so.6.1.0
+85d2a000-85d2e000 r-xp 00000000 08:02 2231123    /usr/lib/libXtst.so.6.1.0
+85d2e000-85d2f000 r-xp 00003000 08:02 2231123    /usr/lib/libXtst.so.6.1.0
+85d2f000-85d30000 rwxp 00004000 08:02 2231123    /usr/lib/libXtst.so.6.1.0
+85d30000-85e49000 r-xp 00000000 08:02 2231078    /usr/lib/libX11.so.6.3.0
+85e49000-85e4a000 r-xp 00118000 08:02 2231078    /usr/lib/libX11.so.6.3.0
+85e4a000-85e4c000 rwxp 00119000 08:02 2231078    /usr/lib/libX11.so.6.3.0
+85e4c000-85e4d000 rwxp 00000000 00:00 0 
+85e4d000-85ed1000 r-xp 00000000 08:06 788029     /opt/jdk1.6.0_23/jre/lib/i386/libawt.so
+85ed1000-85ed8000 rwxp 00084000 08:06 788029     /opt/jdk1.6.0_23/jre/lib/i386/libawt.so
+85ed8000-85efc000 rwxp 00000000 00:00 0 
+85efc000-85eff000 ---p 00000000 00:00 0 
+85eff000-860fd000 rwxp 00000000 00:00 0 
+860fd000-86100000 ---p 00000000 00:00 0 
+86100000-862fe000 rwxp 00000000 00:00 0 
+862fe000-86301000 ---p 00000000 00:00 0 
+86301000-864ff000 rwxp 00000000 00:00 0 
+864ff000-86502000 ---p 00000000 00:00 0 
+86502000-86700000 rwxp 00000000 00:00 0 
+86700000-867ff000 rwxp 00000000 00:00 0 
+867ff000-86800000 ---p 00000000 00:00 0 
+86800000-86802000 r-xp 00000000 08:02 2231082    /usr/lib/libXau.so.6.0.0
+86802000-86803000 r-xp 00001000 08:02 2231082    /usr/lib/libXau.so.6.0.0
+86803000-86804000 rwxp 00002000 08:02 2231082    /usr/lib/libXau.so.6.0.0
+86804000-86812000 r-xp 00000000 08:02 2231095    /usr/lib/libXext.so.6.4.0
+86812000-86813000 r-xp 0000d000 08:02 2231095    /usr/lib/libXext.so.6.4.0
+86813000-86814000 rwxp 0000e000 08:02 2231095    /usr/lib/libXext.so.6.4.0
+86814000-8681c000 r-xs 00000000 08:02 925937     /var/cache/fontconfig/e13b20fdb08344e0e664864cc2ede53d-le32d4.cache-3
+8681c000-8681f000 r-xs 00000000 08:02 923931     /var/cache/fontconfig/7ef2298fde41cc6eeb7af42e48b7d293-le32d4.cache-3
+8681f000-8682d000 r-xs 00000000 08:02 926033     /var/cache/fontconfig/865f88548240fee46819705c6468c165-le32d4.cache-3
+8682d000-86870000 r-xp 00000000 08:06 788032     /opt/jdk1.6.0_23/jre/lib/i386/xawt/libmawt.so
+86870000-86872000 rwxp 00043000 08:06 788032     /opt/jdk1.6.0_23/jre/lib/i386/xawt/libmawt.so
+86872000-86873000 rwxp 00000000 00:00 0 
+86873000-86887000 r-xp 00000000 08:06 788018     /opt/jdk1.6.0_23/jre/lib/i386/libnet.so
+86887000-86888000 rwxp 00013000 08:06 788018     /opt/jdk1.6.0_23/jre/lib/i386/libnet.so
+86888000-868e7000 r-xs 00baa000 08:06 788760     /opt/jdk1.6.0_23/lib/tools.jar
+868e7000-868ed000 r-xs 0001e000 08:06 788784     /opt/jdk1.6.0_23/lib/dt.jar
+868ed000-868ee000 r-xs 00001000 08:03 2365517    /home/phucluoi/opt/netbeans-6.9.1/platform/lib/locale/org-openide-util_zh_CN.jar
+868ee000-868ef000 r-xs 00001000 08:03 2365516    /home/phucluoi/opt/netbeans-6.9.1/platform/lib/locale/org-openide-util_pt_BR.jar
+868ef000-868f0000 r-xs 00000000 08:03 2360343    /home/phucluoi/opt/netbeans-6.9.1/platform/lib/locale/org-openide-util-lookup_zh_CN.jar
+868f0000-868f1000 r-xs 00000000 08:03 2360342    /home/phucluoi/opt/netbeans-6.9.1/platform/lib/locale/org-openide-util-lookup_pt_BR.jar
+868f1000-868f2000 r-xs 00000000 08:03 2360389    /home/phucluoi/opt/netbeans-6.9.1/platform/lib/locale/org-openide-util-lookup_ja.jar
+868f2000-868f3000 r-xs 00001000 08:03 2365515    /home/phucluoi/opt/netbeans-6.9.1/platform/lib/locale/org-openide-util_ja.jar
+868f3000-868f4000 r-xs 00000000 08:03 2365521    /home/phucluoi/opt/netbeans-6.9.1/platform/lib/locale/org-openide-modules_zh_CN.jar
+868f4000-868f5000 r-xs 00000000 08:03 2365441    /home/phucluoi/opt/netbeans-6.9.1/platform/lib/locale/org-openide-modules_pt_BR.jar
+868f5000-868f6000 r-xs 00000000 08:03 2365430    /home/phucluoi/opt/netbeans-6.9.1/platform/lib/locale/org-openide-modules_ja.jar
+868f6000-868f7000 r-xs 00000000 08:03 2365523    /home/phucluoi/opt/netbeans-6.9.1/platform/lib/locale/boot_zh_CN.jar
+868f7000-868f8000 r-xs 00000000 08:03 2365522    /home/phucluoi/opt/netbeans-6.9.1/platform/lib/locale/boot_pt_BR.jar
+868f8000-868f9000 r-xs 00000000 08:03 2365455    /home/phucluoi/opt/netbeans-6.9.1/platform/lib/locale/boot_ja.jar
+868f9000-868fc000 ---p 00000000 00:00 0 
+868fc000-86afa000 rwxp 00000000 00:00 0 
+86afa000-86afb000 r-xs 00000000 08:03 2360762    /home/phucluoi/opt/netbeans-6.9.1/nb/core/locale/core_nb_zh_CN.jar
+86afb000-86afc000 r-xs 00000000 08:03 2360737    /home/phucluoi/opt/netbeans-6.9.1/nb/core/locale/org-netbeans-upgrader_pt_BR.jar
+86afc000-86afd000 r-xs 00000000 08:03 2360744    /home/phucluoi/opt/netbeans-6.9.1/nb/core/locale/org-netbeans-upgrader_ja.jar
+86afd000-86afe000 ---p 00000000 00:00 0 
+86afe000-86b7e000 rwxp 00000000 00:00 0 
+86b7e000-86b81000 ---p 00000000 00:00 0 
+86b81000-86d7f000 rwxp 00000000 00:00 0 
+86d7f000-86d82000 ---p 00000000 00:00 0 
+86d82000-86e00000 rwxp 00000000 00:00 0 
+86e00000-86f00000 rwxp 00000000 00:00 0 
+86f00000-86f01000 r-xs 00000000 08:03 2362925    /home/phucluoi/opt/netbeans-6.9.1/harness/modules/org-netbeans-modules-apisupport-tc-cobertura.jar
+86f01000-86f03000 r-xs 00012000 08:03 2360750    /home/phucluoi/opt/netbeans-6.9.1/nb/modules/org-netbeans-lib-uihandler.jar
+86f04000-86f05000 r-xs 00000000 08:03 2360736    /home/phucluoi/opt/netbeans-6.9.1/nb/core/locale/org-netbeans-upgrader_zh_CN.jar
+86f05000-86f06000 r-xs 00000000 08:03 2361794    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-db-kit.jar
+86f06000-86f07000 r-xs 00009000 08:03 2361361    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-properties-syntax.jar
+86f07000-86f08000 r-xs 00003000 08:03 2360855    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-spellchecker-bindings-properties.jar
+86f08000-86f09000 r-xs 00001000 08:03 2360317    /home/phucluoi/opt/netbeans-6.9.1/platform/core/locale/org-openide-filesystems_pt_BR.jar
+86f09000-86f0a000 r-xs 00006000 08:03 2361755    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-libs-freemarker.jar
+86f0a000-86f0b000 r-xs 00001000 08:03 2360544    /home/phucluoi/opt/netbeans-6.9.1/platform/core/locale/core_zh_CN.jar
+86f0b000-86f0c000 r-xs 00001000 08:03 2360556    /home/phucluoi/opt/netbeans-6.9.1/platform/core/locale/core_ja.jar
+86f0c000-86f0d000 r-xs 00001000 08:03 2360318    /home/phucluoi/opt/netbeans-6.9.1/platform/core/locale/org-openide-filesystems_zh_CN.jar
+86f0d000-86f0e000 r-xs 00001000 08:03 2360543    /home/phucluoi/opt/netbeans-6.9.1/platform/core/locale/core_pt_BR.jar
+86f0e000-86f13000 r-xs 000af000 08:03 2360558    /home/phucluoi/opt/netbeans-6.9.1/platform/core/core.jar
+86f13000-86f15000 r-xs 00007000 08:03 2361792    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/ext/processtreekiller-1.0.1.jar
+86f15000-86f18000 r-xs 0005a000 08:03 2360746    /home/phucluoi/opt/netbeans-6.9.1/nb/modules/org-netbeans-modules-reglib.jar
+86f18000-86f19000 r-xs 00000000 08:03 2361209    /home/phucluoi/opt/netbeans-6.9.1/ide/modules/org-netbeans-modules-extexecution-destroy.jar
+86f19000-86f1c000 r-xs 00046000 08:03 2360514    /home/phucluoi/opt/netbeans-6.9.1/platform/lib/org-openide-util-lookup.jar
+86f1c000-86f22000 r-xs 0009b000 08:03 2360551    /home/phucluoi/opt/netbeans-6.9.1/platform/lib/org-openide-util.jar
+86f22000-86f23000 r-xs 00008000 08:03 2360539    /home/phucluoi/opt/netbeans-6.9.1/platform/lib/org-openide-modules.jar
+86f23000-86f25000 r-xs 00057000 08:03 2360559    /home/phucluoi/opt/netbeans-6.9.1/platform/lib/boot.jar
+86f25000-86f28000 ---p 00000000 00:00 0 
+86f28000-87126000 rwxp 00000000 00:00 0 
+87126000-87129000 ---p 00000000 00:00 0 
+87129000-87327000 rwxp 00000000 00:00 0 
+87327000-8732a000 ---p 00000000 00:00 0 
+8732a000-87528000 rwxp 00000000 00:00 0 
+87528000-8752b000 r-xp 00000000 08:06 788048     /opt/jdk1.6.0_23/jre/lib/i386/libdt_socket.so
+8752b000-8752c000 rwxp 00003000 08:06 788048     /opt/jdk1.6.0_23/jre/lib/i386/libdt_socket.so
+8752c000-8752f000 ---p 00000000 00:00 0 
+8752f000-8772d000 rwxp 00000000 00:00 0 
+8772d000-87730000 ---p 00000000 00:00 0 
+87730000-8792e000 rwxp 00000000 00:00 0 
+8792e000-87931000 ---p 00000000 00:00 0 
+87931000-87b2f000 rwxp 00000000 00:00 0 
+87b2f000-87b30000 ---p 00000000 00:00 0 
+87b30000-87be4000 rwxp 00000000 00:00 0 
+87be4000-87d7b000 r-xs 03022000 08:06 793230     /opt/jdk1.6.0_23/jre/lib/rt.jar
+87d7b000-87d94000 rwxp 00000000 00:00 0 
+87d94000-87de0000 rwxp 00000000 00:00 0 
+87de0000-87e03000 rwxp 00000000 00:00 0 
+87e03000-87e8b000 rwxp 00000000 00:00 0 
+87e8b000-87e9d000 rwxp 00000000 00:00 0 
+87e9d000-87ee0000 rwxp 00000000 00:00 0 
+87ee0000-87f03000 rwxp 00000000 00:00 0 
+87f03000-87f8b000 rwxp 00000000 00:00 0 
+87f8b000-87fa4000 rwxp 00000000 00:00 0 
+87fa4000-87fef000 rwxp 00000000 00:00 0 
+87fef000-8a210000 rwxp 00000000 00:00 0 
+8a210000-92a90000 rwxp 00000000 00:00 0 
+92a90000-96eb4000 rwxp 00000000 00:00 0 
+96eb4000-a7ff0000 rwxp 00000000 00:00 0 
+a7ff0000-ab130000 rwxp 00000000 00:00 0 
+ab130000-b47f0000 rwxp 00000000 00:00 0 
+b47f0000-b480c000 rwxp 00000000 00:00 0 
+b480c000-b4870000 rwxp 00000000 00:00 0 
+b4870000-b4f68000 rwxp 00000000 00:00 0 
+b4f68000-b6870000 rwxp 00000000 00:00 0 
+b6870000-b687a000 r-xp 00000000 08:02 1442635    /lib/tls/i686/cmov/libnss_files-2.11.1.so
+b687a000-b687b000 r-xp 00009000 08:02 1442635    /lib/tls/i686/cmov/libnss_files-2.11.1.so
+b687b000-b687c000 rwxp 0000a000 08:02 1442635    /lib/tls/i686/cmov/libnss_files-2.11.1.so
+b687c000-b6884000 r-xp 00000000 08:02 1442639    /lib/tls/i686/cmov/libnss_nis-2.11.1.so
+b6884000-b6885000 r-xp 00007000 08:02 1442639    /lib/tls/i686/cmov/libnss_nis-2.11.1.so
+b6885000-b6886000 rwxp 00008000 08:02 1442639    /lib/tls/i686/cmov/libnss_nis-2.11.1.so
+b6886000-b688c000 r-xp 00000000 08:02 1442631    /lib/tls/i686/cmov/libnss_compat-2.11.1.so
+b688c000-b688d000 r-xp 00006000 08:02 1442631    /lib/tls/i686/cmov/libnss_compat-2.11.1.so
+b688d000-b688e000 rwxp 00007000 08:02 1442631    /lib/tls/i686/cmov/libnss_compat-2.11.1.so
+b688e000-b6a05000 r-xp 00000000 08:02 2235921    /usr/lib/locale/locale-archive
+b6a05000-b6a3f000 r-xp 00000000 08:06 788047     /opt/jdk1.6.0_23/jre/lib/i386/libjdwp.so
+b6a3f000-b6a40000 rwxp 00039000 08:06 788047     /opt/jdk1.6.0_23/jre/lib/i386/libjdwp.so
+b6a40000-b6a53000 r-xp 00000000 08:02 1442629    /lib/tls/i686/cmov/libnsl-2.11.1.so
+b6a53000-b6a54000 r-xp 00012000 08:02 1442629    /lib/tls/i686/cmov/libnsl-2.11.1.so
+b6a54000-b6a55000 rwxp 00013000 08:02 1442629    /lib/tls/i686/cmov/libnsl-2.11.1.so
+b6a55000-b6a57000 rwxp 00000000 00:00 0 
+b6a57000-b6a66000 r-xp 00000000 08:06 788014     /opt/jdk1.6.0_23/jre/lib/i386/libzip.so
+b6a66000-b6a68000 rwxp 0000e000 08:06 788014     /opt/jdk1.6.0_23/jre/lib/i386/libzip.so
+b6a68000-b6a70000 rwxs 00000000 08:02 2097239    /tmp/hsperfdata_phucluoi/12123
+b6a70000-b6a93000 r-xp 00000000 08:06 788010     /opt/jdk1.6.0_23/jre/lib/i386/libjava.so
+b6a93000-b6a95000 rwxp 00023000 08:06 788010     /opt/jdk1.6.0_23/jre/lib/i386/libjava.so
+b6a95000-b6a9c000 r-xp 00000000 08:02 1442648    /lib/tls/i686/cmov/librt-2.11.1.so
+b6a9c000-b6a9d000 r-xp 00006000 08:02 1442648    /lib/tls/i686/cmov/librt-2.11.1.so
+b6a9d000-b6a9e000 rwxp 00007000 08:02 1442648    /lib/tls/i686/cmov/librt-2.11.1.so
+b6a9e000-b6aa1000 ---p 00000000 00:00 0 
+b6aa1000-b6c9f000 rwxp 00000000 00:00 0 
+b6c9f000-b6cc3000 r-xp 00000000 08:02 1442626    /lib/tls/i686/cmov/libm-2.11.1.so
+b6cc3000-b6cc4000 r-xp 00023000 08:02 1442626    /lib/tls/i686/cmov/libm-2.11.1.so
+b6cc4000-b6cc5000 rwxp 00024000 08:02 1442626    /lib/tls/i686/cmov/libm-2.11.1.so
+b6cc5000-b7179000 r-xp 00000000 08:06 788003     /opt/jdk1.6.0_23/jre/lib/i386/client/libjvm.so
+b7179000-b719c000 rwxp 004b4000 08:06 788003     /opt/jdk1.6.0_23/jre/lib/i386/client/libjvm.so
+b719c000-b75b9000 rwxp 00000000 00:00 0 
+b75b9000-b770c000 r-xp 00000000 08:02 1442618    /lib/tls/i686/cmov/libc-2.11.1.so
+b770c000-b770d000 ---p 00153000 08:02 1442618    /lib/tls/i686/cmov/libc-2.11.1.so
+b770d000-b770f000 r-xp 00153000 08:02 1442618    /lib/tls/i686/cmov/libc-2.11.1.so
+b770f000-b7710000 rwxp 00155000 08:02 1442618    /lib/tls/i686/cmov/libc-2.11.1.so
+b7710000-b7713000 rwxp 00000000 00:00 0 
+b7713000-b7715000 r-xp 00000000 08:02 1442624    /lib/tls/i686/cmov/libdl-2.11.1.so
+b7715000-b7716000 r-xp 00001000 08:02 1442624    /lib/tls/i686/cmov/libdl-2.11.1.so
+b7716000-b7717000 rwxp 00002000 08:02 1442624    /lib/tls/i686/cmov/libdl-2.11.1.so
+b7717000-b771e000 r-xp 00000000 08:06 788012     /opt/jdk1.6.0_23/jre/lib/i386/jli/libjli.so
+b771e000-b7720000 rwxp 00006000 08:06 788012     /opt/jdk1.6.0_23/jre/lib/i386/jli/libjli.so
+b7720000-b7721000 rwxp 00000000 00:00 0 
+b7721000-b7736000 r-xp 00000000 08:02 1442644    /lib/tls/i686/cmov/libpthread-2.11.1.so
+b7736000-b7737000 r-xp 00014000 08:02 1442644    /lib/tls/i686/cmov/libpthread-2.11.1.so
+b7737000-b7738000 rwxp 00015000 08:02 1442644    /lib/tls/i686/cmov/libpthread-2.11.1.so
+b7738000-b773a000 rwxp 00000000 00:00 0 
+b773a000-b773d000 r-xp 00000000 08:06 788015     /opt/jdk1.6.0_23/jre/lib/i386/libnpt.so
+b773d000-b773e000 rwxp 00002000 08:06 788015     /opt/jdk1.6.0_23/jre/lib/i386/libnpt.so
+b773e000-b7744000 r-xp 00000000 08:06 787996     /opt/jdk1.6.0_23/jre/lib/i386/native_threads/libhpi.so
+b7744000-b7745000 rwxp 00006000 08:06 787996     /opt/jdk1.6.0_23/jre/lib/i386/native_threads/libhpi.so
+b7745000-b7746000 rwxp 00000000 00:00 0 
+b7746000-b7747000 ---p 00000000 00:00 0 
+b7747000-b7752000 r-xp 00000000 08:06 788009     /opt/jdk1.6.0_23/jre/lib/i386/libverify.so
+b7752000-b7753000 rwxp 0000b000 08:06 788009     /opt/jdk1.6.0_23/jre/lib/i386/libverify.so
+b7753000-b7755000 rwxp 00000000 00:00 0 
+b7755000-b7756000 r-xp 00000000 00:00 0          [vdso]
+b7756000-b7771000 r-xp 00000000 08:02 1310745    /lib/ld-2.11.1.so
+b7771000-b7772000 r-xp 0001a000 08:02 1310745    /lib/ld-2.11.1.so
+b7772000-b7773000 rwxp 0001b000 08:02 1310745    /lib/ld-2.11.1.so
+bf852000-bf868000 rwxp 00000000 00:00 0          [stack]
+
+VM Arguments:
+jvm_args: -Djdk.home=/opt/jdk1.6.0_23 -Dnetbeans.dirs=/home/phucluoi/opt/netbeans-6.9.1/nb:/home/phucluoi/opt/netbeans-6.9.1/ergonomics:/home/phucluoi/opt/netbeans-6.9.1/ide:/home/phucluoi/opt/netbeans-6.9.1/java:/home/phucluoi/opt/netbeans-6.9.1/bin/../xml:/home/phucluoi/opt/netbeans-6.9.1/apisupport:/home/phucluoi/opt/netbeans-6.9.1/bin/../webcommon:/home/phucluoi/opt/netbeans-6.9.1/websvccommon:/home/phucluoi/opt/netbeans-6.9.1/enterprise:/home/phucluoi/opt/netbeans-6.9.1/bin/../mobility:/home/phucluoi/opt/netbeans-6.9.1/profiler:/home/phucluoi/opt/netbeans-6.9.1/ruby:/home/phucluoi/opt/netbeans-6.9.1/bin/../python:/home/phucluoi/opt/netbeans-6.9.1/bin/../php:/home/phucluoi/opt/netbeans-6.9.1/bin/../visualweb:/home/phucluoi/opt/netbeans-6.9.1/bin/../soa:/home/phucluoi/opt/netbeans-6.9.1/identity:/home/phucluoi/opt/netbeans-6.9.1/bin/../uml:/home/phucluoi/opt/netbeans-6.9.1/harness:/home/phucluoi/opt/netbeans-6.9.1/cnd:/home/phucluoi/opt/netbeans-6.9.1/dlight:/home/phucluoi/opt/netbeans-6.9.1/bin/../groovy:/home/phucluoi/opt/netbeans-6.9.1/bin/../extra:/home/phucluoi/opt/netbeans-6.9.1/bin/../javafx:/home/phucluoi/opt/netbeans-6.9.1/bin/../javacard::/home/phucluoi/doc/job/mathcoach/sableccSupport/build/cluster -Dnetbeans.home=/home/phucluoi/opt/netbeans-6.9.1/platform -Dnetbeans.importclass=org.netbeans.upgrade.AutoUpgrade -Dnetbeans.accept_license_class=org.netbeans.license.AcceptLicense -Xmx512m -Xss2m -Xms32m -XX:PermSize=32m -XX:MaxPermSize=200m -Dapple.laf.useScreenMenuBar=true -Dapple.awt.graphics.UseQuartz=true -Dsun.java2d.noddraw=true -Dnetbeans.logger.console=true -ea -Xdebug -Xrunjdwp:transport=dt_socket,suspend=y,server=n,address=localhost:38376 -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=build/testuserdir/var/log/heapdump.hprof 
+java_command: org.netbeans.Main --userdir build/testuserdir --branding nb
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=/opt/jdk1.6.0_23
+PATH=/opt/jdk1.6.0_23/bin:/opt/texlive/2010/bin/i386-linux:/home/phucluoi/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+USERNAME=phucluoi
+LD_LIBRARY_PATH=/opt/jdk1.6.0_23/jre/lib/i386/client:/opt/jdk1.6.0_23/jre/lib/i386:/opt/jdk1.6.0_23/jre/../lib/i386
+SHELL=/bin/bash
+DISPLAY=:0.0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x444a00], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGBUS: [libjvm.so+0x444a00], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGFPE: [libjvm.so+0x367c50], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGPIPE: [libjvm.so+0x367c50], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGXFSZ: [libjvm.so+0x367c50], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGILL: [libjvm.so+0x367c50], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGUSR1: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGUSR2: [libjvm.so+0x36ac30], sa_mask[0]=0x00000004, sa_flags=0x10000004
+SIGHUP: [libjvm.so+0x36a810], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGINT: SIG_IGN, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGTERM: [libjvm.so+0x36a810], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGQUIT: [libjvm.so+0x36a810], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+
+
+---------------  S Y S T E M  ---------------
+
+OS:squeeze/sid
+
+uname:Linux 2.6.32-31-generic-pae #60-Ubuntu SMP Thu Mar 17 22:30:20 UTC 2011 i686
+libc:glibc 2.11.1 NPTL 2.11.1 
+rlimit: STACK 8192k, CORE 0k, NPROC infinity, NOFILE 1024, AS infinity
+load average:1.54 1.11 0.95
+
+/proc/meminfo:
+MemTotal:        4046080 kB
+MemFree:          338560 kB
+Buffers:          398664 kB
+Cached:          1808532 kB
+SwapCached:           24 kB
+Active:          2404192 kB
+Inactive:         946408 kB
+Active(anon):     999312 kB
+Inactive(anon):   205256 kB
+Active(file):    1404880 kB
+Inactive(file):   741152 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+HighTotal:       3210536 kB
+HighFree:         326108 kB
+LowTotal:         835544 kB
+LowFree:           12452 kB
+SwapTotal:       4393736 kB
+SwapFree:        4393636 kB
+Dirty:               644 kB
+Writeback:             0 kB
+AnonPages:       1143540 kB
+Mapped:           123896 kB
+Shmem:             61016 kB
+Slab:             311648 kB
+SReclaimable:     297796 kB
+SUnreclaim:        13852 kB
+KernelStack:        3096 kB
+PageTables:         7476 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     6416776 kB
+Committed_AS:    2137124 kB
+VmallocTotal:     122880 kB
+VmallocUsed:       27852 kB
+VmallocChunk:      73940 kB
+HardwareCorrupted:     0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:       10232 kB
+DirectMap2M:      901120 kB
+
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 6 model 15 stepping 13, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3
+
+Memory: 4k page, physical 4046080k(338560k free), swap 4393736k(4393636k free)
+
+vm_info: Java HotSpot(TM) Client VM (19.0-b09) for linux-x86 JRE (1.6.0_23-b05), built on Nov 12 2010 14:26:05 by "java_re" with gcc 3.2.1-7a (J2SE release)
+
+time: Sun Mar 27 19:00:40 2011
+elapsed time: 409 seconds
+
