@@ -67,6 +67,18 @@ public class DummyTest {
 		 * but it don't change the graph
 		 * therefore this command is not legal.
 		 */
+		boolean dupNode = testGraph.addVertex(n1);
+		assertFalse(dupNode);
+		
+		/* we create a new GraphNode, which equals the GraphNode n1.  */
+		GraphNode n5 = new GraphNode("n1", true);
+		dupNode = testGraph.addVertex(n5);
+		
+		if (n5.equals(n1))
+			assertFalse(dupNode);
+		else
+			assertTrue(dupNode);
+
 		boolean added3 = testGraph.addEdge(l3, n1, n2, EdgeType.DIRECTED);
 		assertFalse(added3);
 		

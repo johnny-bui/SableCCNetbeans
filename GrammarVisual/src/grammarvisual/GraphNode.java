@@ -32,6 +32,10 @@ public class GraphNode
 		return /*pre + " -> " +*/  present + "[" + d + ":" + f + "]";
 	}
 
+	/**
+	 * Two GraphNode are equality iff they have the same name and the same type.
+	 * Therefore we must re-implement the method <code>equals</code> and <code>hashCode</code>.
+	 */
 	@Override
 	public boolean equals(Object other)
 	{
