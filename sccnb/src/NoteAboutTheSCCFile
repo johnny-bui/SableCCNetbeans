@@ -1,0 +1,6 @@
+== Not about The three SCC Files ==
+ * The file sableccParser3x.scc is the original file in sablecc project
+ * In the file sableccLexer-3x.scc the Ingnored Tokens section ist removed,
+   so all tokens are recognized and colored.
+ * In the file sableccParser3xNoAbstract.scc the Abstract Syntax Tree section 
+   is removed, so all Production is recognized.
