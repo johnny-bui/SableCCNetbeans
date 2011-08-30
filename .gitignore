@@ -1,3 +1,4 @@
 # all build folder 
 build/
 dist/
+/GrammarVisual/nbproject/private/
