@@ -52,6 +52,7 @@ public class BicomponentClusterer<V,E> implements Transformer<UndirectedGraph<V,
     * @param theGraph the graph whose bicomponents are to be extracted
     * @return the <code>ClusterSet</code> of bicomponents
     */
+	@Override
     public Set<Set<V>> transform(UndirectedGraph<V,E> theGraph) 
     {
     	Set<Set<V>> bicomponents = new LinkedHashSet<Set<V>>();
@@ -120,7 +121,8 @@ public class BicomponentClusterer<V,E> implements Transformer<UndirectedGraph<V,
      * have saved myself a few days.  JRTOM)</p>
      * 
      */
-    protected void findBiconnectedComponents(UndirectedGraph<V,E> g, V v, Set<Set<V>> bicomponents)
+    protected void findBiconnectedComponents(
+			UndirectedGraph<V,E> g, V v, Set<Set<V>> bicomponents)
     {
         int v_dfs_num = converse_depth;
         dfs_num.put(v, v_dfs_num);
