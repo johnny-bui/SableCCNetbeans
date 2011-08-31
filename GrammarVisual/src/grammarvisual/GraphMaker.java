@@ -26,6 +26,8 @@ public class GraphMaker extends DepthFirstAdapter
 	private HashMap<String,GraphNode> tokens;
 	private GraphNode currentAbstracProduction;
 	private boolean drawToken = true;
+	private boolean isTokenSpecifier = false;
+	private boolean isProductionSpecifier = false;
 
 	public GraphMaker()
 	{
@@ -57,8 +59,10 @@ public class GraphMaker extends DepthFirstAdapter
 		 * we create a new </code>GraphNode</code> and try to add it in the set of token
 		 * in the grammar.
 		 */
+		inATokenDef(node);
 		GraphNode token = new GraphNode(node.getId().getText(), true );
 		tokens.put(node.getId().getText(), token);
+		outATokenDef(node);
 	}
 
 	/**
@@ -101,20 +105,78 @@ public class GraphMaker extends DepthFirstAdapter
 	}
 
 	/**
-	 * If we visit a element of a alternative, we check if it is a token or a 
+	 * If we visit an element of an alternative, we check if it is a token of a 
 	 * production by looking up in the hash table tokens.
-	 * If we want to draw tokens on the graph, we must create a new GraphNode 
+	 * If we want to draw tokens on the graph, we must create a new <code>GraphNode</code> 
 	 * which is corresponding  to the element (token / procedure)
-	 * and add it in graph.
+	 * and add it in graph. We should also check whether an element is specified by a
+	 * Specifier.
 	 */
 	@Override
 	public void caseAElem(AElem node)
 	{
+		/** checking of specifier  */
 		if(node.getSpecifier() != null)
         {
             node.getSpecifier().apply(this);
         }
-		
+		if (node.getId() != null)
+		{
+			GraphNode element;
+			String nodeId = node.getId().getText();
+			if (isTokenSpecifier)
+			{
+				element = tokens.get(nodeId);
+				element.present += "T.";
+				// set the isTokenSpecifier back ti false is important
+				isTokenSpecifier =  false;
+			}else if (isProductionSpecifier)
+			{
+				element = new GraphNode(nodeId,false);
+				element.present += "P.";
+				// even for isProductionSpecifier
+				isProductionSpecifier = false;
+			}else
+			{
+				if(tokens.containsKey(nodeId))
+				{
+					element = tokens.get(nodeId);
+				}else
+				{
+					element = new GraphNode(nodeId,false);
+				}
+			}// if the element is not a token, so it is a prodution. We add it in dependentGraph.
+			if (!element.isToken)
+			{
+				dependentGraph.addEdge(new GraphLink(), currentAbstracProduction, element);
+			}else if (drawToken)
+			{	// else if it is a token, and if we want to draw it, we add it in dependentGraph.
+				dependentGraph.addEdge(new GraphLink(), currentAbstracProduction, element);
+			}
+		}
+	}
+	
+	@Override
+	public void caseAProductionSpecifier(AProductionSpecifier node)
+	{
+		isProductionSpecifier = true;	
+	}
+	
+	@Override
+	public void caseATokenSpecifier(ATokenSpecifier node)
+	{
+		isTokenSpecifier = true;
+	}
+
+	/** 
+	 * we need to override this method to avoid the processing of element in a 
+	 * production, which is not relevant to abstract production.
+	 */
+	@Override
+	public void caseAProd(AProd node)
+	{
+		inAProd(node);
+		outAProd(node);
 	}
 	
 	public DirectedGraph getDependentGraph()

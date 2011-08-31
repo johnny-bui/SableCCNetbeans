@@ -8,20 +8,20 @@ package grammarvisual;
 public class GraphNode
 {
 	public String present;
-	public boolean nodeType;
+	public boolean isToken;
 	public int d;
 	public int f;
 	public GraphNode(String present, boolean nodeType)
 	{
 		this.present = present;
-		this.nodeType = nodeType;
+		this.isToken = nodeType;
 		d = 0;
 		f = 0;
 	}
 	public GraphNode(String present, boolean nodeType, GraphNode pre)
 	{
 		this.present = present;
-		this.nodeType = nodeType;
+		this.isToken = nodeType;
 		d = 0;
 		f = 0;
 	}
@@ -47,13 +47,13 @@ public class GraphNode
 		GraphNode otherA = (GraphNode) other;
 		return 
 		  (present.equals(otherA.present))
-			&& (nodeType == otherA.nodeType);
+			&& (isToken == otherA.isToken);
 	}
 
 	@Override
 	public int hashCode()
 	{
-		String hash = present + nodeType;
+		String hash = present + isToken;
 		return hash.hashCode();
 	}
 }
