@@ -73,6 +73,7 @@ public class GraphMaker extends DepthFirstAdapter
 	public void caseAAstProd(AAstProd node)
 	{
 		/**
+		 * We add this node to the graph, its pre is the <code>currentAbstractProduction</code>.
 		 * We note the current abstract production by saving it in the Class Felder
 		 * currentAbstractProduction then process all alternatives of the production.
 		 */
