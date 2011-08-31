@@ -146,11 +146,17 @@ public class GraphEditorDemo extends JApplet implements Printable {
         vv =  new VisualizationViewer<Number,Number>(layout);
         vv.setBackground(Color.white);
 
-        vv.getRenderContext().setVertexLabelTransformer(MapTransformer.<Number,String>getInstance(
-        		LazyMap.<Number,String>decorate(new HashMap<Number,String>(), new ToStringLabeller<Number>())));
+        vv.getRenderContext().setVertexLabelTransformer(
+				MapTransformer.<Number,String>getInstance(
+        			LazyMap.<Number,String>decorate(
+						new HashMap<Number,String>(), 
+						new ToStringLabeller<Number>())));
         
-        vv.getRenderContext().setEdgeLabelTransformer(MapTransformer.<Number,String>getInstance(
-        		LazyMap.<Number,String>decorate(new HashMap<Number,String>(), new ToStringLabeller<Number>())));
+        vv.getRenderContext().setEdgeLabelTransformer(
+				MapTransformer.<Number,String>getInstance(
+        			LazyMap.<Number,String>decorate(
+						new HashMap<Number,String>(), 
+						new ToStringLabeller<Number>())));
 
         vv.setVertexToolTipTransformer(vv.getRenderContext().getVertexLabelTransformer());
         
@@ -175,24 +181,33 @@ public class GraphEditorDemo extends JApplet implements Printable {
         
         final ScalingControl scaler = new CrossoverScalingControl();
         JButton plus = new JButton("+");
-        plus.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                scaler.scale(vv, 1.1f, vv.getCenter());
-            }
-        });
+        plus.addActionListener(new ActionListener() 
+			{
+				@Override
+				public void actionPerformed(ActionEvent e) 
+				{
+					scaler.scale(vv, 1.1f, vv.getCenter());
+				}
+			});
         JButton minus = new JButton("-");
-        minus.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                scaler.scale(vv, 1/1.1f, vv.getCenter());
-            }
-        });
+        minus.addActionListener(new ActionListener() 
+			{
+				@Override
+				public void actionPerformed(ActionEvent e) 
+				{
+					scaler.scale(vv, 1/1.1f, vv.getCenter());
+				}
+			});
         
         JButton help = new JButton("Help");
-        help.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(vv, instructions);
-            }});
+        help.addActionListener(new ActionListener() 
+			{
+				@Override
+				public void actionPerformed(ActionEvent e) 
+				{
+					JOptionPane.showMessageDialog(vv, instructions);
+				}
+			});
 
         AnnotationControls<Number,Number> annotationControls = 
         	new AnnotationControls<Number,Number>(graphMouse.getAnnotatingPlugin());
@@ -227,6 +242,7 @@ public class GraphEditorDemo extends JApplet implements Printable {
         }
     }
     
+	@Override
     public int print(java.awt.Graphics graphics,
             java.awt.print.PageFormat pageFormat, int pageIndex)
             throws java.awt.print.PrinterException {

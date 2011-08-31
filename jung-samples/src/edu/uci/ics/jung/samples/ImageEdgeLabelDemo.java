@@ -75,7 +75,9 @@ public class ImageEdgeLabelDemo extends JApplet {
         layout.setMaxIterations(100);
         vv =  new VisualizationViewer<Number, Number>(layout, new Dimension(400,400));
         
-        vv.getRenderContext().setEdgeDrawPaintTransformer(new PickableEdgePaintTransformer<Number>(vv.getPickedEdgeState(), Color.black, Color.cyan));
+        vv.getRenderContext().setEdgeDrawPaintTransformer(
+				new PickableEdgePaintTransformer<Number>(
+						vv.getPickedEdgeState(), Color.black, Color.cyan));
 
         vv.setBackground(Color.white);
         
@@ -83,7 +85,9 @@ public class ImageEdgeLabelDemo extends JApplet {
         vv.getRenderContext().setEdgeLabelRenderer(new DefaultEdgeLabelRenderer(Color.cyan));
         vv.getRenderContext().setEdgeLabelTransformer(new Transformer<Number,String>() {
         	URL url = getClass().getResource("/images/lightning-s.gif");
-			public String transform(Number input) {
+			@Override
+			public String transform(Number input) 
+			{
 				return "<html><img src="+url+" height=10 width=21>";
 			}});
         
@@ -94,19 +98,23 @@ public class ImageEdgeLabelDemo extends JApplet {
         final GraphZoomScrollPane panel = new GraphZoomScrollPane(vv);
         content.add(panel);
         
-        final DefaultModalGraphMouse<Number, Number> graphMouse = new DefaultModalGraphMouse<Number, Number>();
+        final DefaultModalGraphMouse<Number, Number> graphMouse = 
+				new DefaultModalGraphMouse<Number, Number>();
         vv.setGraphMouse(graphMouse);
         vv.addKeyListener(graphMouse.getModeKeyListener());
         final ScalingControl scaler = new CrossoverScalingControl();
 
         JButton plus = new JButton("+");
         plus.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+			@Override
+            public void actionPerformed(ActionEvent e) 
+			{
                 scaler.scale(vv, 1.1f, vv.getCenter());
             }
         });
         JButton minus = new JButton("-");
         minus.addActionListener(new ActionListener() {
+			@Override
             public void actionPerformed(ActionEvent e) {
                 scaler.scale(vv, 1/1.1f, vv.getCenter());
             }

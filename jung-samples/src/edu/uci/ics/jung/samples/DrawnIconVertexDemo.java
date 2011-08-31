@@ -65,51 +65,74 @@ public class DrawnIconVertexDemo {
         createEdges(v);
         
         vv =  new VisualizationViewer<Integer,Number>(new FRLayout<Integer,Number>(graph));
-        vv.getRenderContext().setVertexLabelTransformer(new Transformer<Integer,String>(){
-
-			public String transform(Integer v) {
-				return "Vertex "+v;
-			}});
+        vv.getRenderContext().setVertexLabelTransformer(
+				new Transformer<Integer,String>()
+				{
+					@Override
+					public String transform(Integer v) 
+					{
+						return "Vertex "+v;
+					}
+				});
         vv.getRenderContext().setVertexLabelRenderer(new DefaultVertexLabelRenderer(Color.cyan));
         vv.getRenderContext().setEdgeLabelRenderer(new DefaultEdgeLabelRenderer(Color.cyan));
 
-        vv.getRenderContext().setVertexIconTransformer(new Transformer<Integer,Icon>() {
+        vv.getRenderContext().setVertexIconTransformer(
+				new Transformer<Integer,Icon>() 
+				{
+					/**
+					 * Implements the Icon interface to draw an Icon with background color and
+					 * a text label
+					 */
+					@Override
+					public Icon transform(final Integer v) 
+					{
+						return new Icon() 
+						{
+							@Override
+							public int getIconHeight() 
+							{
+								return 20;
+							}
 
-        	/*
-        	 * Implements the Icon interface to draw an Icon with background color and
-        	 * a text label
-        	 */
-			public Icon transform(final Integer v) {
-				return new Icon() {
+							@Override
+							public int getIconWidth() 
+							{
+								return 20;
+							}
 
-					public int getIconHeight() {
-						return 20;
+							@Override
+							public void paintIcon(Component c, Graphics g,
+									int x, int y) 
+							{
+								if(vv.getPickedVertexState().isPicked(v)) 
+								{
+									g.setColor(Color.yellow);
+								} else 
+								{
+									g.setColor(Color.red);
+								}
+								g.fillOval(x, y, 20, 20);
+								if(vv.getPickedVertexState().isPicked(v)) 
+								{
+									g.setColor(Color.black);
+								} else 
+								{
+									g.setColor(Color.white);
+								}
+								g.drawString(""+v, x+6, y+15);
+								
+							}
+						};
 					}
+				});
 
-					public int getIconWidth() {
-						return 20;
-					}
-
-					public void paintIcon(Component c, Graphics g,
-							int x, int y) {
-						if(vv.getPickedVertexState().isPicked(v)) {
-							g.setColor(Color.yellow);
-						} else {
-							g.setColor(Color.red);
-						}
-						g.fillOval(x, y, 20, 20);
-						if(vv.getPickedVertexState().isPicked(v)) {
-							g.setColor(Color.black);
-						} else {
-							g.setColor(Color.white);
-						}
-						g.drawString(""+v, x+6, y+15);
-						
-					}};
-			}});
-
-        vv.getRenderContext().setVertexFillPaintTransformer(new PickableVertexPaintTransformer<Integer>(vv.getPickedVertexState(), Color.white,  Color.yellow));
-        vv.getRenderContext().setEdgeDrawPaintTransformer(new PickableEdgePaintTransformer<Number>(vv.getPickedEdgeState(), Color.black, Color.lightGray));
+        vv.getRenderContext().setVertexFillPaintTransformer(
+				new PickableVertexPaintTransformer<Integer>(
+						vv.getPickedVertexState(), Color.white,  Color.yellow));
+        vv.getRenderContext().setEdgeDrawPaintTransformer(
+				new PickableEdgePaintTransformer<Number>(
+						vv.getPickedEdgeState(), Color.black, Color.lightGray));
 
         vv.setBackground(Color.white);
 
@@ -129,14 +152,19 @@ public class DrawnIconVertexDemo {
         final ScalingControl scaler = new CrossoverScalingControl();
 
         JButton plus = new JButton("+");
-        plus.addActionListener(new ActionListener() {
+        plus.addActionListener(new ActionListener() 
+		{
+			@Override
             public void actionPerformed(ActionEvent e) {
                 scaler.scale(vv, 1.1f, vv.getCenter());
             }
         });
         JButton minus = new JButton("-");
-        minus.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        minus.addActionListener(new ActionListener() 
+		{
+			@Override
+            public void actionPerformed(ActionEvent e) 
+			{
                 scaler.scale(vv, 1/1.1f, vv.getCenter());
             }
         });
@@ -170,7 +198,7 @@ public class DrawnIconVertexDemo {
      * create edges for this demo graph
      * @param v an array of Vertices to connect
      */
-    void createEdges(Integer[] v) {
+    final void createEdges(Integer[] v) {
         graph.addEdge(new Double(Math.random()), v[0], v[1], EdgeType.DIRECTED);
         graph.addEdge(new Double(Math.random()), v[0], v[3], EdgeType.DIRECTED);
         graph.addEdge(new Double(Math.random()), v[0], v[4], EdgeType.DIRECTED);
