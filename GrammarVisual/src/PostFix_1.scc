@@ -1,0 +1,42 @@
+Package postfix;
+
+Tokens 
+	number = ['0' .. '9']+;
+	plus = '+';
+	minus = '-';
+	mult = '*';
+	div = '/'; 
+	mod = '%';
+	l_par = '(';
+	r_par = ')'; 
+	blank = (' ' | 13 | 10)+;
+
+Ignored Tokens blank; 
+
+
+Productions
+ expr =
+  {factor} factor |
+  {plus} expr plus factor |
+  {minus} expr minus factor;
+
+/*factor*/
+mult = {term} term | {mult} /*factor*/ P.mult T.mult term | {div} /*factor*/ P.mult div term | {mod} /*factor*/ P.mult mod term;
+
+term = {number} number | {expr} l_par expr r_par; 
+
+Abstract Syntax Tree
+	expr =
+  {factor} /*factor*/ P.mult |
+  {plus} expr plus /*factor*/ P.mult |
+  {minus} expr minus /*factor*/ P.mult;
+
+/*factor*/ mult =
+	 {term} term 
+	|{mult} /*factor*/ P.mult T.mult term 
+	|{div} /*factor*/ P.mult div term 
+	|{mod} /*factor*/ P.mult mod term;
+
+term = 
+	 {number} number 
+	|{expr} l_par expr r_par;

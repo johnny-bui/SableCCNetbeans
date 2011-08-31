@@ -89,5 +89,9 @@ public class DummyTest {
 		assertEquals(l1, n1n2);
 		boolean added = testGraph.addVertex(n1);
 		assertFalse(added);
+
+		boolean recursiv = testGraph.addEdge(new GraphLink(), n1, n1);
+		assertTrue(recursiv);
+		System.out.println(testGraph);
 	}
 }

@@ -30,4 +30,8 @@ class GraphLink
 		CROSS,
 		NONE
 	}
+	public String toString()
+	{
+		return "" + this.type;
+	}
 }

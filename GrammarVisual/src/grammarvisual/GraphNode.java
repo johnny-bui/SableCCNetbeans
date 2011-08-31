@@ -11,6 +11,9 @@ public class GraphNode
 	public boolean isToken;
 	public int d;
 	public int f;
+
+	private GraphNode pre;
+	
 	public GraphNode(String present, boolean nodeType)
 	{
 		this.present = present;
@@ -18,18 +21,22 @@ public class GraphNode
 		d = 0;
 		f = 0;
 	}
-	public GraphNode(String present, boolean nodeType, GraphNode pre)
+	
+	public void setPre(GraphNode pre)
 	{
-		this.present = present;
-		this.isToken = nodeType;
-		d = 0;
-		f = 0;
+		this.pre = pre;
 	}
 	
 	@Override
 	public String toString()
 	{
-		return /*pre + " -> " +*/  present + "[" + d + ":" + f + "]";
+		/*
+		if (pre != null)
+			return pre.present + " -> " +  present + "[" + d + ":" + f + "]\n";
+		else
+			return "null" + " -> " + present + "[" + d + ":" + f + "]\n";
+		*/
+		return this.present;
 	}
 
 	/**

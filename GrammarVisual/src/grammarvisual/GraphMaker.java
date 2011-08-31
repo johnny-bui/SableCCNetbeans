@@ -76,6 +76,8 @@ public class GraphMaker extends DepthFirstAdapter
 		 * We note the current abstract production by saving it in the Class Felder
 		 * currentAbstractProduction then process all alternatives of the production.
 		 */
+		GraphNode production = new GraphNode(node.getId().getText(), false);
+		dependentGraph.addEdge(new GraphLink(), currentAbstracProduction, production);
 		currentAbstracProduction = new GraphNode(node.getId().getText(), false);
 		{
             List<PAstAlt> copy = new ArrayList<PAstAlt>(node.getAlts());
@@ -127,13 +129,13 @@ public class GraphMaker extends DepthFirstAdapter
 			if (isTokenSpecifier)
 			{
 				element = tokens.get(nodeId);
-				element.present += "T.";
-				// set the isTokenSpecifier back ti false is important
+				element.present = "T." + element.present;
+				// set the isTokenSpecifier back to false is important
 				isTokenSpecifier =  false;
 			}else if (isProductionSpecifier)
 			{
 				element = new GraphNode(nodeId,false);
-				element.present += "P.";
+				// element.present += "P.";
 				// even for isProductionSpecifier
 				isProductionSpecifier = false;
 			}else
@@ -149,9 +151,11 @@ public class GraphMaker extends DepthFirstAdapter
 			if (!element.isToken)
 			{
 				dependentGraph.addEdge(new GraphLink(), currentAbstracProduction, element);
+				element.setPre(currentAbstracProduction);
 			}else if (drawToken)
 			{	// else if it is a token, and if we want to draw it, we add it in dependentGraph.
 				dependentGraph.addEdge(new GraphLink(), currentAbstracProduction, element);
+				element.setPre(currentAbstracProduction);
 			}
 		}
 	}
@@ -177,6 +181,17 @@ public class GraphMaker extends DepthFirstAdapter
 	{
 		inAProd(node);
 		outAProd(node);
+	}
+	
+	/**
+	 * We also need to set the Start Production as the "root".
+	 */
+	
+	@Override
+	public void inAAst(AAst node)
+	{
+		System.out.println("inAAst");
+		currentAbstracProduction = new GraphNode("Root", false);
 	}
 	
 	public DirectedGraph getDependentGraph()
