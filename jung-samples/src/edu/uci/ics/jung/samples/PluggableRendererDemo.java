@@ -233,6 +233,7 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
     protected DefaultModalGraphMouse<Integer, Number> gm;
     protected Set<Integer> seedVertices = new HashSet<Integer>();
     
+	@Override
     public void start()
     {
         getContentPane().add( startFunction() );
@@ -249,7 +250,8 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
     }
     
     
-    public JPanel startFunction() {
+    public JPanel startFunction() 
+	{
         Graph<Integer,Number> g = getGraph();
         
         Layout<Integer,Number> layout = new FRLayout<Integer,Number>(g);
@@ -319,8 +321,6 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
         vv.setVertexToolTipTransformer(new VoltageTips<Number>());
         vv.setToolTipText("<html><center>Use the mouse wheel to zoom<p>Click and Drag the mouse to pan<p>Shift-click and Drag to Rotate</center></html>");
         
-
-        
         return jp;
     }
     
@@ -328,27 +328,40 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
      * Generates a mixed-mode random graph, runs VoltageRanker on it, and
      * returns the resultant graph.
      */
-    public Graph<Integer,Number> getGraph() {
+    public Graph<Integer,Number> getGraph() 
+	{
     	Factory<Graph<Integer,Number>> graphFactory =
-    		new Factory<Graph<Integer,Number>>() {
-    		public Graph<Integer,Number> create() {
-    			return new SparseMultigraph<Integer,Number>();
-    		}
-    	};
+    		new Factory<Graph<Integer,Number>>() 
+			{
+				@Override
+				public Graph<Integer,Number> create() 
+				{
+					return new SparseMultigraph<Integer,Number>();
+				}
+    		};
     	Factory<Integer> vertexFactory = 
-    		new Factory<Integer>() {
+    		new Factory<Integer>() 
+			{
     			int count;
-				public Integer create() {
+				@Override
+				public Integer create() 
+				{
 					return count++;
-				}};
+				}
+			};
 		Factory<Number> edgeFactory = 
-		    new Factory<Number>() {
+		    new Factory<Number>() 
+			{
 			    int count;
-				public Number create() {
+				@Override
+				public Number create() 
+				{
 					return count++;
-				}};
+				}
+			};
         Graph<Integer,Number> g = 
-        	MixedRandomGraphGenerator.<Integer,Number>generateMixedRandomGraph(graphFactory, vertexFactory, edgeFactory,
+        	MixedRandomGraphGenerator.<Integer,Number>generateMixedRandomGraph(
+				graphFactory, vertexFactory, edgeFactory,
         		edge_weight, 20, false, seedVertices);
         es = new NumberFormattingTransformer<Number>(MapTransformer.getInstance(edge_weight));
         
@@ -539,17 +552,23 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
         final ScalingControl scaler = new CrossoverScalingControl();
 
         JButton plus = new JButton("+");
-        plus.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        plus.addActionListener(new ActionListener() 
+		{
+			@Override
+            public void actionPerformed(ActionEvent e) 
+			{
                 scaler.scale(vv, 1.1f, vv.getCenter());
             }
         });
         JButton minus = new JButton("-");
-        minus.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                scaler.scale(vv, 1/1.1f, vv.getCenter());
-            }
-        });
+        minus.addActionListener(new ActionListener() 
+			{
+				@Override
+				public void actionPerformed(ActionEvent e) 
+				{
+					scaler.scale(vv, 1/1.1f, vv.getCenter());
+				}
+			});
 
         JPanel zoomPanel = new JPanel();
         zoomPanel.setBorder(BorderFactory.createTitledBorder("Zoom"));
@@ -572,8 +591,11 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
         
         JComboBox modeBox = gm.getModeComboBox();
         modeBox.setAlignmentX(Component.CENTER_ALIGNMENT);
-        JPanel modePanel = new JPanel(new BorderLayout()) {
-            public Dimension getMaximumSize() {
+        JPanel modePanel = new JPanel(new BorderLayout()) 
+		{
+			@Override
+            public Dimension getMaximumSize() 
+			{
                 return getPreferredSize();
             }
         };
@@ -596,13 +618,17 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
         cb.addItem(Renderer.VertexLabel.Position.N);
         cb.addItem(Renderer.VertexLabel.Position.CNTR);
         cb.addItem(Renderer.VertexLabel.Position.AUTO);
-        cb.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent e) {
-				Renderer.VertexLabel.Position position = 
-					(Renderer.VertexLabel.Position)e.getItem();
-				vv.getRenderer().getVertexLabelRenderer().setPosition(position);
-				vv.repaint();
-			}});
+        cb.addItemListener(new ItemListener() 
+			{
+				@Override
+				public void itemStateChanged(ItemEvent e) 
+				{
+					Renderer.VertexLabel.Position position = 
+						(Renderer.VertexLabel.Position)e.getItem();
+					vv.getRenderer().getVertexLabelRenderer().setPosition(position);
+					vv.repaint();
+				}
+			});
         cb.setSelectedItem(Renderer.VertexLabel.Position.SE);
         JPanel positionPanel = new JPanel();
         positionPanel.setBorder(BorderFactory.createTitledBorder("Label Position"));
@@ -612,6 +638,7 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
 
     }
     
+	@Override
     public void actionPerformed(ActionEvent e)
     {
         AbstractButton source = (AbstractButton)e.getSource();
@@ -654,11 +681,13 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
         {
         	if(source.isSelected()) 
         	{
-        		vv.getRenderer().getEdgeRenderer().setEdgeArrowRenderingSupport(new CenterEdgeArrowRenderingSupport());
+        		vv.getRenderer().getEdgeRenderer().setEdgeArrowRenderingSupport(
+						new CenterEdgeArrowRenderingSupport());
         	} 
         	else
         	{
-        		vv.getRenderer().getEdgeRenderer().setEdgeArrowRenderingSupport(new BasicEdgeArrowRenderingSupport());
+        		vv.getRenderer().getEdgeRenderer().setEdgeArrowRenderingSupport(
+						new BasicEdgeArrowRenderingSupport());
         	}
         }
         else if (source == font)
@@ -682,18 +711,21 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
         {
             if(source.isSelected())
             {
-                vv.getRenderContext().setEdgeShapeTransformer(new EdgeShape.Line<Integer,Number>());
+                vv.getRenderContext().setEdgeShapeTransformer(
+						new EdgeShape.Line<Integer,Number>());
             }
         }
         else if (source == e_ortho)
         {
             if (source.isSelected())
-                vv.getRenderContext().setEdgeShapeTransformer(new EdgeShape.Orthogonal<Integer,Number>());
+                vv.getRenderContext().setEdgeShapeTransformer(
+						new EdgeShape.Orthogonal<Integer,Number>());
         }
         else if (source == e_wedge)
         {
             if (source.isSelected())
-                vv.getRenderContext().setEdgeShapeTransformer(new EdgeShape.Wedge<Integer,Number>(10));
+                vv.getRenderContext().setEdgeShapeTransformer(
+						new EdgeShape.Wedge<Integer,Number>(10));
         }
 //        else if (source == e_bent) 
 //        {
@@ -706,14 +738,16 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
         {
             if(source.isSelected())
             {
-                vv.getRenderContext().setEdgeShapeTransformer(new EdgeShape.QuadCurve<Integer,Number>());
+                vv.getRenderContext().setEdgeShapeTransformer(
+						new EdgeShape.QuadCurve<Integer,Number>());
             }
         }
         else if (source == e_cubic) 
         {
             if(source.isSelected())
             {
-                vv.getRenderContext().setEdgeShapeTransformer(new EdgeShape.CubicCurve<Integer,Number>());
+                vv.getRenderContext().setEdgeShapeTransformer(
+						new EdgeShape.CubicCurve<Integer,Number>());
             }
         }
        else if (source == e_show_d)
@@ -776,6 +810,7 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
             this.seed_coloring = b;
         }
         
+		@Override
         public Paint transform(V v)
         {
             return Color.BLACK;
@@ -826,6 +861,7 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
 //            return Color.BLACK;
 //        }
         
+		@Override
         public Paint transform(V v)
         {
             float alpha = transparency.get(v).floatValue();
@@ -868,6 +904,7 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
             this.weighted = weighted;
         }
         
+		@Override
         public Stroke transform(E e)
         {
             if (weighted)
@@ -913,6 +950,7 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
             this.highlight = highlight;
         }
         
+		@Override
         public Stroke transform(V v)
         {
             if (highlight)
@@ -970,6 +1008,7 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
         this.bold = bold;
     }
     
+	@Override
     public Font transform(E e)
     {
         if (bold)
@@ -1001,14 +1040,17 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
             show_u = b;
         }
         
+		@Override
         public boolean evaluate(Context<Graph<V,E>,E> context)
         {
         	Graph<V,E> graph = context.graph;
         	E e = context.element;
-            if (graph.getEdgeType(e) == EdgeType.DIRECTED && show_d) {
+            if (graph.getEdgeType(e) == EdgeType.DIRECTED && show_d) 
+			{
                 return true;
             }
-            if (graph.getEdgeType(e) == EdgeType.UNDIRECTED && show_u) {
+            if (graph.getEdgeType(e) == EdgeType.UNDIRECTED && show_u) 
+			{
                 return true;
             }
             return false;
@@ -1032,7 +1074,9 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
             filter_small = b;
         }
         
-        public boolean evaluate(Context<Graph<V,E>,V> context) {
+		@Override
+        public boolean evaluate(Context<Graph<V,E>,V> context) 
+		{
         	Graph<V,E> graph = context.graph;
         	V v = context.element;
 //            Vertex v = (Vertex)arg0;
@@ -1050,8 +1094,8 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
      */
     private final static class VertexShapeSizeAspect<V,E>
     extends AbstractVertexShapeTransformer <V>
-    implements Transformer<V,Shape>  {
-    	
+    implements Transformer<V,Shape>  
+	{
         protected boolean stretch = false;
         protected boolean scale = false;
         protected boolean funny_shapes = false;
@@ -1063,25 +1107,31 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
         {
         	this.graph = graphIn;
             this.voltages = voltagesIn;
-            setSizeTransformer(new Transformer<V,Integer>() {
-
-				public Integer transform(V v) {
-		            if (scale)
-		                return (int)(voltages.transform(v) * 30) + 20;
-		            else
-		                return 20;
-
-				}});
-            setAspectRatioTransformer(new Transformer<V,Float>() {
-
-				public Float transform(V v) {
-		            if (stretch) {
-		                return (float)(graph.inDegree(v) + 1) / 
-		                	(graph.outDegree(v) + 1);
-		            } else {
-		                return 1.0f;
-		            }
-				}});
+            setSizeTransformer(new Transformer<V,Integer>() 
+				{
+					@Override
+					public Integer transform(V v) 
+					{
+						if (scale)
+							return (int)(voltages.transform(v) * 30) + 20;
+						else
+							return 20;
+					}
+				});
+            setAspectRatioTransformer(new Transformer<V,Float>() 
+				{
+					public Float transform(V v) 
+					{
+						if (stretch) 
+						{
+							return (float)(graph.inDegree(v) + 1) / 
+								(graph.outDegree(v) + 1);
+						} else 
+						{
+							return 1.0f;
+						}
+					}
+				});
         }
         
 		public void setStretching(boolean stretch)
@@ -1099,6 +1149,7 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
             this.funny_shapes = use;
         }
         
+		@Override
         public Shape transform(V v)
         {
             if (funny_shapes)
@@ -1137,7 +1188,9 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
          * @param e
          */
         @SuppressWarnings("unchecked")
-        protected void handlePopup(MouseEvent e) {
+		@Override
+        protected void handlePopup(MouseEvent e) 
+		{
             final VisualizationViewer<Integer,Number> vv = 
                 (VisualizationViewer<Integer,Number>)e.getSource();
             Point2D p = e.getPoint();//vv.getRenderContext().getBasicTransformer().inverseViewTransform(e.getPoint());
@@ -1147,8 +1200,11 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
                 final Integer v = pickSupport.getVertex(vv.getGraphLayout(), p.getX(), p.getY());
                 if(v != null) {
                     JPopupMenu popup = new JPopupMenu();
-                    popup.add(new AbstractAction("Decrease Transparency") {
-                        public void actionPerformed(ActionEvent e) {
+                    popup.add(new AbstractAction("Decrease Transparency") 
+					{
+						@Override
+                        public void actionPerformed(ActionEvent e) 
+						{
                         	Double value = Math.min(1, 
                         		transparency.get(v).doubleValue()+0.1);
                         	transparency.put(v, value);
@@ -1159,6 +1215,7 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
                         }
                     });
                     popup.add(new AbstractAction("Increase Transparency"){
+						@Override
                         public void actionPerformed(ActionEvent e) {
                         	Double value = Math.max(0, 
                             		transparency.get(v).doubleValue()-0.1);
@@ -1169,11 +1226,13 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
                         }
                     });
                     popup.show(vv, e.getX(), e.getY());
-                } else {
+                } else 
+				{
                     final Number edge = pickSupport.getEdge(vv.getGraphLayout(), p.getX(), p.getY());
                     if(edge != null) {
                         JPopupMenu popup = new JPopupMenu();
                         popup.add(new AbstractAction(edge.toString()) {
+							@Override
                             public void actionPerformed(ActionEvent e) {
                                 System.err.println("got "+edge);
                             }
@@ -1187,9 +1246,12 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
     }
     
     public class VoltageTips<E>
-    	implements Transformer<Integer,String> {
+    	implements Transformer<Integer,String> 
+	{
         
-        public String transform(Integer vertex) {
+		@Override
+        public String transform(Integer vertex) 
+		{
            return "Voltage:"+voltages.transform(vertex);
         }
     }
@@ -1212,6 +1274,7 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
             fill_edge = b;
         }
         
+		@Override
         public Paint transform(E e) {
             if (gradient_level == GRADIENT_NONE) {
                 return defaultFunc.transform(e);
@@ -1220,6 +1283,7 @@ public class PluggableRendererDemo extends JApplet implements ActionListener
             }
         }
         
+		@Override
         protected Color getColor2(E e)
         {
             return vv.getPickedEdgeState().isPicked(e)? Color.CYAN : c2;

@@ -74,32 +74,44 @@ public class TreeLayoutDemo extends JApplet {
     Forest<String,Integer> graph;
     
     Factory<DirectedGraph<String,Integer>> graphFactory = 
-    	new Factory<DirectedGraph<String,Integer>>() {
-
-			public DirectedGraph<String, Integer> create() {
-				return new DirectedSparseMultigraph<String,Integer>();
-			}
-		};
+    	new Factory<DirectedGraph<String,Integer>>() 
+	{
+		@Override
+		public DirectedGraph<String, Integer> create() 
+		{
+			return new DirectedSparseMultigraph<String,Integer>();
+		}
+	};
 			
 	Factory<Tree<String,Integer>> treeFactory =
-		new Factory<Tree<String,Integer>> () {
-
-		public Tree<String, Integer> create() {
+		new Factory<Tree<String,Integer>> () 
+	{
+		@Override
+		public Tree<String, Integer> create() 
+		{
 			return new DelegateTree<String,Integer>(graphFactory);
 		}
 	};
 	
-	Factory<Integer> edgeFactory = new Factory<Integer>() {
+	Factory<Integer> edgeFactory = new Factory<Integer>() 
+	{
 		int i=0;
-		public Integer create() {
+		@Override
+		public Integer create() 
+		{
 			return i++;
-		}};
+		}
+	};
     
-    Factory<String> vertexFactory = new Factory<String>() {
+    Factory<String> vertexFactory = new Factory<String>() 
+	{
     	int i=0;
-		public String create() {
+		@Override
+		public String create() 
+		{
 			return "V"+i++;
-		}};
+		}
+	};
 
     /**
      * the visual component and renderer for the graph
@@ -114,8 +126,8 @@ public class TreeLayoutDemo extends JApplet {
     
     RadialTreeLayout<String,Integer> radialLayout;
 
-    public TreeLayoutDemo() {
-        
+    public TreeLayoutDemo() 
+	{
         // create a simple graph for the demo
         graph = new DelegateForest<String,Integer>();
 
@@ -148,23 +160,32 @@ public class TreeLayoutDemo extends JApplet {
         final ScalingControl scaler = new CrossoverScalingControl();
 
         JButton plus = new JButton("+");
-        plus.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        plus.addActionListener(new ActionListener() 
+		{
+			@Override
+            public void actionPerformed(ActionEvent e) 
+			{
                 scaler.scale(vv, 1.1f, vv.getCenter());
             }
         });
         JButton minus = new JButton("-");
-        minus.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        minus.addActionListener(new ActionListener() 
+		{
+			@Override
+            public void actionPerformed(ActionEvent e) 
+			{
                 scaler.scale(vv, 1/1.1f, vv.getCenter());
             }
         });
         
         JToggleButton radial = new JToggleButton("Radial");
-        radial.addItemListener(new ItemListener() {
-
-			public void itemStateChanged(ItemEvent e) {
-				if(e.getStateChange() == ItemEvent.SELECTED) {
+        radial.addItemListener(new ItemListener() 
+		{
+			@Override
+			public void itemStateChanged(ItemEvent e) 
+			{
+				if(e.getStateChange() == ItemEvent.SELECTED) 
+				{
 					
 					LayoutTransition<String,Integer> lt =
 						new LayoutTransition<String,Integer>(vv, treeLayout, radialLayout);
@@ -172,7 +193,8 @@ public class TreeLayoutDemo extends JApplet {
 					animator.start();
 					vv.getRenderContext().getMultiLayerTransformer().setToIdentity();
 					vv.addPreRenderPaintable(rings);
-				} else {
+				} else 
+				{
 					LayoutTransition<String,Integer> lt =
 						new LayoutTransition<String,Integer>(vv, radialLayout, treeLayout);
 					Animator animator = new Animator(lt);
@@ -196,15 +218,16 @@ public class TreeLayoutDemo extends JApplet {
         content.add(controls, BorderLayout.SOUTH);
     }
     
-    class Rings implements VisualizationServer.Paintable {
-    	
+    class Rings implements VisualizationServer.Paintable 
+	{
     	Collection<Double> depths;
-    	
-    	public Rings() {
+    	public Rings() 
+		{
     		depths = getDepths();
     	}
     	
-    	private Collection<Double> getDepths() {
+    	private Collection<Double> getDepths() 
+		{
     		Set<Double> depths = new HashSet<Double>();
     		Map<String,PolarPoint> polarLocations = radialLayout.getPolarLocations();
     		for(String v : graph.getVertices()) {
@@ -214,6 +237,7 @@ public class TreeLayoutDemo extends JApplet {
     		return depths;
     	}
 
+		@Override
 		public void paint(Graphics g) {
 			g.setColor(Color.lightGray);
 		
@@ -224,12 +248,17 @@ public class TreeLayoutDemo extends JApplet {
 			for(double d : depths) {
 				ellipse.setFrameFromDiagonal(center.getX()-d, center.getY()-d, 
 						center.getX()+d, center.getY()+d);
-				Shape shape = vv.getRenderContext().getMultiLayerTransformer().getTransformer(Layer.LAYOUT).transform(ellipse);
+				Shape shape = 
+					vv.getRenderContext().
+						getMultiLayerTransformer().
+							getTransformer(Layer.LAYOUT).transform(ellipse);
 				g2d.draw(shape);
 			}
 		}
 
-		public boolean useTransform() {
+		@Override
+		public boolean useTransform() 
+		{
 			return true;
 		}
     }

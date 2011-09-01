@@ -76,32 +76,43 @@ public class L2RTreeLayoutDemo extends JApplet {
     Forest<String,Integer> graph;
     
     Factory<DirectedGraph<String,Integer>> graphFactory = 
-    	new Factory<DirectedGraph<String,Integer>>() {
-
-			public DirectedGraph<String, Integer> create() {
-				return new DirectedSparseMultigraph<String,Integer>();
-			}
-		};
+    	new Factory<DirectedGraph<String,Integer>>() 
+	{
+		@Override
+		public DirectedGraph<String, Integer> create() 
+		{
+			return new DirectedSparseMultigraph<String,Integer>();
+		}
+	};
 			
-	Factory<Tree<String,Integer>> treeFactory =
-		new Factory<Tree<String,Integer>> () {
-
-		public Tree<String, Integer> create() {
+	Factory<Tree<String,Integer>> treeFactory =new Factory<Tree<String,Integer>> ()
+	{
+		@Override
+		public Tree<String, Integer> create() 
+		{
 			return new DelegateTree<String,Integer>(graphFactory);
 		}
 	};
 	
-	Factory<Integer> edgeFactory = new Factory<Integer>() {
+	Factory<Integer> edgeFactory = new Factory<Integer>() 
+	{
 		int i=0;
-		public Integer create() {
+		@Override
+		public Integer create() 
+		{
 			return i++;
-		}};
+		}
+	};
     
-    Factory<String> vertexFactory = new Factory<String>() {
+    Factory<String> vertexFactory = new Factory<String>() 
+	{
     	int i=0;
-		public String create() {
+		@Override
+		public String create() 
+		{
 			return "V"+i++;
-		}};
+		}
+	};
 
     /**
      * the visual component and renderer for the graph
@@ -116,8 +127,8 @@ public class L2RTreeLayoutDemo extends JApplet {
     
     RadialTreeLayout<String,Integer> radialLayout;
 
-    public L2RTreeLayoutDemo() {
-        
+    public L2RTreeLayoutDemo() 
+	{
         // create a simple graph for the demo
         graph = new DelegateForest<String,Integer>();
 
@@ -152,31 +163,40 @@ public class L2RTreeLayoutDemo extends JApplet {
         final ScalingControl scaler = new CrossoverScalingControl();
 
         JButton plus = new JButton("+");
-        plus.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        plus.addActionListener(new ActionListener() 
+		{
+			@Override
+            public void actionPerformed(ActionEvent e) 
+			{
                 scaler.scale(vv, 1.1f, vv.getCenter());
             }
         });
         JButton minus = new JButton("-");
-        minus.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        minus.addActionListener(new ActionListener() 
+		{
+			@Override
+            public void actionPerformed(ActionEvent e) 
+			{
                 scaler.scale(vv, 1/1.1f, vv.getCenter());
             }
         });
         
         JToggleButton radial = new JToggleButton("Radial");
-        radial.addItemListener(new ItemListener() {
-
-			public void itemStateChanged(ItemEvent e) {
-				if(e.getStateChange() == ItemEvent.SELECTED) {
-					
+        radial.addItemListener(new ItemListener() 
+		{
+			@Override
+			public void itemStateChanged(ItemEvent e) 
+			{
+				if(e.getStateChange() == ItemEvent.SELECTED) 
+				{
 					LayoutTransition<String,Integer> lt =
 						new LayoutTransition<String,Integer>(vv, treeLayout, radialLayout);
 					Animator animator = new Animator(lt);
 					animator.start();
 					vv.getRenderContext().getMultiLayerTransformer().setToIdentity();
 					vv.addPreRenderPaintable(rings);
-				} else {
+				} else 
+				{
 					LayoutTransition<String,Integer> lt =
 						new LayoutTransition<String,Integer>(vv, radialLayout, treeLayout);
 					Animator animator = new Animator(lt);
