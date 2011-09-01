@@ -32,8 +32,8 @@ import edu.uci.ics.jung.graph.Graph;
  * @param <V> the vertex type
  * @param <E> the edge type
  */
-public class AggregateLayout<V, E> implements Layout<V,E>, IterativeContext {
-
+public class AggregateLayout<V, E> implements Layout<V,E>, IterativeContext 
+{
 	protected Layout<V,E> delegate;
 	protected Map<Layout<V,E>,Point2D> layouts = new HashMap<Layout<V,E>,Point2D>();
 

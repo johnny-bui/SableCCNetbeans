@@ -31,18 +31,22 @@ import edu.uci.ics.jung.graph.util.TreeUtils;
  *  
  */
 
-public class TreeLayout<V,E> implements Layout<V,E> {
-
+public class TreeLayout<V,E> implements Layout<V,E> 
+{
 	protected Dimension size = new Dimension(600,600);
 	protected Forest<V,E> graph;
 	protected Map<V,Integer> basePositions = new HashMap<V,Integer>();
 
     protected Map<V, Point2D> locations = 
-    	LazyMap.decorate(new HashMap<V, Point2D>(),
-    			new Transformer<V,Point2D>() {
-					public Point2D transform(V arg0) {
-						return new Point2D.Double();
-					}});
+		LazyMap.decorate(new HashMap<V, Point2D>(),
+		new Transformer<V,Point2D>() 
+		{
+			@Override
+			public Point2D transform(V arg0) 
+			{
+				return new Point2D.Double();
+			}
+		});
     
     protected transient Set<V> alreadyDone = new HashSet<V>();
 
@@ -97,28 +101,31 @@ public class TreeLayout<V,E> implements Layout<V,E> {
         buildTree();
     }
     
-	protected void buildTree() {
+	protected void buildTree() 
+	{
         this.m_currentPoint = new Point(0, 20);
         Collection<V> roots = TreeUtils.getRoots(graph);
-        if (roots.size() > 0 && graph != null) {
+        if (roots.size() > 0 && graph != null) 
+		{
        		calculateDimensionX(roots);
-       		for(V v : roots) {
+       		for(V v : roots) 
+			{
         		calculateDimensionX(v);
         		m_currentPoint.x += this.basePositions.get(v)/2 + this.distX;
         		buildTree(v, this.m_currentPoint.x);
         	}
         }
         int width = 0;
-        for(V v : roots) {
+        for(V v : roots) 
+		{
         	width += basePositions.get(v);
         }
     }
 
-    protected void buildTree(V v, int x) {
-
+    protected void buildTree(V v, int x) 
+	{
         if (!alreadyDone.contains(v)) {
             alreadyDone.add(v);
-
             //go one level further down
             this.m_currentPoint.y += this.distY;
             this.m_currentPoint.x = x;
@@ -132,7 +139,8 @@ public class TreeLayout<V,E> implements Layout<V,E> {
             int sizeXofChild;
             int startXofChild;
 
-            for (V element : graph.getSuccessors(v)) {
+            for (V element : graph.getSuccessors(v)) 
+			{
                 sizeXofChild = this.basePositions.get(element);
                 startXofChild = lastX + sizeXofChild / 2;
                 buildTree(element, startXofChild);
@@ -142,13 +150,15 @@ public class TreeLayout<V,E> implements Layout<V,E> {
         }
     }
     
-    private int calculateDimensionX(V v) {
-
+    private int calculateDimensionX(V v) 
+	{
         int size = 0;
         int childrenNum = graph.getSuccessors(v).size();
 
-        if (childrenNum != 0) {
-            for (V element : graph.getSuccessors(v)) {
+        if (childrenNum != 0) 
+		{
+            for (V element : graph.getSuccessors(v)) 
+			{
                 size += calculateDimensionX(element) + distX;
             }
         }
@@ -158,14 +168,17 @@ public class TreeLayout<V,E> implements Layout<V,E> {
         return size;
     }
 
-    private int calculateDimensionX(Collection<V> roots) {
-
+    private int calculateDimensionX(Collection<V> roots) 
+	{
     	int size = 0;
-    	for(V v : roots) {
+    	for(V v : roots) 
+		{
     		int childrenNum = graph.getSuccessors(v).size();
 
-    		if (childrenNum != 0) {
-    			for (V element : graph.getSuccessors(v)) {
+    		if (childrenNum != 0) 
+			{
+    			for (V element : graph.getSuccessors(v)) 
+				{
     				size += calculateDimensionX(element) + distX;
     			}
     		}
@@ -181,12 +194,15 @@ public class TreeLayout<V,E> implements Layout<V,E> {
      * is determined by the topology of the tree, and by the horizontal 
      * and vertical spacing (optionally set by the constructor).
      */
-    public void setSize(Dimension size) {
+	@Override
+    public void setSize(Dimension size) 
+	{
         throw new UnsupportedOperationException("Size of TreeLayout is set" +
                 " by vertex spacing in constructor");
     }
 
-    protected void setCurrentPositionFor(V vertex) {
+    protected void setCurrentPositionFor(V vertex) 
+	{
     	int x = m_currentPoint.x;
     	int y = m_currentPoint.y;
     	if(x < 0) size.width -= x;

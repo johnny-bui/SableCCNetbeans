@@ -90,10 +90,12 @@ public class CircleLayout<V, E> extends AbstractLayout<V,E> {
 	    this.vertex_ordered_list = vertex_list;
 	}
 	
+	@Override
 	public void reset() {
 		initialize();
 	}
 
+	@Override
 	public void initialize() 
 	{
 		Dimension d = getSize();

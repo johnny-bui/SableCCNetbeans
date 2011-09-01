@@ -62,8 +62,10 @@ public class StaticLayout<V, E> extends AbstractLayout<V,E> {
     	super(graph, size);
     }
     
+	@Override
     public void initialize() {}
 
+	@Override
 	public void reset() {}
 
 }

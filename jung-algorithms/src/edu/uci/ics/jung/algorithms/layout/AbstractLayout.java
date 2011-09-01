@@ -103,6 +103,7 @@ abstract public class AbstractLayout<V, E> implements Layout<V,E> {
 	 * locations of the vertices and possibly to reinitialize its data. The
 	 * current method calls <tt>initializeLocations</tt> followed by <tt>initialize_local</tt>.
 	 */
+	@Override
 	public void setSize(Dimension size) {
 		
 		if(size != null && graph != null) {
