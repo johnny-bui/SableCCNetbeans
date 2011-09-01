@@ -21,9 +21,11 @@ import java.util.Set;
 import edu.uci.ics.jung.graph.Hypergraph;
 
 /**
- * Labels each node in the graph according to the BFS distance from the start node(s). If nodes are unreachable, then
+ * Labels each node in the graph according to the BFS distance from the start 
+ * node(s). If nodes are unreachable, then
  * they are assigned a distance of -1.
- * All nodes traversed at step k are marked as predecessors of their successors traversed at step k+1.
+ * All nodes traversed at step k are marked as predecessors of their successors 
+ * traversed at step k+1.
  * <p>
  * Running time is: O(m)
  * @author Scott White
