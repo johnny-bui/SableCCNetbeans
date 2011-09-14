@@ -4,8 +4,10 @@
 	description:
 */
 
-Package math.postfix;
+/* define package-prefix */
+Package ;
 
+/* define token */
 Tokens
 	number = ['0' .. '9']+;
 	plus = '+';
@@ -17,6 +19,7 @@ Tokens
 	r_par = ')';
 	blank = (' ' | 13 | 10)+;
 
+/* Token to be ignored */
 Ignored Tokens
 	blank;
 
