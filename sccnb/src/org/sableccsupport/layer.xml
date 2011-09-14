@@ -117,7 +117,7 @@
         </folder>
     </folder>
     <folder name="Templates">
-        <folder name="Other">
+        <folder name="Grammar">
             <file name="SCCTemplate.scc" url="SCCTemplate.scc">
                 <attr name="displayName" bundlevalue="org.sableccsupport.Bundle#Templates/Other/SCCTemplate.scc"/>
                 <attr name="template" boolvalue="true"/>
