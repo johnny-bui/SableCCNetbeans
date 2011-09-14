@@ -117,10 +117,12 @@
         </folder>
     </folder>
     <folder name="Templates">
-        <folder name="Other">
+        <folder name="Grammar">
             <file name="SCCTemplate.scc" url="SCCTemplate.scc">
                 <attr name="displayName" bundlevalue="org.sableccsupport.Bundle#Templates/Other/SCCTemplate.scc"/>
                 <attr name="template" boolvalue="true"/>
+				<!--Use this line only if your template makes use of the FreeMarker template language:-->
+                <attr name="javax.script.ScriptEngine" stringvalue="freemarker"/>
             </file>
         </folder>
     </folder>
