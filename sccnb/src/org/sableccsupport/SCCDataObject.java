@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.sableccsupport;
 
 import java.io.IOException;
@@ -18,7 +14,9 @@ import org.openide.text.DataEditorSupport;
 
 public class SCCDataObject extends MultiDataObject {
 
-	public SCCDataObject(FileObject pf, MultiFileLoader loader) throws DataObjectExistsException, IOException {
+	public SCCDataObject(FileObject pf, MultiFileLoader loader) 
+			throws DataObjectExistsException, IOException 
+	{
 		super(pf, loader);
 		CookieSet cookies = getCookieSet();
 		cookies.add((Node.Cookie) DataEditorSupport.create(this, getPrimaryEntry(), cookies));
