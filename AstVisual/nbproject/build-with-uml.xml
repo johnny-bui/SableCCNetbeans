@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+this file defines task to build javadoc with UML using
+the doclet ydoc.jar.
+
+Y Doclet install
+================
+
+1. Download it from http://www.yworks.com/de/products_ydoc.html
+2. unzip the package.
+3. add the file ydoc.jar in the lib folder of the propject
+   via netbeans
+4. copy the folder resources in the lib folder of project
+-->
+<project name="mathcoach-doc" default="default" basedir=".">
+	
+	<target name="-build-with-uml" description="Generates UML-Javadoc">
+     <mkdir dir="${dist.javadoc.dir}"/>
+
+     <javadoc source="${javac.source}" packagenames="com.*" 
+              destdir="${dist.javadoc.dir}"  
+              private="true">  
+        <classpath>
+            <path path="${javac.classpath}"/>
+        </classpath>
+        <fileset dir="${src.dir}" excludes="${excludes}" 
+              includes="${includes}">
+            <filename name="**/*.java"/>
+        </fileset>
+        <doclet name="ydoc.doclets.YStandard"
+              path="${file.reference.ydoc.jar}">
+            <!-- param name="-attributes" />
+            <param name="-operations" />
+            <param name="-qualify" />
+            <param name="-types" />
+            <param name="-visibility" / -->
+			<!--param name="-docletpath" 
+				value="/tmp/classes"/ -->
+			<param name="-docletpath" 
+				value="${basedir}/build/classes" />
+			<param name="-resourcepath" 
+				value="${basedir}/lib/resources" />
+			<param name="-umlautogen" />
+
+        </doclet>
+    </javadoc>
+	</target>
+</project>
