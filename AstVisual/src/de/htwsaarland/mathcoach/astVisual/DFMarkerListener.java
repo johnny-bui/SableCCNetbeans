@@ -4,6 +4,7 @@ package de.htwsaarland.mathcoach.astVisual;
 import java.util.Stack;
 import org.jgrapht.event.TraversalListenerAdapter;
 import org.jgrapht.event.VertexTraversalEvent;
+import org.jgrapht.traverse.DepthFirstIterator;
 
 public class DFMarkerListener<V extends AstVertex,E extends AstEdge> 
 	extends TraversalListenerAdapter<AstVertex, AstEdge>
@@ -27,7 +28,8 @@ public class DFMarkerListener<V extends AstVertex,E extends AstEdge>
 			v.setPred(visit.peek());
 		}
 		visit.push(v);
-		System.out.println("visit: " + v);
+		
+		System.out.println("visit:  " + v);
 		System.out.println("stack: " + visit);
 	}
 
@@ -38,7 +40,9 @@ public class DFMarkerListener<V extends AstVertex,E extends AstEdge>
 		v.setFinished(counter);
 		counter ++;
 		visit.pop();
+		
 		System.out.println("exit:  " + v);
 		System.out.println("stack: " + visit);
+		DepthFirstIterator dfi = (DepthFirstIterator)e.getSource();
 	}
 }

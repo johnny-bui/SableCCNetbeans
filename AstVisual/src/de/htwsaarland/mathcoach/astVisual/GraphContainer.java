@@ -16,7 +16,8 @@ public class GraphContainer
 	
 	public GraphContainer()
 	{
-		dgraph = new DefaultDirectedGraph<AstVertex, AstEdge>(AstEdge.class);
+		dgraph = new DefaultDirectedGraph<AstVertex, AstEdge>
+				(new AstEdgeFactory<AstVertex, AstEdge>(AstEdge.class));
 	}
 	
 	public void addRoot(AstVertex root)
@@ -46,6 +47,23 @@ public class GraphContainer
 	public String toGraphviz()
 	{
 		return "";
+	}
+
+	public DefaultDirectedGraph<AstVertex,AstEdge> getDgraph()
+	{
+		return this.dgraph;
+	}
+
+	public ListenableDirectedGraph<AstVertex, AstEdge> getLgraph()
+	{
+		return this.lgraph;
+	}
+
+	
+	@Override
+	public String  toString()
+	{
+		return this.dgraph.toString();
 	}
 }
 
