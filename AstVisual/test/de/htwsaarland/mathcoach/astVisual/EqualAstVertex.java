@@ -28,4 +28,10 @@ public class EqualAstVertex extends DummyVertex
 		hash = hash * 31 + name.hashCode();
 		return hash;
 	}
+
+	@Override
+	public String toString()
+	{
+		return this.name + ":" + this.d + ":" + this.f;
+	}
 }

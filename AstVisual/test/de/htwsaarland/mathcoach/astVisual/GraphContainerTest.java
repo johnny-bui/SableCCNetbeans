@@ -1,10 +1,10 @@
 package de.htwsaarland.mathcoach.astVisual;
 
-import java.util.Iterator;
 import java.util.Set;
 import org.jgrapht.graph.DefaultDirectedGraph;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.*;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -37,7 +37,7 @@ public class GraphContainerTest {
 	@Test
 	public void testDuplicateNode()
 	{
-		System.out.println("duplocateNode");
+		System.out.println("duplicateNode");
 		GraphContainer gc = new GraphContainer();
 		// add a root for gc
 		AstVertex root = new DummyVertex("root");
@@ -61,38 +61,37 @@ public class GraphContainerTest {
 		assertTrue(a_b.getSource().getDetected() < a_b.getTarget().getFinished());
 		assertTrue(a_b.getSource().getDetected() < a_b.getTarget().getDetected());
 		assertTrue(a_b.getSource().getFinished() > a_b.getTarget().getFinished());
-		
-		gc = new GraphContainer();
+
+	}
+	
+	@Test
+	public void testDuplicate2() 
+	{
+		System.out.println("testDuplicate2");
+		GraphContainer<EqualAstVertex> egc = new GraphContainer<EqualAstVertex>();
 		EqualAstVertex eroot = new EqualAstVertex("root");
 		EqualAstVertex ea = new EqualAstVertex("a");
 		EqualAstVertex eb = new EqualAstVertex("a");
-
-		gc.addRoot(eroot);
-		gc.addDepend(eroot, ea);
-		gc.addDepend(ea, eb);
-		gc.performDFS();
+		assertTrue(ea.equals(eb));
 		
-		edges = gc.getDgraph().getAllEdges(ea, eb);
-		assertEquals(1, edges.size());// assert that only one edge from a to a
-
-		AstEdge a_a = edges.iterator().next();
-		assertEquals(a_a.getSource(), a_a.getTarget());
-		// assert that source and target points to only one node
-		//assertTrue(a_a.getSource() == a_a.getTarget());
-		// assert that source and target points to only one node
-		DefaultDirectedGraph graph = gc.getDgraph();
-		Iterator i = graph.vertexSet().iterator();
-		while (i.hasNext())
-		{
-			System.out.println(i.next());
-		}
-		System.out.println(">>>>>" + gc.toString());
+		egc.addRoot(eroot);
+		egc.addDepend(eroot, ea);
+		egc.addDepend(ea, eb);
+		egc.performDFS();
+		
+		Set<AstEdge> edges = egc.getDgraph().getAllEdges(ea, eb);
+		assertEquals(0, edges.size());// assert that no edge if equal vertex
+		
+		
+		DefaultDirectedGraph<EqualAstVertex,AstEdge>  graph = egc.getDgraph();
+		Set<AstEdge> alledges = graph.edgeSet();
+		assertEquals(1, alledges.size());
 	}
 
 	/**
 	 * Test of performDFS method, of class GraphContainer.
 	 */
-	/*
+	
 	@Test
 	public void testPerformDFS() {
 		System.out.println("performDFS");
@@ -114,6 +113,4 @@ public class GraphContainerTest {
 		
 		g.performDFS();
 	}
-	*/
-	
 }

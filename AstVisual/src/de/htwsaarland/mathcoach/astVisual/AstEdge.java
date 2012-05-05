@@ -24,6 +24,7 @@ public class AstEdge {
 		return this.target;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return "(" + source.getName()+ " -> " + target.getName() + ")";

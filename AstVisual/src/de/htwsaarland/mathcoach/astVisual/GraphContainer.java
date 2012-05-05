@@ -7,39 +7,46 @@ import org.jgrapht.traverse.DepthFirstIterator;
 /**
  *
  * @author phucluoi
+ * @version 05.05.2012
+ * a -> a is not allow
  */
-public class GraphContainer 
+public class GraphContainer<V extends AstVertex> 
 {
-	ListenableDirectedGraph<AstVertex, AstEdge> lgraph;
-	DefaultDirectedGraph<AstVertex, AstEdge> dgraph;
-	AstVertex root;
+	ListenableDirectedGraph<V, AstEdge> lgraph;
+	DefaultDirectedGraph<V, AstEdge> dgraph;
+	V root;
 	
 	public GraphContainer()
 	{
-		dgraph = new DefaultDirectedGraph<AstVertex, AstEdge>
-				(new AstEdgeFactory<AstVertex, AstEdge>(AstEdge.class));
+		dgraph = new DefaultDirectedGraph<V, AstEdge>
+				(new AstEdgeFactory<V, AstEdge>(AstEdge.class));
 	}
 	
-	public void addRoot(AstVertex root)
+	public void addRoot(V root)
 	{
 		this.root = root;
 		this.dgraph.addVertex(root);
 	}
 
 	
-	public void addDepend(AstVertex parent, AstVertex child)
+	public void addDepend(V parent, V child)
 	{
-		this.dgraph.addVertex(parent);
-		this.dgraph.addVertex(child);
-		this.dgraph.addEdge(parent, child);
+		if (! parent.equals(child))
+		{
+			this.dgraph.addVertex(parent);
+			this.dgraph.addVertex(child);
+			this.dgraph.addEdge(parent, child);
+		}
 	}
 
 	public void performDFS()
 	{
-		lgraph = new ListenableDirectedGraph<AstVertex, AstEdge>(dgraph);
-		DepthFirstIterator<AstVertex, AstEdge> iterator = 
-				new DepthFirstIterator<AstVertex, AstEdge>(lgraph, root);
-		iterator.addTraversalListener(new DFMarkerListener<AstVertex, AstEdge>());
+		lgraph = new ListenableDirectedGraph<V, AstEdge>(dgraph);
+		DepthFirstIterator<V, AstEdge> iterator = 
+				new DepthFirstIterator<V, AstEdge>(lgraph, root);
+		iterator.addTraversalListener(
+				new DFMarkerListener<V, AstEdge>()
+				);
 		
 		while (iterator.hasNext()){iterator.next();}
 	}
@@ -49,12 +56,12 @@ public class GraphContainer
 		return "";
 	}
 
-	public DefaultDirectedGraph<AstVertex,AstEdge> getDgraph()
+	public DefaultDirectedGraph<V, AstEdge> getDgraph()
 	{
 		return this.dgraph;
 	}
 
-	public ListenableDirectedGraph<AstVertex, AstEdge> getLgraph()
+	public ListenableDirectedGraph<V, AstEdge> getLgraph()
 	{
 		return this.lgraph;
 	}
