@@ -6,9 +6,9 @@ package de.htwsaarland.mathcoach.astVisual;
  * @author phucluoi
  * @version May 3, 2012
  */
-public class EqualAstVertex extends DummyVertex
+public class NameDistincVertex extends DummyVertex
 {
-	public EqualAstVertex(String name)
+	public NameDistincVertex(String name)
 	{
 		super(name);
 	}
@@ -17,8 +17,8 @@ public class EqualAstVertex extends DummyVertex
 	public boolean equals(Object other)
 	{
 		if (this == other){return true;}
-    	if (!(other instanceof EqualAstVertex)){return false;}
-	    EqualAstVertex otherA = (EqualAstVertex) other;
+    	if (!(other instanceof NameDistincVertex)){return false;}
+	    NameDistincVertex otherA = (NameDistincVertex) other;
     	return (name.equals(otherA.name));
 	}
 
