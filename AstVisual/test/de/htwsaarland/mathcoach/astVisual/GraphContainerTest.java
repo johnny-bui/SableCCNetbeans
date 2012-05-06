@@ -68,10 +68,10 @@ public class GraphContainerTest {
 	public void testDuplicate2() 
 	{
 		System.out.println("testDuplicate2");
-		GraphContainer<NameDistincVertex> egc = new GraphContainer<NameDistincVertex>();
-		NameDistincVertex eroot = new NameDistincVertex("root");
-		NameDistincVertex ea = new NameDistincVertex("a");
-		NameDistincVertex eb = new NameDistincVertex("a");
+		GraphContainer<NameDistinctVertex> egc = new GraphContainer<NameDistinctVertex>();
+		NameDistinctVertex eroot = new NameDistinctVertex("root");
+		NameDistinctVertex ea = new NameDistinctVertex("a");
+		NameDistinctVertex eb = new NameDistinctVertex("a");
 		assertTrue(ea.equals(eb));
 		
 		egc.addRoot(eroot);
@@ -83,7 +83,7 @@ public class GraphContainerTest {
 		assertEquals(0, edges.size());// assert that no edge if equal vertex
 		
 		
-		DefaultDirectedGraph<NameDistincVertex,AstEdge>  graph = egc.getDgraph();
+		DefaultDirectedGraph<NameDistinctVertex,AstEdge>  graph = egc.getDgraph();
 		Set<AstEdge> alledges = graph.edgeSet();
 		assertEquals(1, alledges.size());
 	}
