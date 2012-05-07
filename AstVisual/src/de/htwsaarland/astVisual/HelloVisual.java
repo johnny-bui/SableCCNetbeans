@@ -1,10 +1,7 @@
 package de.htwsaarland.astVisual;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.util.Locale;
 import javax.swing.JComponent;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import org.netbeans.api.visual.layout.LayoutFactory;
@@ -14,7 +11,6 @@ import org.netbeans.api.visual.widget.Scene;
 import org.netbeans.api.visual.widget.Widget;
 import org.netbeans.modules.visual.border.RoundedBorder;
 import org.openide.util.ImageUtilities;
-import org.openide.util.Utilities;
 
 /**
  *

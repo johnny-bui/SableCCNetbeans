@@ -4,23 +4,24 @@ package de.htwsaarland.astVisual;
  *
  * @author phucluoi
  */
-public class AstEdge {
-	private AstVertex source;
-	private AstVertex target;
+public class AstEdge<V extends AstVertex> 
+{
+	private V source;
+	private V target;
 	private EdgeClass c;
 			
-	public void setNodes(AstVertex source, AstVertex target)
+	public void setNodes(V source, V target)
 	{
 		this.source = source;
 		this.target = target;
 	}
 
-	public AstVertex getSource()
+	public V getSource()
 	{
 		return this.source;
 	}
 
-	public AstVertex getTarget()
+	public V getTarget()
 	{
 		return this.target;
 	}
