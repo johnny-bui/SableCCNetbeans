@@ -7,7 +7,8 @@ package de.htwsaarland.mathcoach.astVisual;
 public class AstEdge {
 	private AstVertex source;
 	private AstVertex target;
-	
+	private EdgeClass c;
+			
 	public void setNodes(AstVertex source, AstVertex target)
 	{
 		this.source = source;
@@ -24,9 +25,21 @@ public class AstEdge {
 		return this.target;
 	}
 	
+	public void setEdgeClass(EdgeClass c)
+	{
+		this.c = c;	
+	}
+	
+	
+	public EdgeClass getEdgeClass()
+	{
+		return c;
+	}
+	
 	@Override
 	public String toString()
 	{
-		return "(" + source.getName()+ " -> " + target.getName() + ")";
+		return "(" + source.getName()+ " -> " + target.getName() + "):" + c;
 	}
+	
 }

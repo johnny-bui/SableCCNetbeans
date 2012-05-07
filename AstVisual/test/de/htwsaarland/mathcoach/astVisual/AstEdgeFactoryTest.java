@@ -34,8 +34,8 @@ public class AstEdgeFactoryTest {
 	public void testCreateEdge() {
 		System.out.println("createEdge");
 		AstEdgeFactory factory = new AstEdgeFactory(AstEdge.class);
-		DummyVertex src = new DummyVertex("a");
-		DummyVertex target = new DummyVertex("b");
+		DefaultAstVertex src = new DefaultAstVertex("a");
+		DefaultAstVertex target = new DefaultAstVertex("b");
 		AstEdge edge = factory.createEdge(src, target);
 		assertEquals(src, edge.getSource());
 		assertEquals(target, edge.getTarget());

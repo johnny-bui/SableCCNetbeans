@@ -1,4 +1,3 @@
-
 package de.htwsaarland.mathcoach.astVisual;
 
 /**
@@ -6,7 +5,7 @@ package de.htwsaarland.mathcoach.astVisual;
  * @author phucluoi
  * @version May 3, 2012
  */
-public class NameDistinctVertex extends DummyVertex
+public class NameDistinctVertex extends DefaultAstVertex
 {
 	public NameDistinctVertex(String name)
 	{

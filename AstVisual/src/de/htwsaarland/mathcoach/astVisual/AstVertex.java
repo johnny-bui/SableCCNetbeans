@@ -13,5 +13,16 @@ public interface AstVertex
 	public void setFinished(int f);
 	public int getFinished();
 	public void setPred(AstVertex v);
+	public AstVertex getPred();
 	public String getName();
+
+	public void setX(double x);
+	public void setY(double y);
+	public double getX();
+	public double getY();
+	
+	public void setWidth(double width);
+	public void setHeight(double height);
+	public double getWidth();
+	public double getHeight();
 }

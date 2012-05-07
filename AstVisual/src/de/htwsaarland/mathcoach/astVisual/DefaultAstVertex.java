@@ -1,22 +1,35 @@
 package de.htwsaarland.mathcoach.astVisual;
 
-import de.htwsaarland.mathcoach.astVisual.AstVertex;
+/**
+ * @author Hong Phuc Bui
+ * @version  06.05.2012
+ */
 
-
-class DummyVertex implements AstVertex
+class DefaultAstVertex implements AstVertex
 {
 	int d; 
 	int f;
 	String name;
 	private AstVertex pred;
+	private double x;
+	private double y;
+	private double height;
+	private double width;
 
-	public DummyVertex(String name)
+	/**
+	 * @param name Name of the Vertex
+	 */
+	public DefaultAstVertex(String name)
 	{
 		this.name = name;
 		d = 0;
 		f = 0;
 	}
-	
+
+	/**
+	 * sets the detected time of the vertex by performing DFS
+	 * @param d the detected time
+	 */
 	@Override
 	public void setDetected(int d) {
 		this.d = d;
@@ -60,6 +73,52 @@ class DummyVertex implements AstVertex
 	public String getName()
 	{
 		return name;
+	}
+
+	
+	@Override
+	public void setX(double x) {
+		this.x = x;
+	}
+
+	@Override
+	public void setY(double y) {
+		this.y = y;
+	}
+
+	@Override
+	public double getX() {
+		return x;
+	}
+
+	@Override
+	public double getY() {
+		return y;
+	}
+
+	@Override
+	public void setWidth(double width) {
+		this.width = width;
+	}
+
+	@Override
+	public void setHeight(double height) {
+		this.height = height;
+	}
+
+	@Override
+	public double getWidth() {
+		return width;
+	}
+
+	@Override
+	public double getHeight() {
+		return height;
+	}
+
+	@Override
+	public AstVertex getPred() {
+		return this.pred;
 	}
 }
 
