@@ -1,4 +1,4 @@
-package de.htwsaarland.mathcoach.astVisual;
+package de.htwsaarland.astVisual;
 
 /**
  * @author Hong Phuc Bui
@@ -119,6 +119,12 @@ class DefaultAstVertex implements AstVertex
 	@Override
 	public AstVertex getPred() {
 		return this.pred;
+	}
+
+	@Override
+	public String toGraphviz()
+	{
+		return "\"" + name + ":" + d + ":" + f + "\"";
 	}
 }
 

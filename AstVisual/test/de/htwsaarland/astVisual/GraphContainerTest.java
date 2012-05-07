@@ -1,5 +1,10 @@
-package de.htwsaarland.mathcoach.astVisual;
+package de.htwsaarland.astVisual;
 
+import de.htwsaarland.astVisual.DefaultAstVertex;
+import de.htwsaarland.astVisual.NameDistinctVertex;
+import de.htwsaarland.astVisual.GraphContainer;
+import de.htwsaarland.astVisual.AstEdge;
+import de.htwsaarland.astVisual.AstVertex;
 import java.util.Iterator;
 import java.util.Set;
 import org.jgrapht.graph.DefaultDirectedGraph;
@@ -174,5 +179,26 @@ public class GraphContainerTest {
 			assertTrue(0 < t.getDetected());
 			assertTrue(0 < t.getFinished());
 		}
+	}
+	
+	@Test
+	public void testToGraphviz()
+	{
+		GraphContainer<NameDistinctVertex> gc = new GraphContainer<NameDistinctVertex>();
+		NameDistinctVertex root = new NameDistinctVertex("root");
+		NameDistinctVertex a = new NameDistinctVertex("a");
+		NameDistinctVertex b = new NameDistinctVertex("b");
+		NameDistinctVertex c = new NameDistinctVertex("c");
+		NameDistinctVertex d = new NameDistinctVertex("d");
+
+		gc.addRoot(root);
+		gc.addDepend(root, a);
+		gc.addDepend(root, b);
+		gc.addDepend(a, b);
+		gc.addDepend(b, d);
+		gc.performDFS();
+		System.out.println("==================================");
+		System.out.print(gc.toGraphviz());
+		System.out.println("==================================");
 	}
 }

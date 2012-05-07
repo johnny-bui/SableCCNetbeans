@@ -1,4 +1,4 @@
-package de.htwsaarland.mathcoach.astVisual;
+package de.htwsaarland.astVisual;
 
 /**
  *
@@ -42,4 +42,9 @@ public class AstEdge {
 		return "(" + source.getName()+ " -> " + target.getName() + "):" + c;
 	}
 	
+	public String toGraphiz()
+	{
+		return source.toGraphviz() + " -> " + target.toGraphviz()
+			+"[" + EdgeClass.mapToStyle(c) + "]";
+	}
 }

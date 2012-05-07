@@ -1,4 +1,4 @@
-package de.htwsaarland.mathcoach.astVisual;
+package de.htwsaarland.astVisual;
 
 import java.util.Iterator;
 import java.util.Set;
@@ -12,12 +12,16 @@ import org.jgrapht.traverse.DepthFirstIterator;
  * @version 05.05.2012
  * a -> a is not allow
  */
+
 public class GraphContainer<V extends AstVertex> 
 {
 	ListenableDirectedGraph<V, AstEdge> lgraph;
 	DefaultDirectedGraph<V, AstEdge> dgraph;
 	V root;
 	
+	/**
+	 * 
+	 */
 	public GraphContainer()
 	{
 		dgraph = new DefaultDirectedGraph<V, AstEdge>
@@ -83,14 +87,12 @@ public class GraphContainer<V extends AstVertex>
 					&& d_u < f_u
 					&& f_u < f_v)
 			{
-				//TODO set e to B
 				e.setEdgeClass(EdgeClass.B);
 			}else if(  d_v < f_v
 					&& f_v < d_u
 					&& d_u < f_u
 					)
 			{
-				//TODO set e to C
 				e.setEdgeClass(EdgeClass.C);
 			}
 			
@@ -99,7 +101,24 @@ public class GraphContainer<V extends AstVertex>
 
 	public String toGraphviz()
 	{
-		return "";
+		StringBuilder graphvizCode = new StringBuilder();
+		Set <AstEdge> e = dgraph.edgeSet();
+		Iterator <AstEdge> i = e.iterator();
+		graphvizCode.append("digraph ast{\n");
+		while (i.hasNext())
+		{
+			AstEdge ae = i.next();
+			graphvizCode.append("\t");
+			/*
+			graphvizCode.append(ae.getSource().toString());
+			graphvizCode.append(" -> ");
+			graphvizCode.append(ae.getTarget().toString());
+			*/ 
+			graphvizCode.append(ae.toGraphiz());
+			graphvizCode.append(";\n");
+		}
+		graphvizCode.append("}\n");
+		return graphvizCode.toString();
 	}
 
 	public DefaultDirectedGraph<V, AstEdge> getDgraph()

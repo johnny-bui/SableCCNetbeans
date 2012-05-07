@@ -1,4 +1,4 @@
-package de.htwsaarland.mathcoach.astVisual;
+package de.htwsaarland.astVisual;
 
 /**
  *

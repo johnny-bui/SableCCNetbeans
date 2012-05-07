@@ -1,4 +1,4 @@
-package de.htwsaarland.mathcoach.astVisual;
+package de.htwsaarland.astVisual;
 
 /**
  *
@@ -25,4 +25,5 @@ public interface AstVertex
 	public void setHeight(double height);
 	public double getWidth();
 	public double getHeight();
+	public String toGraphviz();
 }

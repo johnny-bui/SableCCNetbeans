@@ -2,8 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.htwsaarland.mathcoach.astVisual;
+package de.htwsaarland.astVisual;
 
+import de.htwsaarland.astVisual.DefaultAstVertex;
+import de.htwsaarland.astVisual.AstEdgeFactory;
+import de.htwsaarland.astVisual.AstEdge;
 import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
