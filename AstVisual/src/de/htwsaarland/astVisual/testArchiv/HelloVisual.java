@@ -1,5 +1,7 @@
-package de.htwsaarland.astVisual;
+package de.htwsaarland.astVisual.testArchiv;
 
+import de.htwsaarland.astVisual.AstEdge;
+import de.htwsaarland.astVisual.NameDistinctVertex;
 import java.awt.Color;
 import java.util.Collection;
 import javax.swing.JComponent;
@@ -83,12 +85,16 @@ public class HelloVisual {
 		NameDistinctVertex v4 = new NameDistinctVertex("v2");
 		gs.addNode(v1);
 		gs.addNode(v2);
-	//assertThat("Vorbedingung: Elemente vor dem Start des Bouncer falsch", 
-	//	gs.addNode(v3), is(false));	
 		
 		try{
-			gs.addNode(v3);
-			gs.addNode(v4);
+			if (!gs.isNode(v3))
+			{
+				gs.addNode(v3);
+			}
+			if (!gs.isNode(v4))
+			{
+				gs.addNode(v4);
+			}
 		}catch(Error ex)
 		{
 			System.out.println("catched :P" + ex);
@@ -101,10 +107,18 @@ public class HelloVisual {
 		Collection<NameDistinctVertex> c = gs.getNodes();
 		System.out.println(c.size());
 
-
-		GraphScene<String,String> dgs = new  DummyGraphScene();
-		dgs.addNode("a1");
-		dgs.addNode("a1");
-
+		Scene scene = gs.getScene();
+		scene.setLayout(LayoutFactory.createVerticalFlowLayout());
+		JComponent sceneView = scene.createView ();
+		
+		JScrollPane panel = new JScrollPane (sceneView);
+		JFrame frame = new JFrame("HelloWorldSwing");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(800, 600);
+		frame.getContentPane().setSize(800, 600);
+		frame.getContentPane().add(panel);
+		//Display the window.
+        //frame.pack();
+        frame.setVisible(true);
 	}
 }

@@ -34,6 +34,10 @@ public class GraphContainer<V extends AstVertex>
 		this.dgraph.addVertex(root);
 	}
 
+	public V getRoot()
+	{
+		return root;
+	}
 	
 	public void addDepend(V parent, V child)
 	{
