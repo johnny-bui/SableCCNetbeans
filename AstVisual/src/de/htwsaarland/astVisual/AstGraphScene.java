@@ -15,28 +15,27 @@ import org.netbeans.api.visual.widget.general.IconNodeWidget;
  * @author phucluoi
  * @version May 7, 2012
  */
-public class AstGraphScene<V extends AstVertex,E extends AstEdge<V>>
-	extends GraphScene<V,E>
+public class AstGraphScene<V extends AstVertex,E>
+	extends GraphScene <V,AstEdge<AstVertex>>
 {
-
 	private Widget mainLayer;
     private Widget connectionLayer;
 
     private WidgetAction moveAction = ActionFactory.createMoveAction ();
-
-	public AstGraphScene() 
+	
+	public AstGraphScene()
 	{
-        mainLayer = new Widget (this);
+		mainLayer = new Widget (this);
         addChild (mainLayer);
         connectionLayer = new Widget (this);
         addChild (connectionLayer);
-    }
+	}
+
 	
 	@Override
-	protected Widget attachNodeWidget(V n) 
-	{	//TODO: improve this
+	protected Widget attachNodeWidget(V node) {
 		IconNodeWidget widget = new IconNodeWidget (this);
-        widget.setLabel ("Node: " + n.getName());
+        widget.setLabel ("Node: " + node.getName());
 
         WidgetAction.Chain actions = widget.getActions ();
         actions.addAction (createObjectHoverAction ());
@@ -44,13 +43,12 @@ public class AstGraphScene<V extends AstVertex,E extends AstEdge<V>>
         actions.addAction (moveAction);
 
         mainLayer.addChild (widget);
-        return widget; 
+        return widget;
 		//throw new UnsupportedOperationException("Not supported yet.");
 	}
 
 	@Override
-	protected Widget attachEdgeWidget(E e) 
-	{	// TODO: use information in e to set style of edge (widget)
+	protected Widget attachEdgeWidget(AstEdge<AstVertex> edge) {
 		ConnectionWidget widget = new ConnectionWidget (this);
         widget.setTargetAnchorShape (AnchorShape.TRIANGLE_FILLED);
 
@@ -60,28 +58,26 @@ public class AstGraphScene<V extends AstVertex,E extends AstEdge<V>>
 
         connectionLayer.addChild (widget);
         return widget;
-		//throw new UnsupportedOperationException("Not supported yet.");
 	}
 
 	@Override
 	protected void attachEdgeSourceAnchor(
-			AstEdge edge, AstVertex oldSourceNode, AstVertex sourceNode)
+			AstEdge<AstVertex> edge, V oldSource, V source) 
 	{
 		ConnectionWidget edgeWidget = (ConnectionWidget) findWidget (edge);
-        Widget sourceNodeWidget = findWidget (sourceNode);
+        Widget sourceNodeWidget = findWidget (source);
         Anchor sourceAnchor = AnchorFactory.createRectangularAnchor (sourceNodeWidget);
         edgeWidget.setSourceAnchor (sourceAnchor);
-		//throw new UnsupportedOperationException("Not supported yet.");
 	}
 
 	@Override
 	protected void attachEdgeTargetAnchor(
-			AstEdge edge, AstVertex oldTargetNode, AstVertex targetNode)
-	{	
+			AstEdge<AstVertex> edge, V oldTargetNode, V targetNode)
+	{
 		ConnectionWidget edgeWidget = (ConnectionWidget) findWidget (edge);
         Widget targetNodeWidget = findWidget (targetNode);
         Anchor targetAnchor = AnchorFactory.createRectangularAnchor (targetNodeWidget);
         edgeWidget.setTargetAnchor (targetAnchor);
 	}
-
 }
+

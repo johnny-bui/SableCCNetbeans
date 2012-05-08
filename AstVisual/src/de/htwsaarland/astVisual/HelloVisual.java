@@ -1,9 +1,11 @@
 package de.htwsaarland.astVisual;
 
 import java.awt.Color;
+import java.util.Collection;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
+import org.netbeans.api.visual.graph.GraphScene;
 import org.netbeans.api.visual.layout.LayoutFactory;
 import org.netbeans.api.visual.widget.ImageWidget;
 import org.netbeans.api.visual.widget.LabelWidget;
@@ -20,6 +22,7 @@ import org.openide.util.ImageUtilities;
 public class HelloVisual {
 	public static void main(String[] arg)
 	{
+		/*
 		Scene scene = new Scene ();
 		scene.setLayout(LayoutFactory.createHorizontalFlowLayout());
 		JComponent sceneView = scene.createView ();
@@ -60,15 +63,7 @@ public class HelloVisual {
 		scene.addChild (home);
 		
 		
-		/*
-		JDialog dia = new JDialog (new JDialog (), true);
-		dia.add (panel, BorderLayout.CENTER);
-		dia.setSize (800, 600);
-		dia.setVisible (true);
-		dia.dispose ();
-		// verdammt wichtig
-		dia.setDefaultCloseOperation(JDialog.EXIT_ON_CLOSE);
-		*/ 
+		
 		JFrame frame = new JFrame("HelloWorldSwing");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800, 600);
@@ -77,5 +72,39 @@ public class HelloVisual {
 		//Display the window.
         //frame.pack();
         frame.setVisible(true);
+		*/
+		
+		AstGraphScene<NameDistinctVertex,AstEdge<NameDistinctVertex>> gs = 
+				new AstGraphScene<NameDistinctVertex, AstEdge<NameDistinctVertex>>() ;
+		
+		NameDistinctVertex v1 = new NameDistinctVertex("v1");
+		NameDistinctVertex v2 = new NameDistinctVertex("v2");
+		NameDistinctVertex v3 = new NameDistinctVertex("v1");
+		NameDistinctVertex v4 = new NameDistinctVertex("v2");
+		gs.addNode(v1);
+		gs.addNode(v2);
+	//assertThat("Vorbedingung: Elemente vor dem Start des Bouncer falsch", 
+	//	gs.addNode(v3), is(false));	
+		
+		try{
+			gs.addNode(v3);
+			gs.addNode(v4);
+		}catch(Error ex)
+		{
+			System.out.println("catched :P" + ex);
+			throw  new RuntimeException(ex.toString());
+		}finally
+		{
+			
+		}
+		
+		Collection<NameDistinctVertex> c = gs.getNodes();
+		System.out.println(c.size());
+
+
+		GraphScene<String,String> dgs = new  DummyGraphScene();
+		dgs.addNode("a1");
+		dgs.addNode("a1");
+
 	}
 }
