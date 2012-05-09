@@ -2,5 +2,5 @@ Manifest-Version: 1.0
 OpenIDE-Module: org.sableccsupport
 OpenIDE-Module-Layer: org/sableccsupport/layer.xml
 OpenIDE-Module-Localizing-Bundle: org/sableccsupport/Bundle.properties
-OpenIDE-Module-Specification-Version: 1.0
+OpenIDE-Module-Specification-Version: 1.0.1
 
