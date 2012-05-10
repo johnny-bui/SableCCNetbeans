@@ -22,7 +22,8 @@ displayName = "#CTL_ConstructDepGraph")
 @ActionReferences({
 	@ActionReference(path = "Menu/RunProject", position = 433, separatorBefore = 349, separatorAfter = 516),
 	@ActionReference(path = "Toolbars/Debug", position = 1050),
-	@ActionReference(path = "Loaders/text/x-sablecc/Actions", position = 175)
+	@ActionReference(path = "Loaders/text/x-sablecc/Actions", position = 175),
+	@ActionReference(path = "Editors/text/x-sablecc/Popup", position = 5200,separatorAfter=5250)
 })
 @Messages("CTL_ConstructDepGraph=Construct Dependent Graph")
 public final class ConstructDepGraph implements ActionListener {

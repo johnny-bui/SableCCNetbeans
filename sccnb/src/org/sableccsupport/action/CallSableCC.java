@@ -20,7 +20,8 @@ id = "org.sableccsupport.action.CallSableCC")
 displayName = "#CTL_CallSableCC")
 @ActionReferences({
 	@ActionReference(path = "Menu/BuildProject", position = 247),
-	@ActionReference(path = "Loaders/text/x-sablecc/Actions", position = 150)
+	@ActionReference(path = "Loaders/text/x-sablecc/Actions", position = 150),
+	@ActionReference(path = "Editors/text/x-sablecc/Popup", position = 5000, separatorBefore=4900)
 })
 @Messages("CTL_CallSableCC=Call SableCC")
 public final class CallSableCC implements ActionListener 

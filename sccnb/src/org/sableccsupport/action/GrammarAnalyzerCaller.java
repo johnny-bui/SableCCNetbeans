@@ -51,8 +51,31 @@ class AnalyzerHelper extends Thread
 							new FileReader(filename)
 							)));
 			Start tree = p.parse();
-			tree.apply(new GrammarAnalyzer());
-			msg = "================= create graph success  =================" ;
+			//tree.apply(new TokenRegister());
+			GrammarAnalyzer analyzer = new GrammarAnalyzer();
+			tree.apply(analyzer);
+			msg = "================= summary  =================" ;
+			System.out.println(msg);
+			int productionError = analyzer.getError();
+			int tokenError = analyzer.getTokenRegister().getError();
+			
+			if (productionError == 0)
+			{
+				System.out.println("No (ast) production error found");
+			}else
+			{
+				System.out.println("Found " + productionError + " production error(s).");
+			}
+
+			if (tokenError == 0)
+			{
+				System.out.println("no token error found");
+			}else
+			{
+				System.out.println("Found " + tokenError + " token error(s).");
+			}
+			
+			msg = "================= end of diagnosis  =================" ;
 			System.out.println (msg);
 		} catch (Exception ex) {
 			//Exceptions.printStackTrace(ex);
