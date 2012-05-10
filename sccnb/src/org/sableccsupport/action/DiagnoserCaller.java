@@ -4,10 +4,13 @@ import com.dreamer.outputhandler.OutputHandler;
 import java.awt.Color;
 import java.io.*;
 import org.sablecc.sablecc.EmbeddedSableCC;
-import org.sablecc.sablecc.GrammarAnalyzer;
+import org.sablecc.sablecc.GrammarDiagnoser;
 import org.sablecc.sablecc.lexer.Lexer;
 import org.sablecc.sablecc.node.Start;
 import org.sablecc.sablecc.parser.Parser;
+
+
+
 
 
 
@@ -16,7 +19,7 @@ import org.sablecc.sablecc.parser.Parser;
  *
  * @author hbui
  */
-public class GrammarAnalyzerCaller 
+public class DiagnoserCaller 
 {
 	public static void callAnalyzer(String filename)
 	{
@@ -25,9 +28,6 @@ public class GrammarAnalyzerCaller
 		h.start();
 	}
 }
-
-
-
 class AnalyzerHelper extends Thread
 {
 	private String filename;
@@ -52,7 +52,7 @@ class AnalyzerHelper extends Thread
 							)));
 			Start tree = p.parse();
 			//tree.apply(new TokenRegister());
-			GrammarAnalyzer analyzer = new GrammarAnalyzer();
+			GrammarDiagnoser analyzer = new GrammarDiagnoser();
 			tree.apply(analyzer);
 			msg = "================= summary  =================" ;
 			System.out.println(msg);
@@ -69,7 +69,7 @@ class AnalyzerHelper extends Thread
 
 			if (tokenError == 0)
 			{
-				System.out.println("no token error found");
+				System.out.println("No token error found");
 			}else
 			{
 				System.out.println("Found " + tokenError + " token error(s).");

@@ -8,7 +8,7 @@ import org.sablecc.sablecc.node.*;
  *
  * @author hbui
  */
-public class GrammarAnalyzer extends DepthFirstAdapter
+public class GrammarDiagnoser extends DepthFirstAdapter
 {
 
 	int depth = 0;

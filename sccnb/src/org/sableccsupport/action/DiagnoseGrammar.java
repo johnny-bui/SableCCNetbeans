@@ -16,21 +16,21 @@ import org.openide.util.NbBundle.Messages;
 import org.sableccsupport.SCCDataObject;
 
 @ActionID(category = "Debug",
-id = "org.sableccsupport.action.ConstructDepGraph")
+id = "org.sableccsupport.action.DiagnoseGrammar")
 @ActionRegistration(iconBase = "org/sableccsupport/img/depGraph.png",
-displayName = "#CTL_ConstructDepGraph")
+displayName = "#CTL_DiagnoseGrammar")
 @ActionReferences({
 	@ActionReference(path = "Menu/RunProject", position = 433, separatorBefore = 349, separatorAfter = 516),
 	@ActionReference(path = "Toolbars/Debug", position = 1050),
 	@ActionReference(path = "Loaders/text/x-sablecc/Actions", position = 175),
 	@ActionReference(path = "Editors/text/x-sablecc/Popup", position = 5200,separatorAfter=5250)
 })
-@Messages("CTL_ConstructDepGraph=Construct Dependent Graph")
-public final class ConstructDepGraph implements ActionListener {
+@Messages("CTL_DiagnoseGrammar=Diagnose Grammar")
+public final class DiagnoseGrammar implements ActionListener {
 
 	SCCDataObject context;
 
-	public ConstructDepGraph (SCCDataObject context) {
+	public DiagnoseGrammar (SCCDataObject context) {
 		this.context = context;
 	}
 
@@ -39,6 +39,6 @@ public final class ConstructDepGraph implements ActionListener {
 	{
 		FileObject f = context.getPrimaryFile();
 		String displayName = FileUtil.getFileDisplayName(f);
-		GrammarAnalyzerCaller.callAnalyzer(displayName);
+		DiagnoserCaller.callAnalyzer(displayName);
 	}
 }
