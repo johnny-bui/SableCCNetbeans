@@ -15,7 +15,7 @@ public class GrammarAnalyzer extends DepthFirstAdapter
 	private String productName;
 	//private boolean elementIdIsProd = true;
 		
-	private IdSpec idSpec = IdSpec.UN_SPEC;/*{0:unspecified, 1:token, 2:production}*/
+	private IdSpec idSpec = IdSpec.UN_SPEC;
 	
 	private HashMap<String,TId> tokenTable;
 	private HashMap<String,TId> productTable;
