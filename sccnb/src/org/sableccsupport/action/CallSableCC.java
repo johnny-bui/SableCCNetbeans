@@ -16,8 +16,10 @@ import org.sableccsupport.SCCDataObject;
 
 @ActionID(category = "Build",
 id = "org.sableccsupport.action.CallSableCC")
-@ActionRegistration(displayName = "#CTL_CallSableCC")
+@ActionRegistration(iconBase = "org/sableccsupport/img/sableccBuild.png",
+displayName = "#CTL_CallSableCC")
 @ActionReferences({
+	@ActionReference(path = "Menu/BuildProject", position = 247),
 	@ActionReference(path = "Loaders/text/x-sablecc/Actions", position = 150)
 })
 @Messages("CTL_CallSableCC=Call SableCC")
