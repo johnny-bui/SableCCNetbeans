@@ -20,7 +20,7 @@ id = "org.sableccsupport.action.CallSableCC")
 @ActionReferences({
 	@ActionReference(path = "Loaders/text/x-sablecc/Actions", position = 150)
 })
-@Messages("CTL_CallSableCC=Call SableCC")
+@Messages("CTL_CallSableCC=CallSableCC")
 public final class CallSableCC implements ActionListener 
 {
 
