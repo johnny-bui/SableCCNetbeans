@@ -1,11 +1,11 @@
-package de.htwsaarland.astVisual;
+package de.htwsaarland.astVisual.graphRepresent;
 
 /**
  * @author Hong Phuc Bui
  * @version  06.05.2012
  */
 
-class DefaultAstVertex implements AstVertex
+public class DefaultAstVertex implements AstVertex
 {
 	int d; 
 	int f;

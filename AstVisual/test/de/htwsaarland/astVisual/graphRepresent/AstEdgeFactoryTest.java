@@ -1,16 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package de.htwsaarland.astVisual;
+package de.htwsaarland.astVisual.graphRepresent;
 
-import de.htwsaarland.astVisual.DefaultAstVertex;
-import de.htwsaarland.astVisual.AstEdgeFactory;
-import de.htwsaarland.astVisual.AstEdge;
 import org.junit.AfterClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  *

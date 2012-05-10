@@ -1,4 +1,4 @@
-package de.htwsaarland.astVisual;
+package de.htwsaarland.astVisual.graphRepresent;
 
 import java.util.Iterator;
 import java.util.Set;
@@ -7,10 +7,9 @@ import org.jgrapht.graph.ListenableDirectedGraph;
 import org.jgrapht.traverse.DepthFirstIterator;
 
 /**
- *
+ * <code>a -> b<code>, which <code>a.equals(b) == true</code>, is not allow.
  * @author phucluoi
  * @version 05.05.2012
- * a -> a is not allow
  */
 
 public class GraphContainer<V extends AstVertex> 

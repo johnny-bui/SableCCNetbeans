@@ -1,4 +1,4 @@
-package de.htwsaarland.astVisual;
+package de.htwsaarland.astVisual.graphVisual;
 
 import org.netbeans.api.visual.action.ActionFactory;
 import org.netbeans.api.visual.action.WidgetAction;

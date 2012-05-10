@@ -1,4 +1,4 @@
-package de.htwsaarland.astVisual;
+package de.htwsaarland.astVisual.graphRepresent;
 
 import java.io.Serializable;
 import org.jgrapht.EdgeFactory;

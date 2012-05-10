@@ -40,7 +40,7 @@ public class HalloGraph
 		JComponent sceneView = scene.createView ();
 		
 		JScrollPane panel = new JScrollPane (sceneView);
-		JFrame frame = new JFrame("HelloWorldSwing");
+		JFrame frame = new JFrame("Hello Graph");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800, 600);
 		frame.getContentPane().setSize(800, 600);

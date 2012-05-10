@@ -1,8 +1,9 @@
 package de.htwsaarland.astVisual.testArchiv;
 
-import de.htwsaarland.astVisual.AstEdge;
-import de.htwsaarland.astVisual.GraphContainer;
-import de.htwsaarland.astVisual.NameDistinctVertex;
+import de.htwsaarland.astVisual.graphVisual.AstGraphScene;
+import de.htwsaarland.astVisual.graphRepresent.AstEdge;
+import de.htwsaarland.astVisual.graphRepresent.GraphContainer;
+import de.htwsaarland.astVisual.graphRepresent.NameDistinctVertex;
 import java.util.Iterator;
 import java.util.Set;
 import javax.swing.JComponent;
@@ -28,7 +29,7 @@ public class HelloAst
 		GraphContainer<NameDistinctVertex> 
 				gc = new GraphContainer<NameDistinctVertex>();
 		NameDistinctVertex root = new NameDistinctVertex("root");
-		NameDistinctVertex a1 = new NameDistinctVertex("a1");
+		NameDistinctVertex a1 = new NameDistinctVertex("a11111111111111111");
 		NameDistinctVertex a2 = new NameDistinctVertex("a2");
 		NameDistinctVertex a3 = new NameDistinctVertex("a3");
 		
@@ -37,6 +38,7 @@ public class HelloAst
 		gc.addDepend(root, a2);
 		gc.addDepend(a1, a3);	
 		gc.addDepend(a1, a2);
+		gc.addDepend(a2, a1);
 
 		AstGraphScene<NameDistinctVertex,AstEdge<NameDistinctVertex>>
 				ags = new AstGraphScene<NameDistinctVertex, AstEdge<NameDistinctVertex>>();
@@ -78,7 +80,7 @@ public class HelloAst
 		JComponent sceneView = scene.createView ();
 		
 		JScrollPane panel = new JScrollPane (sceneView);
-		JFrame frame = new JFrame("HelloWorldSwing");
+		JFrame frame = new JFrame("Hello Ast");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800, 600);
 		frame.getContentPane().setSize(800, 600);

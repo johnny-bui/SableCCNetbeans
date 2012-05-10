@@ -1,10 +1,10 @@
-package de.htwsaarland.astVisual;
+package de.htwsaarland.astVisual.graphRepresent;
 
-import de.htwsaarland.astVisual.DefaultAstVertex;
-import de.htwsaarland.astVisual.NameDistinctVertex;
-import de.htwsaarland.astVisual.GraphContainer;
-import de.htwsaarland.astVisual.AstEdge;
-import de.htwsaarland.astVisual.AstVertex;
+import de.htwsaarland.astVisual.graphRepresent.DefaultAstVertex;
+import de.htwsaarland.astVisual.graphRepresent.NameDistinctVertex;
+import de.htwsaarland.astVisual.graphRepresent.GraphContainer;
+import de.htwsaarland.astVisual.graphRepresent.AstEdge;
+import de.htwsaarland.astVisual.graphRepresent.AstVertex;
 import java.util.Iterator;
 import java.util.Set;
 import org.jgrapht.graph.DefaultDirectedGraph;

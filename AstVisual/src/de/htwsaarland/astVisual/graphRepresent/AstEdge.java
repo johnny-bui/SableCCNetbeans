@@ -1,4 +1,4 @@
-package de.htwsaarland.astVisual;
+package de.htwsaarland.astVisual.graphRepresent;
 
 /**
  *
@@ -49,3 +49,5 @@ public class AstEdge<V extends AstVertex>
 			+"[" + EdgeClass.mapToStyle(c) + "]";
 	}
 }
+
+

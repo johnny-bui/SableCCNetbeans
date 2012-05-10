@@ -1,20 +1,14 @@
 package de.htwsaarland.astVisual.testArchiv;
 
-import de.htwsaarland.astVisual.AstEdge;
-import de.htwsaarland.astVisual.NameDistinctVertex;
-import java.awt.Color;
+import de.htwsaarland.astVisual.graphRepresent.AstEdge;
+import de.htwsaarland.astVisual.graphRepresent.NameDistinctVertex;
+import de.htwsaarland.astVisual.graphVisual.AstGraphScene;
 import java.util.Collection;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
-import org.netbeans.api.visual.graph.GraphScene;
 import org.netbeans.api.visual.layout.LayoutFactory;
-import org.netbeans.api.visual.widget.ImageWidget;
-import org.netbeans.api.visual.widget.LabelWidget;
 import org.netbeans.api.visual.widget.Scene;
-import org.netbeans.api.visual.widget.Widget;
-import org.netbeans.modules.visual.border.RoundedBorder;
-import org.openide.util.ImageUtilities;
 
 /**
  *

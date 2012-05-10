@@ -2,13 +2,18 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.htwsaarland.astVisual;
+package de.htwsaarland.astVisual.graphRepresent;
 
+import de.htwsaarland.astVisual.graphVisual.DummyGraphScene;
+import de.htwsaarland.astVisual.graphRepresent.NameDistinctVertex;
+import de.htwsaarland.astVisual.graphRepresent.DefaultAstVertex;
+import de.htwsaarland.astVisual.graphRepresent.AstEdge;
+import de.htwsaarland.astVisual.graphVisual.AstGraphScene;
 import java.util.Collection;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.*;
-import static org.junit.Assert.*;
 import org.netbeans.api.visual.graph.GraphScene;
-import org.netbeans.api.visual.widget.Widget;
 
 /**
  *
