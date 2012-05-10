@@ -4,7 +4,9 @@ import com.dreamer.outputhandler.OutputHandler;
 import java.awt.Color;
 import java.io.*;
 import org.sablecc.sablecc.EmbeddedSableCC;
-import org.sablecc.sablecc.GrammarDiagnoser;
+import org.sablecc.sablecc.AstDiagnoser;
+import org.sablecc.sablecc.ConDiagnoser;
+import org.sablecc.sablecc.TokenRegister;
 import org.sablecc.sablecc.lexer.Lexer;
 import org.sablecc.sablecc.node.Start;
 import org.sablecc.sablecc.parser.Parser;
@@ -51,22 +53,21 @@ class AnalyzerHelper extends Thread
 							new FileReader(filename)
 							)));
 			Start tree = p.parse();
-			//tree.apply(new TokenRegister());
-			GrammarDiagnoser analyzer = new GrammarDiagnoser();
-			tree.apply(analyzer);
+			TokenRegister tokenReg = new TokenRegister();
+			tree.apply(tokenReg);
+			
+			ConDiagnoser conDiagnoser = new ConDiagnoser(tokenReg); 
+			tree.apply(conDiagnoser);
+			
+			AstDiagnoser astDiagnoser = new AstDiagnoser(tokenReg);
+			tree.apply(astDiagnoser);
+
+			
 			msg = "================= summary  =================" ;
 			System.out.println(msg);
-			int productionError = analyzer.getError();
-			int tokenError = analyzer.getTokenRegister().getError();
 			
-			if (productionError == 0)
-			{
-				System.out.println("No (ast) production error found");
-			}else
-			{
-				System.out.println("Found " + productionError + " production error(s).");
-			}
-
+			/* Token duplication, ect */
+			int tokenError = tokenReg.getError();
 			if (tokenError == 0)
 			{
 				System.out.println("No token error found");
@@ -74,6 +75,27 @@ class AnalyzerHelper extends Thread
 			{
 				System.out.println("Found " + tokenError + " token error(s).");
 			}
+			
+			/* con proble, ect */
+			int conProductionError = conDiagnoser.getError();
+			if (conProductionError == 0)
+			{
+				System.out.println("No (con) production error found");
+			}else
+			{
+				System.out.println("Found " + conProductionError + " (con) production error(s).");
+			}
+
+			/*ast problem, ect*/
+			int productionError = astDiagnoser.getError();
+			if (productionError == 0)
+			{
+				System.out.println("No (ast) production error found");
+			}else
+			{
+				System.out.println("Found " + productionError + " (ast) production error(s).");
+			}
+
 			
 			msg = "================= end of diagnosis  =================" ;
 			System.out.println (msg);
