@@ -2,25 +2,25 @@ package org.sableccsupport.action;
 
 import com.dreamer.outputhandler.OutputHandler;
 import java.awt.Color;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import org.openide.util.Exceptions;
+import java.io.*;
 import org.sablecc.sablecc.EmbeddedSableCC;
-import org.sablecc.sablecc.SableCC;
+import org.sablecc.sablecc.GrammarAnalyzer;
+import org.sablecc.sablecc.lexer.Lexer;
+import org.sablecc.sablecc.node.Start;
+import org.sablecc.sablecc.parser.Parser;
+
+
+
 
 /**
  *
- * @author phucluoi
+ * @author hbui
  */
-public class SableCCCaller 
+public class GrammarAnalyzerCaller 
 {
-	static PrintStream orgOutStream 	= null;
-	static PrintStream orgErrStream 	= null;
-	
-	public static void callSableCC(String filename)
+	public static void callAnalyzer(String filename)
 	{
-		SableCCHelper h = new SableCCHelper();
+		AnalyzerHelper h = new AnalyzerHelper();
 		h.setup(filename);
 		h.start();
 	}
@@ -28,7 +28,7 @@ public class SableCCCaller
 
 
 
-class SableCCHelper extends Thread
+class AnalyzerHelper extends Thread
 {
 	private String filename;
 	static PrintStream orgOutStream 	= null;
@@ -43,10 +43,16 @@ class SableCCHelper extends Thread
 	public void run() {
 		try {
 			redirectSystemStreams();
-			String msg = "+++++++++++++++++" + filename + "+++++++++++++";
+			String msg = "-----------------" + filename + "-------------";
 			System.out.println (msg);
-			SableCC.processGrammar(filename,null);
-			msg = "================= build success  =================" ;
+			Parser p = new Parser(
+					new Lexer(
+						new PushbackReader(
+							new FileReader(filename)
+							)));
+			Start tree = p.parse();
+			tree.apply(new GrammarAnalyzer());
+			msg = "================= create graph success  =================" ;
 			System.out.println (msg);
 		} catch (Exception ex) {
 			//Exceptions.printStackTrace(ex);
@@ -114,3 +120,4 @@ class SableCCHelper extends Thread
 		System.setOut(orgOutStream);
 	}
 }
+

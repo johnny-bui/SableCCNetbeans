@@ -14,7 +14,7 @@ import org.sableccsupport.SCCDataObject;
 
 @ActionID(category = "Build",
 id = "org.sableccsupport.action.CallSableCCButton")
-@ActionRegistration(iconBase = "org/sableccsupport/sableccBuild.png",
+@ActionRegistration(iconBase = "org/sableccsupport/img/sableccBuild.png",
 displayName = "#CTL_CallSableCCButton")
 @ActionReferences({
 	@ActionReference(path = "Menu/BuildProject", position = 247)

@@ -182,10 +182,6 @@
                 <binary-origin>release/modules/ext/smack-3.2.1.jar</binary-origin>
             </class-path-extension>
             <class-path-extension>
-                <runtime-relative-path>ext/sablecc-anttask.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/sablecc-anttask.jar</binary-origin>
-            </class-path-extension>
-            <class-path-extension>
                 <runtime-relative-path>ext/com-dreamer-outputhandler.jar</runtime-relative-path>
                 <binary-origin>release/modules/ext/com-dreamer-outputhandler.jar</binary-origin>
             </class-path-extension>

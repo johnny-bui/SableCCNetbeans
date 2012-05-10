@@ -100,7 +100,7 @@
                 </folder>
                 <folder name="Factories">
                     <file name="SCCDataLoader.instance">
-                        <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/org/sableccsupport/sccicon16.png"/>
+                        <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/org/sableccsupport/img/sccicon16.png"/>
                         <attr name="dataObjectClass" stringvalue="org.sableccsupport.SCCDataObject"/>
                         <attr name="instanceCreate" methodvalue="org.openide.loaders.DataLoaderPool.factory"/>
                         <attr name="mimeType" stringvalue="text/x-sablecc"/>
