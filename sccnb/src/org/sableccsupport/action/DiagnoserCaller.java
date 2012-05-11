@@ -3,6 +3,7 @@ package org.sableccsupport.action;
 import com.dreamer.outputhandler.OutputHandler;
 import java.awt.Color;
 import java.io.*;
+import org.openide.util.Exceptions;
 import org.sablecc.sablecc.EmbeddedSableCC;
 import org.sablecc.sablecc.AstDiagnoser;
 import org.sablecc.sablecc.ConDiagnoser;
@@ -100,8 +101,8 @@ class AnalyzerHelper extends Thread
 			msg = "================= end of diagnosis  =================" ;
 			System.out.println (msg);
 		} catch (Exception ex) {
-			//Exceptions.printStackTrace(ex);
-			System.err.println(ex.getMessage());
+			Exceptions.printStackTrace(ex);
+			//System.err.println(ex.getMessage());
 		}finally
 		{
 			setBackOutput();

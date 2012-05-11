@@ -24,15 +24,7 @@
                 <file name="org-sableccsupport-parser-SyntaxErrorsHighlightingTaskFactory.instance"/>
 				<file name="org-sableccsupport-parser-SCCIndentTaskFactory.instance"/>
 				-->
-				<!-- 
-				<file name="language.nbs" url="language.nbs"/>   
-					<folder name="Popup">   
-						<file name="org-sableccsupport-action-DiagnoseGrammar.shadow">   
-							<attr name="originalFile" stringvalue="Actions/Debug/org-sableccsupport-action-DiagnoseGrammar.instance"/>   
-							<attr name="position" intvalue="700"/>   
-						</file>   
-					</folder>   
-				-->
+				
 				
 				<!-- -->
             </folder>

@@ -28,9 +28,18 @@ public class TokenRegister  extends DepthFirstAdapter
 	@Override
 	public void caseAGrammar(AGrammar node) {
 		//super.caseAGrammar(node);
-		node.getTokens().apply(this);
-		node.getProductions().apply(this);
-		node.getAst().apply(this);
+		if (node.getTokens() != null)
+		{
+			node.getTokens().apply(this);
+		}
+		if (node.getProductions() != null )
+		{
+			node.getProductions().apply(this);
+		}
+		if (node.getAst() != null)
+		{
+			node.getAst().apply(this);
+		}
 	}
 
 	@Override
