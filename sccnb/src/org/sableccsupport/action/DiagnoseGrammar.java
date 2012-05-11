@@ -20,7 +20,7 @@ id = "org.sableccsupport.action.DiagnoseGrammar")
 @ActionRegistration(iconBase = "org/sableccsupport/img/diagnose.png",
 displayName = "#CTL_DiagnoseGrammar")
 @ActionReferences({
-	@ActionReference(path = "Menu/RunProject", position = 433, separatorBefore = 349, separatorAfter = 516),
+	@ActionReference(path = "Menu/RunProject", position = 430,  separatorAfter = 516),
 	@ActionReference(path = "Toolbars/Debug", position = 1050),
 	@ActionReference(path = "Loaders/text/x-sablecc/Actions", position = 175),
 	@ActionReference(path = "Editors/text/x-sablecc/Popup", position = 5200,separatorAfter=5250)
