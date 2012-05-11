@@ -12,20 +12,20 @@ public class AstDiagnoser extends DepthFirstAdapter
 {
 
 	int depth = 0;
-	private String productName;
+	protected String productName;
 	//private boolean elementIdIsProd = true;
 		
 	private IdSpec idSpec = IdSpec.UN_SPEC;
 	
 	private HashMap<String,TId> tokenTable;
-	private HashMap<String,TId> astProductTable;
+	protected  HashMap<String,TId> productionTable;
 	
 	private int errorCount;
 
 	public AstDiagnoser(final TokenRegister tokenReg)
 	{
 		tokenTable = tokenReg.getTokenTable();
-		astProductTable = tokenReg.getAstProductNameTable();
+		productionTable = tokenReg.getAstProductNameTable();
 	}
 	
 	@Override
@@ -56,15 +56,7 @@ public class AstDiagnoser extends DepthFirstAdapter
 	@Override
 	public void caseAAstProd(AAstProd node) 
 	{
-		//inAAstProd(node);
 		productName = node.getId().getText();
-		// TODO: make a production Node hier
-		/*
-		if(node.getId() != null)
-		{
-		  node.getId().apply(this);
-		}
-		*/
 		
 		{
 		  Object temp[] = node.getAlts().toArray();
@@ -87,7 +79,6 @@ public class AstDiagnoser extends DepthFirstAdapter
 			((PElem) temp[i]).apply(this);
 		  }
 		}
-		//outAAstAlt(node);
 	}
 
 	@Override
@@ -101,15 +92,17 @@ public class AstDiagnoser extends DepthFirstAdapter
       		node.getSpecifier().apply(this);
 			if (idSpec == IdSpec.TOKEN)
 			{
-				System.out.println(productName +  " -> " + "T." + elementId);
+				//TODO: make a edge Product(productName) -> Token (elementId)
+				//System.out.println(productName +  " -> " + "T." + elementId);
 			}else
 			{
-				System.out.println(productName +  " -> " + "P." + elementId);
+				//TODO: make a edge Product(productName) -> Product (elementId)
+				//System.out.println(productName +  " -> " + "P." + elementId);
 			}
 	    }else
 		{
 			TId token = tokenTable.get(elementId);
-			TId astProd = astProductTable.get(elementId);
+			TId astProd = productionTable.get(elementId);
 			if (token == null)
 			{
 				if (astProd == null)
@@ -122,15 +115,15 @@ public class AstDiagnoser extends DepthFirstAdapter
 							+ "it should be defined in AST section.");
 				}else
 				{
-					// No Token and Production found -> print a edge from production to produciton
-					System.out.println(productName +  " -> " + "P." + elementId);
+					//TODO: No Token and Production found -> print a edge from production to produciton
+					//System.out.println(productName +  " -> " + "P." + elementId);
 				}
 			}else
 			{
 				if (astProd == null)
 				{
-					// No Production and Token found -> print a edge from production to Token
-					System.out.println(productName +  " -> " + "T." + elementId);
+					// TODO: No Production and Token found -> print a edge from production to Token
+					// System.out.println(productName +  " -> " + "T." + elementId);
 				}else
 				{
 					// Found Token and Production -> print error
@@ -171,7 +164,7 @@ public class AstDiagnoser extends DepthFirstAdapter
 	}
 
 	
-	private String getNameOfNode(Node node)
+	protected String getNameOfNode(Node node)
 	{
 		String name = node.getClass().getName();
 		if (name.lastIndexOf('.') > 0) {
@@ -180,7 +173,7 @@ public class AstDiagnoser extends DepthFirstAdapter
 		return name;
 	}
 
-	private void errorHandling(String msg)
+	protected void errorHandling(String msg)
 	{
 		errorCount = errorCount +1;
 		System.err.print(msg);

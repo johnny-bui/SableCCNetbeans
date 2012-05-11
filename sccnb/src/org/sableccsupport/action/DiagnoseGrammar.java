@@ -17,7 +17,7 @@ import org.sableccsupport.SCCDataObject;
 
 @ActionID(category = "Debug",
 id = "org.sableccsupport.action.DiagnoseGrammar")
-@ActionRegistration(iconBase = "org/sableccsupport/img/depGraph.png",
+@ActionRegistration(iconBase = "org/sableccsupport/img/diagnose.png",
 displayName = "#CTL_DiagnoseGrammar")
 @ActionReferences({
 	@ActionReference(path = "Menu/RunProject", position = 433, separatorBefore = 349, separatorAfter = 516),
