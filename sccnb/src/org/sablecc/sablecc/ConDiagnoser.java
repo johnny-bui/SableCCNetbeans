@@ -8,54 +8,53 @@ import org.sablecc.sablecc.node.*;
  *
  * @author hbui
  */
-public class GrammarAnalyzer extends DepthFirstAdapter
+public class ConDiagnoser extends DepthFirstAdapter
 {
 
-	int depth = 0;
 	private String productName;
 	//private boolean elementIdIsProd = true;
 		
 	private IdSpec idSpec = IdSpec.UN_SPEC;
 	
 	private HashMap<String,TId> tokenTable;
-	private HashMap<String,TId> productTable;
-	private HashMap<String,TId> astProductTable;
+	private HashMap<String,TId> productionTable;
 	
-	private boolean isProcessingAst = false;
 	private int errorCount;
-	private TokenRegister tokenReg;
 
+	public ConDiagnoser(final TokenRegister tokenReg)
+	{
+		tokenTable = tokenReg.getTokenTable();
+		productionTable = tokenReg.getProductionNameTable();
+	}
+	
 	@Override
 	public void caseAGrammar(AGrammar node) 
 	{
 		//super.caseAGrammar(node);
-		tokenReg = new TokenRegister();
-		node.apply(tokenReg);
-		tokenTable = tokenReg.getTokenTable();
-		productTable = tokenReg.getProductionNameTable();
-		astProductTable = tokenReg.getAstProductNameTable();
 		
-		if(node.getAst() != null)
+		if (node.getProductions() != null)
 		{
-			node.getAst().apply(this);
+			node.getProductions().apply(this);
 		}
 		
 	}
 
+	/*
 	@Override
-	public void inAAst(AAst node) {
-		//super.inAAst(node);
-		this.isProcessingAst = true;
+	public void caseAProductions(AProductions node) {
+		//super.caseAProductions(node);
+		{
+			Object temp[] = node.getProds().toArray();
+			for(int i = 0; i < temp.length; i++)
+			{
+				((PProd) temp[i]).apply(this);
+			}
+		}
 	}
-
-	@Override
-	public void outAAst(AAst node) {
-		//super.outAAst(node);
-		this.isProcessingAst = false;
-	}
-
-		
+	*/
 	
+	
+	/*
 	@Override
 	public void caseAAst(AAst node) 
 	{
@@ -67,49 +66,37 @@ public class GrammarAnalyzer extends DepthFirstAdapter
 		}
 		outAAst(node);
 	}
+	*/
 
 	@Override
-	public void caseAAstProd(AAstProd node) 
+	public void caseAProd(AProd node) 
 	{
-		//inAAstProd(node);
 		productName = node.getId().getText();
-		// TODO: make a production Node hier
-		/*
-		if(node.getId() != null)
 		{
-		  node.getId().apply(this);
+			Object temp[] = node.getAlts().toArray();
+			for(int i = 0; i < temp.length; i++)
+			{
+				((PAlt) temp[i]).apply(this);
+			}
 		}
-		*/
-		
-		{
-		  Object temp[] = node.getAlts().toArray();
-		  for(int i = 0; i < temp.length; i++)
-		  {
-			((PAstAlt) temp[i]).apply(this);
-		  }
-		}
-		outAAstProd(node);
 	}
+	
+	
 
 	@Override
-	public void caseAAstAlt(AAstAlt node) 
-	{
-		//super.caseAAstAlt(node);
-		//inAAstAlt(node);
-		//if(node.getAltName() != null)
-		//{
-		//  node.getAltName().apply(this);
-		//}
+	public void caseAAlt(AAlt node) {
 		{
-		  Object temp[] = node.getElems().toArray();
-		  for(int i = 0; i < temp.length; i++)
-		  {
-			((PElem) temp[i]).apply(this);
-		  }
+			Object temp[] = node.getElems().toArray();
+			for(int i = 0; i < temp.length; i++)
+			{
+				((PElem) temp[i]).apply(this);
+			}
 		}
-		//outAAstAlt(node);
 	}
+	
 
+	
+		
 	@Override
 	public void caseAElem(AElem node) 
 	{
@@ -129,7 +116,7 @@ public class GrammarAnalyzer extends DepthFirstAdapter
 	    }else
 		{
 			TId token = tokenTable.get(elementId);
-			TId astProd = astProductTable.get(elementId);
+			TId astProd = productionTable.get(elementId);
 			if (token == null)
 			{
 				if (astProd == null)
@@ -137,7 +124,9 @@ public class GrammarAnalyzer extends DepthFirstAdapter
 					// No token and no production -> Error
 					errorHandling("["+id.getLine() +":" + id.getPos() + "] " 
 							+"Production >>" + id.getText() + "<< and token >>" 
-							+ id.getText() + "<< undefined. If it is a production, It should be defined in AST section");
+							+ id.getText() 
+							+ "<< undefined. If it is a production, "
+							+ "it should be defined in Productions section.");
 				}else
 				{
 					// No Token and Production found -> print a edge from production to produciton
@@ -153,7 +142,14 @@ public class GrammarAnalyzer extends DepthFirstAdapter
 				{
 					// Found Token and Production -> print error
 					errorHandling("[" + id.getLine() + ":" + id.getPos() + "] "
-							+ "Ambiguous production and token: >>" + id.getText() + "<< ["+token.getLine()+":"+token.getPos()+"]");
+							+ "Ambiguous production and token: >>" 
+							+ id.getText() 
+							+ "<<, production at ["
+							+ astProd.getLine() + ":" + astProd.getPos() 
+							+"], token at ["
+							+token.getLine()+":"+token.getPos()
+							+ "]"
+							);
 				}
 			}
 		}
@@ -198,12 +194,7 @@ public class GrammarAnalyzer extends DepthFirstAdapter
 	}
 
 	public int getError(){return errorCount;}
-
-	/*helper method to get error in highter layer*/
-	public TokenRegister getTokenRegister()
-	{
-		return tokenReg;
-	}
+	
 }
 
 
