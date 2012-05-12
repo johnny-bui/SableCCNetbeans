@@ -15,6 +15,9 @@
                     </folder>
                 </folder>
 				
+                <folder name="MultiView">
+                    <file name="org-sableccsupport-SCCVisualElement.instance_hidden"/>
+                </folder>
                 <file name="language.instance">
                     <attr name="instanceCreate" methodvalue="org.sableccsupport.lexer.SCCTokenId.getLanguage"/>
                     <attr name="instanceOf" stringvalue="org.netbeans.api.lexer.Language"/>

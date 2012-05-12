@@ -4,15 +4,12 @@
  */
 package org.sableccsupport.action;
 
-import java.awt.Window;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import org.openide.cookies.EditorCookie;
-
-import org.openide.awt.ActionRegistration;
+import java.awt.event.ActionListener;
+import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionReferences;
-import org.openide.awt.ActionID;
+import org.openide.awt.ActionRegistration;
 import org.openide.util.NbBundle.Messages;
 import org.openide.windows.TopComponent;
 import org.sableccsupport.SCCDataObject;
@@ -25,7 +22,7 @@ displayName = "#CTL_VisualizeGrammar")
 @ActionReferences({
 	@ActionReference(path = "Menu/RunProject", position = 433, separatorBefore = 349),
 	@ActionReference(path = "Toolbars/Debug", position = 1060),
-	@ActionReference(path = "Loaders/text/x-sablecc/Actions", position = 0),
+	@ActionReference(path = "Loaders/text/x-sablecc/Actions", position = 180),
 	@ActionReference(path = "Editors/text/x-sablecc/Popup", position = 5200,separatorAfter=5250)
 })
 @Messages("CTL_VisualizeGrammar=Visualize Grammar")
