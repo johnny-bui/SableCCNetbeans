@@ -25,8 +25,8 @@ displayName = "#CTL_VisualizeGrammar")
 @ActionReferences({
 	@ActionReference(path = "Menu/RunProject", position = 433, separatorBefore = 349),
 	@ActionReference(path = "Toolbars/Debug", position = 1060),
-	@ActionReference(path = "Loaders/text/x-sablecc/Actions", position = 200),
-	@ActionReference(path = "Editors/text/x-sablecc/Popup", position = 5300, separatorAfter=5360)
+	@ActionReference(path = "Loaders/text/x-sablecc/Actions", position = 0),
+	@ActionReference(path = "Editors/text/x-sablecc/Popup", position = 5200,separatorAfter=5250)
 })
 @Messages("CTL_VisualizeGrammar=Visualize Grammar")
 public final class VisualizeGrammar implements ActionListener 
@@ -55,5 +55,6 @@ public final class VisualizeGrammar implements ActionListener
 			visualizer.requestActive();
 			System.out.println(visualizer.getName());
 		}
+		// TODO use context
 	}
 }
