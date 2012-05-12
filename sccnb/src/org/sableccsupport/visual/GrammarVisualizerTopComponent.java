@@ -4,9 +4,12 @@
  */
 package org.sableccsupport.visual;
 
+import javax.swing.JComponent;
+import javax.swing.text.BadLocationException;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
+import org.openide.util.Exceptions;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
 
@@ -132,5 +135,21 @@ public final class GrammarVisualizerTopComponent extends TopComponent {
 	void readProperties(java.util.Properties p) {
 		String version = p.getProperty("version");
 		// TODO read your settings according to their version
+	}
+
+	public void replaceNewGraph(JComponent graph)
+	{
+		graphDisplay.removeAll();
+		graphDisplay.add(graph);
+	}
+
+	public void updateStatus(String status)
+	{
+		try {
+			this.status.getDocument().insertString(0, status, null);
+		} catch (BadLocationException ex) {
+			// TODO: remove printStackTrace
+			Exceptions.printStackTrace(ex);
+		}
 	}
 }

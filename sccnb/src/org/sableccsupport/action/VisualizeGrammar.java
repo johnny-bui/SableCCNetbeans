@@ -30,7 +30,7 @@ public final class VisualizeGrammar implements ActionListener
 {
 	SCCDataObject context;
 	//private final EditorCookie context;
-	private TopComponent visualizer;
+	private GrammarVisualizerTopComponent visualizer;
 	public VisualizeGrammar(SCCDataObject context) {
 		this.context = context;
 	}
@@ -52,6 +52,7 @@ public final class VisualizeGrammar implements ActionListener
 			visualizer.requestActive();
 			System.out.println(visualizer.getName());
 		}
-		// TODO use context
+		VisualizerCaller.callVisualizer(this.context.getPrimaryFile().getPath(), 
+			visualizer);
 	}
 }
