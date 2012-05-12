@@ -63,6 +63,7 @@ public class HelloAst
 			ags.setEdgeTarget(e, e.getTarget());
 		}
 
+		/*
 		Scene scene = ags.getScene();
 		//scene.setLayout(LayoutFactory.createVerticalFlowLayout());
 		//GraphLayout layout = new GridGraphLayout();
@@ -76,7 +77,9 @@ public class HelloAst
 		// or you can call "sceneLayout.invokeLayoutImmediatelly ();"
 		// to schedule the layout and force immediate scene validation
 		// so the layout will be performed in the "invokeLayoutImmediatelly" method
-		
+		*/
+		ags.setLayout();
+		Scene scene = ags.getScene();
 		JComponent sceneView = scene.createView ();
 		
 		JScrollPane panel = new JScrollPane (sceneView);

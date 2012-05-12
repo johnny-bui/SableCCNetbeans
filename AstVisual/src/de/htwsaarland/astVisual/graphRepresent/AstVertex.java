@@ -26,4 +26,6 @@ public interface AstVertex
 	public double getWidth();
 	public double getHeight();
 	public String toGraphviz();
+
+	public VertexType getType();
 }

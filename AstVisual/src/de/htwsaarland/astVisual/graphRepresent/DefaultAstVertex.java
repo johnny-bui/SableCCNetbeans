@@ -15,6 +15,7 @@ public class DefaultAstVertex implements AstVertex
 	private double y;
 	private double height;
 	private double width;
+	VertexType type;
 
 	/**
 	 * @param name Name of the Vertex
@@ -24,8 +25,18 @@ public class DefaultAstVertex implements AstVertex
 		this.name = name;
 		d = 0;
 		f = 0;
+		type = VertexType.PROD;
+	}
+	
+	public DefaultAstVertex(String name, VertexType type)
+	{
+		this.name = name;
+		d = 0;
+		f = 0;
+		this.type = type;
 	}
 
+	
 	/**
 	 * sets the detected time of the vertex by performing DFS
 	 * @param d the detected time
@@ -126,5 +137,12 @@ public class DefaultAstVertex implements AstVertex
 	{
 		return "\"" + name + ":" + d + ":" + f + "\"";
 	}
+
+	@Override
+	public VertexType getType() {
+		return this.type;
+	}
+
+	
 }
 

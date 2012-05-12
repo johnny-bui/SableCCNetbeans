@@ -8,12 +8,13 @@ public class AstEdge<V extends AstVertex>
 {
 	private V source;
 	private V target;
-	private EdgeClass c;
+	private EdgeClass c = EdgeClass.N;
 			
 	public void setNodes(V source, V target)
 	{
 		this.source = source;
 		this.target = target;
+		
 	}
 
 	public V getSource()

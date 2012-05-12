@@ -21,7 +21,7 @@ public class HelloVisual {
 		/*
 		Scene scene = new Scene ();
 		scene.setLayout(LayoutFactory.createHorizontalFlowLayout());
-		JComponent sceneView = scene.createView ();
+		JComponent sceneView = scene.portGraph ();
 		JScrollPane panel = new JScrollPane (sceneView);
 
 

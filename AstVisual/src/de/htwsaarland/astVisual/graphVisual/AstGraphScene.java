@@ -1,8 +1,8 @@
 package de.htwsaarland.astVisual.graphVisual;
 
-import de.htwsaarland.astVisual.graphRepresent.AstEdge;
-import de.htwsaarland.astVisual.graphRepresent.AstVertex;
+import de.htwsaarland.astVisual.graphRepresent.*;
 import java.awt.Color;
+import java.util.Set;
 import org.netbeans.api.visual.action.ActionFactory;
 import org.netbeans.api.visual.action.WidgetAction;
 import org.netbeans.api.visual.anchor.Anchor;
@@ -11,10 +11,12 @@ import org.netbeans.api.visual.anchor.AnchorShape;
 import org.netbeans.api.visual.anchor.PointShape;
 import org.netbeans.api.visual.border.BorderFactory;
 import org.netbeans.api.visual.graph.GraphScene;
-import org.netbeans.api.visual.router.RouterFactory;
-import org.netbeans.api.visual.widget.ConnectionWidget;
-import org.netbeans.api.visual.widget.LayerWidget;
-import org.netbeans.api.visual.widget.Widget;
+import org.netbeans.api.visual.graph.layout.GraphLayout;
+import org.netbeans.api.visual.graph.layout.GraphLayoutFactory;
+import org.netbeans.api.visual.graph.layout.GraphLayoutSupport;
+import org.netbeans.api.visual.layout.LayoutFactory;
+import org.netbeans.api.visual.layout.SceneLayout;
+import org.netbeans.api.visual.widget.*;
 import org.netbeans.api.visual.widget.general.IconNodeWidget;
 
 /**
@@ -23,12 +25,13 @@ import org.netbeans.api.visual.widget.general.IconNodeWidget;
  * @version May 7, 2012
  */
 public class AstGraphScene<V extends AstVertex,E>
-	extends GraphScene <V,AstEdge>
+	extends GraphScene <V, AstEdge>
 {
 	//private Widget mainLayer;
     private Widget connectionLayer;
 	private LayerWidget mainLayer;
     //private LayerWidget connectionLayer;
+	private V root = null;
 	
     private WidgetAction moveAction = ActionFactory.createMoveAction ();
 	
@@ -44,28 +47,42 @@ public class AstGraphScene<V extends AstVertex,E>
 	
 	@Override
 	protected Widget attachNodeWidget(V node) {
-		IconNodeWidget widget = new IconNodeWidget (this);
-        widget.setLabel (node.getName());
-		widget.setBorder(
-			BorderFactory.createRoundedBorder(5, 5, 3, 3, Color.LIGHT_GRAY , Color.BLUE));
-        WidgetAction.Chain actions = widget.getActions ();
+		// add root if neccessary
+		if (root == null)
+		{
+			root = node;
+		}
+		//LabelWidget nodeLabel = new LabelWidget()
+		
+		IconNodeWidget nodeWidget = new IconNodeWidget (this);
+        nodeWidget.setLabel (node.getName());
+		
+		Color bg = VertexType.mapToColor(node.getType());
+		nodeWidget.setBorder(
+			BorderFactory.createRoundedBorder(10, 10, 6, 6, bg, Color.BLUE) );
+		
+        WidgetAction.Chain actions = nodeWidget.getActions ();
+		LabelWidget info = new LabelWidget(this, node.getDetected() + ":" + node.getFinished());
+		nodeWidget.addChild(info);
         actions.addAction (createObjectHoverAction ());
         actions.addAction (createSelectAction ());
         actions.addAction (moveAction);
 
-        mainLayer.addChild (widget);
-        return widget;
+        mainLayer.addChild (nodeWidget);
+        return nodeWidget;
 	}
 
 	@Override
 	protected Widget attachEdgeWidget(AstEdge edge) {
-		//VMDConnectionWidget widget = 
+		//VMDConnectionWidget nodeWidget = 
 		//		new VMDConnectionWidget(this,VMDFactory.getNetBeans60Scheme());
 		ConnectionWidget widget = new ConnectionWidget(this);
-		widget.setRouter(RouterFactory.createOrthogonalSearchRouter (mainLayer));
-		//ConnectionWidget widget = new ConnectionWidget (this);
+		//widget.setRouter(RouterFactory.createOrthogonalSearchRouter (mainLayer));
+		//ConnectionWidget nodeWidget = new ConnectionWidget (this);
         widget.setTargetAnchorShape (AnchorShape.TRIANGLE_FILLED);
-		widget.setLineColor(Color.decode("006600"));
+			
+		// TODO classsify the edge using a method
+		widget.setLineColor(EdgeClass.mapToColor(edge.getEdgeClass()) );// set color of the edge green
         
 		
 		WidgetAction.Chain actions = widget.getActions ();
@@ -75,7 +92,7 @@ public class AstGraphScene<V extends AstVertex,E>
 		
         connectionLayer.addChild (widget);
 		/* =================================== */
-		/* =========== create rooter ========= */
+		/* =========== create router ========= */
 		widget.setPaintControlPoints(true);
 		widget.setControlPointShape(PointShape.SQUARE_FILLED_SMALL);
 		widget.getActions ().addAction (ActionFactory.createAddRemoveControlPointAction ());
@@ -103,5 +120,44 @@ public class AstGraphScene<V extends AstVertex,E>
         edgeWidget.setTargetAnchor (targetAnchor);
 	}
 	
+
+	public void setLayout()
+	{
+		Scene scene = getScene();
+		//scene.setLayout(LayoutFactory.createVerticalFlowLayout());
+		//GraphLayout layout = new GridGraphLayout();
+		GraphLayout<V, AstEdge> graphLayout 
+				= GraphLayoutFactory.createTreeGraphLayout (100, 100, 50, 50, true);
+		GraphLayoutSupport.setTreeGraphLayoutRootNode (graphLayout, root);
+		SceneLayout sceneLayout = LayoutFactory.createSceneGraphLayout (this, graphLayout);
+		// schedules the graph-oriented layout after the scene validation
+		// it just schedules it but does not perform immediatelly
+		sceneLayout.invokeLayout ();
+		// or you can call "sceneLayout.invokeLayoutImmediatelly ();"
+		// to schedule the layout and force immediate scene validation
+		// so the layout will be performed in the "invokeLayoutImmediatelly" method
+	}
+
+	public void portGraph(GraphContainer<V> gc)
+	{
+		addNode(gc.getRoot());
+		Set<AstEdge> set = gc.getDgraph().edgeSet();	
+		for (AstEdge e : set)
+		{
+			V s = (V) e.getSource();
+			V t = (V) e.getTarget();
+			if (! isNode(s))
+			{
+				addNode(s);
+			}
+			if (! isNode(t))
+			{
+				addNode(t);
+			}
+			addEdge(e);
+			setEdgeSource(e, s);
+			setEdgeTarget(e, t);
+		}
+	}
 }
 

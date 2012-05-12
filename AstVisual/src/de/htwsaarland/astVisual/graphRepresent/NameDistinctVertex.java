@@ -12,13 +12,18 @@ public class NameDistinctVertex extends DefaultAstVertex
 		super(name);
 	}
 	
+	public NameDistinctVertex(String name, VertexType type)
+	{
+		super(name, type);
+	}
+	
 	@Override
 	public boolean equals(Object other)
 	{
 		if (this == other){return true;}
     	if (!(other instanceof NameDistinctVertex)){return false;}
 	    NameDistinctVertex otherA = (NameDistinctVertex) other;
-    	return (name.equals(otherA.name));
+    	return (name.equals(otherA.name) && type.equals(otherA.type));
 	}
 
 	@Override
