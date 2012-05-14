@@ -1,6 +1,11 @@
 package org.sablecc.sablecc;
 
+import de.htwsaarland.astVisual.graphRepresent.GraphContainer;
+import de.htwsaarland.astVisual.graphRepresent.VertexType;
+import de.htwsaarland.astVisual.graphVisual.AstGraphScene;
 import java.util.*;
+import javax.swing.JComponent;
+import org.netbeans.api.visual.widget.Scene;
 import org.sablecc.sablecc.analysis.DepthFirstAdapter;
 import org.sablecc.sablecc.node.*;
 
@@ -11,14 +16,24 @@ import org.sablecc.sablecc.node.*;
 public class AstDiagnoser extends DepthFirstAdapter
 {
 
-	int depth = 0;
 	protected String productName;
 	//private boolean elementIdIsProd = true;
 		
 	private IdSpec idSpec = IdSpec.UN_SPEC;
 	
 	private HashMap<String,TId> tokenTable;
-	protected  HashMap<String,TId> productionTable;
+	protected Map<String,TId> productionTable;
+	protected GraphContainer gc;
+	
+	private boolean regToken = false;
+	private boolean grammarHasAst = false;		
+
+	
+	protected void setup()
+	{
+		// to configurate if also reg token
+		throw new UnsupportedOperationException("TODO: implement it in future");
+	}
 	
 	private int errorCount;
 
@@ -26,6 +41,7 @@ public class AstDiagnoser extends DepthFirstAdapter
 	{
 		tokenTable = tokenReg.getTokenTable();
 		productionTable = tokenReg.getAstProductNameTable();
+		gc = new GraphContainer();
 	}
 	
 	@Override
@@ -35,6 +51,7 @@ public class AstDiagnoser extends DepthFirstAdapter
 		
 		if(node.getAst() != null)
 		{
+			grammarHasAst = true;
 			node.getAst().apply(this);
 		}
 		
@@ -57,7 +74,11 @@ public class AstDiagnoser extends DepthFirstAdapter
 	public void caseAAstProd(AAstProd node) 
 	{
 		productName = node.getId().getText();
-		
+		if (gc.getRoot() == null)
+		{
+			gc.addRoot(productName);
+			System.out.println("gc.addRoot(\"" + productName + "\");");
+		}
 		{
 		  Object temp[] = node.getAlts().toArray();
 		  for(int i = 0; i < temp.length; i++)
@@ -94,10 +115,13 @@ public class AstDiagnoser extends DepthFirstAdapter
 			{
 				//TODO: make a edge Product(productName) -> Token (elementId)
 				//System.out.println(productName +  " -> " + "T." + elementId);
+				addPT(productName, elementId);
+				
 			}else
 			{
 				//TODO: make a edge Product(productName) -> Product (elementId)
 				//System.out.println(productName +  " -> " + "P." + elementId);
+				addPPdep(productName, elementId);
 			}
 	    }else
 		{
@@ -117,6 +141,7 @@ public class AstDiagnoser extends DepthFirstAdapter
 				{
 					//TODO: No Token and Production found -> print a edge from production to produciton
 					//System.out.println(productName +  " -> " + "P." + elementId);
+					addPPdep(productName, elementId);
 				}
 			}else
 			{
@@ -124,6 +149,7 @@ public class AstDiagnoser extends DepthFirstAdapter
 				{
 					// TODO: No Production and Token found -> print a edge from production to Token
 					// System.out.println(productName +  " -> " + "T." + elementId);
+					addPT(productName, elementId);
 				}else
 				{
 					// Found Token and Production -> print error
@@ -141,6 +167,24 @@ public class AstDiagnoser extends DepthFirstAdapter
 		}
 	}
 
+
+	protected void addPPdep(String parent, String child)
+	{
+		gc.addDepend(parent, child);
+		//System.out.println("gc.addDepend(\"" + parent + "\", \"" + child + "\");");	
+	}
+	
+	protected void addPT(String parent, String child)
+	{
+		if (regToken)
+		{
+			gc.addDepend(parent, VertexType.PROD, child, VertexType.TOKEN);
+			//System.out.println("gc.addDepend(\"" +parent 
+			//				+ "\", VertexType.PROD, \"" + child + "\", VertexType.TOKEN);");	
+		}
+	}
+
+	
 	@Override
 	public void caseATokenSpecifier(ATokenSpecifier node) 
 	{
@@ -180,7 +224,25 @@ public class AstDiagnoser extends DepthFirstAdapter
 	}
 
 	public int getError(){return errorCount;}
-	
+
+	public JComponent getAstView ()
+	{
+		gc.performDFS();
+		System.out.println(gc);
+		
+		AstGraphScene ags = new AstGraphScene();
+		ags.portGraph(gc);
+		ags.setLayout();
+
+		Scene s = ags.getScene();
+		return s.createView();
+	}
+
+
+	public boolean hasAST()
+	{
+		return this.grammarHasAst;
+	}
 }
 
 

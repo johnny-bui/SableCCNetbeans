@@ -6,6 +6,7 @@ package org.sableccsupport.visual;
 
 import javax.swing.JComponent;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
@@ -33,7 +34,9 @@ preferredID = "GrammarVisualizerTopComponent")
 	"CTL_GrammarVisualizerTopComponent=GrammarVisualizer Window",
 	"HINT_GrammarVisualizerTopComponent=This is a GrammarVisualizer window"
 })
-public final class GrammarVisualizerTopComponent extends TopComponent {
+public final class GrammarVisualizerTopComponent 
+	extends TopComponent implements Visualizer
+{
 
 	public GrammarVisualizerTopComponent() {
 		initComponents();
@@ -137,19 +140,27 @@ public final class GrammarVisualizerTopComponent extends TopComponent {
 		// TODO read your settings according to their version
 	}
 
+	@Override
 	public void replaceNewGraph(JComponent graph)
 	{
-		graphDisplay.removeAll();
+		//graphDisplay.removeAll();
 		graphDisplay.add(graph);
+		graphDisplay.setViewportView(graph);
+		graphDisplay.revalidate();
+		graphDisplay.repaint();
 	}
 
+	@Override
 	public void updateStatus(String status)
 	{
 		try {
-			this.status.getDocument().insertString(0, status, null);
+			//this.status.getDocument().insertString(0, status, null);
+			Document d = this.status.getDocument();
+			d.remove(0, d.getLength());
+			d.insertString(0, status, null);
 		} catch (BadLocationException ex) {
 			// TODO: remove printStackTrace
-			Exceptions.printStackTrace(ex);
+			ex.printStackTrace();
 		}
 	}
 }

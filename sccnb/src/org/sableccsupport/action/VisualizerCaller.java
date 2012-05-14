@@ -2,13 +2,14 @@ package org.sableccsupport.action;
 
 import com.dreamer.outputhandler.OutputHandler;
 import java.awt.Color;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintStream;
+import java.io.*;
 import javax.swing.JComponent;
-import org.sablecc.sablecc.EmbeddedSableCC;
-import org.sablecc.sablecc.SableCC;
+import org.sablecc.sablecc.*;
+import org.sablecc.sablecc.lexer.Lexer;
+import org.sablecc.sablecc.node.Start;
+import org.sablecc.sablecc.parser.Parser;
 import org.sableccsupport.visual.GrammarVisualizerTopComponent;
+import org.sableccsupport.visual.Visualizer;
 
 /**
  *
@@ -19,8 +20,9 @@ public class VisualizerCaller
 	
 	public static void callVisualizer(String fileName, GrammarVisualizerTopComponent visualizer)
 	{
-		// TODO
-		visualizer.updateStatus("parsing ......");
+		VisualizerHelper h = new VisualizerHelper();
+		h.setup(fileName, visualizer);
+		h.start();
 	}
 }
 
@@ -33,9 +35,9 @@ class VisualizerHelper extends Thread
 	static PrintStream orgOutStream 	= null;
 	static PrintStream orgErrStream 	= null;
 	private static Color errorColor = Color.decode(EmbeddedSableCC.ERROR_COLOR_OUTPUR);
-	private GrammarVisualizerTopComponent graphDisplay;
+	private Visualizer graphDisplay;
 	
-	public void setup(String filename, GrammarVisualizerTopComponent graphDisplay)
+	public void setup(String filename, Visualizer graphDisplay)
 	{
 		this.filename = filename;
 		this.graphDisplay = graphDisplay;
@@ -44,78 +46,64 @@ class VisualizerHelper extends Thread
 	@Override
 	public void run() {
 		try {
-			redirectSystemStreams();
+			IORedirect.redirectSystemStreams();
 			String msg = "+++++++++++++++++" + filename + "+++++++++++++";
 			System.out.println (msg);
-			SableCC.processGrammar(filename, null);
-			
+			try{
+				SableCC.processGrammar(filename, null);
+			}catch (Exception ex)
+			{
+				graphDisplay.updateStatus("Parse SableCC file error: " + ex.getMessage());
+				throw ex;
+			}
+			// create a Parser chain
+			Start tree = null;
+			try{
+				Parser p = new Parser(
+						new Lexer(
+							new PushbackReader(
+								new FileReader(filename)
+								)));
+				tree = p.parse();
+				graphDisplay.updateStatus("parse ok");
+			}catch(Exception ex)
+			{
+				graphDisplay.updateStatus("Cannot create AST: " + ex.getMessage());
+				throw ex;
+			}
+			try{
+				TokenRegister tokenReg = new TokenRegister();
+				tree.apply(tokenReg);
+				//ConDiagnoser conDiagnoser = new ConDiagnoser(tokenReg); 
+				//tree.apply(conDiagnoser);
+				AstDiagnoser astDiagnoser = new AstDiagnoser(tokenReg);
+				tree.apply(astDiagnoser);
+				if (astDiagnoser.hasAST())
+				{
+					graphDisplay.updateStatus("construct graph ok");
+					graphDisplay.replaceNewGraph(astDiagnoser.getAstView());
+				}else
+				{
+					graphDisplay.updateStatus("there is no AST to show");
+				}
+			}catch(Exception ex)
+			{
+				graphDisplay.updateStatus("Cannot construct graph for AST: " + ex.getMessage());
+				throw ex;
+			}
+			//
 			msg = "================= build success  =================" ;
 			System.out.println (msg);
 		} catch (Exception ex) {
 			//Exceptions.printStackTrace(ex);
 			System.err.println(ex.getMessage());
+			ex.printStackTrace();
 		}finally
 		{
-			setBackOutput();
+			IORedirect.setBackOutput();
 		}
     }
-
-
-
-	private static void redirectSystemStreams() 
-	{
-        OutputStream out = new OutputStream() {
-
-            @Override
-            public void write(int i) throws IOException {
-                OutputHandler.output(EmbeddedSableCC.SABLE_CC_OUTPUT_TITLE ,
-						String.valueOf((char) i));
-            }
-
-            @Override
-            public void write(byte[] bytes) throws IOException {
-                OutputHandler.output(EmbeddedSableCC.SABLE_CC_OUTPUT_TITLE, 
-						new String(bytes));
-            }
-
-            @Override
-            public void write(byte[] bytes, int off, int len) throws IOException {
-                OutputHandler.output(EmbeddedSableCC.SABLE_CC_OUTPUT_TITLE, 
-						new String(bytes, off, len));
-            }
-        };
-
-		OutputStream err = new OutputStream() {
-
-            @Override
-            public void write(int i) throws IOException {
-                OutputHandler.output(EmbeddedSableCC.SABLE_CC_OUTPUT_TITLE ,
-						String.valueOf((char) i), errorColor);
-            }
-
-            @Override
-            public void write(byte[] bytes) throws IOException {
-                OutputHandler.output(EmbeddedSableCC.SABLE_CC_OUTPUT_TITLE, 
-						new String(bytes), errorColor);
-            }
-
-            @Override
-            public void write(byte[] bytes, int off, int len) throws IOException {
-                OutputHandler.output(EmbeddedSableCC.SABLE_CC_OUTPUT_TITLE, 
-						new String(bytes, off, len), errorColor);
-            }
-        };
-		orgOutStream = System.out;
-		orgErrStream = System.err;
-        System.setOut(new PrintStream(out, true));
-        System.setErr(new PrintStream(err, true));
-    }
-
-	private static void setBackOutput()
-	{
-		System.setErr(orgErrStream);
-		System.setOut(orgOutStream);
-	}
+	
 }
 
 
