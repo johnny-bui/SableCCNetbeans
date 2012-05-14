@@ -2,6 +2,7 @@ package de.htwsaarland.astVisual.graphVisual;
 
 import de.htwsaarland.astVisual.graphRepresent.*;
 import java.awt.Color;
+import java.util.Map;
 import java.util.Set;
 import org.netbeans.api.visual.action.ActionFactory;
 import org.netbeans.api.visual.action.WidgetAction;
@@ -24,16 +25,17 @@ import org.netbeans.api.visual.widget.general.IconNodeWidget;
  * @author phucluoi
  * @version May 7, 2012
  */
-public class AstGraphScene<V extends VertexInfo,E>
-	extends GraphScene <V, AstEdge>
+public class AstGraphScene
+	extends GraphScene <String, AstEdge>
 {
 	//private Widget mainLayer;
     private Widget connectionLayer;
 	private LayerWidget mainLayer;
     //private LayerWidget connectionLayer;
-	private V root = null;
+	private String root = null;
 	
     private WidgetAction moveAction = ActionFactory.createMoveAction ();
+	private Map<String,VertexInfo> vertexInforTable;
 	
 	public AstGraphScene()
 	{
@@ -46,27 +48,40 @@ public class AstGraphScene<V extends VertexInfo,E>
 	}
 	
 	@Override
-	protected Widget attachNodeWidget(V node) {
+	protected Widget attachNodeWidget(String node) {
 		// add root if neccessary
 		if (root == null)
 		{
 			root = node;
 		}
-		//LabelWidget nodeLabel = new LabelWidget()
 		
 		IconNodeWidget nodeWidget = new IconNodeWidget (this);
-        nodeWidget.setLabel (node.getName());
+        nodeWidget.setLabel (node);
 		
-		Color bg = VertexType.mapToColor(node.getType());
-		nodeWidget.setBorder(
-			BorderFactory.createRoundedBorder(10, 10, 6, 6, bg, Color.BLUE) );
+		/** styling the node. */
+		if (vertexInforTable != null)
+		{	
+			VertexInfo info = vertexInforTable.get(node);
+			
+			int d = info.getDetected();
+			int f = info.getFinished();
+			LabelWidget dfsinfo = new LabelWidget(this, d + ":" + f);
+			nodeWidget.addChild(dfsinfo);
+			
+			Color bg = VertexType.mapToColor(info.getType());
+			nodeWidget.setBorder(
+				BorderFactory.createRoundedBorder(10, 10, 6, 6, bg, Color.BLUE) );
+		}else
+		{
+			nodeWidget.setBorder(
+				BorderFactory.createRoundedBorder(10, 10, 6, 6, Color.LIGHT_GRAY, Color.BLUE) );
+		}
 		
+		/** set some action. */
         WidgetAction.Chain actions = nodeWidget.getActions ();
-		LabelWidget info = new LabelWidget(this, node.getDetected() + ":" + node.getFinished());
-		nodeWidget.addChild(info);
-        actions.addAction (createObjectHoverAction ());
-        actions.addAction (createSelectAction ());
-        actions.addAction (moveAction);
+        actions.addAction (createObjectHoverAction ()); /** <- hover action.*/
+        actions.addAction (createSelectAction ());/** <- select action */
+        actions.addAction (moveAction);/** <- move action */
 
         mainLayer.addChild (nodeWidget);
         return nodeWidget;
@@ -102,7 +117,7 @@ public class AstGraphScene<V extends VertexInfo,E>
 
 	@Override
 	protected void attachEdgeSourceAnchor(
-			AstEdge edge, V oldSource, V source) 
+			AstEdge edge, String oldSource, String source) 
 	{
 		ConnectionWidget edgeWidget = (ConnectionWidget) findWidget (edge);
         Widget sourceNodeWidget = findWidget (source);
@@ -112,7 +127,7 @@ public class AstGraphScene<V extends VertexInfo,E>
 
 	@Override
 	protected void attachEdgeTargetAnchor(
-			AstEdge edge, V oldTargetNode, V targetNode)
+			AstEdge edge, String oldTargetNode, String targetNode)
 	{
 		ConnectionWidget edgeWidget = (ConnectionWidget) findWidget (edge);
         Widget targetNodeWidget = findWidget (targetNode);
@@ -126,7 +141,7 @@ public class AstGraphScene<V extends VertexInfo,E>
 		Scene scene = getScene();
 		//scene.setLayout(LayoutFactory.createVerticalFlowLayout());
 		//GraphLayout layout = new GridGraphLayout();
-		GraphLayout<V, AstEdge> graphLayout 
+		GraphLayout<String, AstEdge> graphLayout 
 				= GraphLayoutFactory.createTreeGraphLayout (100, 100, 50, 50, true);
 		GraphLayoutSupport.setTreeGraphLayoutRootNode (graphLayout, root);
 		SceneLayout sceneLayout = LayoutFactory.createSceneGraphLayout (this, graphLayout);
@@ -138,15 +153,18 @@ public class AstGraphScene<V extends VertexInfo,E>
 		// so the layout will be performed in the "invokeLayoutImmediatelly" method
 	}
 
-	/*
+	
 	public void portGraph(GraphContainer gc)
 	{
+		vertexInforTable = gc.getVertexInforTable();
+		gc.performDFS();
+		String root = gc.getRoot();
 		addNode(gc.getRoot());
-		Set<AstEdge> set = gc.getDgraph().edgeSet();	
+		Set<AstEdge> set = gc.getGraph().edgeSet();	
 		for (AstEdge e : set)
 		{
-			V s = (V) e.getSource();
-			V t = (V) e.getTarget();
+			String s =  e.getSource();
+			String t =  e.getTarget();
 			if (! isNode(s))
 			{
 				addNode(s);
@@ -155,12 +173,15 @@ public class AstGraphScene<V extends VertexInfo,E>
 			{
 				addNode(t);
 			}
-			addEdge(e);
-			setEdgeSource(e, s);
-			setEdgeTarget(e, t);
+			if (!isEdge(e))
+			{
+				addEdge(e);
+				setEdgeSource(e, s);
+				setEdgeTarget(e, t);
+			}
 		}
 	}
-	*/
+	
 	
 }
 

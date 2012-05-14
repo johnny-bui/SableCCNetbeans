@@ -5,15 +5,17 @@
 package de.htwsaarland.astVisual.graphRepresent;
 
 import de.htwsaarland.astVisual.graphVisual.DummyGraphScene;
-import de.htwsaarland.astVisual.graphRepresent.NameDistinctVertex;
-import de.htwsaarland.astVisual.graphRepresent.DefaultAstVertex;
 import de.htwsaarland.astVisual.graphRepresent.AstEdge;
 import de.htwsaarland.astVisual.graphVisual.AstGraphScene;
 import java.util.Collection;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.*;
 import org.netbeans.api.visual.graph.GraphScene;
+import org.netbeans.api.visual.widget.Scene;
+import de.htwsaarland.astVisual.testArchiv.SceneSupport;
 
 /**
  *
@@ -43,48 +45,26 @@ public class AstGraphSceneTest {
 	@Test
 	public void testAddNode()
 	{
-		AstGraphScene<NameDistinctVertex,AstEdge<NameDistinctVertex>> gs = 
-				new AstGraphScene<NameDistinctVertex, AstEdge<NameDistinctVertex>>() ;
+		GraphContainer gc = new GraphContainer();
+		gc.addRoot("session");
+		gc.addDepend("session", "statement_list");
+		gc.addDepend("statement_list", "statement");
+		gc.addDepend("statement_list", "statement");
+		gc.addDepend("statement", "expr_sttm");
+		gc.addDepend("statement", "assign_sttm");
+		gc.addDepend("expr_sttm", "add_expr");
+		gc.addDepend("expr_sttm", "add_expr");
+		gc.addDepend("expr_sttm", "mul_expr");
 		
-		NameDistinctVertex v1 = new NameDistinctVertex("v1");
-		NameDistinctVertex v2 = new NameDistinctVertex("v2");
-		NameDistinctVertex v3 = new NameDistinctVertex("v1");
-		NameDistinctVertex v4 = new NameDistinctVertex("v2");
-		gs.addNode(v1);
-		try{
-			gs.addNode(v3);
-		}catch(Error ex)
-		{
-			System.out.println("catched :" + ex.getMessage());
-			assertTrue(ex instanceof Error);
-		}
-		gs.addNode(v2);
-		try{
-			gs.addNode(v4);
-		}catch(Error ex)
-		{
-			System.out.println("catched :" + ex.getMessage());
-			assertTrue(ex instanceof Error);
-		}
-		
-		Collection<NameDistinctVertex> c = gs.getNodes();
-		assertEquals(2, c.size());
-		
-		AstGraphScene<NameDistinctVertex,AstEdge<DefaultAstVertex>> gsc = 
-				new AstGraphScene<NameDistinctVertex, AstEdge<DefaultAstVertex>>() ;
+		gc.performDFS();
 
-		DefaultAstVertex a1 = new DefaultAstVertex("a1");
-		DefaultAstVertex a2 = new DefaultAstVertex("a2");
-		DefaultAstVertex a3 = new DefaultAstVertex("a3");
-		DefaultAstVertex a4 = new DefaultAstVertex("a4");
+		AstGraphScene ags = new AstGraphScene();
+		ags.portGraph(gc);
+		ags.setLayout();
 
+		Scene s = ags.getScene();
+		
+		SceneSupport.show(s);
 	}
-
-	@Test
-	public void trivialTest()
-	{
-		GraphScene <String,String> gs = new DummyGraphScene();
-		//gs.addNode("a1");
-		//gs.addNode("a1");
-	}
+	
 }

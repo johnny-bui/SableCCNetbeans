@@ -40,7 +40,7 @@ public class GraphContainer
 	public GraphContainer()
 	{
 		lgraph = new ListenableDirectedGraph<String, AstEdge>(AstEdge.class);
-		vertexInfoTable = new HashMap<String, VertexInfo>();
+		vertexInfoTable = Collections.synchronizedMap( new HashMap<String, VertexInfo>() );
 		root = null;
 	}
 	
@@ -55,7 +55,7 @@ public class GraphContainer
 	 * @exception IllegalArgumentException if the argument root is null.
 	 * @exception RuntimeException if the root is ready not null.
 	 */
-	public void addRoot(String root)
+	public void addRoot(String root, VertexType t)
 	{
 		if (root == null)
 		{
@@ -65,10 +65,17 @@ public class GraphContainer
 		{
 			this.root = root;
 			this.lgraph.addVertex(root);
+			VertexInfo info = new CompactInfo(root, t);
+			vertexInfoTable.put(root, info);
 		}else
 		{
 			throw new RuntimeException("The root node can be added only once.");
 		}
+	}
+
+	public void addRoot(String root)
+	{
+		addRoot(root, VertexType.PROD);
 	}
 
 	/**
@@ -99,20 +106,27 @@ public class GraphContainer
 	 * @param parent the first vertex
 	 * @param child  the second vertex.
 	 */
-	public void addDepend(String parent, String child)
+	public void addDepend(String parent, VertexType parentType, String child, VertexType childType)
 	{
 		// loop is not allowed
 		if (! parent.equals(child))
 		{
-			this.lgraph.addVertex(parent);
-			this.lgraph.addVertex(child);
+			lgraph.addVertex(parent);
+			vertexInfoTable.put(parent, new CompactInfo(parent, parentType));
+			
+			lgraph.addVertex(child);
+			vertexInfoTable.put(child, new CompactInfo(child, childType));
 			// duplicated edges not allow
 			if (! lgraph.containsEdge(parent, child))
 			{
 				lgraph.addEdge(parent, child);
 			}
 		}
-		
+	}
+
+	public void addDepend(String parent, String child)
+	{
+		addDepend(parent, VertexType.PROD, child, VertexType.PROD);
 	}
 
 	/**
@@ -220,6 +234,15 @@ public class GraphContainer
 	}
 
 	/**
+	 * return the map of vertex and its properties
+	 */
+	public Map getVertexInforTable()
+	{
+		return vertexInfoTable;
+	}
+
+	
+	/**
 	 * return a simple presentation of the graph and the properties
 	 * of each vertices in the graph.
 	 */
@@ -251,7 +274,7 @@ public class GraphContainer
 		public void  vertexTraversed(VertexTraversalEvent<String> e) 
 		{
 			String vertexName = e.getVertex();
-			VertexInfo v = new CompactInfo (vertexName);
+			VertexInfo v = vertexInfoTable.get(vertexName);
 			
 			v.setDetected(counter);
 			counter ++;

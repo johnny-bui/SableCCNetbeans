@@ -15,16 +15,27 @@ public class CompactInfo
 	implements VertexInfo , Serializable, Cloneable
 {
 
-	int d;
-	int f;
+	int d = 0;
+	int f = 0;
 	private final String name;
 	private String pred;
 	private VertexType t;
 	
 	public CompactInfo(String name) {
 		this.name = name;
+		t = VertexType.PROD;
+		int d = 0;
+		int f = 0;
 	}
 
+	public CompactInfo(String name, VertexType type) 
+	{
+		this.name = name;
+		t = type;
+		int d = 0;
+		int f = 0;
+	}
+	
 	@Override
 	public void setDetected(int d) {
 		this.d = d;
