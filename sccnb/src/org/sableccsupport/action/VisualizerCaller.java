@@ -50,7 +50,7 @@ class VisualizerHelper extends Thread
 			String msg = "+++++++++++++++++" + filename + "+++++++++++++";
 			System.out.println (msg);
 			try{
-				SableCC.processGrammar(filename, null);
+				//SableCC.processGrammar(filename, null);
 			}catch (Exception ex)
 			{
 				graphDisplay.updateStatus("Parse SableCC file error: " + ex.getMessage());
@@ -74,17 +74,23 @@ class VisualizerHelper extends Thread
 			try{
 				TokenRegister tokenReg = new TokenRegister();
 				tree.apply(tokenReg);
-				//ConDiagnoser conDiagnoser = new ConDiagnoser(tokenReg); 
+				//ConDiagnoser conDiagnoser = new CstDiagnoser(tokenReg); 
 				//tree.apply(conDiagnoser);
 				AstDiagnoser astDiagnoser = new AstDiagnoser(tokenReg);
 				tree.apply(astDiagnoser);
 				if (astDiagnoser.hasAST())
 				{
-					graphDisplay.updateStatus("construct graph ok");
+					graphDisplay.updateStatus("construct AST depenedent graph ok");
 					graphDisplay.replaceNewGraph(astDiagnoser.getAstView());
 				}else
 				{
-					graphDisplay.updateStatus("there is no AST to show");
+					graphDisplay.updateStatus("there is no AST to show -> constructing CST");
+					CstDiagnoser conDiagnoser = new CstDiagnoser(tokenReg);
+					tree.apply(conDiagnoser);
+					JComponent conVisual = conDiagnoser.getAstView();
+					graphDisplay.updateStatus("construct CST depenedent graph ok");
+					graphDisplay.replaceNewGraph(conVisual);
+					
 				}
 			}catch(Exception ex)
 			{

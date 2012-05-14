@@ -6,7 +6,7 @@ import java.io.*;
 import org.openide.util.Exceptions;
 import org.sablecc.sablecc.EmbeddedSableCC;
 import org.sablecc.sablecc.AstDiagnoser;
-import org.sablecc.sablecc.ConDiagnoser;
+import org.sablecc.sablecc.CstDiagnoser;
 import org.sablecc.sablecc.TokenRegister;
 import org.sablecc.sablecc.lexer.Lexer;
 import org.sablecc.sablecc.node.Start;
@@ -57,7 +57,7 @@ class AnalyzerHelper extends Thread
 			TokenRegister tokenReg = new TokenRegister();
 			tree.apply(tokenReg);
 			
-			ConDiagnoser conDiagnoser = new ConDiagnoser(tokenReg); 
+			CstDiagnoser conDiagnoser = new CstDiagnoser(tokenReg); 
 			tree.apply(conDiagnoser);
 			
 			AstDiagnoser astDiagnoser = new AstDiagnoser(tokenReg);

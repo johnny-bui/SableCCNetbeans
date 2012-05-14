@@ -8,10 +8,10 @@ import org.sablecc.sablecc.node.*;
  *
  * @author hbui
  */
-public class ConDiagnoser extends AstDiagnoser
+public class CstDiagnoser extends AstDiagnoser
 {
 
-	public ConDiagnoser(final TokenRegister tokenReg)
+	public CstDiagnoser(final TokenRegister tokenReg)
 	{
 		super(tokenReg);
 		productionTable = tokenReg.getProductionNameTable();
@@ -34,6 +34,11 @@ public class ConDiagnoser extends AstDiagnoser
 	public void caseAProd(AProd node) 
 	{
 		productName = node.getId().getText();
+		if (gc.getRoot() == null)
+		{
+			gc.addRoot(productName);
+			System.out.println("gc.addRoot(\"" + productName + "\");");
+		}
 		{
 			Object temp[] = node.getAlts().toArray();
 			for(int i = 0; i < temp.length; i++)

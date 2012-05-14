@@ -3,8 +3,10 @@ package org.sablecc.sablecc;
 import de.htwsaarland.astVisual.graphRepresent.GraphContainer;
 import de.htwsaarland.astVisual.graphRepresent.VertexType;
 import de.htwsaarland.astVisual.graphVisual.AstGraphScene;
+import de.htwsaarland.astVisual.testArchiv.SceneSupport;
 import java.util.*;
 import javax.swing.JComponent;
+import org.netbeans.api.visual.action.ActionFactory;
 import org.netbeans.api.visual.widget.Scene;
 import org.sablecc.sablecc.analysis.DepthFirstAdapter;
 import org.sablecc.sablecc.node.*;
@@ -225,6 +227,7 @@ public class AstDiagnoser extends DepthFirstAdapter
 
 	public int getError(){return errorCount;}
 
+	/* TODO: move it to somewhere else here. It just cause bugs */
 	public JComponent getAstView ()
 	{
 		gc.performDFS();
@@ -235,6 +238,9 @@ public class AstDiagnoser extends DepthFirstAdapter
 		ags.setLayout();
 
 		Scene s = ags.getScene();
+		s.getActions ().addAction (ActionFactory.createMouseCenteredZoomAction (1.1));
+		s.getActions ().addAction (ActionFactory.createWheelPanAction());
+		//SceneSupport.show(s);
 		return s.createView();
 	}
 
