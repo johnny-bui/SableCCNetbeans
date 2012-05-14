@@ -1,21 +1,19 @@
 package de.htwsaarland.astVisual.graphRepresent;
 
-import de.htwsaarland.astVisual.graphRepresent.DefaultAstVertex;
-import de.htwsaarland.astVisual.graphRepresent.NameDistinctVertex;
-import de.htwsaarland.astVisual.graphRepresent.GraphContainer;
-import de.htwsaarland.astVisual.graphRepresent.AstEdge;
-import de.htwsaarland.astVisual.graphRepresent.AstVertex;
-import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
-import org.jgrapht.graph.DefaultDirectedGraph;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.jgrapht.Graph;
+import org.jgrapht.graph.ListenableDirectedGraph;
 import org.junit.*;
+import static org.junit.Assert.*;
 
 /**
  *
- * @author phucluoi
+ * @author hbui
+ * @version May, 14 2012
+ * 	new test for new implement
  */
+
 public class GraphContainerTest {
 	
 	public GraphContainerTest() {
@@ -30,8 +28,7 @@ public class GraphContainerTest {
 	}
 	
 	@Before
-	public void setUp() 
-	{
+	public void setUp() {
 	}
 	
 	@After
@@ -39,166 +36,132 @@ public class GraphContainerTest {
 	}
 
 	/**
-	 * Test of duplicate Node.
+	 * Test of addRoot method, of class GraphContainer.
 	 */
 	@Test
-	public void testDuplicateNode()
+	public void testAddRoot() 
 	{
-		System.out.println("duplicateNode");
-		GraphContainer gc = new GraphContainer();
-		// add a root for gc
-		AstVertex root = new DefaultAstVertex("root");
-		gc.addRoot(root);
-		// create node a, b
-		AstVertex a = new DefaultAstVertex("a");
-		AstVertex b = new DefaultAstVertex("a");
-		
-		gc.addDepend(root, a);
-		gc.addDepend(a, b);		
-		gc.performDFS();
-		
-		DefaultDirectedGraph<AstVertex,AstEdge> g = gc.getDgraph();
-		Set<AstEdge> edges = g.getAllEdges(a, b);
-		assertEquals(1, edges.size()); // assert that only one edge from a to b
-		
-		AstEdge a_b = edges.iterator().next();
-		assertTrue(a_b.getSource() == a);// assert that source and target point to a and b
-		assertTrue(a_b.getTarget() == b);
-		
-		assertTrue(a_b.getSource().getDetected() < a_b.getTarget().getFinished());
-		assertTrue(a_b.getSource().getDetected() < a_b.getTarget().getDetected());
-		assertTrue(a_b.getSource().getFinished() > a_b.getTarget().getFinished());
+		System.out.println("addRoot");
+		String root = "root";
+		GraphContainer graph = new GraphContainer();
+		graph.addRoot(root);
+		String rootInGraph = graph.getRoot();
+		assertEquals(root, rootInGraph);
+
+		Graph<String,AstEdge> lgraph = graph.getGraph();
+		assertEquals(lgraph.containsVertex(root), true);
+		Set <String> vertices = lgraph.vertexSet();
+		assertEquals("graph must contain only one vertex ",vertices.size() , 1);
 
 	}
-	
+
 	@Test
-	public void testDuplicate2() 
+	public void testDupplicatedRoot()
 	{
-		System.out.println("testDuplicate2");
-		GraphContainer<NameDistinctVertex> egc = new GraphContainer<NameDistinctVertex>();
-		NameDistinctVertex eroot = new NameDistinctVertex("root");
-		NameDistinctVertex ea = new NameDistinctVertex("a");
-		NameDistinctVertex eb = new NameDistinctVertex("a");
-		assertTrue(ea.equals(eb));
+		System.out.println("testDupplicatedRoot");
+		String root = "root";
+		String dupRoot = "root";
+
+		GraphContainer graph = new GraphContainer();
+		try{
+			graph.addRoot(root);
+			String rootInGraph = graph.getRoot();
+			assertEquals(root, rootInGraph);
+			graph.addRoot(dupRoot);
+			fail("Expected an Runtime Exception");
+		}catch (RuntimeException ex)
+		{
+			
+		}
+		Graph<String,AstEdge> lgraph = graph.getGraph();
+		assertEquals(lgraph.containsVertex(dupRoot), true);
+	}
+
+	/**
+	 * Test of changeRoot method, of class GraphContainer.
+	 */
+	@Test
+	public void testChangeRoot() {
+		System.out.println("changeRoot");
+		String root = "";
+		GraphContainer instance = new GraphContainer();
+		instance.changeRoot(root);
+		// TODO review the generated test code and remove the default call to fail.
+		fail("The test case is a prototype.");
+	}
+
+	/**
+	 * Test of addDepend method, of class GraphContainer.
+	 */
+	@Test
+	public void testAddDepend(){
+		System.out.println("addDepend");
+		GraphContainer graph = new GraphContainer();
+		String root = "root";
+		String a1 = "a1";
+		String a2 = "a2";
+		graph.addRoot(root);
+		graph.addDepend(root, a1);
+		graph.addDepend(root, a1);
+		Graph<String,AstEdge> lgraph = graph.getGraph();
+		Set<AstEdge> edges = lgraph.edgeSet();
+		assertEquals("There must be only one edge in the graph", edges.size(), 1);
+		AstEdge e = null;
+		for (AstEdge tmpe: edges)
+		{
+			e = tmpe;
+			break;
+		}
 		
-		egc.addRoot(eroot);
-		egc.addDepend(eroot, ea);
-		egc.addDepend(ea, eb);
-		egc.performDFS();
-		
-		Set<AstEdge> edges = egc.getDgraph().getAllEdges(ea, eb);
-		assertEquals(0, edges.size());// assert that no edge if equal vertex
-		
-		
-		DefaultDirectedGraph<NameDistinctVertex,AstEdge>  graph = egc.getDgraph();
-		Set<AstEdge> alledges = graph.edgeSet();
-		assertEquals(1, alledges.size());
+		String source = lgraph.getEdgeSource(e);
+		assertEquals("source of the edge is the root ", root, source);
+		String target = lgraph.getEdgeTarget(e);
+		System.out.println(target);
+		assertEquals("target of the edge is the a1 ", a1, target);
+
 	}
 
 	/**
 	 * Test of performDFS method, of class GraphContainer.
 	 */
-	
 	@Test
 	public void testPerformDFS() {
 		System.out.println("performDFS");
-		GraphContainer g = new GraphContainer();
-		// add a root for gc
-		AstVertex root = new DefaultAstVertex("root");
-		g.addRoot(root);
-		// create node a, b, c, d
-		AstVertex a = new DefaultAstVertex("a");
-		AstVertex b = new DefaultAstVertex("b");
-		AstVertex c = new DefaultAstVertex("c");
-		AstVertex d = new DefaultAstVertex("d");
-
-		g.addDepend(root, a);
-		g.addDepend(a, d);
-		g.addDepend(a, c);
-		g.addDepend(root, b);
-		g.addDepend(a, b); // make a cirular
+		GraphContainer graph = new GraphContainer();
+		/*
+		 * root -> a1
+		 * root -> a2
+		 * a1 -> a3
+		 * a1 -> a2
+		 */
+		graph.addRoot("root");
+		graph.addDepend("root", "a1");
+		graph.addDepend("root", "a1"); // mit absicht duplication
+		graph.addDepend("root", "a2");
+		graph.addDepend("a1", "a2");
+		graph.addDepend("a1", "a3");
 		
-		g.performDFS();
-		DefaultDirectedGraph<DefaultAstVertex,AstEdge> dgraph = g.getDgraph();
-		Set <AstEdge> allEdge = dgraph.edgeSet();
-		Iterator<AstEdge> i = allEdge.iterator();
 		{
-			while(i.hasNext())
+			Graph<String,AstEdge> lGraph = graph.getGraph();
+			Map<String,VertexInfo> vertexInfoTab = graph.vertexInfoTable;
+			Set<AstEdge> edges = lGraph.edgeSet();
+			for (AstEdge e : edges)
 			{
-				System.out.println(i.next());
+				System.out.println( lGraph.getEdgeSource(e) + " -> " + lGraph.getEdgeTarget(e) );
+			}
+		}
+		
+		graph.performDFS();
+		{
+			Graph<String,AstEdge> lGraph = graph.getGraph();
+			Map<String,VertexInfo> vertexInfoTab = graph.vertexInfoTable;
+			Set<AstEdge> edges = lGraph.edgeSet();
+			for (AstEdge e : edges)
+			{
+				System.out.println(vertexInfoTab.get(e.getSource()).toString() 
+						+ " -> " + vertexInfoTab.get(e.getTarget()).toString() );
 			}
 		}
 	}
-
-
-	@Test
-	public void testLoop()
-	{
-		System.out.println("testLoop");
-		GraphContainer<NameDistinctVertex> gc = 
-				new GraphContainer<NameDistinctVertex>();
-		NameDistinctVertex root = new NameDistinctVertex("root");
-		gc.addRoot(root);
-		NameDistinctVertex a = new NameDistinctVertex("a");
-		gc.addDepend(root, a);
-		gc.addDepend(a, root);
-		gc.performDFS();
-		DefaultDirectedGraph<NameDistinctVertex,AstEdge> g = gc.getDgraph();
-		Set <AstEdge> root_to_a = g.getAllEdges(root, a);
-		assertEquals(1, root_to_a.size());
-		Set <AstEdge> a_to_root = g.getAllEdges(a, root);
-		assertEquals(1, a_to_root.size());
-		Set <AstEdge> all_edge = g.edgeSet();
-		assertEquals(2, all_edge.size());
-	}
-	@Test
-	public void testEdge()
-	{
-		System.out.println("testEgde");
-		GraphContainer<NameDistinctVertex> gc = 
-				new GraphContainer<NameDistinctVertex>();
-		NameDistinctVertex root = new NameDistinctVertex("root");
-		gc.addRoot(root);
-		NameDistinctVertex a = new NameDistinctVertex("a");
-		gc.addDepend(root, a);
-		gc.addDepend(a, root);
-		gc.performDFS();
-		DefaultDirectedGraph<NameDistinctVertex,AstEdge> g = gc.getDgraph();
-		Set<AstEdge> allEdges = g.edgeSet();
-		Iterator <AstEdge> i =  allEdges.iterator();
-		while (i.hasNext())
-		{
-			AstEdge e = i.next();
-			NameDistinctVertex s = (NameDistinctVertex) e.getSource();
-			System.out.println(s);
-			assertTrue(0 < s.getDetected());
-			assertTrue(0 < s.getFinished());
-
-			NameDistinctVertex t = (NameDistinctVertex) e.getTarget();
-			System.out.println(t);
-			assertTrue(0 < t.getDetected());
-			assertTrue(0 < t.getFinished());
-		}
-	}
 	
-	@Test
-	public void testToGraphviz()
-	{
-		GraphContainer<NameDistinctVertex> gc = new GraphContainer<NameDistinctVertex>();
-		NameDistinctVertex root = new NameDistinctVertex("root");
-		NameDistinctVertex a = new NameDistinctVertex("a");
-		NameDistinctVertex b = new NameDistinctVertex("b");
-		NameDistinctVertex c = new NameDistinctVertex("c");
-		NameDistinctVertex d = new NameDistinctVertex("d");
-
-		gc.addRoot(root);
-		gc.addDepend(root, a);
-		gc.addDepend(root, b);
-		gc.addDepend(a, b);
-		gc.addDepend(b, d);
-		gc.performDFS();
-		System.out.println("==================================");
-		System.out.print(gc.toGraphviz());
-		System.out.println("==================================");
-	}
 }
