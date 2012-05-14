@@ -3,6 +3,7 @@ package de.htwsaarland.astVisual.testArchiv;
 import de.htwsaarland.astVisual.graphRepresent.GraphContainer;
 import de.htwsaarland.astVisual.graphRepresent.VertexType;
 import de.htwsaarland.astVisual.graphVisual.AstGraphScene;
+import org.netbeans.api.visual.action.ActionFactory;
 import org.netbeans.api.visual.widget.Scene;
 
 /**
@@ -55,8 +56,9 @@ gc.addDepend("arguments", VertexType.PROD, "identifier", VertexType.TOKEN);
 		ags.portGraph(gc);
 		ags.setLayout();
 
-		Scene s = ags.getScene();
-		
-		SceneSupport.show(s);
+		Scene scene = ags.getScene();
+		scene.getActions ().addAction (ActionFactory.createMouseCenteredZoomAction (1.1));
+		scene.getActions ().addAction (ActionFactory.createWheelPanAction());
+		SceneSupport.show(scene);
 	}
 }

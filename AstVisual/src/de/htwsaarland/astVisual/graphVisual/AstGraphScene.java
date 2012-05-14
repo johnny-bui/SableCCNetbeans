@@ -82,6 +82,7 @@ public class AstGraphScene
         actions.addAction (createObjectHoverAction ()); /** <- hover action.*/
         actions.addAction (createSelectAction ());/** <- select action */
         actions.addAction (moveAction);/** <- move action */
+		
 
         mainLayer.addChild (nodeWidget);
         return nodeWidget;
@@ -175,9 +176,12 @@ public class AstGraphScene
 			}
 			if (!isEdge(e))
 			{
-				addEdge(e);
-				setEdgeSource(e, s);
-				setEdgeTarget(e, t);
+				if ( !e.getEdgeClass().equals(EdgeClass.C) )
+				{
+					addEdge(e);
+					setEdgeSource(e, s);
+					setEdgeTarget(e, t);
+				}
 			}
 		}
 	}
