@@ -1,6 +1,6 @@
 package de.htwsaarland.astVisual.testArchiv;
 
-import de.htwsaarland.astVisual.graphRepresent.AstVertex;
+import de.htwsaarland.astVisual.graphRepresent.VertexInfo;
 import de.htwsaarland.astVisual.graphRepresent.GraphContainer;
 import de.htwsaarland.astVisual.graphRepresent.NameDistinctVertex;
 import de.htwsaarland.astVisual.graphRepresent.VertexType;
@@ -39,7 +39,7 @@ public class HelloAstTree {
 		gc.addDepend(a2, a4);
 		gc.performDFS();
 		
-		AstGraphScene<NameDistinctVertex,AstVertex> ags = new AstGraphScene<NameDistinctVertex, AstVertex>();
+		AstGraphScene<NameDistinctVertex,VertexInfo> ags = new AstGraphScene<NameDistinctVertex, VertexInfo>();
 		ags.portGraph(gc);
 
 

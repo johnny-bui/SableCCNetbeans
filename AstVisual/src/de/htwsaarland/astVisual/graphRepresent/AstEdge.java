@@ -1,28 +1,32 @@
 package de.htwsaarland.astVisual.graphRepresent;
 
+import java.io.Serializable;
+
 /**
  *
  * @author phucluoi
  */
-public class AstEdge<V extends AstVertex> 
+public class AstEdge  
+	implements Cloneable,
+        Serializable
 {
-	private V source;
-	private V target;
+	private String source;
+	private String target;
 	private EdgeClass c = EdgeClass.N;
 			
-	public void setNodes(V source, V target)
+	public void setNodes(String source, String target)
 	{
 		this.source = source;
 		this.target = target;
 		
 	}
 
-	public V getSource()
+	public String getSource()
 	{
 		return this.source;
 	}
 
-	public V getTarget()
+	public String getTarget()
 	{
 		return this.target;
 	}
@@ -41,12 +45,12 @@ public class AstEdge<V extends AstVertex>
 	@Override
 	public String toString()
 	{
-		return "(" + source.getName()+ " -> " + target.getName() + "):" + c;
+		return "(" + source + " -> " + target + "):" + c;
 	}
 	
 	public String toGraphiz()
 	{
-		return source.toGraphviz() + " -> " + target.toGraphviz()
+		return source + " -> " + target
 			+"[" + EdgeClass.mapToStyle(c) + "]";
 	}
 }

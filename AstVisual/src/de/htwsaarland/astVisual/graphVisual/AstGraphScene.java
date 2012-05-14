@@ -24,7 +24,7 @@ import org.netbeans.api.visual.widget.general.IconNodeWidget;
  * @author phucluoi
  * @version May 7, 2012
  */
-public class AstGraphScene<V extends AstVertex,E>
+public class AstGraphScene<V extends VertexInfo,E>
 	extends GraphScene <V, AstEdge>
 {
 	//private Widget mainLayer;
@@ -138,7 +138,8 @@ public class AstGraphScene<V extends AstVertex,E>
 		// so the layout will be performed in the "invokeLayoutImmediatelly" method
 	}
 
-	public void portGraph(GraphContainer<V> gc)
+	/*
+	public void portGraph(GraphContainer gc)
 	{
 		addNode(gc.getRoot());
 		Set<AstEdge> set = gc.getDgraph().edgeSet();	
@@ -159,5 +160,7 @@ public class AstGraphScene<V extends AstVertex,E>
 			setEdgeTarget(e, t);
 		}
 	}
+	*/
+	
 }
 
