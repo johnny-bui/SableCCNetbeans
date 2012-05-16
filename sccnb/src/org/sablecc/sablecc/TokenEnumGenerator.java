@@ -7,6 +7,7 @@ import org.sablecc.sablecc.analysis.DepthFirstAdapter;
 import org.sablecc.sablecc.node.AGrammar;
 import org.sablecc.sablecc.node.ATokenDef;
 import org.sablecc.sablecc.node.ATokens;
+import org.sablecc.sablecc.node.Token;
 
 /**
  *
@@ -46,6 +47,9 @@ public class TokenEnumGenerator extends DepthFirstAdapter
 		{
 			node.getIgnTokens().apply(this);
 		}
+		buff.append(constructEntryForEOF());
+		idx += 1;
+		buff.append(constructEntryForError());
 	}
 
 	/*
@@ -57,10 +61,9 @@ public class TokenEnumGenerator extends DepthFirstAdapter
 	
 	
 	@Override
-	public void caseATokenDef(ATokenDef node) {
-		String token = node.getId().getText();
-		String entry = "\t"+token.toUpperCase() + 
-				" (" + idx + ",\"" + transform(token) + "\"),\n";
+	public void caseATokenDef(ATokenDef node) 
+	{
+		String entry = constructEntryForToken(node);
 		idx = idx + 1;
 		buff.append(entry);		
 		super.caseATokenDef(node);
@@ -84,5 +87,23 @@ public class TokenEnumGenerator extends DepthFirstAdapter
 	public String getTokenLst()
 	{
 		return PRE + buff.toString() + POST;
+	}
+
+	protected String constructEntryForToken(ATokenDef node)
+	{
+		String token = node.getId().getText();
+		String entry = "\t"+token.toUpperCase() + 
+				" (" + idx + ",\"" + transform(token) + "\"),\n";
+		return entry;
+	}
+
+	protected String constructEntryForEOF()
+	{
+		return "\tEOF(" + idx + "," + "\"EOF\"),\n";
+	}
+
+	protected String constructEntryForError()
+	{
+		return "\t_ERROR_(" + idx + "," + "\"_ERROR_\"),\n";
 	}
 }

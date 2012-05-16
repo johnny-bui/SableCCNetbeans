@@ -64,7 +64,9 @@ public class TokenEnumGeneratorTest {
 		try {
 			String curDir = System.getProperty("user.dir");
 			System.err.println(curDir);
-			PushbackReader p = new PushbackReader(new FileReader("/tmp/postfix.scc"));
+			//TODO: remove absolute path
+			PushbackReader p = new PushbackReader(
+				new FileReader("/home/phucluoi/Documents/job/uilCompiler/UILKool/src/uil.scc"));
 			Lexer l = new Lexer(p);
 			Parser parser = new Parser(l);
 			Start tree = parser.parse();
