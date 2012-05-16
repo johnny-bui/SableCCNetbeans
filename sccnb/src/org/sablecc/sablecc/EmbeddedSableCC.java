@@ -2,7 +2,7 @@ package org.sablecc.sablecc;
 
 /**
  * just make some constant
- * @author phucluoi
+ * @author verylazyboy
  */
 public class EmbeddedSableCC 
 {

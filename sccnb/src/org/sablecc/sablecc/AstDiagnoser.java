@@ -13,7 +13,7 @@ import org.sablecc.sablecc.node.*;
 
 /**
  *
- * @author hbui
+ * @author verylazyboy
  */
 public class AstDiagnoser extends DepthFirstAdapter
 {

@@ -6,7 +6,7 @@ import org.sablecc.sablecc.node.*;
 
 /**
  *
- * @author hbui
+ * @author verylazyboy
  * @version May 10. 2012
  * 		initial 
  * 

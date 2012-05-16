@@ -2,7 +2,7 @@ package org.sablecc.sablecc;
 
 /**
  *
- * @author hbui
+ * @author verylazyboy
  * @version May 10. 2012
  */
 

@@ -1,10 +1,9 @@
 package org.sableccsupport.action;
 
-import com.dreamer.outputhandler.OutputHandler;
-import java.awt.Color;
-import java.io.*;
-import org.openide.util.Exceptions;
-import org.sablecc.sablecc.EmbeddedSableCC;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.PushbackReader;
 import org.sablecc.sablecc.AstDiagnoser;
 import org.sablecc.sablecc.CstDiagnoser;
 import org.sablecc.sablecc.TokenRegister;
@@ -22,7 +21,10 @@ import org.sablecc.sablecc.parser.ParserException;
 
 /**
  *
- * @author hbui
+ * @author verylazyboy
+ * @version May, 10 2012
+ * 		initial version
+ * 
  */
 public class DiagnoserCaller 
 {
@@ -33,12 +35,13 @@ public class DiagnoserCaller
 		h.start();
 	}
 }
+
+
 class AnalyzerHelper extends Thread
 {
 	private String filename;
 	static PrintStream orgOutStream 	= null;
 	static PrintStream orgErrStream 	= null;
-	private static Color errorColor = Color.decode(EmbeddedSableCC.ERROR_COLOR_OUTPUR);
 	public void setup(String filename)
 	{
 		this.filename = filename;
@@ -47,7 +50,7 @@ class AnalyzerHelper extends Thread
 	@Override
 	public void run() {
 		try {
-			redirectSystemStreams();
+			IORedirect.redirectSystemStreams();
 			String msg = "-----------------" + filename + "-------------";
 			System.out.println (msg);
 			Parser p = new Parser(
@@ -113,65 +116,8 @@ class AnalyzerHelper extends Thread
 		{
 			String msg = "================= end of diagnosis  =================" ;
 			System.out.println (msg);
-			setBackOutput();
+			IORedirect.setBackOutput();
 		}
     }
-
-
-
-	private static void redirectSystemStreams() 
-	{
-        OutputStream out = new OutputStream() {
-
-            @Override
-            public void write(int i) throws IOException {
-                OutputHandler.output(EmbeddedSableCC.SABLE_CC_OUTPUT_TITLE ,
-						String.valueOf((char) i));
-            }
-
-            @Override
-            public void write(byte[] bytes) throws IOException {
-                OutputHandler.output(EmbeddedSableCC.SABLE_CC_OUTPUT_TITLE, 
-						new String(bytes));
-            }
-
-            @Override
-            public void write(byte[] bytes, int off, int len) throws IOException {
-                OutputHandler.output(EmbeddedSableCC.SABLE_CC_OUTPUT_TITLE, 
-						new String(bytes, off, len));
-            }
-        };
-
-		OutputStream err = new OutputStream() {
-
-            @Override
-            public void write(int i) throws IOException {
-                OutputHandler.output(EmbeddedSableCC.SABLE_CC_OUTPUT_TITLE ,
-						String.valueOf((char) i), errorColor);
-            }
-
-            @Override
-            public void write(byte[] bytes) throws IOException {
-                OutputHandler.output(EmbeddedSableCC.SABLE_CC_OUTPUT_TITLE, 
-						new String(bytes), errorColor);
-            }
-
-            @Override
-            public void write(byte[] bytes, int off, int len) throws IOException {
-                OutputHandler.output(EmbeddedSableCC.SABLE_CC_OUTPUT_TITLE, 
-						new String(bytes, off, len), errorColor);
-            }
-        };
-		orgOutStream = System.out;
-		orgErrStream = System.err;
-        System.setOut(new PrintStream(out, true));
-        System.setErr(new PrintStream(err, true));
-    }
-
-	private static void setBackOutput()
-	{
-		System.setErr(orgErrStream);
-		System.setOut(orgOutStream);
-	}
 }
 

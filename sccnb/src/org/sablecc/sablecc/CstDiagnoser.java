@@ -6,7 +6,7 @@ import org.sablecc.sablecc.node.*;
 
 /**
  *
- * @author hbui
+ * @author verylazyboy
  */
 public class CstDiagnoser extends AstDiagnoser
 {

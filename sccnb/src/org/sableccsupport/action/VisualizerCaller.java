@@ -15,7 +15,9 @@ import org.sableccsupport.visual.Visualizer;
 
 /**
  *
- * @author hbui
+ * @author verylazyboy
+ * @version May, 11 2012
+ * 
  */
 public class VisualizerCaller 
 {

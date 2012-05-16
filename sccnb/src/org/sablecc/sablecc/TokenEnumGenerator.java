@@ -10,9 +10,13 @@ import org.sablecc.sablecc.node.ATokens;
 
 /**
  *
- * @author phucluoi
+ * @author verylazyboy
  * @version May 15, 2012
+ * This is just an experiment. It will be used to generate some file to 
+ * make supporting for new language easier. (something like the project
+ * Schliemann (???) {@link http://wiki.netbeans.org/Schliemann} )
  */
+
 public class TokenEnumGenerator extends DepthFirstAdapter
 {
 	StringBuffer buff;

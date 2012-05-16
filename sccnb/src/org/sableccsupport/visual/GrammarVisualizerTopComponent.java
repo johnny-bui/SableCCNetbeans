@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.sableccsupport.visual;
 
 import javax.swing.JComponent;
@@ -15,7 +11,10 @@ import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
 
 /**
+ * 
  * Top component which displays something.
+ * @author verylazyboy
+ * @version 
  */
 @ConvertAsProperties(dtd = "-//org.sableccsupport.visual//GrammarVisualizer//EN",
 autostore = false)

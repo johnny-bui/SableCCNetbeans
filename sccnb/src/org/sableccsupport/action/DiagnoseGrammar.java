@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.sableccsupport.action;
 
 import java.awt.event.ActionEvent;
@@ -14,6 +10,13 @@ import org.openide.filesystems.FileObject;
 import org.openide.filesystems.FileUtil;
 import org.openide.util.NbBundle.Messages;
 import org.sableccsupport.SCCDataObject;
+
+/**
+ * @author verylazyboy
+ * @version May, 10 2012
+ * 		initial diagnose feature
+ */
+
 
 @ActionID(category = "Debug",
 id = "org.sableccsupport.action.DiagnoseGrammar")

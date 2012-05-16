@@ -2,8 +2,8 @@ package org.sableccsupport.action;
 
 
 
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionReferences;
@@ -13,7 +13,10 @@ import org.openide.filesystems.FileUtil;
 import org.openide.util.NbBundle.Messages;
 import org.sableccsupport.SCCDataObject;
 
-
+/**
+ * @author verylazyboy
+ * @version [too old to know]
+ */
 @ActionID(category = "Build",
 id = "org.sableccsupport.action.CallSableCC")
 @ActionRegistration(iconBase = "org/sableccsupport/img/sableccBuild.png",

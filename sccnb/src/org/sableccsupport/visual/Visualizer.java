@@ -4,7 +4,7 @@ import javax.swing.JComponent;
 
 /**
  *
- * @author hbui
+ * @author verylazyboy
  */
 public interface Visualizer {
 	public void updateStatus(String status);

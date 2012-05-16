@@ -9,8 +9,9 @@ import org.sablecc.sablecc.EmbeddedSableCC;
 
 /**
  *
- * @author hbui
+ * @author verylazyboy
  * @version May, 14 2012
+ * 		initial version, move this class from a private class in SableCCCaller.
  */
 public class IORedirect 
 {
