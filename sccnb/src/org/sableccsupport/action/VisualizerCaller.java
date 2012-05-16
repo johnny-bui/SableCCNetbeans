@@ -1,6 +1,5 @@
 package org.sableccsupport.action;
 
-import com.dreamer.outputhandler.OutputHandler;
 import java.awt.Color;
 import java.io.*;
 import javax.swing.JComponent;
