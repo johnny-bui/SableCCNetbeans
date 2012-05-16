@@ -6,8 +6,10 @@ import java.io.*;
 import javax.swing.JComponent;
 import org.sablecc.sablecc.*;
 import org.sablecc.sablecc.lexer.Lexer;
+import org.sablecc.sablecc.lexer.LexerException;
 import org.sablecc.sablecc.node.Start;
 import org.sablecc.sablecc.parser.Parser;
+import org.sablecc.sablecc.parser.ParserException;
 import org.sableccsupport.visual.GrammarVisualizerTopComponent;
 import org.sableccsupport.visual.Visualizer;
 
@@ -50,11 +52,13 @@ class VisualizerHelper extends Thread
 			String msg = "+++++++++++++++++" + filename + "+++++++++++++";
 			System.out.println (msg);
 			try{
-				//SableCC.processGrammar(filename, null);
+				// ensure that the "real" sablecc can compile the 
+				// grammar and create parser, lexer etc.
+				SableCC.processGrammar(filename, null);
 			}catch (Exception ex)
 			{
 				graphDisplay.updateStatus("Parse SableCC file error: " + ex.getMessage());
-				throw ex;
+				throw ex;// so the output window can show the exception, too
 			}
 			// create a Parser chain
 			Start tree = null;
@@ -97,15 +101,25 @@ class VisualizerHelper extends Thread
 				graphDisplay.updateStatus("Cannot construct graph for AST: " + ex.getMessage());
 				throw ex;
 			}
-			//
-			msg = "================= build success  =================" ;
-			System.out.println (msg);
-		} catch (Exception ex) {
-			//Exceptions.printStackTrace(ex);
+		}catch (IOException ex)
+		{
+			System.err.println(ex.getMessage());
+		}catch (LexerException ex)
+		{
+			System.err.println(ex.getMessage());
+		}catch (ParserException ex)
+		{
+			System.err.println(ex.getMessage());
+		}catch (Exception ex) 
+		{
+			// unexpected exceptions go here, show them in output window.
+			// (with stack trace)
 			System.err.println(ex.getMessage());
 			ex.printStackTrace();
 		}finally
 		{
+			String msg = "================= end of visualization =================" ;
+			System.out.println (msg);
 			IORedirect.setBackOutput();
 		}
     }

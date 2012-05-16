@@ -75,8 +75,7 @@ public final class GrammarVisualizerTopComponent
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addComponent(status, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
             .addComponent(graphDisplay)
         );
         jPanel1Layout.setVerticalGroup(

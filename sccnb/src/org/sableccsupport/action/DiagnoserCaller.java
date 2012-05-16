@@ -9,8 +9,10 @@ import org.sablecc.sablecc.AstDiagnoser;
 import org.sablecc.sablecc.CstDiagnoser;
 import org.sablecc.sablecc.TokenRegister;
 import org.sablecc.sablecc.lexer.Lexer;
+import org.sablecc.sablecc.lexer.LexerException;
 import org.sablecc.sablecc.node.Start;
 import org.sablecc.sablecc.parser.Parser;
+import org.sablecc.sablecc.parser.ParserException;
 
 
 
@@ -81,30 +83,36 @@ class AnalyzerHelper extends Thread
 			int conProductionError = conDiagnoser.getError();
 			if (conProductionError == 0)
 			{
-				System.out.println("No (con) production error found");
+				System.out.println("No (CST) production error found");
 			}else
 			{
-				System.out.println("Found " + conProductionError + " (con) production error(s).");
+				System.out.println("Found " + conProductionError + " (CST) production error(s).");
 			}
 
 			/*ast problem, ect*/
 			int productionError = astDiagnoser.getError();
 			if (productionError == 0)
 			{
-				System.out.println("No (ast) production error found");
+				System.out.println("No (AST) production error found");
 			}else
 			{
-				System.out.println("Found " + productionError + " (ast) production error(s).");
+				System.out.println("Found " + productionError + " (AST) production error(s).");
 			}
 
 			
-			msg = "================= end of diagnosis  =================" ;
-			System.out.println (msg);
-		} catch (Exception ex) {
-			Exceptions.printStackTrace(ex);
-			//System.err.println(ex.getMessage());
-		}finally
+		}catch (IOException ex)
 		{
+			System.err.println(ex.getMessage());
+		} catch (LexerException ex) {
+			System.err.println(ex.getMessage());
+		}catch (ParserException ex)
+		{
+			System.err.println(ex.getMessage());
+		}
+		finally
+		{
+			String msg = "================= end of diagnosis  =================" ;
+			System.out.println (msg);
 			setBackOutput();
 		}
     }
