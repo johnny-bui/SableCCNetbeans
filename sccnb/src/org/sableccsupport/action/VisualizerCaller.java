@@ -52,6 +52,8 @@ class VisualizerHelper extends Thread
 			IORedirect.redirectSystemStreams();
 			String msg = "+++++++++++++++++" + filename + "+++++++++++++";
 			System.out.println (msg);
+			/* // remove this because it generates files, that may be not expected
+			 * // by user.
 			try{
 				// ensure that the "real" sablecc can compile the 
 				// grammar and create parser, lexer etc.
@@ -61,6 +63,8 @@ class VisualizerHelper extends Thread
 				graphDisplay.updateStatus("Parse SableCC file error: " + ex.getMessage());
 				throw ex;// so the output window can show the exception, too
 			}
+			*/
+			
 			// create a Parser chain
 			Start tree = null;
 			try{
@@ -71,15 +75,25 @@ class VisualizerHelper extends Thread
 								)));
 				tree = p.parse();
 				graphDisplay.updateStatus("parse ok");
-			}catch(Exception ex)
+			}
+			catch(IOException ex)
+			{
+				graphDisplay.updateStatus("Cannot create AST: " + ex.getMessage());
+				throw ex;// throw them to leave the block, not nice, to expensive but it works
+			}catch (LexerException ex)
+			{
+				graphDisplay.updateStatus("Cannot create AST: " + ex.getMessage());
+				throw ex;
+			}catch (ParserException ex)
 			{
 				graphDisplay.updateStatus("Cannot create AST: " + ex.getMessage());
 				throw ex;
 			}
+			
 			try{
 				TokenRegister tokenReg = new TokenRegister();
 				tree.apply(tokenReg);
-				//ConDiagnoser conDiagnoser = new CstDiagnoser(tokenReg); 
+				//CstDiagnoser conDiagnoser = new CstDiagnoser(tokenReg); 
 				//tree.apply(conDiagnoser);
 				AstDiagnoser astDiagnoser = new AstDiagnoser(tokenReg);
 				tree.apply(astDiagnoser);
