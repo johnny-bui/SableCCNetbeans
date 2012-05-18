@@ -20,19 +20,28 @@ import org.sablecc.sablecc.node.Token;
 
 public class TokenEnumGenerator extends DepthFirstAdapter
 {
-	StringBuffer buff;
-	public static String PRE = 
+	protected StringBuffer entryBuffer;
+	private String PRE = 
 		"/*generated automatically*/\n"+
 		"import org.netbeans.api.lexer.Language;\n" +
 		"import org.netbeans.api.lexer.TokenId;\n"  +			
 		"public enum <<>> implements TokenId\n"     +
 		"{\n";
-	public static String POST = "\t;\n}";
-	private int idx;
+	private String POST = "\t;\n}";
+	
+	public String getPRE()
+	{
+		return this.PRE;
+	}
+	public String getPOST()
+	{
+		return this.POST;
+	}
+	protected int idx;
 	
 	public TokenEnumGenerator ()
 	{
-		buff = new StringBuffer();
+		entryBuffer = new StringBuffer();
 		idx = 0;
 	}
 
@@ -47,9 +56,9 @@ public class TokenEnumGenerator extends DepthFirstAdapter
 		{
 			node.getIgnTokens().apply(this);
 		}
-		buff.append(constructEntryForEOF());
+		entryBuffer.append(constructEntryForEOF());
 		idx += 1;
-		buff.append(constructEntryForError());
+		entryBuffer.append(constructEntryForError());
 	}
 
 	/*
@@ -65,7 +74,7 @@ public class TokenEnumGenerator extends DepthFirstAdapter
 	{
 		String entry = constructEntryForToken(node);
 		idx = idx + 1;
-		buff.append(entry);		
+		entryBuffer.append(entry);		
 		super.caseATokenDef(node);
 	}
 
@@ -86,7 +95,7 @@ public class TokenEnumGenerator extends DepthFirstAdapter
 	
 	public String getTokenLst()
 	{
-		return PRE + buff.toString() + POST;
+		return getPRE() + entryBuffer.toString() + getPOST();
 	}
 
 	protected String constructEntryForToken(ATokenDef node)

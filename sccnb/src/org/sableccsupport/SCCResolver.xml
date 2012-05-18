@@ -7,6 +7,8 @@ and open the template in the editor.
 <MIME-resolver>
 	<file>
 		<ext name="scc"/>
+		<ext name="SCC"/>
+		<ext name="sablecc"/>
 		<resolver mime="text/x-sablecc"/>
 	</file>
 </MIME-resolver>
