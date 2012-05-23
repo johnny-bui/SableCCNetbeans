@@ -78,6 +78,27 @@ public class GraphContainer
 		addRoot(root, VertexType.PROD);
 	}
 
+	public void setRoot(String root, VertexType type)
+	{
+		if (lgraph.containsVertex(root))
+			// if the node already in graph, simple replace the root
+			// and ignore the type
+		{
+			this.root = root;
+		}else// if not, a root node must be created
+		{
+			this.root = root;
+			VertexInfo info = new CompactInfo(root, type);
+			lgraph.addVertex(root);
+			vertexInfoTable.put(root, info);
+		}
+	}
+
+	public void setRoot(String root)
+	{
+		setRoot(root, VertexType.PROD);
+	}
+
 	/**
 	 * changes the root to an other vertex after add the root into graph.
 	 * The Implementation should ensure, that the new root is ready in

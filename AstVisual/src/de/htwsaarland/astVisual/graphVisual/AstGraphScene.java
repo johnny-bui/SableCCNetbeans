@@ -36,6 +36,15 @@ public class AstGraphScene
 	
     private WidgetAction moveAction = ActionFactory.createMoveAction ();
 	private Map<String,VertexInfo> vertexInforTable;
+	private boolean captureCross = true;
+	
+	/** 
+	 * @param captureCross if draw cross edges
+	 */
+	public void setup(boolean captureCross)
+	{
+		this.captureCross = captureCross;
+	}
 	
 	public AstGraphScene()
 	{
@@ -98,7 +107,8 @@ public class AstGraphScene
         widget.setTargetAnchorShape (AnchorShape.TRIANGLE_FILLED);
 			
 		// TODO classsify the edge using a method
-		widget.setLineColor(EdgeClass.mapToColor(edge.getEdgeClass()) );// set color of the edge green
+		widget.setLineColor(EdgeClass.mapToColor(edge.getEdgeClass()) );
+		// set color of the edge green
         
 		
 		WidgetAction.Chain actions = widget.getActions ();
@@ -164,7 +174,7 @@ public class AstGraphScene
 		Set<AstEdge> set = gc.getGraph().edgeSet();	
 		for (AstEdge e : set)
 		{
-			String s =  e.getSource();
+			String s =  e.getSource();//TODO: use vertexInforTable
 			String t =  e.getTarget();
 			if (! isNode(s))
 			{
@@ -176,7 +186,15 @@ public class AstGraphScene
 			}
 			if (!isEdge(e))
 			{
-				if ( !e.getEdgeClass().equals(EdgeClass.C) )
+				if (!captureCross)
+				{
+					if ( !e.getEdgeClass().equals(EdgeClass.C) )
+					{
+						addEdge(e);
+						setEdgeSource(e, s);
+						setEdgeTarget(e, t);
+					}
+				}else
 				{
 					addEdge(e);
 					setEdgeSource(e, s);
