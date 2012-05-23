@@ -31,13 +31,9 @@ public class VisualizerCaller
 
 
 
-
 class VisualizerHelper extends Thread
 {
 	private String filename;
-	static PrintStream orgOutStream 	= null;
-	static PrintStream orgErrStream 	= null;
-	private static Color errorColor = Color.decode(EmbeddedSableCC.ERROR_COLOR_OUTPUR);
 	private Visualizer graphDisplay;
 	
 	public void setup(String filename, Visualizer graphDisplay)
@@ -140,5 +136,4 @@ class VisualizerHelper extends Thread
     }
 	
 }
-
 

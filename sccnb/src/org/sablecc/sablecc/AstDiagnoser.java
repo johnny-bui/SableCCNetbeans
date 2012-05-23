@@ -227,13 +227,14 @@ public class AstDiagnoser extends DepthFirstAdapter
 
 	public int getError(){return errorCount;}
 
-	/* TODO: move it to somewhere else here. It just cause bugs */
+	/** TODO: move it to somewhere else here. It just cause bugs */
 	public JComponent getAstView ()
 	{
 		gc.performDFS();
 		System.out.println(gc);
 		
 		AstGraphScene ags = new AstGraphScene();
+		ags.setup(true);
 		ags.portGraph(gc);
 		ags.setLayout();
 

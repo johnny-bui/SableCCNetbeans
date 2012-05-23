@@ -107,7 +107,6 @@ public final class GrammarVisualizerTopComponent
     }// </editor-fold>//GEN-END:initComponents
 
 	private void statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusActionPerformed
-		// TODO add your handling code here:
 	}//GEN-LAST:event_statusActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -118,7 +117,6 @@ public final class GrammarVisualizerTopComponent
     // End of variables declaration//GEN-END:variables
 	@Override
 	public void componentOpened() {
-		// TODO add custom code on component opening
 	}
 
 	@Override
