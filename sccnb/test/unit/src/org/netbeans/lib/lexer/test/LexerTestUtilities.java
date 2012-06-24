@@ -378,7 +378,6 @@ public final class LexerTestUtilities {
         // Check the change since last modification
         TokenHierarchy<?> lastHi = (TokenHierarchy<?>)doc.getProperty(LAST_TOKEN_HIERARCHY);
         if (lastHi != null) {
-            // TODO comparison
         }
         doc.putProperty(LAST_TOKEN_HIERARCHY, batchHi); // new last batch token hierarchy
 

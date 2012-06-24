@@ -2,12 +2,9 @@ package org.sablecc.sablecc;
 
 import de.htwsaarland.astVisual.graphRepresent.GraphContainer;
 import de.htwsaarland.astVisual.graphRepresent.VertexType;
-import de.htwsaarland.astVisual.graphVisual.AstGraphScene;
-import de.htwsaarland.astVisual.testArchiv.SceneSupport;
-import java.util.*;
-import javax.swing.JComponent;
-import org.netbeans.api.visual.action.ActionFactory;
-import org.netbeans.api.visual.widget.Scene;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
 import org.sablecc.sablecc.analysis.DepthFirstAdapter;
 import org.sablecc.sablecc.node.*;
 
@@ -121,7 +118,7 @@ public class AstDiagnoser extends DepthFirstAdapter
 				
 			}else
 			{
-				//TODO: make a edge Product(productName) -> Product (elementId)
+				//make a edge Product(productName) -> Product (elementId)
 				//System.out.println(productName +  " -> " + "P." + elementId);
 				addPPdep(productName, elementId);
 			}
@@ -141,7 +138,8 @@ public class AstDiagnoser extends DepthFirstAdapter
 							+ "it should be defined in AST section.");
 				}else
 				{
-					//TODO: No Token and Production found -> print a edge from production to produciton
+					//TODO: No Token and Production found 
+					//-> print a edge from production to produciton
 					//System.out.println(productName +  " -> " + "P." + elementId);
 					addPPdep(productName, elementId);
 				}
@@ -149,7 +147,8 @@ public class AstDiagnoser extends DepthFirstAdapter
 			{
 				if (astProd == null)
 				{
-					// TODO: No Production and Token found -> print a edge from production to Token
+					// TODO: No Production and Token found 
+					//-> print a edge from production to Token
 					// System.out.println(productName +  " -> " + "T." + elementId);
 					addPT(productName, elementId);
 				}else
@@ -227,28 +226,14 @@ public class AstDiagnoser extends DepthFirstAdapter
 
 	public int getError(){return errorCount;}
 
-	/** TODO: move it to somewhere else here. It just cause bugs */
-	public JComponent getAstView ()
-	{
-		gc.performDFS();
-		System.out.println(gc);
-		
-		AstGraphScene ags = new AstGraphScene();
-		ags.setup(true);
-		ags.portGraph(gc);
-		ags.setLayout();
-
-		Scene s = ags.getScene();
-		s.getActions ().addAction (ActionFactory.createMouseCenteredZoomAction (1.1));
-		s.getActions ().addAction (ActionFactory.createWheelPanAction());
-		//SceneSupport.show(s);
-		return s.createView();
-	}
-
-
 	public boolean hasAST()
 	{
 		return this.grammarHasAst;
+	}
+
+	public GraphContainer getGraphContainer()
+	{
+		return gc;
 	}
 }
 

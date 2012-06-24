@@ -11,6 +11,8 @@ import org.sablecc.sablecc.parser.Parser;
 import org.sablecc.sablecc.parser.ParserException;
 import org.sableccsupport.visual.GrammarVisualizerTopComponent;
 import org.sableccsupport.visual.Visualizer;
+import org.sableccsupport.visual.render.Render;
+import org.sableccsupport.visual.render.SimpleRender;
 
 /**
  *
@@ -35,11 +37,13 @@ class VisualizerHelper extends Thread
 {
 	private String filename;
 	private Visualizer graphDisplay;
+	private Render graphRender;
 	
 	public void setup(String filename, Visualizer graphDisplay)
 	{
 		this.filename = filename;
 		this.graphDisplay = graphDisplay;
+		graphRender = new SimpleRender();
 	}
 
 	@Override
@@ -48,18 +52,6 @@ class VisualizerHelper extends Thread
 			IORedirect.redirectSystemStreams();
 			String msg = "+++++++++++++++++" + filename + "+++++++++++++";
 			System.out.println (msg);
-			/* // remove this because it generates files, that may be not expected
-			 * // by user.
-			try{
-				// ensure that the "real" sablecc can compile the 
-				// grammar and create parser, lexer etc.
-				SableCC.processGrammar(filename, null);
-			}catch (Exception ex)
-			{
-				graphDisplay.updateStatus("Parse SableCC file error: " + ex.getMessage());
-				throw ex;// so the output window can show the exception, too
-			}
-			*/
 			
 			// create a Parser chain
 			Start tree = null;
@@ -96,16 +88,17 @@ class VisualizerHelper extends Thread
 				if (astDiagnoser.hasAST())
 				{
 					graphDisplay.updateStatus("construct AST depenedent graph ok");
-					graphDisplay.replaceNewGraph(astDiagnoser.getAstView());
+					graphDisplay.replaceNewGraph(
+						graphRender.renderGraph( astDiagnoser.getGraphContainer() ));
 				}else
 				{
 					graphDisplay.updateStatus("there is no AST to show -> constructing CST");
 					CstDiagnoser conDiagnoser = new CstDiagnoser(tokenReg);
 					tree.apply(conDiagnoser);
-					JComponent conVisual = conDiagnoser.getAstView();
 					graphDisplay.updateStatus("construct CST depenedent graph ok");
-					graphDisplay.replaceNewGraph(conVisual);
-					
+					graphDisplay.replaceNewGraph(
+						graphRender.renderGraph(conDiagnoser.getGraphContainer())
+							);
 				}
 			}catch(Exception ex)
 			{
