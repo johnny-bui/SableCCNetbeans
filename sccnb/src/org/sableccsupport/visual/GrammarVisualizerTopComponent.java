@@ -57,11 +57,6 @@ public final class GrammarVisualizerTopComponent
         graphDisplay = new javax.swing.JScrollPane();
         statusLabel = new javax.swing.JLabel();
         status = new javax.swing.JTextField();
-        drawToken = new javax.swing.JCheckBox();
-        ast = new javax.swing.JRadioButton();
-        cst = new javax.swing.JRadioButton();
-        reDraw = new javax.swing.JButton();
-        alt = new javax.swing.JCheckBox();
 
         org.openide.awt.Mnemonics.setLocalizedText(statusLabel, org.openide.util.NbBundle.getMessage(GrammarVisualizerTopComponent.class, "GrammarVisualizerTopComponent.statusLabel.text")); // NOI18N
 
@@ -72,73 +67,27 @@ public final class GrammarVisualizerTopComponent
             }
         });
 
-        org.openide.awt.Mnemonics.setLocalizedText(drawToken, org.openide.util.NbBundle.getMessage(GrammarVisualizerTopComponent.class, "GrammarVisualizerTopComponent.drawToken.text")); // NOI18N
-        drawToken.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                drawTokenActionPerformed(evt);
-            }
-        });
-
-        tree.add(ast);
-        org.openide.awt.Mnemonics.setLocalizedText(ast, org.openide.util.NbBundle.getMessage(GrammarVisualizerTopComponent.class, "GrammarVisualizerTopComponent.ast.text")); // NOI18N
-
-        tree.add(cst);
-        org.openide.awt.Mnemonics.setLocalizedText(cst, org.openide.util.NbBundle.getMessage(GrammarVisualizerTopComponent.class, "GrammarVisualizerTopComponent.cst.text")); // NOI18N
-
-        org.openide.awt.Mnemonics.setLocalizedText(reDraw, org.openide.util.NbBundle.getMessage(GrammarVisualizerTopComponent.class, "GrammarVisualizerTopComponent.reDraw.text")); // NOI18N
-
-        org.openide.awt.Mnemonics.setLocalizedText(alt, org.openide.util.NbBundle.getMessage(GrammarVisualizerTopComponent.class, "GrammarVisualizerTopComponent.alt.text_1")); // NOI18N
-
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(statusLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(status, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(drawToken)
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(cst))
-                            .addComponent(reDraw)
-                            .addComponent(ast)
-                            .addComponent(alt))
-                        .addGap(18, 18, 18)
-                        .addComponent(graphDisplay))))
+                .addComponent(statusLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(status, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
+            .addComponent(graphDisplay)
         );
-
-        mainPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {ast, cst});
-
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(graphDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(drawToken)
-                        .addGap(5, 5, 5)
-                        .addComponent(alt)
-                        .addGap(18, 18, 18)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cst)
-                            .addComponent(ast))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(reDraw)))
+                .addComponent(graphDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(statusLabel)
                     .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
-
-        mainPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {ast, cst});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -161,18 +110,9 @@ public final class GrammarVisualizerTopComponent
 	private void statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusActionPerformed
 	}//GEN-LAST:event_statusActionPerformed
 
-	private void drawTokenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawTokenActionPerformed
-		// TODO add your handling code here:
-	}//GEN-LAST:event_drawTokenActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox alt;
-    private javax.swing.JRadioButton ast;
-    private javax.swing.JRadioButton cst;
-    private javax.swing.JCheckBox drawToken;
     private javax.swing.JScrollPane graphDisplay;
     private javax.swing.JPanel mainPanel;
-    private javax.swing.JButton reDraw;
     private javax.swing.JTextField status;
     private javax.swing.JLabel statusLabel;
     private javax.swing.ButtonGroup tree;

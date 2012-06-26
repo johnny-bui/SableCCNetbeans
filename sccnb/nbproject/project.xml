@@ -194,12 +194,7 @@
                 <package>org.jivesoftware.smack.sasl</package>
                 <package>org.jivesoftware.smack.util</package>
                 <package>org.jivesoftware.smack.util.collections</package>
-                <package>org.sablecc.ant.taskdef</package>
                 <package>org.sablecc.sablecc</package>
-                <package>org.sablecc.sablecc.analysis</package>
-                <package>org.sablecc.sablecc.lexer</package>
-                <package>org.sablecc.sablecc.node</package>
-                <package>org.sablecc.sablecc.parser</package>
                 <package>org.xmlpull.mxp1</package>
                 <package>org.xmlpull.v1</package>
             </public-packages>
@@ -216,12 +211,12 @@
                 <binary-origin>release/modules/ext/com-dreamer-outputhandler.jar</binary-origin>
             </class-path-extension>
             <class-path-extension>
-                <runtime-relative-path>ext/jgrapht-jdk1.6.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/jgrapht-jdk1.6.jar</binary-origin>
-            </class-path-extension>
-            <class-path-extension>
                 <runtime-relative-path>ext/sablecc.jar</runtime-relative-path>
                 <binary-origin>release/modules/ext/sablecc.jar</binary-origin>
+            </class-path-extension>
+            <class-path-extension>
+                <runtime-relative-path>ext/jgrapht-jdk1.6.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/jgrapht-jdk1.6.jar</binary-origin>
             </class-path-extension>
         </data>
     </configuration>

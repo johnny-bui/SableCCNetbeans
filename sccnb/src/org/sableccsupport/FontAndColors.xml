@@ -3,7 +3,7 @@
     "http://www.netbeans.org/dtds/EditorFontsColors-1_1.dtd">
 <fontscolors>
 	<!-- ============ keywords ================================ -->
-	<fontcolor name="PkgId" default="identifier" foreColor="green">
+	<fontcolor name="PkgId" default="identifier" foreColor="009900">
 		<font style="bold"/>
 	</fontcolor>
 	<fontcolor name="Package" default="keyword" foreColor="blue">
@@ -71,22 +71,22 @@
 	</fontcolor>
 
 	<fontcolor name="Plus" default="operator"
-		foreColor="00D56A">
+		foreColor="009900">
 		<font style="bold"/>
 	</fontcolor>
 
 	<fontcolor name="Minus" default="operator"
-		foreColor="00D56A">
+		foreColor="009900">
 		<font style="bold"/>
 	</fontcolor>
 
 	<fontcolor name="QMark" default="operator"
-		foreColor="00D56A">
+		foreColor="009900">
 		<font style="bold"/>
 	</fontcolor>
 
 	<fontcolor name="Star" default="operator"
-		foreColor="00D56A">
+		foreColor="009900">
 		<font style="bold"/>
 	</fontcolor>
 
@@ -98,7 +98,7 @@
 		<font style="bold"/>
 	</fontcolor>
 
-	<fontcolor name="Arrow" default="operator" foreColor="00D500">
+	<fontcolor name="Arrow" default="operator" foreColor="009900">
 		<font style="bold"/>
 	</fontcolor>	
 	
