@@ -11,7 +11,7 @@ package org.sableccsupport.lexer;
 import org.netbeans.api.lexer.Language;
 import org.netbeans.api.lexer.TokenId;
 
-public enum SCCTokenId implements TokenId
+public enum SCCLexerTokenId implements TokenId
 {
 	
 	PKG_ID(0,"PkgId"),
@@ -61,13 +61,13 @@ public enum SCCTokenId implements TokenId
 	public int id;
     public String primaryCategory;
 
-	private static final Language<SCCTokenId> language = new SCCLanguageHierarchy().language();
+	private static final Language<SCCLexerTokenId> language = new SCCLanguageHierarchy().language();
 
-    public static final Language<SCCTokenId> getLanguage() {
+    public static Language<SCCLexerTokenId> getLanguage() {
         return language;
     }
 	
-    SCCTokenId(int id, String primaryCategory)
+    SCCLexerTokenId(int id, String primaryCategory)
     {
         this.primaryCategory = primaryCategory;
 		this.id = id;

@@ -7,7 +7,7 @@ import org.sableccsupport.sccparser.analysis.*;
 @SuppressWarnings("nls")
 public final class AElem extends PElem
 {
-    private PElemName _elemName_;
+    private TId _elemName_;
     private PSpecifier _specifier_;
     private TId _id_;
     private PUnOp _unOp_;
@@ -18,7 +18,7 @@ public final class AElem extends PElem
     }
 
     public AElem(
-        @SuppressWarnings("hiding") PElemName _elemName_,
+        @SuppressWarnings("hiding") TId _elemName_,
         @SuppressWarnings("hiding") PSpecifier _specifier_,
         @SuppressWarnings("hiding") TId _id_,
         @SuppressWarnings("hiding") PUnOp _unOp_)
@@ -49,12 +49,12 @@ public final class AElem extends PElem
         ((Analysis) sw).caseAElem(this);
     }
 
-    public PElemName getElemName()
+    public TId getElemName()
     {
         return this._elemName_;
     }
 
-    public void setElemName(PElemName node)
+    public void setElemName(TId node)
     {
         if(this._elemName_ != null)
         {
@@ -196,7 +196,7 @@ public final class AElem extends PElem
         // Replace child
         if(this._elemName_ == oldChild)
         {
-            setElemName((PElemName) newChild);
+            setElemName((TId) newChild);
             return;
         }
 

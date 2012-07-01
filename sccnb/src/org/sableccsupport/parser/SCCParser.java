@@ -1,16 +1,19 @@
 package org.sableccsupport.parser;
 
-import java.io.IOException;
 import java.io.PushbackReader;
 import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.event.ChangeListener;
-
+import org.netbeans.modules.csl.api.Error;
+import org.netbeans.modules.csl.spi.ParserResult;
 import org.netbeans.modules.parsing.api.Snapshot;
 import org.netbeans.modules.parsing.api.Task;
 import org.netbeans.modules.parsing.spi.Parser;
 import org.netbeans.modules.parsing.spi.SourceModificationEvent;
-import org.openide.util.Exceptions;
-import org.sableccsupport.sccparser.lexer.LexerException;
+import org.sableccsupport.sccparser.lexer.Lexer;
 import org.sableccsupport.sccparser.parser.ParserException;
 
 /**
@@ -20,9 +23,7 @@ import org.sableccsupport.sccparser.parser.ParserException;
 public class SCCParser extends Parser {
 
 	private Snapshot snapshot;
-	private org.sableccsupport.sccparser.parser.Parser sableccParser;
-	private String message = "????";
-	private int line = 0;
+	private SCCParserWrapper pw;
 	private boolean cancelled = false;
 	@Override
 	public void parse(
@@ -31,36 +32,22 @@ public class SCCParser extends Parser {
 			SourceModificationEvent event
 	){
 		this.snapshot = snapshot;
-		ExtendLexerToken  sableccLexer = new
-				ExtendLexerToken(
+		Lexer  sableccLexer = new
+				Lexer(
 				new PushbackReader(new StringReader(snapshot.getText().toString()) ) );
-		sableccParser = new
-				org.sableccsupport.sccparser.parser.Parser(sableccLexer);
-		try {
-			sableccParser.parse();
-			if (cancelled)
-				return;
-		} catch (ParserException ex) {
-			//Exceptions.printStackTrace(ex);
-			//this.message = ex.getMessage();
-			//this.line = ex.getToken().getLine();
-			//throw new RuntimeException(ex.getMessage());
-		} catch (LexerException ex) {
-			//Exceptions.printStackTrace(ex);
-			//this.message = ex.getMessage();
-			//this.line    = sableccLexer.getToken().getLine();
-			//throw new RuntimeException(ex.getMessage());
-		} catch (Exception ex) {
-			//Exceptions.printStackTrace(ex);
-			//throw new RuntimeException(ex.getMessage());
+		pw = new SCCParserWrapper(snapshot);
+		try{
+			pw.parse();
+		}catch(Exception ex)
+		{
+			Logger.getLogger (Parser.class.getName()).log (Level.WARNING, null, ex);
 		}
-		//throw new RuntimeException("end of parse");
 	}
 
 	@Override
 	public Result getResult(Task task)
 	{
-		return new SCCParserResult(snapshot, message, line);
+		return new SCCParserResult(snapshot, pw);
 	}
 
 	@Deprecated
@@ -78,37 +65,31 @@ public class SCCParser extends Parser {
 	public void removeChangeListener(ChangeListener changeListener) {
 	}
 
-	public static class SCCParserResult extends Result {
+	public static class SCCParserResult extends ParserResult 
+	{
 
 		//private OracleParser sqlParser;
 		private boolean valid = true;
-		private String message = null;
-		private int line;
-		SCCParserResult(Snapshot snapshot, 
-				String message, int line) {
+		private final SCCParserWrapper wrapper;
+		
+		SCCParserResult(Snapshot snapshot, SCCParserWrapper wrapper) {
 			super(snapshot);
-			this.message = message;
-			this.line = line;
-			throw new RuntimeException("created ParserResult");
+			this.wrapper = wrapper;
 		}
-
-		public String getMessage()
-			throws org.netbeans.modules.parsing.spi.ParseException
+		
+		public List<ParserException> getPError()
 		{
-			if (!valid) throw new org.netbeans.modules.parsing.spi.ParseException ();
-			return message;
+			return wrapper.getPExcep();
 		}
-
-		public int getLine()
-			throws org.netbeans.modules.parsing.spi.ParseException
-		{
-			if (!valid) throw new org.netbeans.modules.parsing.spi.ParseException ();
-			return line;
-		}
-
+		
 		@Override
 		protected void invalidate() {
 			valid = false;
+		}
+
+		@Override
+		public List<? extends Error> getDiagnostics() {
+			return new ArrayList<Error>(0);
 		}
 		
 	}

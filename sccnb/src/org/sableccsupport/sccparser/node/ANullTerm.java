@@ -7,26 +7,16 @@ import org.sableccsupport.sccparser.analysis.*;
 @SuppressWarnings("nls")
 public final class ANullTerm extends PTerm
 {
-    private TNull _null_;
 
     public ANullTerm()
     {
         // Constructor
     }
 
-    public ANullTerm(
-        @SuppressWarnings("hiding") TNull _null_)
-    {
-        // Constructor
-        setNull(_null_);
-
-    }
-
     @Override
     public Object clone()
     {
-        return new ANullTerm(
-            cloneNode(this._null_));
+        return new ANullTerm();
     }
 
     public void apply(Switch sw)
@@ -34,48 +24,16 @@ public final class ANullTerm extends PTerm
         ((Analysis) sw).caseANullTerm(this);
     }
 
-    public TNull getNull()
-    {
-        return this._null_;
-    }
-
-    public void setNull(TNull node)
-    {
-        if(this._null_ != null)
-        {
-            this._null_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._null_ = node;
-    }
-
     @Override
     public String toString()
     {
-        return ""
-            + toString(this._null_);
+        return "";
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._null_ == child)
-        {
-            this._null_ = null;
-            return;
-        }
-
         throw new RuntimeException("Not a child.");
     }
 
@@ -83,12 +41,6 @@ public final class ANullTerm extends PTerm
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._null_ == oldChild)
-        {
-            setNull((TNull) newChild);
-            return;
-        }
-
         throw new RuntimeException("Not a child.");
     }
 }

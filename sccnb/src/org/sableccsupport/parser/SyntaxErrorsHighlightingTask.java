@@ -2,9 +2,7 @@ package org.sableccsupport.parser;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
-import org.netbeans.modules.parsing.spi.ParseException;
 import org.netbeans.modules.parsing.spi.Parser.Result;
 import org.netbeans.modules.parsing.spi.ParserResultTask;
 import org.netbeans.modules.parsing.spi.Scheduler;
@@ -13,8 +11,8 @@ import org.netbeans.spi.editor.hints.ErrorDescription;
 import org.netbeans.spi.editor.hints.ErrorDescriptionFactory;
 import org.netbeans.spi.editor.hints.HintsController;
 import org.netbeans.spi.editor.hints.Severity;
-import org.openide.util.Exceptions;
 import org.sableccsupport.parser.SCCParser.SCCParserResult;
+import org.sableccsupport.sccparser.parser.ParserException;
 
 /**
  *
@@ -29,19 +27,17 @@ public class SyntaxErrorsHighlightingTask extends ParserResultTask
 	@Override
 	public void run(Result result, SchedulerEvent event)
 	{
-		try {
 			SCCParserResult sccParserResult =
 					(SCCParserResult) result;
 			Document document = result.getSnapshot().getSource().getDocument(false);
-			List<ErrorDescription> errors = new ArrayList<ErrorDescription>();
-			//for (/*SyntaxError syntaxError : syntaxErrors*/;;)
-			//{
-				String message = sccParserResult.getMessage();
-
-				int line = sccParserResult.getLine();
-				/*if (line <= 0) {
-					continue;
-				}*/
+		 	List<ErrorDescription> errors = new ArrayList<ErrorDescription>();
+			
+			List<ParserException> excepts = sccParserResult.getPError();
+			for(ParserException pex : excepts)
+			{
+				String message = pex.getMessage();
+				int line = pex.getToken().getLine();
+				
 				ErrorDescription errorDescription = ErrorDescriptionFactory.createErrorDescription(
 						Severity.ERROR,/*standard*/
 						message,       /*String*/
@@ -49,13 +45,8 @@ public class SyntaxErrorsHighlightingTask extends ParserResultTask
 						line
 						);
 				errors.add(errorDescription);
-			//}
+			}
 			HintsController.setErrors(document, "sablecc grammar", errors);
-		}/*catch (BadLocationException ex1) {
-            Exceptions.printStackTrace (ex1);
-        }*/ catch (org.netbeans.modules.parsing.spi.ParseException ex) {
-			Exceptions.printStackTrace(ex);
-		}
 	}
 
 	@Override

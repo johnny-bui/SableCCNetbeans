@@ -2,15 +2,14 @@
 
 package org.sableccsupport.sccparser.node;
 
+import java.util.*;
 import org.sableccsupport.sccparser.analysis.*;
 
 @SuppressWarnings("nls")
 public final class AAstProd extends PAstProd
 {
     private TId _id_;
-    private TEqual _equal_;
-    private PAstAlts _alts_;
-    private TSemicolon _semicolon_;
+    private final LinkedList<PAstAlt> _alts_ = new LinkedList<PAstAlt>();
 
     public AAstProd()
     {
@@ -19,18 +18,12 @@ public final class AAstProd extends PAstProd
 
     public AAstProd(
         @SuppressWarnings("hiding") TId _id_,
-        @SuppressWarnings("hiding") TEqual _equal_,
-        @SuppressWarnings("hiding") PAstAlts _alts_,
-        @SuppressWarnings("hiding") TSemicolon _semicolon_)
+        @SuppressWarnings("hiding") List<PAstAlt> _alts_)
     {
         // Constructor
         setId(_id_);
 
-        setEqual(_equal_);
-
         setAlts(_alts_);
-
-        setSemicolon(_semicolon_);
 
     }
 
@@ -39,9 +32,7 @@ public final class AAstProd extends PAstProd
     {
         return new AAstProd(
             cloneNode(this._id_),
-            cloneNode(this._equal_),
-            cloneNode(this._alts_),
-            cloneNode(this._semicolon_));
+            cloneList(this._alts_));
     }
 
     public void apply(Switch sw)
@@ -74,79 +65,24 @@ public final class AAstProd extends PAstProd
         this._id_ = node;
     }
 
-    public TEqual getEqual()
-    {
-        return this._equal_;
-    }
-
-    public void setEqual(TEqual node)
-    {
-        if(this._equal_ != null)
-        {
-            this._equal_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._equal_ = node;
-    }
-
-    public PAstAlts getAlts()
+    public LinkedList<PAstAlt> getAlts()
     {
         return this._alts_;
     }
 
-    public void setAlts(PAstAlts node)
+    public void setAlts(List<PAstAlt> list)
     {
-        if(this._alts_ != null)
+        this._alts_.clear();
+        this._alts_.addAll(list);
+        for(PAstAlt e : list)
         {
-            this._alts_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
         }
-
-        this._alts_ = node;
-    }
-
-    public TSemicolon getSemicolon()
-    {
-        return this._semicolon_;
-    }
-
-    public void setSemicolon(TSemicolon node)
-    {
-        if(this._semicolon_ != null)
-        {
-            this._semicolon_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._semicolon_ = node;
     }
 
     @Override
@@ -154,9 +90,7 @@ public final class AAstProd extends PAstProd
     {
         return ""
             + toString(this._id_)
-            + toString(this._equal_)
-            + toString(this._alts_)
-            + toString(this._semicolon_);
+            + toString(this._alts_);
     }
 
     @Override
@@ -169,21 +103,8 @@ public final class AAstProd extends PAstProd
             return;
         }
 
-        if(this._equal_ == child)
+        if(this._alts_.remove(child))
         {
-            this._equal_ = null;
-            return;
-        }
-
-        if(this._alts_ == child)
-        {
-            this._alts_ = null;
-            return;
-        }
-
-        if(this._semicolon_ == child)
-        {
-            this._semicolon_ = null;
             return;
         }
 
@@ -200,22 +121,22 @@ public final class AAstProd extends PAstProd
             return;
         }
 
-        if(this._equal_ == oldChild)
+        for(ListIterator<PAstAlt> i = this._alts_.listIterator(); i.hasNext();)
         {
-            setEqual((TEqual) newChild);
-            return;
-        }
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PAstAlt) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
 
-        if(this._alts_ == oldChild)
-        {
-            setAlts((PAstAlts) newChild);
-            return;
-        }
-
-        if(this._semicolon_ == oldChild)
-        {
-            setSemicolon((TSemicolon) newChild);
-            return;
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         throw new RuntimeException("Not a child.");

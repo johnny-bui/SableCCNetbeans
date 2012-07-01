@@ -9,7 +9,7 @@ public final class ASimpleListTerm extends PListTerm
 {
     private PSpecifier _specifier_;
     private TId _id_;
-    private PSimpleTermTail _simpleTermTail_;
+    private TId _simpleTermTail_;
 
     public ASimpleListTerm()
     {
@@ -19,7 +19,7 @@ public final class ASimpleListTerm extends PListTerm
     public ASimpleListTerm(
         @SuppressWarnings("hiding") PSpecifier _specifier_,
         @SuppressWarnings("hiding") TId _id_,
-        @SuppressWarnings("hiding") PSimpleTermTail _simpleTermTail_)
+        @SuppressWarnings("hiding") TId _simpleTermTail_)
     {
         // Constructor
         setSpecifier(_specifier_);
@@ -94,12 +94,12 @@ public final class ASimpleListTerm extends PListTerm
         this._id_ = node;
     }
 
-    public PSimpleTermTail getSimpleTermTail()
+    public TId getSimpleTermTail()
     {
         return this._simpleTermTail_;
     }
 
-    public void setSimpleTermTail(PSimpleTermTail node)
+    public void setSimpleTermTail(TId node)
     {
         if(this._simpleTermTail_ != null)
         {
@@ -171,7 +171,7 @@ public final class ASimpleListTerm extends PListTerm
 
         if(this._simpleTermTail_ == oldChild)
         {
-            setSimpleTermTail((PSimpleTermTail) newChild);
+            setSimpleTermTail((TId) newChild);
             return;
         }
 

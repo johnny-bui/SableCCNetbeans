@@ -8,9 +8,7 @@ import org.sableccsupport.sccparser.analysis.*;
 public final class AHelperDef extends PHelperDef
 {
     private TId _id_;
-    private TEqual _equal_;
     private PRegExp _regExp_;
-    private TSemicolon _semicolon_;
 
     public AHelperDef()
     {
@@ -19,18 +17,12 @@ public final class AHelperDef extends PHelperDef
 
     public AHelperDef(
         @SuppressWarnings("hiding") TId _id_,
-        @SuppressWarnings("hiding") TEqual _equal_,
-        @SuppressWarnings("hiding") PRegExp _regExp_,
-        @SuppressWarnings("hiding") TSemicolon _semicolon_)
+        @SuppressWarnings("hiding") PRegExp _regExp_)
     {
         // Constructor
         setId(_id_);
 
-        setEqual(_equal_);
-
         setRegExp(_regExp_);
-
-        setSemicolon(_semicolon_);
 
     }
 
@@ -39,9 +31,7 @@ public final class AHelperDef extends PHelperDef
     {
         return new AHelperDef(
             cloneNode(this._id_),
-            cloneNode(this._equal_),
-            cloneNode(this._regExp_),
-            cloneNode(this._semicolon_));
+            cloneNode(this._regExp_));
     }
 
     public void apply(Switch sw)
@@ -74,31 +64,6 @@ public final class AHelperDef extends PHelperDef
         this._id_ = node;
     }
 
-    public TEqual getEqual()
-    {
-        return this._equal_;
-    }
-
-    public void setEqual(TEqual node)
-    {
-        if(this._equal_ != null)
-        {
-            this._equal_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._equal_ = node;
-    }
-
     public PRegExp getRegExp()
     {
         return this._regExp_;
@@ -124,39 +89,12 @@ public final class AHelperDef extends PHelperDef
         this._regExp_ = node;
     }
 
-    public TSemicolon getSemicolon()
-    {
-        return this._semicolon_;
-    }
-
-    public void setSemicolon(TSemicolon node)
-    {
-        if(this._semicolon_ != null)
-        {
-            this._semicolon_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._semicolon_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
             + toString(this._id_)
-            + toString(this._equal_)
-            + toString(this._regExp_)
-            + toString(this._semicolon_);
+            + toString(this._regExp_);
     }
 
     @Override
@@ -169,21 +107,9 @@ public final class AHelperDef extends PHelperDef
             return;
         }
 
-        if(this._equal_ == child)
-        {
-            this._equal_ = null;
-            return;
-        }
-
         if(this._regExp_ == child)
         {
             this._regExp_ = null;
-            return;
-        }
-
-        if(this._semicolon_ == child)
-        {
-            this._semicolon_ = null;
             return;
         }
 
@@ -200,21 +126,9 @@ public final class AHelperDef extends PHelperDef
             return;
         }
 
-        if(this._equal_ == oldChild)
-        {
-            setEqual((TEqual) newChild);
-            return;
-        }
-
         if(this._regExp_ == oldChild)
         {
             setRegExp((PRegExp) newChild);
-            return;
-        }
-
-        if(this._semicolon_ == oldChild)
-        {
-            setSemicolon((TSemicolon) newChild);
             return;
         }
 

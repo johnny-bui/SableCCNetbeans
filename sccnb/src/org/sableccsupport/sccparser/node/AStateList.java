@@ -8,11 +8,9 @@ import org.sableccsupport.sccparser.analysis.*;
 @SuppressWarnings("nls")
 public final class AStateList extends PStateList
 {
-    private TLBrace _lBrace_;
     private TId _id_;
     private PTransition _transition_;
     private final LinkedList<PStateListTail> _stateLists_ = new LinkedList<PStateListTail>();
-    private TRBrace _rBrace_;
 
     public AStateList()
     {
@@ -20,22 +18,16 @@ public final class AStateList extends PStateList
     }
 
     public AStateList(
-        @SuppressWarnings("hiding") TLBrace _lBrace_,
         @SuppressWarnings("hiding") TId _id_,
         @SuppressWarnings("hiding") PTransition _transition_,
-        @SuppressWarnings("hiding") List<PStateListTail> _stateLists_,
-        @SuppressWarnings("hiding") TRBrace _rBrace_)
+        @SuppressWarnings("hiding") List<PStateListTail> _stateLists_)
     {
         // Constructor
-        setLBrace(_lBrace_);
-
         setId(_id_);
 
         setTransition(_transition_);
 
         setStateLists(_stateLists_);
-
-        setRBrace(_rBrace_);
 
     }
 
@@ -43,41 +35,14 @@ public final class AStateList extends PStateList
     public Object clone()
     {
         return new AStateList(
-            cloneNode(this._lBrace_),
             cloneNode(this._id_),
             cloneNode(this._transition_),
-            cloneList(this._stateLists_),
-            cloneNode(this._rBrace_));
+            cloneList(this._stateLists_));
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAStateList(this);
-    }
-
-    public TLBrace getLBrace()
-    {
-        return this._lBrace_;
-    }
-
-    public void setLBrace(TLBrace node)
-    {
-        if(this._lBrace_ != null)
-        {
-            this._lBrace_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._lBrace_ = node;
     }
 
     public TId getId()
@@ -150,52 +115,19 @@ public final class AStateList extends PStateList
         }
     }
 
-    public TRBrace getRBrace()
-    {
-        return this._rBrace_;
-    }
-
-    public void setRBrace(TRBrace node)
-    {
-        if(this._rBrace_ != null)
-        {
-            this._rBrace_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._rBrace_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
-            + toString(this._lBrace_)
             + toString(this._id_)
             + toString(this._transition_)
-            + toString(this._stateLists_)
-            + toString(this._rBrace_);
+            + toString(this._stateLists_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._lBrace_ == child)
-        {
-            this._lBrace_ = null;
-            return;
-        }
-
         if(this._id_ == child)
         {
             this._id_ = null;
@@ -213,12 +145,6 @@ public final class AStateList extends PStateList
             return;
         }
 
-        if(this._rBrace_ == child)
-        {
-            this._rBrace_ = null;
-            return;
-        }
-
         throw new RuntimeException("Not a child.");
     }
 
@@ -226,12 +152,6 @@ public final class AStateList extends PStateList
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._lBrace_ == oldChild)
-        {
-            setLBrace((TLBrace) newChild);
-            return;
-        }
-
         if(this._id_ == oldChild)
         {
             setId((TId) newChild);
@@ -260,12 +180,6 @@ public final class AStateList extends PStateList
                 oldChild.parent(null);
                 return;
             }
-        }
-
-        if(this._rBrace_ == oldChild)
-        {
-            setRBrace((TRBrace) newChild);
-            return;
         }
 
         throw new RuntimeException("Not a child.");

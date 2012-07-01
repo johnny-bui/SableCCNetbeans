@@ -2,14 +2,14 @@
 
 package org.sableccsupport.sccparser.node;
 
+import java.util.*;
 import org.sableccsupport.sccparser.analysis.*;
 
 @SuppressWarnings("nls")
 public final class AListTerm extends PTerm
 {
     private TLBkt _lBkt_;
-    private PListOfListTerm _listOfListTerm_;
-    private TRBkt _rBkt_;
+    private final LinkedList<PListTerm> _listTerms_ = new LinkedList<PListTerm>();
 
     public AListTerm()
     {
@@ -18,15 +18,12 @@ public final class AListTerm extends PTerm
 
     public AListTerm(
         @SuppressWarnings("hiding") TLBkt _lBkt_,
-        @SuppressWarnings("hiding") PListOfListTerm _listOfListTerm_,
-        @SuppressWarnings("hiding") TRBkt _rBkt_)
+        @SuppressWarnings("hiding") List<PListTerm> _listTerms_)
     {
         // Constructor
         setLBkt(_lBkt_);
 
-        setListOfListTerm(_listOfListTerm_);
-
-        setRBkt(_rBkt_);
+        setListTerms(_listTerms_);
 
     }
 
@@ -35,8 +32,7 @@ public final class AListTerm extends PTerm
     {
         return new AListTerm(
             cloneNode(this._lBkt_),
-            cloneNode(this._listOfListTerm_),
-            cloneNode(this._rBkt_));
+            cloneList(this._listTerms_));
     }
 
     public void apply(Switch sw)
@@ -69,54 +65,24 @@ public final class AListTerm extends PTerm
         this._lBkt_ = node;
     }
 
-    public PListOfListTerm getListOfListTerm()
+    public LinkedList<PListTerm> getListTerms()
     {
-        return this._listOfListTerm_;
+        return this._listTerms_;
     }
 
-    public void setListOfListTerm(PListOfListTerm node)
+    public void setListTerms(List<PListTerm> list)
     {
-        if(this._listOfListTerm_ != null)
+        this._listTerms_.clear();
+        this._listTerms_.addAll(list);
+        for(PListTerm e : list)
         {
-            this._listOfListTerm_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
         }
-
-        this._listOfListTerm_ = node;
-    }
-
-    public TRBkt getRBkt()
-    {
-        return this._rBkt_;
-    }
-
-    public void setRBkt(TRBkt node)
-    {
-        if(this._rBkt_ != null)
-        {
-            this._rBkt_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._rBkt_ = node;
     }
 
     @Override
@@ -124,8 +90,7 @@ public final class AListTerm extends PTerm
     {
         return ""
             + toString(this._lBkt_)
-            + toString(this._listOfListTerm_)
-            + toString(this._rBkt_);
+            + toString(this._listTerms_);
     }
 
     @Override
@@ -138,15 +103,8 @@ public final class AListTerm extends PTerm
             return;
         }
 
-        if(this._listOfListTerm_ == child)
+        if(this._listTerms_.remove(child))
         {
-            this._listOfListTerm_ = null;
-            return;
-        }
-
-        if(this._rBkt_ == child)
-        {
-            this._rBkt_ = null;
             return;
         }
 
@@ -163,16 +121,22 @@ public final class AListTerm extends PTerm
             return;
         }
 
-        if(this._listOfListTerm_ == oldChild)
+        for(ListIterator<PListTerm> i = this._listTerms_.listIterator(); i.hasNext();)
         {
-            setListOfListTerm((PListOfListTerm) newChild);
-            return;
-        }
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PListTerm) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
 
-        if(this._rBkt_ == oldChild)
-        {
-            setRBkt((TRBkt) newChild);
-            return;
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         throw new RuntimeException("Not a child.");

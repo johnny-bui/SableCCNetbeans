@@ -9,15 +9,15 @@ import org.sableccsupport.scclexer.lexer.LexerException;
  *
  * @author phucluoi
  */
-public class SCCLexer implements org.netbeans.spi.lexer.Lexer<SCCTokenId> {
+public class SCCLexer implements org.netbeans.spi.lexer.Lexer<SCCLexerTokenId> {
 
-	private LexerRestartInfo<SCCTokenId> info;
+	private LexerRestartInfo<SCCLexerTokenId> info;
 	//private JavaParserTokenManager javaParserTokenManager;
-	private  ExtendLexerState lexer;
+	private  StateInitedLLexer lexer;
 	private static ExtendTokenIndex converter = new ExtendTokenIndex();
 	public static final int LEXER_BUFFER_SIZE = 1024;	
 	
-	SCCLexer(LexerRestartInfo<SCCTokenId> info) {
+	SCCLexer(LexerRestartInfo<SCCLexerTokenId> info) {
 		this.info = info;
 		//JavaCharStream stream = new JavaCharStream(info.input());
 		//javaParserTokenManager = new JavaParserTokenManager(stream);
@@ -28,18 +28,18 @@ public class SCCLexer implements org.netbeans.spi.lexer.Lexer<SCCTokenId> {
 		{
 			startState = State.PACKAGE;
 		}
-		lexer = new ExtendLexerState(
+		lexer = new StateInitedLLexer(
 			new NBPushbackReader(
 				 info.input() , LEXER_BUFFER_SIZE), startState);
 		
 	}
 
 	@Override
-	public org.netbeans.api.lexer.Token<SCCTokenId> nextToken()
+	public org.netbeans.api.lexer.Token<SCCLexerTokenId> nextToken()
 	{
 		//Token token = javaParserTokenManager.getNextToken();
 		org.sableccsupport.scclexer.node.Token token = null;
-		SCCTokenId tokenId = SCCTokenId.ERROR;
+		SCCLexerTokenId tokenId = SCCLexerTokenId.ERROR;
 		try {
 			token = lexer.next();
 			if (token == null)
@@ -70,7 +70,7 @@ public class SCCLexer implements org.netbeans.spi.lexer.Lexer<SCCTokenId> {
 		//		SCCLanguageHierarchy.getToken(-1));
 		//throw new RuntimeException(token.getClass().getSimpleName() 
 		//+ ":"  +token.getText());
-		org.netbeans.api.lexer.Token<SCCTokenId> sccToken =
+		org.netbeans.api.lexer.Token<SCCLexerTokenId> sccToken =
 		info.tokenFactory().createToken(
 				SCCLanguageHierarchy.getToken(tokenId.id),token.getText().length());
 		return sccToken;

@@ -8,7 +8,6 @@ import org.sableccsupport.sccparser.analysis.*;
 @SuppressWarnings("nls")
 public final class ATokens extends PTokens
 {
-    private TTokens _tokens_;
     private final LinkedList<PTokenDef> _tokenDefs_ = new LinkedList<PTokenDef>();
 
     public ATokens()
@@ -17,12 +16,9 @@ public final class ATokens extends PTokens
     }
 
     public ATokens(
-        @SuppressWarnings("hiding") TTokens _tokens_,
         @SuppressWarnings("hiding") List<PTokenDef> _tokenDefs_)
     {
         // Constructor
-        setTokens(_tokens_);
-
         setTokenDefs(_tokenDefs_);
 
     }
@@ -31,38 +27,12 @@ public final class ATokens extends PTokens
     public Object clone()
     {
         return new ATokens(
-            cloneNode(this._tokens_),
             cloneList(this._tokenDefs_));
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseATokens(this);
-    }
-
-    public TTokens getTokens()
-    {
-        return this._tokens_;
-    }
-
-    public void setTokens(TTokens node)
-    {
-        if(this._tokens_ != null)
-        {
-            this._tokens_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._tokens_ = node;
     }
 
     public LinkedList<PTokenDef> getTokenDefs()
@@ -89,7 +59,6 @@ public final class ATokens extends PTokens
     public String toString()
     {
         return ""
-            + toString(this._tokens_)
             + toString(this._tokenDefs_);
     }
 
@@ -97,12 +66,6 @@ public final class ATokens extends PTokens
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._tokens_ == child)
-        {
-            this._tokens_ = null;
-            return;
-        }
-
         if(this._tokenDefs_.remove(child))
         {
             return;
@@ -115,12 +78,6 @@ public final class ATokens extends PTokens
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._tokens_ == oldChild)
-        {
-            setTokens((TTokens) newChild);
-            return;
-        }
-
         for(ListIterator<PTokenDef> i = this._tokenDefs_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)

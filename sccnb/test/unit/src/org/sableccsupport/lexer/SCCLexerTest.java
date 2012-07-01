@@ -30,78 +30,78 @@ public class SCCLexerTest extends TestCase {
 		String commentText = "/* test comment  */";
 		String text = "Package abc.xyz;\nH\n";// + commentText + "def public publica publi static x";
 
-		TokenHierarchy<?> hi = TokenHierarchy.create(text, SCCTokenId.getLanguage());
+		TokenHierarchy<?> hi = TokenHierarchy.create(text, SCCLexerTokenId.getLanguage());
 		TokenSequence<?> ts = hi.tokenSequence();
 
 		int offset = 0;
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts, SCCTokenId.PACKAGE, "Package", offset);
+		LexerTestUtilities.assertTokenEquals(ts, SCCLexerTokenId.PACKAGE, "Package", offset);
 
 		offset += "Package".length();
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts, SCCTokenId.BLANK, " ", offset);
+		LexerTestUtilities.assertTokenEquals(ts, SCCLexerTokenId.BLANK, " ", offset);
 
 		offset++;
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts, SCCTokenId.PKG_ID, "abc", offset);
+		LexerTestUtilities.assertTokenEquals(ts, SCCLexerTokenId.PKG_ID, "abc", offset);
 
 		offset += "abc".length();
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts, SCCTokenId.DOT, ".", offset);
+		LexerTestUtilities.assertTokenEquals(ts, SCCLexerTokenId.DOT, ".", offset);
 
 
 		offset++;
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts, SCCTokenId.PKG_ID, "xyz", offset);
+		LexerTestUtilities.assertTokenEquals(ts, SCCLexerTokenId.PKG_ID, "xyz", offset);
 
 		offset+= "xyz".length();
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts, SCCTokenId.SEMICOLON, ";", offset);
+		LexerTestUtilities.assertTokenEquals(ts, SCCLexerTokenId.SEMICOLON, ";", offset);
 		
 		offset+= ";".length();
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts, SCCTokenId.BLANK, "\n", offset);
+		LexerTestUtilities.assertTokenEquals(ts, SCCLexerTokenId.BLANK, "\n", offset);
 
 
 		offset+= "\n".length();
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts, SCCTokenId.ERROR, "H\n", offset);
+		LexerTestUtilities.assertTokenEquals(ts, SCCLexerTokenId.ERROR, "H\n", offset);
 		/*
 		assertTrue(ts.moveNext());
 		offset = commentTextStartOffset;
-		LexerTestUtilities.assertTokenEquals(ts,SCCTokenId.BLOCK_COMMENT, commentText, offset);
+		LexerTestUtilities.assertTokenEquals(ts,SCCLexerTokenId.BLOCK_COMMENT, commentText, offset);
 		offset += commentText.length();
 		int commentIndex = ts.index();
 
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts,SCCTokenId.IDENTIFIER, "def", offset);
+		LexerTestUtilities.assertTokenEquals(ts,SCCLexerTokenId.IDENTIFIER, "def", offset);
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts,SCCTokenId.WHITESPACE, " ", -1);
+		LexerTestUtilities.assertTokenEquals(ts,SCCLexerTokenId.WHITESPACE, " ", -1);
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts,SCCTokenId.PUBLIC, "public", -1);
+		LexerTestUtilities.assertTokenEquals(ts,SCCLexerTokenId.PUBLIC, "public", -1);
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts,SCCTokenId.WHITESPACE, " ", -1);
+		LexerTestUtilities.assertTokenEquals(ts,SCCLexerTokenId.WHITESPACE, " ", -1);
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts,SCCTokenId.IDENTIFIER, "publica", -1);
+		LexerTestUtilities.assertTokenEquals(ts,SCCLexerTokenId.IDENTIFIER, "publica", -1);
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts,SCCTokenId.WHITESPACE, " ", -1);
+		LexerTestUtilities.assertTokenEquals(ts,SCCLexerTokenId.WHITESPACE, " ", -1);
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts,SCCTokenId.IDENTIFIER, "publi", -1);
+		LexerTestUtilities.assertTokenEquals(ts,SCCLexerTokenId.IDENTIFIER, "publi", -1);
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts,SCCTokenId.WHITESPACE, " ", -1);
+		LexerTestUtilities.assertTokenEquals(ts,SCCLexerTokenId.WHITESPACE, " ", -1);
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts,SCCTokenId.STATIC, "static", -1);
+		LexerTestUtilities.assertTokenEquals(ts,SCCLexerTokenId.STATIC, "static", -1);
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts,SCCTokenId.WHITESPACE, " ", -1);
+		LexerTestUtilities.assertTokenEquals(ts,SCCLexerTokenId.WHITESPACE, " ", -1);
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts,SCCTokenId.IDENTIFIER, "x", -1);
+		LexerTestUtilities.assertTokenEquals(ts,SCCLexerTokenId.IDENTIFIER, "x", -1);
 		assertFalse(ts.moveNext());
 		 */
 		// Go back to block comment
 /*
 		assertEquals(0, ts.moveIndex(commentIndex));
 		assertTrue(ts.moveNext());
-		LexerTestUtilities.assertTokenEquals(ts,SCCTokenId.BLOCK_COMMENT, commentText, commentTextStartOffset);
+		LexerTestUtilities.assertTokenEquals(ts,SCCLexerTokenId.BLOCK_COMMENT, commentText, commentTextStartOffset);
 
 		// Test embedded token sequence
 		TokenSequence<?> embedded = ts.embedded();

@@ -2,16 +2,16 @@
 
 package org.sableccsupport.sccparser.node;
 
+import java.util.*;
 import org.sableccsupport.sccparser.analysis.*;
 
 @SuppressWarnings("nls")
 public final class AProd extends PProd
 {
     private TId _id_;
-    private PProdTransform _prodTransform_;
-    private TEqual _equal_;
-    private PAlts _alts_;
-    private TSemicolon _semicolon_;
+    private TArrow _arrow_;
+    private final LinkedList<PElem> _prodTransform_ = new LinkedList<PElem>();
+    private final LinkedList<PAlt> _alts_ = new LinkedList<PAlt>();
 
     public AProd()
     {
@@ -20,21 +20,18 @@ public final class AProd extends PProd
 
     public AProd(
         @SuppressWarnings("hiding") TId _id_,
-        @SuppressWarnings("hiding") PProdTransform _prodTransform_,
-        @SuppressWarnings("hiding") TEqual _equal_,
-        @SuppressWarnings("hiding") PAlts _alts_,
-        @SuppressWarnings("hiding") TSemicolon _semicolon_)
+        @SuppressWarnings("hiding") TArrow _arrow_,
+        @SuppressWarnings("hiding") List<PElem> _prodTransform_,
+        @SuppressWarnings("hiding") List<PAlt> _alts_)
     {
         // Constructor
         setId(_id_);
 
+        setArrow(_arrow_);
+
         setProdTransform(_prodTransform_);
 
-        setEqual(_equal_);
-
         setAlts(_alts_);
-
-        setSemicolon(_semicolon_);
 
     }
 
@@ -43,10 +40,9 @@ public final class AProd extends PProd
     {
         return new AProd(
             cloneNode(this._id_),
-            cloneNode(this._prodTransform_),
-            cloneNode(this._equal_),
-            cloneNode(this._alts_),
-            cloneNode(this._semicolon_));
+            cloneNode(this._arrow_),
+            cloneList(this._prodTransform_),
+            cloneList(this._alts_));
     }
 
     public void apply(Switch sw)
@@ -79,104 +75,69 @@ public final class AProd extends PProd
         this._id_ = node;
     }
 
-    public PProdTransform getProdTransform()
+    public TArrow getArrow()
+    {
+        return this._arrow_;
+    }
+
+    public void setArrow(TArrow node)
+    {
+        if(this._arrow_ != null)
+        {
+            this._arrow_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._arrow_ = node;
+    }
+
+    public LinkedList<PElem> getProdTransform()
     {
         return this._prodTransform_;
     }
 
-    public void setProdTransform(PProdTransform node)
+    public void setProdTransform(List<PElem> list)
     {
-        if(this._prodTransform_ != null)
+        this._prodTransform_.clear();
+        this._prodTransform_.addAll(list);
+        for(PElem e : list)
         {
-            this._prodTransform_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
         }
-
-        this._prodTransform_ = node;
     }
 
-    public TEqual getEqual()
-    {
-        return this._equal_;
-    }
-
-    public void setEqual(TEqual node)
-    {
-        if(this._equal_ != null)
-        {
-            this._equal_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._equal_ = node;
-    }
-
-    public PAlts getAlts()
+    public LinkedList<PAlt> getAlts()
     {
         return this._alts_;
     }
 
-    public void setAlts(PAlts node)
+    public void setAlts(List<PAlt> list)
     {
-        if(this._alts_ != null)
+        this._alts_.clear();
+        this._alts_.addAll(list);
+        for(PAlt e : list)
         {
-            this._alts_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
         }
-
-        this._alts_ = node;
-    }
-
-    public TSemicolon getSemicolon()
-    {
-        return this._semicolon_;
-    }
-
-    public void setSemicolon(TSemicolon node)
-    {
-        if(this._semicolon_ != null)
-        {
-            this._semicolon_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._semicolon_ = node;
     }
 
     @Override
@@ -184,10 +145,9 @@ public final class AProd extends PProd
     {
         return ""
             + toString(this._id_)
+            + toString(this._arrow_)
             + toString(this._prodTransform_)
-            + toString(this._equal_)
-            + toString(this._alts_)
-            + toString(this._semicolon_);
+            + toString(this._alts_);
     }
 
     @Override
@@ -200,27 +160,19 @@ public final class AProd extends PProd
             return;
         }
 
-        if(this._prodTransform_ == child)
+        if(this._arrow_ == child)
         {
-            this._prodTransform_ = null;
+            this._arrow_ = null;
             return;
         }
 
-        if(this._equal_ == child)
+        if(this._prodTransform_.remove(child))
         {
-            this._equal_ = null;
             return;
         }
 
-        if(this._alts_ == child)
+        if(this._alts_.remove(child))
         {
-            this._alts_ = null;
-            return;
-        }
-
-        if(this._semicolon_ == child)
-        {
-            this._semicolon_ = null;
             return;
         }
 
@@ -237,28 +189,46 @@ public final class AProd extends PProd
             return;
         }
 
-        if(this._prodTransform_ == oldChild)
+        if(this._arrow_ == oldChild)
         {
-            setProdTransform((PProdTransform) newChild);
+            setArrow((TArrow) newChild);
             return;
         }
 
-        if(this._equal_ == oldChild)
+        for(ListIterator<PElem> i = this._prodTransform_.listIterator(); i.hasNext();)
         {
-            setEqual((TEqual) newChild);
-            return;
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PElem) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
-        if(this._alts_ == oldChild)
+        for(ListIterator<PAlt> i = this._alts_.listIterator(); i.hasNext();)
         {
-            setAlts((PAlts) newChild);
-            return;
-        }
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PAlt) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
 
-        if(this._semicolon_ == oldChild)
-        {
-            setSemicolon((TSemicolon) newChild);
-            return;
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         throw new RuntimeException("Not a child.");

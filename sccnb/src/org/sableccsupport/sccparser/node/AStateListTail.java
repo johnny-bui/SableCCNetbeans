@@ -7,7 +7,6 @@ import org.sableccsupport.sccparser.analysis.*;
 @SuppressWarnings("nls")
 public final class AStateListTail extends PStateListTail
 {
-    private TComma _comma_;
     private TId _id_;
     private PTransition _transition_;
 
@@ -17,13 +16,10 @@ public final class AStateListTail extends PStateListTail
     }
 
     public AStateListTail(
-        @SuppressWarnings("hiding") TComma _comma_,
         @SuppressWarnings("hiding") TId _id_,
         @SuppressWarnings("hiding") PTransition _transition_)
     {
         // Constructor
-        setComma(_comma_);
-
         setId(_id_);
 
         setTransition(_transition_);
@@ -34,7 +30,6 @@ public final class AStateListTail extends PStateListTail
     public Object clone()
     {
         return new AStateListTail(
-            cloneNode(this._comma_),
             cloneNode(this._id_),
             cloneNode(this._transition_));
     }
@@ -42,31 +37,6 @@ public final class AStateListTail extends PStateListTail
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAStateListTail(this);
-    }
-
-    public TComma getComma()
-    {
-        return this._comma_;
-    }
-
-    public void setComma(TComma node)
-    {
-        if(this._comma_ != null)
-        {
-            this._comma_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._comma_ = node;
     }
 
     public TId getId()
@@ -123,7 +93,6 @@ public final class AStateListTail extends PStateListTail
     public String toString()
     {
         return ""
-            + toString(this._comma_)
             + toString(this._id_)
             + toString(this._transition_);
     }
@@ -132,12 +101,6 @@ public final class AStateListTail extends PStateListTail
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._comma_ == child)
-        {
-            this._comma_ = null;
-            return;
-        }
-
         if(this._id_ == child)
         {
             this._id_ = null;
@@ -157,12 +120,6 @@ public final class AStateListTail extends PStateListTail
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._comma_ == oldChild)
-        {
-            setComma((TComma) newChild);
-            return;
-        }
-
         if(this._id_ == oldChild)
         {
             setId((TId) newChild);

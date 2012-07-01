@@ -16,7 +16,7 @@ public class Lexer
     private int pos;
     private boolean cr;
     private boolean eof;
-    private final StringBuffer text = new StringBuffer();
+    protected final StringBuffer text = new StringBuffer();
 
     @SuppressWarnings("unused")
     protected void filter() throws LexerException, IOException

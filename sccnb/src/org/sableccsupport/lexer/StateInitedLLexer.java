@@ -8,9 +8,9 @@ import org.sableccsupport.scclexer.lexer.Lexer;
  *
  * @author phucluoi
  */
-public class ExtendLexerState extends Lexer
+public class StateInitedLLexer extends Lexer
 {
-	public ExtendLexerState(PushbackReader reader, State state)
+	public StateInitedLLexer(PushbackReader reader, State state)
 	{
 		super(reader);
 		this.state = state;

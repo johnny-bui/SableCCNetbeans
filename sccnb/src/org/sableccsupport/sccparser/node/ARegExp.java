@@ -8,8 +8,7 @@ import org.sableccsupport.sccparser.analysis.*;
 @SuppressWarnings("nls")
 public final class ARegExp extends PRegExp
 {
-    private PConcat _concat_;
-    private final LinkedList<PRegExpTail> _concats_ = new LinkedList<PRegExpTail>();
+    private final LinkedList<PConcat> _concats_ = new LinkedList<PConcat>();
 
     public ARegExp()
     {
@@ -17,12 +16,9 @@ public final class ARegExp extends PRegExp
     }
 
     public ARegExp(
-        @SuppressWarnings("hiding") PConcat _concat_,
-        @SuppressWarnings("hiding") List<PRegExpTail> _concats_)
+        @SuppressWarnings("hiding") List<PConcat> _concats_)
     {
         // Constructor
-        setConcat(_concat_);
-
         setConcats(_concats_);
 
     }
@@ -31,7 +27,6 @@ public final class ARegExp extends PRegExp
     public Object clone()
     {
         return new ARegExp(
-            cloneNode(this._concat_),
             cloneList(this._concats_));
     }
 
@@ -40,41 +35,16 @@ public final class ARegExp extends PRegExp
         ((Analysis) sw).caseARegExp(this);
     }
 
-    public PConcat getConcat()
-    {
-        return this._concat_;
-    }
-
-    public void setConcat(PConcat node)
-    {
-        if(this._concat_ != null)
-        {
-            this._concat_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._concat_ = node;
-    }
-
-    public LinkedList<PRegExpTail> getConcats()
+    public LinkedList<PConcat> getConcats()
     {
         return this._concats_;
     }
 
-    public void setConcats(List<PRegExpTail> list)
+    public void setConcats(List<PConcat> list)
     {
         this._concats_.clear();
         this._concats_.addAll(list);
-        for(PRegExpTail e : list)
+        for(PConcat e : list)
         {
             if(e.parent() != null)
             {
@@ -89,7 +59,6 @@ public final class ARegExp extends PRegExp
     public String toString()
     {
         return ""
-            + toString(this._concat_)
             + toString(this._concats_);
     }
 
@@ -97,12 +66,6 @@ public final class ARegExp extends PRegExp
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._concat_ == child)
-        {
-            this._concat_ = null;
-            return;
-        }
-
         if(this._concats_.remove(child))
         {
             return;
@@ -115,19 +78,13 @@ public final class ARegExp extends PRegExp
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._concat_ == oldChild)
-        {
-            setConcat((PConcat) newChild);
-            return;
-        }
-
-        for(ListIterator<PRegExpTail> i = this._concats_.listIterator(); i.hasNext();)
+        for(ListIterator<PConcat> i = this._concats_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PRegExpTail) newChild);
+                    i.set((PConcat) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;

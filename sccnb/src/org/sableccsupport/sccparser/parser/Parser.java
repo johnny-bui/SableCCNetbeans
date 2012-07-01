@@ -36,19 +36,10 @@ public class Parser
         this.lexer = lexer;
     }
 
-    protected void filter() throws ParserException, LexerException, IOException
-    {
-        // Empty body
-    }
-
-    private void push(int numstate, ArrayList listNode, boolean hidden) throws ParserException, LexerException, IOException
+    @SuppressWarnings({"unchecked","unused"})
+    private void push(int numstate, ArrayList listNode) throws ParserException, LexerException, IOException
     {
         this.nodeList = listNode;
-
-        if(!hidden)
-        {
-            filter();
-        }
 
         if(!this.stack.hasNext())
         {
@@ -112,7 +103,7 @@ public class Parser
     @SuppressWarnings("unchecked")
     public Start parse() throws ParserException, LexerException, IOException
     {
-        push(0, null, true);
+        push(0, null);
         List<Node> ign = null;
         while(true)
         {
@@ -169,7 +160,7 @@ public class Parser
 		    {
 		        ArrayList list = new ArrayList();
 		        list.add(this.lexer.next());
-                        push(this.action[1], list, false);
+                        push(this.action[1], list);
                     }
 		    break;
                 case REDUCE:
@@ -178,1615 +169,1615 @@ public class Parser
                     case 0: /* reduce AAgrammar1Grammar */
 		    {
 			ArrayList list = new0();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 1: /* reduce AAgrammar2Grammar */
 		    {
 			ArrayList list = new1();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 2: /* reduce AAgrammar3Grammar */
 		    {
 			ArrayList list = new2();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 3: /* reduce AAgrammar4Grammar */
 		    {
 			ArrayList list = new3();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 4: /* reduce AAgrammar5Grammar */
 		    {
 			ArrayList list = new4();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 5: /* reduce AAgrammar6Grammar */
 		    {
 			ArrayList list = new5();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 6: /* reduce AAgrammar7Grammar */
 		    {
 			ArrayList list = new6();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 7: /* reduce AAgrammar8Grammar */
 		    {
 			ArrayList list = new7();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 8: /* reduce AAgrammar9Grammar */
 		    {
 			ArrayList list = new8();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 9: /* reduce AAgrammar10Grammar */
 		    {
 			ArrayList list = new9();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 10: /* reduce AAgrammar11Grammar */
 		    {
 			ArrayList list = new10();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 11: /* reduce AAgrammar12Grammar */
 		    {
 			ArrayList list = new11();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 12: /* reduce AAgrammar13Grammar */
 		    {
 			ArrayList list = new12();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 13: /* reduce AAgrammar14Grammar */
 		    {
 			ArrayList list = new13();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 14: /* reduce AAgrammar15Grammar */
 		    {
 			ArrayList list = new14();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 15: /* reduce AAgrammar16Grammar */
 		    {
 			ArrayList list = new15();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 16: /* reduce AAgrammar17Grammar */
 		    {
 			ArrayList list = new16();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 17: /* reduce AAgrammar18Grammar */
 		    {
 			ArrayList list = new17();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 18: /* reduce AAgrammar19Grammar */
 		    {
 			ArrayList list = new18();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 19: /* reduce AAgrammar20Grammar */
 		    {
 			ArrayList list = new19();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 20: /* reduce AAgrammar21Grammar */
 		    {
 			ArrayList list = new20();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 21: /* reduce AAgrammar22Grammar */
 		    {
 			ArrayList list = new21();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 22: /* reduce AAgrammar23Grammar */
 		    {
 			ArrayList list = new22();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 23: /* reduce AAgrammar24Grammar */
 		    {
 			ArrayList list = new23();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 24: /* reduce AAgrammar25Grammar */
 		    {
 			ArrayList list = new24();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 25: /* reduce AAgrammar26Grammar */
 		    {
 			ArrayList list = new25();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 26: /* reduce AAgrammar27Grammar */
 		    {
 			ArrayList list = new26();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 27: /* reduce AAgrammar28Grammar */
 		    {
 			ArrayList list = new27();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 28: /* reduce AAgrammar29Grammar */
 		    {
 			ArrayList list = new28();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 29: /* reduce AAgrammar30Grammar */
 		    {
 			ArrayList list = new29();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 30: /* reduce AAgrammar31Grammar */
 		    {
 			ArrayList list = new30();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 31: /* reduce AAgrammar32Grammar */
 		    {
 			ArrayList list = new31();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 32: /* reduce AAgrammar33Grammar */
 		    {
 			ArrayList list = new32();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 33: /* reduce AAgrammar34Grammar */
 		    {
 			ArrayList list = new33();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 34: /* reduce AAgrammar35Grammar */
 		    {
 			ArrayList list = new34();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 35: /* reduce AAgrammar36Grammar */
 		    {
 			ArrayList list = new35();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 36: /* reduce AAgrammar37Grammar */
 		    {
 			ArrayList list = new36();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 37: /* reduce AAgrammar38Grammar */
 		    {
 			ArrayList list = new37();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 38: /* reduce AAgrammar39Grammar */
 		    {
 			ArrayList list = new38();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 39: /* reduce AAgrammar40Grammar */
 		    {
 			ArrayList list = new39();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 40: /* reduce AAgrammar41Grammar */
 		    {
 			ArrayList list = new40();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 41: /* reduce AAgrammar42Grammar */
 		    {
 			ArrayList list = new41();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 42: /* reduce AAgrammar43Grammar */
 		    {
 			ArrayList list = new42();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 43: /* reduce AAgrammar44Grammar */
 		    {
 			ArrayList list = new43();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 44: /* reduce AAgrammar45Grammar */
 		    {
 			ArrayList list = new44();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 45: /* reduce AAgrammar46Grammar */
 		    {
 			ArrayList list = new45();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 46: /* reduce AAgrammar47Grammar */
 		    {
 			ArrayList list = new46();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 47: /* reduce AAgrammar48Grammar */
 		    {
 			ArrayList list = new47();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 48: /* reduce AAgrammar49Grammar */
 		    {
 			ArrayList list = new48();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 49: /* reduce AAgrammar50Grammar */
 		    {
 			ArrayList list = new49();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 50: /* reduce AAgrammar51Grammar */
 		    {
 			ArrayList list = new50();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 51: /* reduce AAgrammar52Grammar */
 		    {
 			ArrayList list = new51();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 52: /* reduce AAgrammar53Grammar */
 		    {
 			ArrayList list = new52();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 53: /* reduce AAgrammar54Grammar */
 		    {
 			ArrayList list = new53();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 54: /* reduce AAgrammar55Grammar */
 		    {
 			ArrayList list = new54();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 55: /* reduce AAgrammar56Grammar */
 		    {
 			ArrayList list = new55();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 56: /* reduce AAgrammar57Grammar */
 		    {
 			ArrayList list = new56();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 57: /* reduce AAgrammar58Grammar */
 		    {
 			ArrayList list = new57();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 58: /* reduce AAgrammar59Grammar */
 		    {
 			ArrayList list = new58();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 59: /* reduce AAgrammar60Grammar */
 		    {
 			ArrayList list = new59();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 60: /* reduce AAgrammar61Grammar */
 		    {
 			ArrayList list = new60();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 61: /* reduce AAgrammar62Grammar */
 		    {
 			ArrayList list = new61();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 62: /* reduce AAgrammar63Grammar */
 		    {
 			ArrayList list = new62();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 63: /* reduce AAgrammar64Grammar */
 		    {
 			ArrayList list = new63();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 64: /* reduce AAgrammar65Grammar */
 		    {
 			ArrayList list = new64();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 65: /* reduce AAgrammar66Grammar */
 		    {
 			ArrayList list = new65();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 66: /* reduce AAgrammar67Grammar */
 		    {
 			ArrayList list = new66();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 67: /* reduce AAgrammar68Grammar */
 		    {
 			ArrayList list = new67();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 68: /* reduce AAgrammar69Grammar */
 		    {
 			ArrayList list = new68();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 69: /* reduce AAgrammar70Grammar */
 		    {
 			ArrayList list = new69();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 70: /* reduce AAgrammar71Grammar */
 		    {
 			ArrayList list = new70();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 71: /* reduce AAgrammar72Grammar */
 		    {
 			ArrayList list = new71();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 72: /* reduce AAgrammar73Grammar */
 		    {
 			ArrayList list = new72();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 73: /* reduce AAgrammar74Grammar */
 		    {
 			ArrayList list = new73();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 74: /* reduce AAgrammar75Grammar */
 		    {
 			ArrayList list = new74();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 75: /* reduce AAgrammar76Grammar */
 		    {
 			ArrayList list = new75();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 76: /* reduce AAgrammar77Grammar */
 		    {
 			ArrayList list = new76();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 77: /* reduce AAgrammar78Grammar */
 		    {
 			ArrayList list = new77();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 78: /* reduce AAgrammar79Grammar */
 		    {
 			ArrayList list = new78();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 79: /* reduce AAgrammar80Grammar */
 		    {
 			ArrayList list = new79();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 80: /* reduce AAgrammar81Grammar */
 		    {
 			ArrayList list = new80();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 81: /* reduce AAgrammar82Grammar */
 		    {
 			ArrayList list = new81();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 82: /* reduce AAgrammar83Grammar */
 		    {
 			ArrayList list = new82();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 83: /* reduce AAgrammar84Grammar */
 		    {
 			ArrayList list = new83();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 84: /* reduce AAgrammar85Grammar */
 		    {
 			ArrayList list = new84();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 85: /* reduce AAgrammar86Grammar */
 		    {
 			ArrayList list = new85();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 86: /* reduce AAgrammar87Grammar */
 		    {
 			ArrayList list = new86();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 87: /* reduce AAgrammar88Grammar */
 		    {
 			ArrayList list = new87();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 88: /* reduce AAgrammar89Grammar */
 		    {
 			ArrayList list = new88();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 89: /* reduce AAgrammar90Grammar */
 		    {
 			ArrayList list = new89();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 90: /* reduce AAgrammar91Grammar */
 		    {
 			ArrayList list = new90();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 91: /* reduce AAgrammar92Grammar */
 		    {
 			ArrayList list = new91();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 92: /* reduce AAgrammar93Grammar */
 		    {
 			ArrayList list = new92();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 93: /* reduce AAgrammar94Grammar */
 		    {
 			ArrayList list = new93();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 94: /* reduce AAgrammar95Grammar */
 		    {
 			ArrayList list = new94();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 95: /* reduce AAgrammar96Grammar */
 		    {
 			ArrayList list = new95();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 96: /* reduce AAgrammar97Grammar */
 		    {
 			ArrayList list = new96();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 97: /* reduce AAgrammar98Grammar */
 		    {
 			ArrayList list = new97();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 98: /* reduce AAgrammar99Grammar */
 		    {
 			ArrayList list = new98();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 99: /* reduce AAgrammar100Grammar */
 		    {
 			ArrayList list = new99();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 100: /* reduce AAgrammar101Grammar */
 		    {
 			ArrayList list = new100();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 101: /* reduce AAgrammar102Grammar */
 		    {
 			ArrayList list = new101();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 102: /* reduce AAgrammar103Grammar */
 		    {
 			ArrayList list = new102();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 103: /* reduce AAgrammar104Grammar */
 		    {
 			ArrayList list = new103();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 104: /* reduce AAgrammar105Grammar */
 		    {
 			ArrayList list = new104();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 105: /* reduce AAgrammar106Grammar */
 		    {
 			ArrayList list = new105();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 106: /* reduce AAgrammar107Grammar */
 		    {
 			ArrayList list = new106();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 107: /* reduce AAgrammar108Grammar */
 		    {
 			ArrayList list = new107();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 108: /* reduce AAgrammar109Grammar */
 		    {
 			ArrayList list = new108();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 109: /* reduce AAgrammar110Grammar */
 		    {
 			ArrayList list = new109();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 110: /* reduce AAgrammar111Grammar */
 		    {
 			ArrayList list = new110();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 111: /* reduce AAgrammar112Grammar */
 		    {
 			ArrayList list = new111();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 112: /* reduce AAgrammar113Grammar */
 		    {
 			ArrayList list = new112();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 113: /* reduce AAgrammar114Grammar */
 		    {
 			ArrayList list = new113();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 114: /* reduce AAgrammar115Grammar */
 		    {
 			ArrayList list = new114();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 115: /* reduce AAgrammar116Grammar */
 		    {
 			ArrayList list = new115();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 116: /* reduce AAgrammar117Grammar */
 		    {
 			ArrayList list = new116();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 117: /* reduce AAgrammar118Grammar */
 		    {
 			ArrayList list = new117();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 118: /* reduce AAgrammar119Grammar */
 		    {
 			ArrayList list = new118();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 119: /* reduce AAgrammar120Grammar */
 		    {
 			ArrayList list = new119();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 120: /* reduce AAgrammar121Grammar */
 		    {
 			ArrayList list = new120();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 121: /* reduce AAgrammar122Grammar */
 		    {
 			ArrayList list = new121();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 122: /* reduce AAgrammar123Grammar */
 		    {
 			ArrayList list = new122();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 123: /* reduce AAgrammar124Grammar */
 		    {
 			ArrayList list = new123();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 124: /* reduce AAgrammar125Grammar */
 		    {
 			ArrayList list = new124();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 125: /* reduce AAgrammar126Grammar */
 		    {
 			ArrayList list = new125();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 126: /* reduce AAgrammar127Grammar */
 		    {
 			ArrayList list = new126();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 127: /* reduce AAgrammar128Grammar */
 		    {
 			ArrayList list = new127();
-			push(goTo(0), list, false);
+			push(goTo(0), list);
 		    }
 		    break;
                     case 128: /* reduce APackage */
 		    {
 			ArrayList list = new128();
-			push(goTo(1), list, false);
+			push(goTo(1), list);
 		    }
 		    break;
                     case 129: /* reduce AApkgname1PkgName */
 		    {
 			ArrayList list = new129();
-			push(goTo(2), list, false);
+			push(goTo(2), list);
 		    }
 		    break;
                     case 130: /* reduce AApkgname2PkgName */
 		    {
 			ArrayList list = new130();
-			push(goTo(2), list, false);
+			push(goTo(2), list);
 		    }
 		    break;
                     case 131: /* reduce APkgNameTail */
 		    {
 			ArrayList list = new131();
-			push(goTo(3), list, false);
+			push(goTo(3), list);
 		    }
 		    break;
                     case 132: /* reduce AHelpers */
 		    {
 			ArrayList list = new132();
-			push(goTo(4), list, false);
+			push(goTo(4), list);
 		    }
 		    break;
                     case 133: /* reduce AHelperDef */
 		    {
 			ArrayList list = new133();
-			push(goTo(5), list, false);
+			push(goTo(5), list);
 		    }
 		    break;
                     case 134: /* reduce AStates */
 		    {
 			ArrayList list = new134();
-			push(goTo(6), list, false);
+			push(goTo(6), list);
 		    }
 		    break;
                     case 135: /* reduce AAidlist1IdList */
 		    {
 			ArrayList list = new135();
-			push(goTo(7), list, false);
+			push(goTo(7), list);
 		    }
 		    break;
                     case 136: /* reduce AAidlist2IdList */
 		    {
 			ArrayList list = new136();
-			push(goTo(7), list, false);
+			push(goTo(7), list);
 		    }
 		    break;
                     case 137: /* reduce AIdListTail */
 		    {
 			ArrayList list = new137();
-			push(goTo(8), list, false);
+			push(goTo(8), list);
 		    }
 		    break;
                     case 138: /* reduce ATokens */
 		    {
 			ArrayList list = new138();
-			push(goTo(9), list, false);
+			push(goTo(9), list);
 		    }
 		    break;
                     case 139: /* reduce AAtokendef1TokenDef */
 		    {
 			ArrayList list = new139();
-			push(goTo(10), list, false);
+			push(goTo(10), list);
 		    }
 		    break;
                     case 140: /* reduce AAtokendef2TokenDef */
 		    {
 			ArrayList list = new140();
-			push(goTo(10), list, false);
+			push(goTo(10), list);
 		    }
 		    break;
                     case 141: /* reduce AAtokendef3TokenDef */
 		    {
 			ArrayList list = new141();
-			push(goTo(10), list, false);
+			push(goTo(10), list);
 		    }
 		    break;
                     case 142: /* reduce AAtokendef4TokenDef */
 		    {
 			ArrayList list = new142();
-			push(goTo(10), list, false);
+			push(goTo(10), list);
 		    }
 		    break;
                     case 143: /* reduce AAstatelist1StateList */
 		    {
 			ArrayList list = new143();
-			push(goTo(11), list, false);
+			push(goTo(11), list);
 		    }
 		    break;
                     case 144: /* reduce AAstatelist2StateList */
 		    {
 			ArrayList list = new144();
-			push(goTo(11), list, false);
+			push(goTo(11), list);
 		    }
 		    break;
                     case 145: /* reduce AAstatelist3StateList */
 		    {
 			ArrayList list = new145();
-			push(goTo(11), list, false);
+			push(goTo(11), list);
 		    }
 		    break;
                     case 146: /* reduce AAstatelist4StateList */
 		    {
 			ArrayList list = new146();
-			push(goTo(11), list, false);
+			push(goTo(11), list);
 		    }
 		    break;
                     case 147: /* reduce AAstatelisttail1StateListTail */
 		    {
 			ArrayList list = new147();
-			push(goTo(12), list, false);
+			push(goTo(12), list);
 		    }
 		    break;
                     case 148: /* reduce AAstatelisttail2StateListTail */
 		    {
 			ArrayList list = new148();
-			push(goTo(12), list, false);
+			push(goTo(12), list);
 		    }
 		    break;
                     case 149: /* reduce ATransition */
 		    {
 			ArrayList list = new149();
-			push(goTo(13), list, false);
+			push(goTo(13), list);
 		    }
 		    break;
                     case 150: /* reduce AAigntokens1IgnTokens */
 		    {
 			ArrayList list = new150();
-			push(goTo(14), list, false);
+			push(goTo(14), list);
 		    }
 		    break;
                     case 151: /* reduce AAigntokens2IgnTokens */
 		    {
 			ArrayList list = new151();
-			push(goTo(14), list, false);
+			push(goTo(14), list);
 		    }
 		    break;
                     case 152: /* reduce ALookAhead */
 		    {
 			ArrayList list = new152();
-			push(goTo(15), list, false);
+			push(goTo(15), list);
 		    }
 		    break;
                     case 153: /* reduce AAregexp1RegExp */
 		    {
 			ArrayList list = new153();
-			push(goTo(16), list, false);
+			push(goTo(16), list);
 		    }
 		    break;
                     case 154: /* reduce AAregexp2RegExp */
 		    {
 			ArrayList list = new154();
-			push(goTo(16), list, false);
+			push(goTo(16), list);
 		    }
 		    break;
                     case 155: /* reduce ARegExpTail */
 		    {
 			ArrayList list = new155();
-			push(goTo(17), list, false);
+			push(goTo(17), list);
 		    }
 		    break;
                     case 156: /* reduce AAconcat1Concat */
 		    {
 			ArrayList list = new156();
-			push(goTo(18), list, false);
+			push(goTo(18), list);
 		    }
 		    break;
                     case 157: /* reduce AAconcat2Concat */
 		    {
 			ArrayList list = new157();
-			push(goTo(18), list, false);
+			push(goTo(18), list);
 		    }
 		    break;
                     case 158: /* reduce AAunexp1UnExp */
 		    {
 			ArrayList list = new158();
-			push(goTo(19), list, false);
+			push(goTo(19), list);
 		    }
 		    break;
                     case 159: /* reduce AAunexp2UnExp */
 		    {
 			ArrayList list = new159();
-			push(goTo(19), list, false);
+			push(goTo(19), list);
 		    }
 		    break;
                     case 160: /* reduce ACharBasic */
 		    {
 			ArrayList list = new160();
-			push(goTo(20), list, false);
+			push(goTo(20), list);
 		    }
 		    break;
                     case 161: /* reduce ASetBasic */
 		    {
 			ArrayList list = new161();
-			push(goTo(20), list, false);
+			push(goTo(20), list);
 		    }
 		    break;
                     case 162: /* reduce AStringBasic */
 		    {
 			ArrayList list = new162();
-			push(goTo(20), list, false);
+			push(goTo(20), list);
 		    }
 		    break;
                     case 163: /* reduce AIdBasic */
 		    {
 			ArrayList list = new163();
-			push(goTo(20), list, false);
+			push(goTo(20), list);
 		    }
 		    break;
                     case 164: /* reduce ARegExpBasic */
 		    {
 			ArrayList list = new164();
-			push(goTo(20), list, false);
+			push(goTo(20), list);
 		    }
 		    break;
                     case 165: /* reduce ACharChar */
 		    {
 			ArrayList list = new165();
-			push(goTo(21), list, false);
+			push(goTo(21), list);
 		    }
 		    break;
                     case 166: /* reduce ADecChar */
 		    {
 			ArrayList list = new166();
-			push(goTo(21), list, false);
+			push(goTo(21), list);
 		    }
 		    break;
                     case 167: /* reduce AHexChar */
 		    {
 			ArrayList list = new167();
-			push(goTo(21), list, false);
+			push(goTo(21), list);
 		    }
 		    break;
                     case 168: /* reduce AOperationSet */
 		    {
 			ArrayList list = new168();
-			push(goTo(22), list, false);
+			push(goTo(22), list);
 		    }
 		    break;
                     case 169: /* reduce AIntervalSet */
 		    {
 			ArrayList list = new169();
-			push(goTo(22), list, false);
+			push(goTo(22), list);
 		    }
 		    break;
                     case 170: /* reduce AStarUnOp */
 		    {
 			ArrayList list = new170();
-			push(goTo(23), list, false);
+			push(goTo(23), list);
 		    }
 		    break;
                     case 171: /* reduce AQMarkUnOp */
 		    {
 			ArrayList list = new171();
-			push(goTo(23), list, false);
+			push(goTo(23), list);
 		    }
 		    break;
                     case 172: /* reduce APlusUnOp */
 		    {
 			ArrayList list = new172();
-			push(goTo(23), list, false);
+			push(goTo(23), list);
 		    }
 		    break;
                     case 173: /* reduce APlusBinOp */
 		    {
 			ArrayList list = new173();
-			push(goTo(24), list, false);
+			push(goTo(24), list);
 		    }
 		    break;
                     case 174: /* reduce AMinusBinOp */
 		    {
 			ArrayList list = new174();
-			push(goTo(24), list, false);
+			push(goTo(24), list);
 		    }
 		    break;
                     case 175: /* reduce AProductions */
 		    {
 			ArrayList list = new175();
-			push(goTo(25), list, false);
+			push(goTo(25), list);
 		    }
 		    break;
                     case 176: /* reduce AAprod1Prod */
 		    {
 			ArrayList list = new176();
-			push(goTo(26), list, false);
+			push(goTo(26), list);
 		    }
 		    break;
                     case 177: /* reduce AAprod2Prod */
 		    {
 			ArrayList list = new177();
-			push(goTo(26), list, false);
+			push(goTo(26), list);
 		    }
 		    break;
                     case 178: /* reduce AAprodtransform1ProdTransform */
 		    {
 			ArrayList list = new178();
-			push(goTo(27), list, false);
+			push(goTo(27), list);
 		    }
 		    break;
                     case 179: /* reduce AAprodtransform2ProdTransform */
 		    {
 			ArrayList list = new179();
-			push(goTo(27), list, false);
+			push(goTo(27), list);
 		    }
 		    break;
                     case 180: /* reduce AAalts1Alts */
 		    {
 			ArrayList list = new180();
-			push(goTo(28), list, false);
+			push(goTo(28), list);
 		    }
 		    break;
                     case 181: /* reduce AAalts2Alts */
 		    {
 			ArrayList list = new181();
-			push(goTo(28), list, false);
+			push(goTo(28), list);
 		    }
 		    break;
                     case 182: /* reduce AAltsTail */
 		    {
 			ArrayList list = new182();
-			push(goTo(29), list, false);
+			push(goTo(29), list);
 		    }
 		    break;
                     case 183: /* reduce AAalt1Alt */
 		    {
 			ArrayList list = new183();
-			push(goTo(30), list, false);
+			push(goTo(30), list);
 		    }
 		    break;
                     case 184: /* reduce AAalt2Alt */
 		    {
 			ArrayList list = new184();
-			push(goTo(30), list, false);
+			push(goTo(30), list);
 		    }
 		    break;
                     case 185: /* reduce AAalt3Alt */
 		    {
 			ArrayList list = new185();
-			push(goTo(30), list, false);
+			push(goTo(30), list);
 		    }
 		    break;
                     case 186: /* reduce AAalt4Alt */
 		    {
 			ArrayList list = new186();
-			push(goTo(30), list, false);
+			push(goTo(30), list);
 		    }
 		    break;
                     case 187: /* reduce AAalt5Alt */
 		    {
 			ArrayList list = new187();
-			push(goTo(30), list, false);
+			push(goTo(30), list);
 		    }
 		    break;
                     case 188: /* reduce AAalt6Alt */
 		    {
 			ArrayList list = new188();
-			push(goTo(30), list, false);
+			push(goTo(30), list);
 		    }
 		    break;
                     case 189: /* reduce AAalt7Alt */
 		    {
 			ArrayList list = new189();
-			push(goTo(30), list, false);
+			push(goTo(30), list);
 		    }
 		    break;
                     case 190: /* reduce AAalt8Alt */
 		    {
 			ArrayList list = new190();
-			push(goTo(30), list, false);
+			push(goTo(30), list);
 		    }
 		    break;
                     case 191: /* reduce AAalttransform1AltTransform */
 		    {
 			ArrayList list = new191();
-			push(goTo(31), list, false);
+			push(goTo(31), list);
 		    }
 		    break;
                     case 192: /* reduce AAalttransform2AltTransform */
 		    {
 			ArrayList list = new192();
-			push(goTo(31), list, false);
+			push(goTo(31), list);
 		    }
 		    break;
                     case 193: /* reduce AAnewterm1Term */
 		    {
 			ArrayList list = new193();
-			push(goTo(32), list, false);
+			push(goTo(32), list);
 		    }
 		    break;
                     case 194: /* reduce AAnewterm2Term */
 		    {
 			ArrayList list = new194();
-			push(goTo(32), list, false);
+			push(goTo(32), list);
 		    }
 		    break;
                     case 195: /* reduce AAlistterm1Term */
 		    {
 			ArrayList list = new195();
-			push(goTo(32), list, false);
+			push(goTo(32), list);
 		    }
 		    break;
                     case 196: /* reduce AAlistterm2Term */
 		    {
 			ArrayList list = new196();
-			push(goTo(32), list, false);
+			push(goTo(32), list);
 		    }
 		    break;
                     case 197: /* reduce AAsimpleterm1Term */
 		    {
 			ArrayList list = new197();
-			push(goTo(32), list, false);
+			push(goTo(32), list);
 		    }
 		    break;
                     case 198: /* reduce AAsimpleterm2Term */
 		    {
 			ArrayList list = new198();
-			push(goTo(32), list, false);
+			push(goTo(32), list);
 		    }
 		    break;
                     case 199: /* reduce AAsimpleterm3Term */
 		    {
 			ArrayList list = new199();
-			push(goTo(32), list, false);
+			push(goTo(32), list);
 		    }
 		    break;
                     case 200: /* reduce AAsimpleterm4Term */
 		    {
 			ArrayList list = new200();
-			push(goTo(32), list, false);
+			push(goTo(32), list);
 		    }
 		    break;
                     case 201: /* reduce ANullTerm */
 		    {
 			ArrayList list = new201();
-			push(goTo(32), list, false);
+			push(goTo(32), list);
 		    }
 		    break;
                     case 202: /* reduce AAlistoflistterm1ListOfListTerm */
 		    {
 			ArrayList list = new202();
-			push(goTo(33), list, false);
+			push(goTo(33), list);
 		    }
 		    break;
                     case 203: /* reduce AAlistoflistterm2ListOfListTerm */
 		    {
 			ArrayList list = new203();
-			push(goTo(33), list, false);
+			push(goTo(33), list);
 		    }
 		    break;
                     case 204: /* reduce AAnewlistterm1ListTerm */
 		    {
 			ArrayList list = new204();
-			push(goTo(34), list, false);
+			push(goTo(34), list);
 		    }
 		    break;
                     case 205: /* reduce AAnewlistterm2ListTerm */
 		    {
 			ArrayList list = new205();
-			push(goTo(34), list, false);
+			push(goTo(34), list);
 		    }
 		    break;
                     case 206: /* reduce AAsimplelistterm1ListTerm */
 		    {
 			ArrayList list = new206();
-			push(goTo(34), list, false);
+			push(goTo(34), list);
 		    }
 		    break;
                     case 207: /* reduce AAsimplelistterm2ListTerm */
 		    {
 			ArrayList list = new207();
-			push(goTo(34), list, false);
+			push(goTo(34), list);
 		    }
 		    break;
                     case 208: /* reduce AAsimplelistterm3ListTerm */
 		    {
 			ArrayList list = new208();
-			push(goTo(34), list, false);
+			push(goTo(34), list);
 		    }
 		    break;
                     case 209: /* reduce AAsimplelistterm4ListTerm */
 		    {
 			ArrayList list = new209();
-			push(goTo(34), list, false);
+			push(goTo(34), list);
 		    }
 		    break;
                     case 210: /* reduce AListTermTail */
 		    {
 			ArrayList list = new210();
-			push(goTo(35), list, false);
+			push(goTo(35), list);
 		    }
 		    break;
                     case 211: /* reduce ASimpleTermTail */
 		    {
 			ArrayList list = new211();
-			push(goTo(36), list, false);
+			push(goTo(36), list);
 		    }
 		    break;
                     case 212: /* reduce AAprodname1ProdName */
 		    {
 			ArrayList list = new212();
-			push(goTo(37), list, false);
+			push(goTo(37), list);
 		    }
 		    break;
                     case 213: /* reduce AAprodname2ProdName */
 		    {
 			ArrayList list = new213();
-			push(goTo(37), list, false);
+			push(goTo(37), list);
 		    }
 		    break;
                     case 214: /* reduce AProdNameTail */
 		    {
 			ArrayList list = new214();
-			push(goTo(38), list, false);
+			push(goTo(38), list);
 		    }
 		    break;
                     case 215: /* reduce AAparams1Params */
 		    {
 			ArrayList list = new215();
-			push(goTo(39), list, false);
+			push(goTo(39), list);
 		    }
 		    break;
                     case 216: /* reduce AAparams2Params */
 		    {
 			ArrayList list = new216();
-			push(goTo(39), list, false);
+			push(goTo(39), list);
 		    }
 		    break;
                     case 217: /* reduce AParamsTail */
 		    {
 			ArrayList list = new217();
-			push(goTo(40), list, false);
+			push(goTo(40), list);
 		    }
 		    break;
                     case 218: /* reduce AAltName */
 		    {
 			ArrayList list = new218();
-			push(goTo(41), list, false);
+			push(goTo(41), list);
 		    }
 		    break;
                     case 219: /* reduce AAelem1Elem */
 		    {
 			ArrayList list = new219();
-			push(goTo(42), list, false);
+			push(goTo(42), list);
 		    }
 		    break;
                     case 220: /* reduce AAelem2Elem */
 		    {
 			ArrayList list = new220();
-			push(goTo(42), list, false);
+			push(goTo(42), list);
 		    }
 		    break;
                     case 221: /* reduce AAelem3Elem */
 		    {
 			ArrayList list = new221();
-			push(goTo(42), list, false);
+			push(goTo(42), list);
 		    }
 		    break;
                     case 222: /* reduce AAelem4Elem */
 		    {
 			ArrayList list = new222();
-			push(goTo(42), list, false);
+			push(goTo(42), list);
 		    }
 		    break;
                     case 223: /* reduce AAelem5Elem */
 		    {
 			ArrayList list = new223();
-			push(goTo(42), list, false);
+			push(goTo(42), list);
 		    }
 		    break;
                     case 224: /* reduce AAelem6Elem */
 		    {
 			ArrayList list = new224();
-			push(goTo(42), list, false);
+			push(goTo(42), list);
 		    }
 		    break;
                     case 225: /* reduce AAelem7Elem */
 		    {
 			ArrayList list = new225();
-			push(goTo(42), list, false);
+			push(goTo(42), list);
 		    }
 		    break;
                     case 226: /* reduce AAelem8Elem */
 		    {
 			ArrayList list = new226();
-			push(goTo(42), list, false);
+			push(goTo(42), list);
 		    }
 		    break;
                     case 227: /* reduce AElemName */
 		    {
 			ArrayList list = new227();
-			push(goTo(43), list, false);
+			push(goTo(43), list);
 		    }
 		    break;
                     case 228: /* reduce ATokenSpecifier */
 		    {
 			ArrayList list = new228();
-			push(goTo(44), list, false);
+			push(goTo(44), list);
 		    }
 		    break;
                     case 229: /* reduce AProductionSpecifier */
 		    {
 			ArrayList list = new229();
-			push(goTo(44), list, false);
+			push(goTo(44), list);
 		    }
 		    break;
                     case 230: /* reduce AAst */
 		    {
 			ArrayList list = new230();
-			push(goTo(45), list, false);
+			push(goTo(45), list);
 		    }
 		    break;
                     case 231: /* reduce AAstProd */
 		    {
 			ArrayList list = new231();
-			push(goTo(46), list, false);
+			push(goTo(46), list);
 		    }
 		    break;
                     case 232: /* reduce AAastalts1AstAlts */
 		    {
 			ArrayList list = new232();
-			push(goTo(47), list, false);
+			push(goTo(47), list);
 		    }
 		    break;
                     case 233: /* reduce AAastalts2AstAlts */
 		    {
 			ArrayList list = new233();
-			push(goTo(47), list, false);
+			push(goTo(47), list);
 		    }
 		    break;
                     case 234: /* reduce AAstAltsTail */
 		    {
 			ArrayList list = new234();
-			push(goTo(48), list, false);
+			push(goTo(48), list);
 		    }
 		    break;
                     case 235: /* reduce AAastalt1AstAlt */
 		    {
 			ArrayList list = new235();
-			push(goTo(49), list, false);
+			push(goTo(49), list);
 		    }
 		    break;
                     case 236: /* reduce AAastalt2AstAlt */
 		    {
 			ArrayList list = new236();
-			push(goTo(49), list, false);
+			push(goTo(49), list);
 		    }
 		    break;
                     case 237: /* reduce AAastalt3AstAlt */
 		    {
 			ArrayList list = new237();
-			push(goTo(49), list, false);
+			push(goTo(49), list);
 		    }
 		    break;
                     case 238: /* reduce AAastalt4AstAlt */
 		    {
 			ArrayList list = new238();
-			push(goTo(49), list, false);
+			push(goTo(49), list);
 		    }
 		    break;
                     case 239: /* reduce ATerminal$PkgNameTail */
 		    {
 			ArrayList list = new239();
-			push(goTo(50), list, true);
+			push(goTo(50), list);
 		    }
 		    break;
                     case 240: /* reduce ANonTerminal$PkgNameTail */
 		    {
 			ArrayList list = new240();
-			push(goTo(50), list, true);
+			push(goTo(50), list);
 		    }
 		    break;
                     case 241: /* reduce ATerminal$HelperDef */
 		    {
 			ArrayList list = new241();
-			push(goTo(51), list, true);
+			push(goTo(51), list);
 		    }
 		    break;
                     case 242: /* reduce ANonTerminal$HelperDef */
 		    {
 			ArrayList list = new242();
-			push(goTo(51), list, true);
+			push(goTo(51), list);
 		    }
 		    break;
                     case 243: /* reduce ATerminal$IdListTail */
 		    {
 			ArrayList list = new243();
-			push(goTo(52), list, true);
+			push(goTo(52), list);
 		    }
 		    break;
                     case 244: /* reduce ANonTerminal$IdListTail */
 		    {
 			ArrayList list = new244();
-			push(goTo(52), list, true);
+			push(goTo(52), list);
 		    }
 		    break;
                     case 245: /* reduce ATerminal$TokenDef */
 		    {
 			ArrayList list = new245();
-			push(goTo(53), list, true);
+			push(goTo(53), list);
 		    }
 		    break;
                     case 246: /* reduce ANonTerminal$TokenDef */
 		    {
 			ArrayList list = new246();
-			push(goTo(53), list, true);
+			push(goTo(53), list);
 		    }
 		    break;
                     case 247: /* reduce ATerminal$StateListTail */
 		    {
 			ArrayList list = new247();
-			push(goTo(54), list, true);
+			push(goTo(54), list);
 		    }
 		    break;
                     case 248: /* reduce ANonTerminal$StateListTail */
 		    {
 			ArrayList list = new248();
-			push(goTo(54), list, true);
+			push(goTo(54), list);
 		    }
 		    break;
                     case 249: /* reduce ATerminal$RegExpTail */
 		    {
 			ArrayList list = new249();
-			push(goTo(55), list, true);
+			push(goTo(55), list);
 		    }
 		    break;
                     case 250: /* reduce ANonTerminal$RegExpTail */
 		    {
 			ArrayList list = new250();
-			push(goTo(55), list, true);
+			push(goTo(55), list);
 		    }
 		    break;
                     case 251: /* reduce ATerminal$UnExp */
 		    {
 			ArrayList list = new251();
-			push(goTo(56), list, true);
+			push(goTo(56), list);
 		    }
 		    break;
                     case 252: /* reduce ANonTerminal$UnExp */
 		    {
 			ArrayList list = new252();
-			push(goTo(56), list, true);
+			push(goTo(56), list);
 		    }
 		    break;
                     case 253: /* reduce ATerminal$Prod */
 		    {
 			ArrayList list = new253();
-			push(goTo(57), list, true);
+			push(goTo(57), list);
 		    }
 		    break;
                     case 254: /* reduce ANonTerminal$Prod */
 		    {
 			ArrayList list = new254();
-			push(goTo(57), list, true);
+			push(goTo(57), list);
 		    }
 		    break;
                     case 255: /* reduce ATerminal$Elem */
 		    {
 			ArrayList list = new255();
-			push(goTo(58), list, true);
+			push(goTo(58), list);
 		    }
 		    break;
                     case 256: /* reduce ANonTerminal$Elem */
 		    {
 			ArrayList list = new256();
-			push(goTo(58), list, true);
+			push(goTo(58), list);
 		    }
 		    break;
                     case 257: /* reduce ATerminal$AltsTail */
 		    {
 			ArrayList list = new257();
-			push(goTo(59), list, true);
+			push(goTo(59), list);
 		    }
 		    break;
                     case 258: /* reduce ANonTerminal$AltsTail */
 		    {
 			ArrayList list = new258();
-			push(goTo(59), list, true);
+			push(goTo(59), list);
 		    }
 		    break;
                     case 259: /* reduce ATerminal$Term */
 		    {
 			ArrayList list = new259();
-			push(goTo(60), list, true);
+			push(goTo(60), list);
 		    }
 		    break;
                     case 260: /* reduce ANonTerminal$Term */
 		    {
 			ArrayList list = new260();
-			push(goTo(60), list, true);
+			push(goTo(60), list);
 		    }
 		    break;
                     case 261: /* reduce ATerminal$ListTermTail */
 		    {
 			ArrayList list = new261();
-			push(goTo(61), list, true);
+			push(goTo(61), list);
 		    }
 		    break;
                     case 262: /* reduce ANonTerminal$ListTermTail */
 		    {
 			ArrayList list = new262();
-			push(goTo(61), list, true);
+			push(goTo(61), list);
 		    }
 		    break;
                     case 263: /* reduce ATerminal$ParamsTail */
 		    {
 			ArrayList list = new263();
-			push(goTo(62), list, true);
+			push(goTo(62), list);
 		    }
 		    break;
                     case 264: /* reduce ANonTerminal$ParamsTail */
 		    {
 			ArrayList list = new264();
-			push(goTo(62), list, true);
+			push(goTo(62), list);
 		    }
 		    break;
                     case 265: /* reduce ATerminal$AstProd */
 		    {
 			ArrayList list = new265();
-			push(goTo(63), list, true);
+			push(goTo(63), list);
 		    }
 		    break;
                     case 266: /* reduce ANonTerminal$AstProd */
 		    {
 			ArrayList list = new266();
-			push(goTo(63), list, true);
+			push(goTo(63), list);
 		    }
 		    break;
                     case 267: /* reduce ATerminal$AstAltsTail */
 		    {
 			ArrayList list = new267();
-			push(goTo(64), list, true);
+			push(goTo(64), list);
 		    }
 		    break;
                     case 268: /* reduce ANonTerminal$AstAltsTail */
 		    {
 			ArrayList list = new268();
-			push(goTo(64), list, true);
+			push(goTo(64), list);
 		    }
 		    break;
                     }
@@ -1816,15 +1807,18 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
 
-        pgrammarNode1 = new AGrammar(null, null, null, null, null, null, null);
+        pgrammarNode1 = new AGrammar(listNode2, null, null, null, null, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -1841,16 +1835,24 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
+        LinkedList listNode3 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, null, null, null, null, null);
+        pgrammarNode1 = new AGrammar(listNode3, null, null, null, null, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -1867,16 +1869,19 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, null, null, null, null, null);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, null, null, null, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -1894,17 +1899,25 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, null, null, null, null, null);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, null, null, null, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -1921,16 +1934,19 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         PStates pstatesNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         pstatesNode4 = (PStates)nodeArrayList1.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, pstatesNode4, null, null, null, null);
+        pgrammarNode1 = new AGrammar(listNode2, null, pstatesNode4, null, null, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -1948,17 +1964,25 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
-        PStates pstatesNode4;
-        @SuppressWarnings("unused") Object nullNode5 = null;
+        LinkedList listNode3 = new LinkedList();
+        @SuppressWarnings("unused") Object nullNode4 = null;
+        PStates pstatesNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pstatesNode4 = (PStates)nodeArrayList2.get(0);
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pstatesNode5 = (PStates)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, pstatesNode4, null, null, null, null);
+        pgrammarNode1 = new AGrammar(listNode3, null, pstatesNode5, null, null, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -1976,17 +2000,20 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         PStates pstatesNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pstatesNode4 = (PStates)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, pstatesNode4, null, null, null, null);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, pstatesNode4, null, null, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2005,18 +2032,26 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        PStates pstatesNode4;
-        @SuppressWarnings("unused") Object nullNode5 = null;
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        PStates pstatesNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pstatesNode4 = (PStates)nodeArrayList3.get(0);
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pstatesNode5 = (PStates)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, pstatesNode4, null, null, null, null);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, pstatesNode5, null, null, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2033,16 +2068,19 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         @SuppressWarnings("unused") Object nullNode4 = null;
         PTokens ptokensNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         ptokensNode5 = (PTokens)nodeArrayList1.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, null, ptokensNode5, null, null, null);
+        pgrammarNode1 = new AGrammar(listNode2, null, null, ptokensNode5, null, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2060,17 +2098,25 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
+        LinkedList listNode3 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode4 = null;
-        PTokens ptokensNode5;
-        @SuppressWarnings("unused") Object nullNode6 = null;
+        @SuppressWarnings("unused") Object nullNode5 = null;
+        PTokens ptokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList2.get(0);
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        ptokensNode6 = (PTokens)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, null, ptokensNode5, null, null, null);
+        pgrammarNode1 = new AGrammar(listNode3, null, null, ptokensNode6, null, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2088,17 +2134,20 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         @SuppressWarnings("unused") Object nullNode4 = null;
         PTokens ptokensNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         ptokensNode5 = (PTokens)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, null, ptokensNode5, null, null, null);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, null, ptokensNode5, null, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2117,18 +2166,26 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
-        PTokens ptokensNode5;
-        @SuppressWarnings("unused") Object nullNode6 = null;
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        @SuppressWarnings("unused") Object nullNode5 = null;
+        PTokens ptokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList3.get(0);
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, null, ptokensNode5, null, null, null);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, null, ptokensNode6, null, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2146,17 +2203,20 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         PStates pstatesNode4;
         PTokens ptokensNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         pstatesNode4 = (PStates)nodeArrayList1.get(0);
         ptokensNode5 = (PTokens)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, pstatesNode4, ptokensNode5, null, null, null);
+        pgrammarNode1 = new AGrammar(listNode2, null, pstatesNode4, ptokensNode5, null, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2175,18 +2235,26 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
-        PStates pstatesNode4;
-        PTokens ptokensNode5;
-        @SuppressWarnings("unused") Object nullNode6 = null;
+        LinkedList listNode3 = new LinkedList();
+        @SuppressWarnings("unused") Object nullNode4 = null;
+        PStates pstatesNode5;
+        PTokens ptokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pstatesNode4 = (PStates)nodeArrayList2.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList3.get(0);
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pstatesNode5 = (PStates)nodeArrayList2.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, pstatesNode4, ptokensNode5, null, null, null);
+        pgrammarNode1 = new AGrammar(listNode3, null, pstatesNode5, ptokensNode6, null, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2205,18 +2273,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         PStates pstatesNode4;
         PTokens ptokensNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pstatesNode4 = (PStates)nodeArrayList2.get(0);
         ptokensNode5 = (PTokens)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, pstatesNode4, ptokensNode5, null, null, null);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, pstatesNode4, ptokensNode5, null, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2236,19 +2307,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        PStates pstatesNode4;
-        PTokens ptokensNode5;
-        @SuppressWarnings("unused") Object nullNode6 = null;
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        PStates pstatesNode5;
+        PTokens ptokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pstatesNode4 = (PStates)nodeArrayList3.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList4.get(0);
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pstatesNode5 = (PStates)nodeArrayList3.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, pstatesNode4, ptokensNode5, null, null, null);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, pstatesNode5, ptokensNode6, null, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2265,16 +2344,19 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         PIgnTokens pigntokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         pigntokensNode6 = (PIgnTokens)nodeArrayList1.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, null, null, pigntokensNode6, null, null);
+        pgrammarNode1 = new AGrammar(listNode2, null, null, null, pigntokensNode6, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2292,17 +2374,25 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
+        LinkedList listNode3 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
-        PIgnTokens pigntokensNode6;
-        @SuppressWarnings("unused") Object nullNode7 = null;
+        @SuppressWarnings("unused") Object nullNode6 = null;
+        PIgnTokens pigntokensNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList2.get(0);
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pigntokensNode7 = (PIgnTokens)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, null, null, pigntokensNode6, null, null);
+        pgrammarNode1 = new AGrammar(listNode3, null, null, null, pigntokensNode7, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2320,17 +2410,20 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         PIgnTokens pigntokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, null, null, pigntokensNode6, null, null);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, null, null, pigntokensNode6, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2349,18 +2442,26 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
-        PIgnTokens pigntokensNode6;
-        @SuppressWarnings("unused") Object nullNode7 = null;
+        @SuppressWarnings("unused") Object nullNode6 = null;
+        PIgnTokens pigntokensNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, null, null, pigntokensNode6, null, null);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, null, null, pigntokensNode7, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2378,17 +2479,20 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         PStates pstatesNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         PIgnTokens pigntokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         pstatesNode4 = (PStates)nodeArrayList1.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, pstatesNode4, null, pigntokensNode6, null, null);
+        pgrammarNode1 = new AGrammar(listNode2, null, pstatesNode4, null, pigntokensNode6, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2407,18 +2511,26 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
-        PStates pstatesNode4;
-        @SuppressWarnings("unused") Object nullNode5 = null;
-        PIgnTokens pigntokensNode6;
-        @SuppressWarnings("unused") Object nullNode7 = null;
+        LinkedList listNode3 = new LinkedList();
+        @SuppressWarnings("unused") Object nullNode4 = null;
+        PStates pstatesNode5;
+        @SuppressWarnings("unused") Object nullNode6 = null;
+        PIgnTokens pigntokensNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pstatesNode4 = (PStates)nodeArrayList2.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pstatesNode5 = (PStates)nodeArrayList2.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, pstatesNode4, null, pigntokensNode6, null, null);
+        pgrammarNode1 = new AGrammar(listNode3, null, pstatesNode5, null, pigntokensNode7, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2437,18 +2549,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         PStates pstatesNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         PIgnTokens pigntokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pstatesNode4 = (PStates)nodeArrayList2.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, pstatesNode4, null, pigntokensNode6, null, null);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, pstatesNode4, null, pigntokensNode6, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2468,19 +2583,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        PStates pstatesNode4;
-        @SuppressWarnings("unused") Object nullNode5 = null;
-        PIgnTokens pigntokensNode6;
-        @SuppressWarnings("unused") Object nullNode7 = null;
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        PStates pstatesNode5;
+        @SuppressWarnings("unused") Object nullNode6 = null;
+        PIgnTokens pigntokensNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pstatesNode4 = (PStates)nodeArrayList3.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList4.get(0);
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pstatesNode5 = (PStates)nodeArrayList3.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, pstatesNode4, null, pigntokensNode6, null, null);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, pstatesNode5, null, pigntokensNode7, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2498,17 +2621,20 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         @SuppressWarnings("unused") Object nullNode4 = null;
         PTokens ptokensNode5;
         PIgnTokens pigntokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         ptokensNode5 = (PTokens)nodeArrayList1.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, null, ptokensNode5, pigntokensNode6, null, null);
+        pgrammarNode1 = new AGrammar(listNode2, null, null, ptokensNode5, pigntokensNode6, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2527,18 +2653,26 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
+        LinkedList listNode3 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode4 = null;
-        PTokens ptokensNode5;
-        PIgnTokens pigntokensNode6;
-        @SuppressWarnings("unused") Object nullNode7 = null;
+        @SuppressWarnings("unused") Object nullNode5 = null;
+        PTokens ptokensNode6;
+        PIgnTokens pigntokensNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList2.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        ptokensNode6 = (PTokens)nodeArrayList2.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, null, ptokensNode5, pigntokensNode6, null, null);
+        pgrammarNode1 = new AGrammar(listNode3, null, null, ptokensNode6, pigntokensNode7, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2557,18 +2691,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         @SuppressWarnings("unused") Object nullNode4 = null;
         PTokens ptokensNode5;
         PIgnTokens pigntokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         ptokensNode5 = (PTokens)nodeArrayList2.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, null, ptokensNode5, pigntokensNode6, null, null);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, null, ptokensNode5, pigntokensNode6, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2588,19 +2725,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
-        PTokens ptokensNode5;
-        PIgnTokens pigntokensNode6;
-        @SuppressWarnings("unused") Object nullNode7 = null;
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        @SuppressWarnings("unused") Object nullNode5 = null;
+        PTokens ptokensNode6;
+        PIgnTokens pigntokensNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList3.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList4.get(0);
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList3.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, null, ptokensNode5, pigntokensNode6, null, null);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, null, ptokensNode6, pigntokensNode7, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2619,18 +2764,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         PStates pstatesNode4;
         PTokens ptokensNode5;
         PIgnTokens pigntokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         pstatesNode4 = (PStates)nodeArrayList1.get(0);
         ptokensNode5 = (PTokens)nodeArrayList2.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, pstatesNode4, ptokensNode5, pigntokensNode6, null, null);
+        pgrammarNode1 = new AGrammar(listNode2, null, pstatesNode4, ptokensNode5, pigntokensNode6, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2650,19 +2798,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
-        PStates pstatesNode4;
-        PTokens ptokensNode5;
-        PIgnTokens pigntokensNode6;
-        @SuppressWarnings("unused") Object nullNode7 = null;
+        LinkedList listNode3 = new LinkedList();
+        @SuppressWarnings("unused") Object nullNode4 = null;
+        PStates pstatesNode5;
+        PTokens ptokensNode6;
+        PIgnTokens pigntokensNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pstatesNode4 = (PStates)nodeArrayList2.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList3.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList4.get(0);
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pstatesNode5 = (PStates)nodeArrayList2.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList3.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, pstatesNode4, ptokensNode5, pigntokensNode6, null, null);
+        pgrammarNode1 = new AGrammar(listNode3, null, pstatesNode5, ptokensNode6, pigntokensNode7, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2682,19 +2838,22 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         PStates pstatesNode4;
         PTokens ptokensNode5;
         PIgnTokens pigntokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pstatesNode4 = (PStates)nodeArrayList2.get(0);
         ptokensNode5 = (PTokens)nodeArrayList3.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, pstatesNode4, ptokensNode5, pigntokensNode6, null, null);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, pstatesNode4, ptokensNode5, pigntokensNode6, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2715,20 +2874,28 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        PStates pstatesNode4;
-        PTokens ptokensNode5;
-        PIgnTokens pigntokensNode6;
-        @SuppressWarnings("unused") Object nullNode7 = null;
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        PStates pstatesNode5;
+        PTokens ptokensNode6;
+        PIgnTokens pigntokensNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pstatesNode4 = (PStates)nodeArrayList3.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList4.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList5.get(0);
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pstatesNode5 = (PStates)nodeArrayList3.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList4.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, pstatesNode4, ptokensNode5, pigntokensNode6, null, null);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, pstatesNode5, ptokensNode6, pigntokensNode7, null, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2745,16 +2912,19 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         PProductions pproductionsNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         pproductionsNode7 = (PProductions)nodeArrayList1.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, null, null, null, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode2, null, null, null, null, pproductionsNode7, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2772,17 +2942,25 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
+        LinkedList listNode3 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
-        PProductions pproductionsNode7;
-        @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList2.get(0);
+        @SuppressWarnings("unused") Object nullNode7 = null;
+        PProductions pproductionsNode8;
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pproductionsNode8 = (PProductions)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, null, null, null, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode3, null, null, null, null, pproductionsNode8, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2800,17 +2978,20 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         PProductions pproductionsNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, null, null, null, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, null, null, null, pproductionsNode7, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2829,18 +3010,26 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
-        PProductions pproductionsNode7;
-        @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
+        @SuppressWarnings("unused") Object nullNode7 = null;
+        PProductions pproductionsNode8;
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, null, null, null, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, null, null, null, pproductionsNode8, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2858,17 +3047,20 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         PStates pstatesNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         PProductions pproductionsNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         pstatesNode4 = (PStates)nodeArrayList1.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, pstatesNode4, null, null, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode2, null, pstatesNode4, null, null, pproductionsNode7, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2887,18 +3079,26 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
-        PStates pstatesNode4;
-        @SuppressWarnings("unused") Object nullNode5 = null;
+        LinkedList listNode3 = new LinkedList();
+        @SuppressWarnings("unused") Object nullNode4 = null;
+        PStates pstatesNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
-        PProductions pproductionsNode7;
-        @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pstatesNode4 = (PStates)nodeArrayList2.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
+        @SuppressWarnings("unused") Object nullNode7 = null;
+        PProductions pproductionsNode8;
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pstatesNode5 = (PStates)nodeArrayList2.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, pstatesNode4, null, null, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode3, null, pstatesNode5, null, null, pproductionsNode8, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2917,18 +3117,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         PStates pstatesNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         PProductions pproductionsNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pstatesNode4 = (PStates)nodeArrayList2.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, pstatesNode4, null, null, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, pstatesNode4, null, null, pproductionsNode7, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2948,19 +3151,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        PStates pstatesNode4;
-        @SuppressWarnings("unused") Object nullNode5 = null;
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        PStates pstatesNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
-        PProductions pproductionsNode7;
-        @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pstatesNode4 = (PStates)nodeArrayList3.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
+        @SuppressWarnings("unused") Object nullNode7 = null;
+        PProductions pproductionsNode8;
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pstatesNode5 = (PStates)nodeArrayList3.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, pstatesNode4, null, null, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, pstatesNode5, null, null, pproductionsNode8, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -2978,17 +3189,20 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         @SuppressWarnings("unused") Object nullNode4 = null;
         PTokens ptokensNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         PProductions pproductionsNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         ptokensNode5 = (PTokens)nodeArrayList1.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, null, ptokensNode5, null, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode2, null, null, ptokensNode5, null, pproductionsNode7, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3007,18 +3221,26 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
+        LinkedList listNode3 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode4 = null;
-        PTokens ptokensNode5;
-        @SuppressWarnings("unused") Object nullNode6 = null;
-        PProductions pproductionsNode7;
-        @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList2.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
+        @SuppressWarnings("unused") Object nullNode5 = null;
+        PTokens ptokensNode6;
+        @SuppressWarnings("unused") Object nullNode7 = null;
+        PProductions pproductionsNode8;
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        ptokensNode6 = (PTokens)nodeArrayList2.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, null, ptokensNode5, null, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode3, null, null, ptokensNode6, null, pproductionsNode8, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3037,18 +3259,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         @SuppressWarnings("unused") Object nullNode4 = null;
         PTokens ptokensNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         PProductions pproductionsNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         ptokensNode5 = (PTokens)nodeArrayList2.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, null, ptokensNode5, null, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, null, ptokensNode5, null, pproductionsNode7, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3068,19 +3293,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
-        PTokens ptokensNode5;
-        @SuppressWarnings("unused") Object nullNode6 = null;
-        PProductions pproductionsNode7;
-        @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList3.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        @SuppressWarnings("unused") Object nullNode5 = null;
+        PTokens ptokensNode6;
+        @SuppressWarnings("unused") Object nullNode7 = null;
+        PProductions pproductionsNode8;
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList3.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, null, ptokensNode5, null, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, null, ptokensNode6, null, pproductionsNode8, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3099,18 +3332,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         PStates pstatesNode4;
         PTokens ptokensNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         PProductions pproductionsNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         pstatesNode4 = (PStates)nodeArrayList1.get(0);
         ptokensNode5 = (PTokens)nodeArrayList2.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, pstatesNode4, ptokensNode5, null, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode2, null, pstatesNode4, ptokensNode5, null, pproductionsNode7, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3130,19 +3366,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
-        PStates pstatesNode4;
-        PTokens ptokensNode5;
-        @SuppressWarnings("unused") Object nullNode6 = null;
-        PProductions pproductionsNode7;
-        @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pstatesNode4 = (PStates)nodeArrayList2.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList3.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
+        LinkedList listNode3 = new LinkedList();
+        @SuppressWarnings("unused") Object nullNode4 = null;
+        PStates pstatesNode5;
+        PTokens ptokensNode6;
+        @SuppressWarnings("unused") Object nullNode7 = null;
+        PProductions pproductionsNode8;
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pstatesNode5 = (PStates)nodeArrayList2.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList3.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, pstatesNode4, ptokensNode5, null, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode3, null, pstatesNode5, ptokensNode6, null, pproductionsNode8, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3162,19 +3406,22 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         PStates pstatesNode4;
         PTokens ptokensNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         PProductions pproductionsNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pstatesNode4 = (PStates)nodeArrayList2.get(0);
         ptokensNode5 = (PTokens)nodeArrayList3.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, pstatesNode4, ptokensNode5, null, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, pstatesNode4, ptokensNode5, null, pproductionsNode7, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3195,20 +3442,28 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        PStates pstatesNode4;
-        PTokens ptokensNode5;
-        @SuppressWarnings("unused") Object nullNode6 = null;
-        PProductions pproductionsNode7;
-        @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pstatesNode4 = (PStates)nodeArrayList3.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList4.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList5.get(0);
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        PStates pstatesNode5;
+        PTokens ptokensNode6;
+        @SuppressWarnings("unused") Object nullNode7 = null;
+        PProductions pproductionsNode8;
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pstatesNode5 = (PStates)nodeArrayList3.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList4.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, pstatesNode4, ptokensNode5, null, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, pstatesNode5, ptokensNode6, null, pproductionsNode8, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3226,17 +3481,20 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         PIgnTokens pigntokensNode6;
         PProductions pproductionsNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         pigntokensNode6 = (PIgnTokens)nodeArrayList1.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, null, null, pigntokensNode6, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode2, null, null, null, pigntokensNode6, pproductionsNode7, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3255,18 +3513,26 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
+        LinkedList listNode3 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
-        PIgnTokens pigntokensNode6;
-        PProductions pproductionsNode7;
-        @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList2.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
+        @SuppressWarnings("unused") Object nullNode6 = null;
+        PIgnTokens pigntokensNode7;
+        PProductions pproductionsNode8;
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pigntokensNode7 = (PIgnTokens)nodeArrayList2.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, null, null, pigntokensNode6, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode3, null, null, null, pigntokensNode7, pproductionsNode8, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3285,18 +3551,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         PIgnTokens pigntokensNode6;
         PProductions pproductionsNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList2.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, null, null, pigntokensNode6, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, null, null, pigntokensNode6, pproductionsNode7, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3316,19 +3585,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
-        PIgnTokens pigntokensNode6;
-        PProductions pproductionsNode7;
-        @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
+        @SuppressWarnings("unused") Object nullNode6 = null;
+        PIgnTokens pigntokensNode7;
+        PProductions pproductionsNode8;
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList3.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, null, null, pigntokensNode6, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, null, null, pigntokensNode7, pproductionsNode8, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3347,18 +3624,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         PStates pstatesNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         PIgnTokens pigntokensNode6;
         PProductions pproductionsNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         pstatesNode4 = (PStates)nodeArrayList1.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList2.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, pstatesNode4, null, pigntokensNode6, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode2, null, pstatesNode4, null, pigntokensNode6, pproductionsNode7, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3378,19 +3658,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
-        PStates pstatesNode4;
-        @SuppressWarnings("unused") Object nullNode5 = null;
-        PIgnTokens pigntokensNode6;
-        PProductions pproductionsNode7;
-        @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pstatesNode4 = (PStates)nodeArrayList2.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
+        LinkedList listNode3 = new LinkedList();
+        @SuppressWarnings("unused") Object nullNode4 = null;
+        PStates pstatesNode5;
+        @SuppressWarnings("unused") Object nullNode6 = null;
+        PIgnTokens pigntokensNode7;
+        PProductions pproductionsNode8;
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pstatesNode5 = (PStates)nodeArrayList2.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList3.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, pstatesNode4, null, pigntokensNode6, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode3, null, pstatesNode5, null, pigntokensNode7, pproductionsNode8, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3410,19 +3698,22 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         PStates pstatesNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         PIgnTokens pigntokensNode6;
         PProductions pproductionsNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pstatesNode4 = (PStates)nodeArrayList2.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, pstatesNode4, null, pigntokensNode6, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, pstatesNode4, null, pigntokensNode6, pproductionsNode7, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3443,20 +3734,28 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        PStates pstatesNode4;
-        @SuppressWarnings("unused") Object nullNode5 = null;
-        PIgnTokens pigntokensNode6;
-        PProductions pproductionsNode7;
-        @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pstatesNode4 = (PStates)nodeArrayList3.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList4.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList5.get(0);
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        PStates pstatesNode5;
+        @SuppressWarnings("unused") Object nullNode6 = null;
+        PIgnTokens pigntokensNode7;
+        PProductions pproductionsNode8;
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pstatesNode5 = (PStates)nodeArrayList3.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList4.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, pstatesNode4, null, pigntokensNode6, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, pstatesNode5, null, pigntokensNode7, pproductionsNode8, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3475,18 +3774,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         @SuppressWarnings("unused") Object nullNode4 = null;
         PTokens ptokensNode5;
         PIgnTokens pigntokensNode6;
         PProductions pproductionsNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         ptokensNode5 = (PTokens)nodeArrayList1.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList2.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, null, ptokensNode5, pigntokensNode6, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode2, null, null, ptokensNode5, pigntokensNode6, pproductionsNode7, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3506,19 +3808,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
+        LinkedList listNode3 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode4 = null;
-        PTokens ptokensNode5;
-        PIgnTokens pigntokensNode6;
-        PProductions pproductionsNode7;
-        @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList2.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
+        @SuppressWarnings("unused") Object nullNode5 = null;
+        PTokens ptokensNode6;
+        PIgnTokens pigntokensNode7;
+        PProductions pproductionsNode8;
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        ptokensNode6 = (PTokens)nodeArrayList2.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList3.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, null, ptokensNode5, pigntokensNode6, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode3, null, null, ptokensNode6, pigntokensNode7, pproductionsNode8, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3538,19 +3848,22 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         @SuppressWarnings("unused") Object nullNode4 = null;
         PTokens ptokensNode5;
         PIgnTokens pigntokensNode6;
         PProductions pproductionsNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         ptokensNode5 = (PTokens)nodeArrayList2.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, null, ptokensNode5, pigntokensNode6, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, null, ptokensNode5, pigntokensNode6, pproductionsNode7, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3571,20 +3884,28 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
-        PTokens ptokensNode5;
-        PIgnTokens pigntokensNode6;
-        PProductions pproductionsNode7;
-        @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList3.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList4.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList5.get(0);
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        @SuppressWarnings("unused") Object nullNode5 = null;
+        PTokens ptokensNode6;
+        PIgnTokens pigntokensNode7;
+        PProductions pproductionsNode8;
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList3.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList4.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, null, ptokensNode5, pigntokensNode6, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, null, ptokensNode6, pigntokensNode7, pproductionsNode8, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3604,19 +3925,22 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         PStates pstatesNode4;
         PTokens ptokensNode5;
         PIgnTokens pigntokensNode6;
         PProductions pproductionsNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         pstatesNode4 = (PStates)nodeArrayList1.get(0);
         ptokensNode5 = (PTokens)nodeArrayList2.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, pstatesNode4, ptokensNode5, pigntokensNode6, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode2, null, pstatesNode4, ptokensNode5, pigntokensNode6, pproductionsNode7, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3637,20 +3961,28 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
-        PStates pstatesNode4;
-        PTokens ptokensNode5;
-        PIgnTokens pigntokensNode6;
-        PProductions pproductionsNode7;
-        @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pstatesNode4 = (PStates)nodeArrayList2.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList3.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList4.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList5.get(0);
+        LinkedList listNode3 = new LinkedList();
+        @SuppressWarnings("unused") Object nullNode4 = null;
+        PStates pstatesNode5;
+        PTokens ptokensNode6;
+        PIgnTokens pigntokensNode7;
+        PProductions pproductionsNode8;
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pstatesNode5 = (PStates)nodeArrayList2.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList3.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList4.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, pstatesNode4, ptokensNode5, pigntokensNode6, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode3, null, pstatesNode5, ptokensNode6, pigntokensNode7, pproductionsNode8, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3671,20 +4003,23 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         PStates pstatesNode4;
         PTokens ptokensNode5;
         PIgnTokens pigntokensNode6;
         PProductions pproductionsNode7;
         @SuppressWarnings("unused") Object nullNode8 = null;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pstatesNode4 = (PStates)nodeArrayList2.get(0);
         ptokensNode5 = (PTokens)nodeArrayList3.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList4.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, pstatesNode4, ptokensNode5, pigntokensNode6, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, pstatesNode4, ptokensNode5, pigntokensNode6, pproductionsNode7, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3706,21 +4041,29 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        PStates pstatesNode4;
-        PTokens ptokensNode5;
-        PIgnTokens pigntokensNode6;
-        PProductions pproductionsNode7;
-        @SuppressWarnings("unused") Object nullNode8 = null;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pstatesNode4 = (PStates)nodeArrayList3.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList4.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList5.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList6.get(0);
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        PStates pstatesNode5;
+        PTokens ptokensNode6;
+        PIgnTokens pigntokensNode7;
+        PProductions pproductionsNode8;
+        @SuppressWarnings("unused") Object nullNode9 = null;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pstatesNode5 = (PStates)nodeArrayList3.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList4.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList5.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList6.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, pstatesNode4, ptokensNode5, pigntokensNode6, pproductionsNode7, null);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, pstatesNode5, ptokensNode6, pigntokensNode7, pproductionsNode8, null);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3737,16 +4080,19 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         PAst pastNode8;
+        {
+            // Block
+        }
         pastNode8 = (PAst)nodeArrayList1.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, null, null, null, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, null, null, null, null, null, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3764,17 +4110,25 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
+        LinkedList listNode3 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pastNode8 = (PAst)nodeArrayList2.get(0);
+        @SuppressWarnings("unused") Object nullNode8 = null;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pastNode9 = (PAst)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, null, null, null, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, null, null, null, null, null, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3792,17 +4146,20 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         PAst pastNode8;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pastNode8 = (PAst)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, null, null, null, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, null, null, null, null, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3821,18 +4178,26 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pastNode8 = (PAst)nodeArrayList3.get(0);
+        @SuppressWarnings("unused") Object nullNode8 = null;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pastNode9 = (PAst)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, null, null, null, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, null, null, null, null, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3850,17 +4215,20 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         PStates pstatesNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         PAst pastNode8;
+        {
+            // Block
+        }
         pstatesNode4 = (PStates)nodeArrayList1.get(0);
         pastNode8 = (PAst)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, pstatesNode4, null, null, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, null, pstatesNode4, null, null, null, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3879,18 +4247,26 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
-        PStates pstatesNode4;
-        @SuppressWarnings("unused") Object nullNode5 = null;
+        LinkedList listNode3 = new LinkedList();
+        @SuppressWarnings("unused") Object nullNode4 = null;
+        PStates pstatesNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pstatesNode4 = (PStates)nodeArrayList2.get(0);
-        pastNode8 = (PAst)nodeArrayList3.get(0);
+        @SuppressWarnings("unused") Object nullNode8 = null;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pstatesNode5 = (PStates)nodeArrayList2.get(0);
+        pastNode9 = (PAst)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, pstatesNode4, null, null, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, null, pstatesNode5, null, null, null, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3909,18 +4285,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         PStates pstatesNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         PAst pastNode8;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pstatesNode4 = (PStates)nodeArrayList2.get(0);
         pastNode8 = (PAst)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, pstatesNode4, null, null, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, pstatesNode4, null, null, null, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3940,19 +4319,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        PStates pstatesNode4;
-        @SuppressWarnings("unused") Object nullNode5 = null;
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        PStates pstatesNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pstatesNode4 = (PStates)nodeArrayList3.get(0);
-        pastNode8 = (PAst)nodeArrayList4.get(0);
+        @SuppressWarnings("unused") Object nullNode8 = null;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pstatesNode5 = (PStates)nodeArrayList3.get(0);
+        pastNode9 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, pstatesNode4, null, null, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, pstatesNode5, null, null, null, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3970,17 +4357,20 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         @SuppressWarnings("unused") Object nullNode4 = null;
         PTokens ptokensNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         PAst pastNode8;
+        {
+            // Block
+        }
         ptokensNode5 = (PTokens)nodeArrayList1.get(0);
         pastNode8 = (PAst)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, null, ptokensNode5, null, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, null, null, ptokensNode5, null, null, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -3999,18 +4389,26 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
+        LinkedList listNode3 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode4 = null;
-        PTokens ptokensNode5;
-        @SuppressWarnings("unused") Object nullNode6 = null;
+        @SuppressWarnings("unused") Object nullNode5 = null;
+        PTokens ptokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList2.get(0);
-        pastNode8 = (PAst)nodeArrayList3.get(0);
+        @SuppressWarnings("unused") Object nullNode8 = null;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        ptokensNode6 = (PTokens)nodeArrayList2.get(0);
+        pastNode9 = (PAst)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, null, ptokensNode5, null, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, null, null, ptokensNode6, null, null, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4029,18 +4427,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         @SuppressWarnings("unused") Object nullNode4 = null;
         PTokens ptokensNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         PAst pastNode8;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         ptokensNode5 = (PTokens)nodeArrayList2.get(0);
         pastNode8 = (PAst)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, null, ptokensNode5, null, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, null, ptokensNode5, null, null, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4060,19 +4461,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
-        PTokens ptokensNode5;
-        @SuppressWarnings("unused") Object nullNode6 = null;
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        @SuppressWarnings("unused") Object nullNode5 = null;
+        PTokens ptokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList3.get(0);
-        pastNode8 = (PAst)nodeArrayList4.get(0);
+        @SuppressWarnings("unused") Object nullNode8 = null;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList3.get(0);
+        pastNode9 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, null, ptokensNode5, null, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, null, ptokensNode6, null, null, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4091,18 +4500,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         PStates pstatesNode4;
         PTokens ptokensNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         PAst pastNode8;
+        {
+            // Block
+        }
         pstatesNode4 = (PStates)nodeArrayList1.get(0);
         ptokensNode5 = (PTokens)nodeArrayList2.get(0);
         pastNode8 = (PAst)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, pstatesNode4, ptokensNode5, null, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, null, pstatesNode4, ptokensNode5, null, null, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4122,19 +4534,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
-        PStates pstatesNode4;
-        PTokens ptokensNode5;
-        @SuppressWarnings("unused") Object nullNode6 = null;
+        LinkedList listNode3 = new LinkedList();
+        @SuppressWarnings("unused") Object nullNode4 = null;
+        PStates pstatesNode5;
+        PTokens ptokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pstatesNode4 = (PStates)nodeArrayList2.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList3.get(0);
-        pastNode8 = (PAst)nodeArrayList4.get(0);
+        @SuppressWarnings("unused") Object nullNode8 = null;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pstatesNode5 = (PStates)nodeArrayList2.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList3.get(0);
+        pastNode9 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, pstatesNode4, ptokensNode5, null, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, null, pstatesNode5, ptokensNode6, null, null, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4154,19 +4574,22 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         PStates pstatesNode4;
         PTokens ptokensNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         @SuppressWarnings("unused") Object nullNode7 = null;
         PAst pastNode8;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pstatesNode4 = (PStates)nodeArrayList2.get(0);
         ptokensNode5 = (PTokens)nodeArrayList3.get(0);
         pastNode8 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, pstatesNode4, ptokensNode5, null, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, pstatesNode4, ptokensNode5, null, null, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4187,20 +4610,28 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        PStates pstatesNode4;
-        PTokens ptokensNode5;
-        @SuppressWarnings("unused") Object nullNode6 = null;
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        PStates pstatesNode5;
+        PTokens ptokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pstatesNode4 = (PStates)nodeArrayList3.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList4.get(0);
-        pastNode8 = (PAst)nodeArrayList5.get(0);
+        @SuppressWarnings("unused") Object nullNode8 = null;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pstatesNode5 = (PStates)nodeArrayList3.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList4.get(0);
+        pastNode9 = (PAst)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, pstatesNode4, ptokensNode5, null, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, pstatesNode5, ptokensNode6, null, null, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4218,17 +4649,20 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         PIgnTokens pigntokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         PAst pastNode8;
+        {
+            // Block
+        }
         pigntokensNode6 = (PIgnTokens)nodeArrayList1.get(0);
         pastNode8 = (PAst)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, null, null, pigntokensNode6, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, null, null, null, pigntokensNode6, null, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4247,18 +4681,26 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
+        LinkedList listNode3 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
-        PIgnTokens pigntokensNode6;
-        @SuppressWarnings("unused") Object nullNode7 = null;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList2.get(0);
-        pastNode8 = (PAst)nodeArrayList3.get(0);
+        @SuppressWarnings("unused") Object nullNode6 = null;
+        PIgnTokens pigntokensNode7;
+        @SuppressWarnings("unused") Object nullNode8 = null;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pigntokensNode7 = (PIgnTokens)nodeArrayList2.get(0);
+        pastNode9 = (PAst)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, null, null, pigntokensNode6, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, null, null, null, pigntokensNode7, null, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4277,18 +4719,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         PIgnTokens pigntokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         PAst pastNode8;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList2.get(0);
         pastNode8 = (PAst)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, null, null, pigntokensNode6, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, null, null, pigntokensNode6, null, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4308,19 +4753,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
-        PIgnTokens pigntokensNode6;
-        @SuppressWarnings("unused") Object nullNode7 = null;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
-        pastNode8 = (PAst)nodeArrayList4.get(0);
+        @SuppressWarnings("unused") Object nullNode6 = null;
+        PIgnTokens pigntokensNode7;
+        @SuppressWarnings("unused") Object nullNode8 = null;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList3.get(0);
+        pastNode9 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, null, null, pigntokensNode6, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, null, null, pigntokensNode7, null, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4339,18 +4792,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         PStates pstatesNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         PIgnTokens pigntokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         PAst pastNode8;
+        {
+            // Block
+        }
         pstatesNode4 = (PStates)nodeArrayList1.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList2.get(0);
         pastNode8 = (PAst)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, pstatesNode4, null, pigntokensNode6, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, null, pstatesNode4, null, pigntokensNode6, null, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4370,19 +4826,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
-        PStates pstatesNode4;
-        @SuppressWarnings("unused") Object nullNode5 = null;
-        PIgnTokens pigntokensNode6;
-        @SuppressWarnings("unused") Object nullNode7 = null;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pstatesNode4 = (PStates)nodeArrayList2.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
-        pastNode8 = (PAst)nodeArrayList4.get(0);
+        LinkedList listNode3 = new LinkedList();
+        @SuppressWarnings("unused") Object nullNode4 = null;
+        PStates pstatesNode5;
+        @SuppressWarnings("unused") Object nullNode6 = null;
+        PIgnTokens pigntokensNode7;
+        @SuppressWarnings("unused") Object nullNode8 = null;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pstatesNode5 = (PStates)nodeArrayList2.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList3.get(0);
+        pastNode9 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, pstatesNode4, null, pigntokensNode6, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, null, pstatesNode5, null, pigntokensNode7, null, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4402,19 +4866,22 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         PStates pstatesNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         PIgnTokens pigntokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         PAst pastNode8;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pstatesNode4 = (PStates)nodeArrayList2.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
         pastNode8 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, pstatesNode4, null, pigntokensNode6, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, pstatesNode4, null, pigntokensNode6, null, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4435,20 +4902,28 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        PStates pstatesNode4;
-        @SuppressWarnings("unused") Object nullNode5 = null;
-        PIgnTokens pigntokensNode6;
-        @SuppressWarnings("unused") Object nullNode7 = null;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pstatesNode4 = (PStates)nodeArrayList3.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList4.get(0);
-        pastNode8 = (PAst)nodeArrayList5.get(0);
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        PStates pstatesNode5;
+        @SuppressWarnings("unused") Object nullNode6 = null;
+        PIgnTokens pigntokensNode7;
+        @SuppressWarnings("unused") Object nullNode8 = null;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pstatesNode5 = (PStates)nodeArrayList3.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList4.get(0);
+        pastNode9 = (PAst)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, pstatesNode4, null, pigntokensNode6, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, pstatesNode5, null, pigntokensNode7, null, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4467,18 +4942,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         @SuppressWarnings("unused") Object nullNode4 = null;
         PTokens ptokensNode5;
         PIgnTokens pigntokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         PAst pastNode8;
+        {
+            // Block
+        }
         ptokensNode5 = (PTokens)nodeArrayList1.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList2.get(0);
         pastNode8 = (PAst)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, null, ptokensNode5, pigntokensNode6, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, null, null, ptokensNode5, pigntokensNode6, null, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4498,19 +4976,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
+        LinkedList listNode3 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode4 = null;
-        PTokens ptokensNode5;
-        PIgnTokens pigntokensNode6;
-        @SuppressWarnings("unused") Object nullNode7 = null;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList2.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
-        pastNode8 = (PAst)nodeArrayList4.get(0);
+        @SuppressWarnings("unused") Object nullNode5 = null;
+        PTokens ptokensNode6;
+        PIgnTokens pigntokensNode7;
+        @SuppressWarnings("unused") Object nullNode8 = null;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        ptokensNode6 = (PTokens)nodeArrayList2.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList3.get(0);
+        pastNode9 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, null, ptokensNode5, pigntokensNode6, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, null, null, ptokensNode6, pigntokensNode7, null, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4530,19 +5016,22 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         @SuppressWarnings("unused") Object nullNode4 = null;
         PTokens ptokensNode5;
         PIgnTokens pigntokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         PAst pastNode8;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         ptokensNode5 = (PTokens)nodeArrayList2.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
         pastNode8 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, null, ptokensNode5, pigntokensNode6, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, null, ptokensNode5, pigntokensNode6, null, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4563,20 +5052,28 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
-        PTokens ptokensNode5;
-        PIgnTokens pigntokensNode6;
-        @SuppressWarnings("unused") Object nullNode7 = null;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList3.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList4.get(0);
-        pastNode8 = (PAst)nodeArrayList5.get(0);
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        @SuppressWarnings("unused") Object nullNode5 = null;
+        PTokens ptokensNode6;
+        PIgnTokens pigntokensNode7;
+        @SuppressWarnings("unused") Object nullNode8 = null;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList3.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList4.get(0);
+        pastNode9 = (PAst)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, null, ptokensNode5, pigntokensNode6, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, null, ptokensNode6, pigntokensNode7, null, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4596,19 +5093,22 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         PStates pstatesNode4;
         PTokens ptokensNode5;
         PIgnTokens pigntokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         PAst pastNode8;
+        {
+            // Block
+        }
         pstatesNode4 = (PStates)nodeArrayList1.get(0);
         ptokensNode5 = (PTokens)nodeArrayList2.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
         pastNode8 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, pstatesNode4, ptokensNode5, pigntokensNode6, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, null, pstatesNode4, ptokensNode5, pigntokensNode6, null, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4629,20 +5129,28 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
-        PStates pstatesNode4;
-        PTokens ptokensNode5;
-        PIgnTokens pigntokensNode6;
-        @SuppressWarnings("unused") Object nullNode7 = null;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pstatesNode4 = (PStates)nodeArrayList2.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList3.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList4.get(0);
-        pastNode8 = (PAst)nodeArrayList5.get(0);
+        LinkedList listNode3 = new LinkedList();
+        @SuppressWarnings("unused") Object nullNode4 = null;
+        PStates pstatesNode5;
+        PTokens ptokensNode6;
+        PIgnTokens pigntokensNode7;
+        @SuppressWarnings("unused") Object nullNode8 = null;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pstatesNode5 = (PStates)nodeArrayList2.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList3.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList4.get(0);
+        pastNode9 = (PAst)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, pstatesNode4, ptokensNode5, pigntokensNode6, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, null, pstatesNode5, ptokensNode6, pigntokensNode7, null, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4663,20 +5171,23 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         PStates pstatesNode4;
         PTokens ptokensNode5;
         PIgnTokens pigntokensNode6;
         @SuppressWarnings("unused") Object nullNode7 = null;
         PAst pastNode8;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pstatesNode4 = (PStates)nodeArrayList2.get(0);
         ptokensNode5 = (PTokens)nodeArrayList3.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList4.get(0);
         pastNode8 = (PAst)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, pstatesNode4, ptokensNode5, pigntokensNode6, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, pstatesNode4, ptokensNode5, pigntokensNode6, null, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4698,21 +5209,29 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        PStates pstatesNode4;
-        PTokens ptokensNode5;
-        PIgnTokens pigntokensNode6;
-        @SuppressWarnings("unused") Object nullNode7 = null;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pstatesNode4 = (PStates)nodeArrayList3.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList4.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList5.get(0);
-        pastNode8 = (PAst)nodeArrayList6.get(0);
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        PStates pstatesNode5;
+        PTokens ptokensNode6;
+        PIgnTokens pigntokensNode7;
+        @SuppressWarnings("unused") Object nullNode8 = null;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pstatesNode5 = (PStates)nodeArrayList3.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList4.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList5.get(0);
+        pastNode9 = (PAst)nodeArrayList6.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, pstatesNode4, ptokensNode5, pigntokensNode6, null, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, pstatesNode5, ptokensNode6, pigntokensNode7, null, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4730,17 +5249,20 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         PProductions pproductionsNode7;
         PAst pastNode8;
+        {
+            // Block
+        }
         pproductionsNode7 = (PProductions)nodeArrayList1.get(0);
         pastNode8 = (PAst)nodeArrayList2.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, null, null, null, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, null, null, null, null, pproductionsNode7, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4759,18 +5281,26 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
+        LinkedList listNode3 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
-        PProductions pproductionsNode7;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList2.get(0);
-        pastNode8 = (PAst)nodeArrayList3.get(0);
+        @SuppressWarnings("unused") Object nullNode7 = null;
+        PProductions pproductionsNode8;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pproductionsNode8 = (PProductions)nodeArrayList2.get(0);
+        pastNode9 = (PAst)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, null, null, null, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, null, null, null, null, pproductionsNode8, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4789,18 +5319,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         PProductions pproductionsNode7;
         PAst pastNode8;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList2.get(0);
         pastNode8 = (PAst)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, null, null, null, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, null, null, null, pproductionsNode7, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4820,19 +5353,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
-        PProductions pproductionsNode7;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
-        pastNode8 = (PAst)nodeArrayList4.get(0);
+        @SuppressWarnings("unused") Object nullNode7 = null;
+        PProductions pproductionsNode8;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList3.get(0);
+        pastNode9 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, null, null, null, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, null, null, null, pproductionsNode8, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4851,18 +5392,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         PStates pstatesNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         PProductions pproductionsNode7;
         PAst pastNode8;
+        {
+            // Block
+        }
         pstatesNode4 = (PStates)nodeArrayList1.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList2.get(0);
         pastNode8 = (PAst)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, pstatesNode4, null, null, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, null, pstatesNode4, null, null, pproductionsNode7, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4882,19 +5426,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
-        PStates pstatesNode4;
-        @SuppressWarnings("unused") Object nullNode5 = null;
+        LinkedList listNode3 = new LinkedList();
+        @SuppressWarnings("unused") Object nullNode4 = null;
+        PStates pstatesNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
-        PProductions pproductionsNode7;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pstatesNode4 = (PStates)nodeArrayList2.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
-        pastNode8 = (PAst)nodeArrayList4.get(0);
+        @SuppressWarnings("unused") Object nullNode7 = null;
+        PProductions pproductionsNode8;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pstatesNode5 = (PStates)nodeArrayList2.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList3.get(0);
+        pastNode9 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, pstatesNode4, null, null, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, null, pstatesNode5, null, null, pproductionsNode8, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4914,19 +5466,22 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         PStates pstatesNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
         PProductions pproductionsNode7;
         PAst pastNode8;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pstatesNode4 = (PStates)nodeArrayList2.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
         pastNode8 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, pstatesNode4, null, null, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, pstatesNode4, null, null, pproductionsNode7, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4947,20 +5502,28 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        PStates pstatesNode4;
-        @SuppressWarnings("unused") Object nullNode5 = null;
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        PStates pstatesNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
-        PProductions pproductionsNode7;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pstatesNode4 = (PStates)nodeArrayList3.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
-        pastNode8 = (PAst)nodeArrayList5.get(0);
+        @SuppressWarnings("unused") Object nullNode7 = null;
+        PProductions pproductionsNode8;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pstatesNode5 = (PStates)nodeArrayList3.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList4.get(0);
+        pastNode9 = (PAst)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, pstatesNode4, null, null, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, pstatesNode5, null, null, pproductionsNode8, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -4979,18 +5542,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         @SuppressWarnings("unused") Object nullNode4 = null;
         PTokens ptokensNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         PProductions pproductionsNode7;
         PAst pastNode8;
+        {
+            // Block
+        }
         ptokensNode5 = (PTokens)nodeArrayList1.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList2.get(0);
         pastNode8 = (PAst)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, null, ptokensNode5, null, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, null, null, ptokensNode5, null, pproductionsNode7, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5010,19 +5576,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
+        LinkedList listNode3 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode4 = null;
-        PTokens ptokensNode5;
-        @SuppressWarnings("unused") Object nullNode6 = null;
-        PProductions pproductionsNode7;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList2.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
-        pastNode8 = (PAst)nodeArrayList4.get(0);
+        @SuppressWarnings("unused") Object nullNode5 = null;
+        PTokens ptokensNode6;
+        @SuppressWarnings("unused") Object nullNode7 = null;
+        PProductions pproductionsNode8;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        ptokensNode6 = (PTokens)nodeArrayList2.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList3.get(0);
+        pastNode9 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, null, ptokensNode5, null, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, null, null, ptokensNode6, null, pproductionsNode8, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5042,19 +5616,22 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         @SuppressWarnings("unused") Object nullNode4 = null;
         PTokens ptokensNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         PProductions pproductionsNode7;
         PAst pastNode8;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         ptokensNode5 = (PTokens)nodeArrayList2.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
         pastNode8 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, null, ptokensNode5, null, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, null, ptokensNode5, null, pproductionsNode7, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5075,20 +5652,28 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
-        PTokens ptokensNode5;
-        @SuppressWarnings("unused") Object nullNode6 = null;
-        PProductions pproductionsNode7;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList3.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
-        pastNode8 = (PAst)nodeArrayList5.get(0);
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        @SuppressWarnings("unused") Object nullNode5 = null;
+        PTokens ptokensNode6;
+        @SuppressWarnings("unused") Object nullNode7 = null;
+        PProductions pproductionsNode8;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList3.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList4.get(0);
+        pastNode9 = (PAst)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, null, ptokensNode5, null, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, null, ptokensNode6, null, pproductionsNode8, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5108,19 +5693,22 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         PStates pstatesNode4;
         PTokens ptokensNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         PProductions pproductionsNode7;
         PAst pastNode8;
+        {
+            // Block
+        }
         pstatesNode4 = (PStates)nodeArrayList1.get(0);
         ptokensNode5 = (PTokens)nodeArrayList2.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
         pastNode8 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, pstatesNode4, ptokensNode5, null, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, null, pstatesNode4, ptokensNode5, null, pproductionsNode7, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5141,20 +5729,28 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
-        PStates pstatesNode4;
-        PTokens ptokensNode5;
-        @SuppressWarnings("unused") Object nullNode6 = null;
-        PProductions pproductionsNode7;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pstatesNode4 = (PStates)nodeArrayList2.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList3.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
-        pastNode8 = (PAst)nodeArrayList5.get(0);
+        LinkedList listNode3 = new LinkedList();
+        @SuppressWarnings("unused") Object nullNode4 = null;
+        PStates pstatesNode5;
+        PTokens ptokensNode6;
+        @SuppressWarnings("unused") Object nullNode7 = null;
+        PProductions pproductionsNode8;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pstatesNode5 = (PStates)nodeArrayList2.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList3.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList4.get(0);
+        pastNode9 = (PAst)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, pstatesNode4, ptokensNode5, null, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, null, pstatesNode5, ptokensNode6, null, pproductionsNode8, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5175,20 +5771,23 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         PStates pstatesNode4;
         PTokens ptokensNode5;
         @SuppressWarnings("unused") Object nullNode6 = null;
         PProductions pproductionsNode7;
         PAst pastNode8;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pstatesNode4 = (PStates)nodeArrayList2.get(0);
         ptokensNode5 = (PTokens)nodeArrayList3.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
         pastNode8 = (PAst)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, pstatesNode4, ptokensNode5, null, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, pstatesNode4, ptokensNode5, null, pproductionsNode7, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5210,21 +5809,29 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        PStates pstatesNode4;
-        PTokens ptokensNode5;
-        @SuppressWarnings("unused") Object nullNode6 = null;
-        PProductions pproductionsNode7;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pstatesNode4 = (PStates)nodeArrayList3.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList4.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList5.get(0);
-        pastNode8 = (PAst)nodeArrayList6.get(0);
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        PStates pstatesNode5;
+        PTokens ptokensNode6;
+        @SuppressWarnings("unused") Object nullNode7 = null;
+        PProductions pproductionsNode8;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pstatesNode5 = (PStates)nodeArrayList3.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList4.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList5.get(0);
+        pastNode9 = (PAst)nodeArrayList6.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, pstatesNode4, ptokensNode5, null, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, pstatesNode5, ptokensNode6, null, pproductionsNode8, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5243,18 +5850,21 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         PIgnTokens pigntokensNode6;
         PProductions pproductionsNode7;
         PAst pastNode8;
+        {
+            // Block
+        }
         pigntokensNode6 = (PIgnTokens)nodeArrayList1.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList2.get(0);
         pastNode8 = (PAst)nodeArrayList3.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, null, null, pigntokensNode6, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, null, null, null, pigntokensNode6, pproductionsNode7, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5274,19 +5884,27 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
+        LinkedList listNode3 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
-        PIgnTokens pigntokensNode6;
-        PProductions pproductionsNode7;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList2.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
-        pastNode8 = (PAst)nodeArrayList4.get(0);
+        @SuppressWarnings("unused") Object nullNode6 = null;
+        PIgnTokens pigntokensNode7;
+        PProductions pproductionsNode8;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pigntokensNode7 = (PIgnTokens)nodeArrayList2.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList3.get(0);
+        pastNode9 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, null, null, pigntokensNode6, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, null, null, null, pigntokensNode7, pproductionsNode8, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5306,19 +5924,22 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         @SuppressWarnings("unused") Object nullNode4 = null;
         @SuppressWarnings("unused") Object nullNode5 = null;
         PIgnTokens pigntokensNode6;
         PProductions pproductionsNode7;
         PAst pastNode8;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList2.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
         pastNode8 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, null, null, pigntokensNode6, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, null, null, pigntokensNode6, pproductionsNode7, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5339,20 +5960,28 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
-        PIgnTokens pigntokensNode6;
-        PProductions pproductionsNode7;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
-        pastNode8 = (PAst)nodeArrayList5.get(0);
+        @SuppressWarnings("unused") Object nullNode6 = null;
+        PIgnTokens pigntokensNode7;
+        PProductions pproductionsNode8;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList3.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList4.get(0);
+        pastNode9 = (PAst)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, null, null, pigntokensNode6, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, null, null, pigntokensNode7, pproductionsNode8, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5372,19 +6001,22 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         PStates pstatesNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         PIgnTokens pigntokensNode6;
         PProductions pproductionsNode7;
         PAst pastNode8;
+        {
+            // Block
+        }
         pstatesNode4 = (PStates)nodeArrayList1.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList2.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
         pastNode8 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, pstatesNode4, null, pigntokensNode6, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, null, pstatesNode4, null, pigntokensNode6, pproductionsNode7, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5405,20 +6037,28 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
-        PStates pstatesNode4;
-        @SuppressWarnings("unused") Object nullNode5 = null;
-        PIgnTokens pigntokensNode6;
-        PProductions pproductionsNode7;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pstatesNode4 = (PStates)nodeArrayList2.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
-        pastNode8 = (PAst)nodeArrayList5.get(0);
+        LinkedList listNode3 = new LinkedList();
+        @SuppressWarnings("unused") Object nullNode4 = null;
+        PStates pstatesNode5;
+        @SuppressWarnings("unused") Object nullNode6 = null;
+        PIgnTokens pigntokensNode7;
+        PProductions pproductionsNode8;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pstatesNode5 = (PStates)nodeArrayList2.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList3.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList4.get(0);
+        pastNode9 = (PAst)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, pstatesNode4, null, pigntokensNode6, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, null, pstatesNode5, null, pigntokensNode7, pproductionsNode8, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5439,20 +6079,23 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         PStates pstatesNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
         PIgnTokens pigntokensNode6;
         PProductions pproductionsNode7;
         PAst pastNode8;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pstatesNode4 = (PStates)nodeArrayList2.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
         pastNode8 = (PAst)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, pstatesNode4, null, pigntokensNode6, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, pstatesNode4, null, pigntokensNode6, pproductionsNode7, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5474,21 +6117,29 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        PStates pstatesNode4;
-        @SuppressWarnings("unused") Object nullNode5 = null;
-        PIgnTokens pigntokensNode6;
-        PProductions pproductionsNode7;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pstatesNode4 = (PStates)nodeArrayList3.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList4.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList5.get(0);
-        pastNode8 = (PAst)nodeArrayList6.get(0);
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        PStates pstatesNode5;
+        @SuppressWarnings("unused") Object nullNode6 = null;
+        PIgnTokens pigntokensNode7;
+        PProductions pproductionsNode8;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pstatesNode5 = (PStates)nodeArrayList3.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList4.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList5.get(0);
+        pastNode9 = (PAst)nodeArrayList6.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, pstatesNode4, null, pigntokensNode6, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, pstatesNode5, null, pigntokensNode7, pproductionsNode8, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5508,19 +6159,22 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         @SuppressWarnings("unused") Object nullNode4 = null;
         PTokens ptokensNode5;
         PIgnTokens pigntokensNode6;
         PProductions pproductionsNode7;
         PAst pastNode8;
+        {
+            // Block
+        }
         ptokensNode5 = (PTokens)nodeArrayList1.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList2.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList3.get(0);
         pastNode8 = (PAst)nodeArrayList4.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, null, ptokensNode5, pigntokensNode6, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, null, null, ptokensNode5, pigntokensNode6, pproductionsNode7, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5541,20 +6195,28 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
+        LinkedList listNode3 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode4 = null;
-        PTokens ptokensNode5;
-        PIgnTokens pigntokensNode6;
-        PProductions pproductionsNode7;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList2.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
-        pastNode8 = (PAst)nodeArrayList5.get(0);
+        @SuppressWarnings("unused") Object nullNode5 = null;
+        PTokens ptokensNode6;
+        PIgnTokens pigntokensNode7;
+        PProductions pproductionsNode8;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        ptokensNode6 = (PTokens)nodeArrayList2.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList3.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList4.get(0);
+        pastNode9 = (PAst)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, null, ptokensNode5, pigntokensNode6, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, null, null, ptokensNode6, pigntokensNode7, pproductionsNode8, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5575,20 +6237,23 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         @SuppressWarnings("unused") Object nullNode4 = null;
         PTokens ptokensNode5;
         PIgnTokens pigntokensNode6;
         PProductions pproductionsNode7;
         PAst pastNode8;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         ptokensNode5 = (PTokens)nodeArrayList2.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
         pastNode8 = (PAst)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, null, ptokensNode5, pigntokensNode6, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, null, ptokensNode5, pigntokensNode6, pproductionsNode7, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5610,21 +6275,29 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
-        PTokens ptokensNode5;
-        PIgnTokens pigntokensNode6;
-        PProductions pproductionsNode7;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList3.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList4.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList5.get(0);
-        pastNode8 = (PAst)nodeArrayList6.get(0);
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        @SuppressWarnings("unused") Object nullNode5 = null;
+        PTokens ptokensNode6;
+        PIgnTokens pigntokensNode7;
+        PProductions pproductionsNode8;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList3.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList4.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList5.get(0);
+        pastNode9 = (PAst)nodeArrayList6.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, null, ptokensNode5, pigntokensNode6, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, null, ptokensNode6, pigntokensNode7, pproductionsNode8, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5645,20 +6318,23 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode3 = null;
         PStates pstatesNode4;
         PTokens ptokensNode5;
         PIgnTokens pigntokensNode6;
         PProductions pproductionsNode7;
         PAst pastNode8;
+        {
+            // Block
+        }
         pstatesNode4 = (PStates)nodeArrayList1.get(0);
         ptokensNode5 = (PTokens)nodeArrayList2.get(0);
         pigntokensNode6 = (PIgnTokens)nodeArrayList3.get(0);
         pproductionsNode7 = (PProductions)nodeArrayList4.get(0);
         pastNode8 = (PAst)nodeArrayList5.get(0);
 
-        pgrammarNode1 = new AGrammar(null, null, pstatesNode4, ptokensNode5, pigntokensNode6, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, null, pstatesNode4, ptokensNode5, pigntokensNode6, pproductionsNode7, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5680,21 +6356,29 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
-        PStates pstatesNode4;
-        PTokens ptokensNode5;
-        PIgnTokens pigntokensNode6;
-        PProductions pproductionsNode7;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        pstatesNode4 = (PStates)nodeArrayList2.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList3.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList4.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList5.get(0);
-        pastNode8 = (PAst)nodeArrayList6.get(0);
+        LinkedList listNode3 = new LinkedList();
+        @SuppressWarnings("unused") Object nullNode4 = null;
+        PStates pstatesNode5;
+        PTokens ptokensNode6;
+        PIgnTokens pigntokensNode7;
+        PProductions pproductionsNode8;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        pstatesNode5 = (PStates)nodeArrayList2.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList3.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList4.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList5.get(0);
+        pastNode9 = (PAst)nodeArrayList6.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, null, pstatesNode4, ptokensNode5, pigntokensNode6, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, null, pstatesNode5, ptokensNode6, pigntokensNode7, pproductionsNode8, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5716,13 +6400,16 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        @SuppressWarnings("unused") Object nullNode2 = null;
+        LinkedList listNode2 = new LinkedList();
         PHelpers phelpersNode3;
         PStates pstatesNode4;
         PTokens ptokensNode5;
         PIgnTokens pigntokensNode6;
         PProductions pproductionsNode7;
         PAst pastNode8;
+        {
+            // Block
+        }
         phelpersNode3 = (PHelpers)nodeArrayList1.get(0);
         pstatesNode4 = (PStates)nodeArrayList2.get(0);
         ptokensNode5 = (PTokens)nodeArrayList3.get(0);
@@ -5730,7 +6417,7 @@ public class Parser
         pproductionsNode7 = (PProductions)nodeArrayList5.get(0);
         pastNode8 = (PAst)nodeArrayList6.get(0);
 
-        pgrammarNode1 = new AGrammar(null, phelpersNode3, pstatesNode4, ptokensNode5, pigntokensNode6, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode2, phelpersNode3, pstatesNode4, ptokensNode5, pigntokensNode6, pproductionsNode7, pastNode8);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5753,22 +6440,30 @@ public class Parser
         PGrammar pgrammarNode1;
         {
             // Block
-        PPackage ppackageNode2;
-        PHelpers phelpersNode3;
-        PStates pstatesNode4;
-        PTokens ptokensNode5;
-        PIgnTokens pigntokensNode6;
-        PProductions pproductionsNode7;
-        PAst pastNode8;
-        ppackageNode2 = (PPackage)nodeArrayList1.get(0);
-        phelpersNode3 = (PHelpers)nodeArrayList2.get(0);
-        pstatesNode4 = (PStates)nodeArrayList3.get(0);
-        ptokensNode5 = (PTokens)nodeArrayList4.get(0);
-        pigntokensNode6 = (PIgnTokens)nodeArrayList5.get(0);
-        pproductionsNode7 = (PProductions)nodeArrayList6.get(0);
-        pastNode8 = (PAst)nodeArrayList7.get(0);
+        LinkedList listNode3 = new LinkedList();
+        PHelpers phelpersNode4;
+        PStates pstatesNode5;
+        PTokens ptokensNode6;
+        PIgnTokens pigntokensNode7;
+        PProductions pproductionsNode8;
+        PAst pastNode9;
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList1.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
+        phelpersNode4 = (PHelpers)nodeArrayList2.get(0);
+        pstatesNode5 = (PStates)nodeArrayList3.get(0);
+        ptokensNode6 = (PTokens)nodeArrayList4.get(0);
+        pigntokensNode7 = (PIgnTokens)nodeArrayList5.get(0);
+        pproductionsNode8 = (PProductions)nodeArrayList6.get(0);
+        pastNode9 = (PAst)nodeArrayList7.get(0);
 
-        pgrammarNode1 = new AGrammar(ppackageNode2, phelpersNode3, pstatesNode4, ptokensNode5, pigntokensNode6, pproductionsNode7, pastNode8);
+        pgrammarNode1 = new AGrammar(listNode3, phelpersNode4, pstatesNode5, ptokensNode6, pigntokensNode7, pproductionsNode8, pastNode9);
         }
 	nodeList.add(pgrammarNode1);
         return nodeList;
@@ -5783,17 +6478,17 @@ public class Parser
 
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PPackage ppackageNode1;
+        LinkedList listNode2 = new LinkedList();
         {
             // Block
-        TPackage tpackageNode2;
-        PPkgName ppkgnameNode3;
-        tpackageNode2 = (TPackage)nodeArrayList1.get(0);
-        ppkgnameNode3 = (PPkgName)nodeArrayList2.get(0);
-
-        ppackageNode1 = new APackage(tpackageNode2, ppkgnameNode3);
+        LinkedList listNode1 = new LinkedList();
+        listNode1 = (LinkedList)nodeArrayList2.get(0);
+	if(listNode1 != null)
+	{
+	  listNode2.addAll(listNode1);
+	}
         }
-	nodeList.add(ppackageNode1);
+	nodeList.add(listNode2);
         return nodeList;
     }
 
@@ -5806,21 +6501,17 @@ public class Parser
 
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PPkgName ppkgnameNode1;
+        LinkedList listNode2 = new LinkedList();
         {
             // Block
-        TPkgId tpkgidNode2;
-        LinkedList listNode3 = new LinkedList();
-        TSemicolon tsemicolonNode4;
-        tpkgidNode2 = (TPkgId)nodeArrayList1.get(0);
-        {
-            // Block
+        TPkgId tpkgidNode1;
+        tpkgidNode1 = (TPkgId)nodeArrayList1.get(0);
+	if(tpkgidNode1 != null)
+	{
+	  listNode2.add(tpkgidNode1);
+	}
         }
-        tsemicolonNode4 = (TSemicolon)nodeArrayList2.get(0);
-
-        ppkgnameNode1 = new APkgName(tpkgidNode2, listNode3, tsemicolonNode4);
-        }
-	nodeList.add(ppkgnameNode1);
+	nodeList.add(listNode2);
         return nodeList;
     }
 
@@ -5834,27 +6525,23 @@ public class Parser
         @SuppressWarnings("unused") ArrayList nodeArrayList3 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PPkgName ppkgnameNode1;
-        {
-            // Block
-        TPkgId tpkgidNode2;
-        LinkedList listNode4 = new LinkedList();
-        TSemicolon tsemicolonNode5;
-        tpkgidNode2 = (TPkgId)nodeArrayList1.get(0);
-        {
-            // Block
         LinkedList listNode3 = new LinkedList();
-        listNode3 = (LinkedList)nodeArrayList2.get(0);
-	if(listNode3 != null)
+        {
+            // Block
+        TPkgId tpkgidNode1;
+        LinkedList listNode2 = new LinkedList();
+        tpkgidNode1 = (TPkgId)nodeArrayList1.get(0);
+        listNode2 = (LinkedList)nodeArrayList2.get(0);
+	if(tpkgidNode1 != null)
 	{
-	  listNode4.addAll(listNode3);
+	  listNode3.add(tpkgidNode1);
+	}
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
 	}
         }
-        tsemicolonNode5 = (TSemicolon)nodeArrayList3.get(0);
-
-        ppkgnameNode1 = new APkgName(tpkgidNode2, listNode4, tsemicolonNode5);
-        }
-	nodeList.add(ppkgnameNode1);
+	nodeList.add(listNode3);
         return nodeList;
     }
 
@@ -5867,17 +6554,9 @@ public class Parser
 
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PPkgNameTail ppkgnametailNode1;
-        {
-            // Block
-        TDot tdotNode2;
-        TPkgId tpkgidNode3;
-        tdotNode2 = (TDot)nodeArrayList1.get(0);
-        tpkgidNode3 = (TPkgId)nodeArrayList2.get(0);
-
-        ppkgnametailNode1 = new APkgNameTail(tdotNode2, tpkgidNode3);
-        }
-	nodeList.add(ppkgnametailNode1);
+        TPkgId tpkgidNode1;
+        tpkgidNode1 = (TPkgId)nodeArrayList2.get(0);
+	nodeList.add(tpkgidNode1);
         return nodeList;
     }
 
@@ -5893,20 +6572,18 @@ public class Parser
         PHelpers phelpersNode1;
         {
             // Block
-        THelpers thelpersNode2;
-        LinkedList listNode4 = new LinkedList();
-        thelpersNode2 = (THelpers)nodeArrayList1.get(0);
+        LinkedList listNode3 = new LinkedList();
         {
             // Block
-        LinkedList listNode3 = new LinkedList();
-        listNode3 = (LinkedList)nodeArrayList2.get(0);
-	if(listNode3 != null)
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList2.get(0);
+	if(listNode2 != null)
 	{
-	  listNode4.addAll(listNode3);
+	  listNode3.addAll(listNode2);
 	}
         }
 
-        phelpersNode1 = new AHelpers(thelpersNode2, listNode4);
+        phelpersNode1 = new AHelpers(listNode3);
         }
 	nodeList.add(phelpersNode1);
         return nodeList;
@@ -5927,15 +6604,11 @@ public class Parser
         {
             // Block
         TId tidNode2;
-        TEqual tequalNode3;
-        PRegExp pregexpNode4;
-        TSemicolon tsemicolonNode5;
+        PRegExp pregexpNode3;
         tidNode2 = (TId)nodeArrayList1.get(0);
-        tequalNode3 = (TEqual)nodeArrayList2.get(0);
-        pregexpNode4 = (PRegExp)nodeArrayList3.get(0);
-        tsemicolonNode5 = (TSemicolon)nodeArrayList4.get(0);
+        pregexpNode3 = (PRegExp)nodeArrayList3.get(0);
 
-        phelperdefNode1 = new AHelperDef(tidNode2, tequalNode3, pregexpNode4, tsemicolonNode5);
+        phelperdefNode1 = new AHelperDef(tidNode2, pregexpNode3);
         }
 	nodeList.add(phelperdefNode1);
         return nodeList;
@@ -5954,14 +6627,18 @@ public class Parser
         PStates pstatesNode1;
         {
             // Block
-        TStates tstatesNode2;
-        PIdList pidlistNode3;
-        TSemicolon tsemicolonNode4;
-        tstatesNode2 = (TStates)nodeArrayList1.get(0);
-        pidlistNode3 = (PIdList)nodeArrayList2.get(0);
-        tsemicolonNode4 = (TSemicolon)nodeArrayList3.get(0);
+        LinkedList listNode3 = new LinkedList();
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList2.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
 
-        pstatesNode1 = new AStates(tstatesNode2, pidlistNode3, tsemicolonNode4);
+        pstatesNode1 = new AStates(listNode3);
         }
 	nodeList.add(pstatesNode1);
         return nodeList;
@@ -5975,19 +6652,17 @@ public class Parser
         @SuppressWarnings("hiding") ArrayList nodeList = new ArrayList();
 
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PIdList pidlistNode1;
+        LinkedList listNode2 = new LinkedList();
         {
             // Block
-        TId tidNode2;
-        LinkedList listNode3 = new LinkedList();
-        tidNode2 = (TId)nodeArrayList1.get(0);
-        {
-            // Block
+        TId tidNode1;
+        tidNode1 = (TId)nodeArrayList1.get(0);
+	if(tidNode1 != null)
+	{
+	  listNode2.add(tidNode1);
+	}
         }
-
-        pidlistNode1 = new AIdList(tidNode2, listNode3);
-        }
-	nodeList.add(pidlistNode1);
+	nodeList.add(listNode2);
         return nodeList;
     }
 
@@ -6000,25 +6675,23 @@ public class Parser
 
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PIdList pidlistNode1;
-        {
-            // Block
-        TId tidNode2;
-        LinkedList listNode4 = new LinkedList();
-        tidNode2 = (TId)nodeArrayList1.get(0);
-        {
-            // Block
         LinkedList listNode3 = new LinkedList();
-        listNode3 = (LinkedList)nodeArrayList2.get(0);
-	if(listNode3 != null)
+        {
+            // Block
+        TId tidNode1;
+        LinkedList listNode2 = new LinkedList();
+        tidNode1 = (TId)nodeArrayList1.get(0);
+        listNode2 = (LinkedList)nodeArrayList2.get(0);
+	if(tidNode1 != null)
 	{
-	  listNode4.addAll(listNode3);
+	  listNode3.add(tidNode1);
+	}
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
 	}
         }
-
-        pidlistNode1 = new AIdList(tidNode2, listNode4);
-        }
-	nodeList.add(pidlistNode1);
+	nodeList.add(listNode3);
         return nodeList;
     }
 
@@ -6031,17 +6704,9 @@ public class Parser
 
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PIdListTail pidlisttailNode1;
-        {
-            // Block
-        TComma tcommaNode2;
-        TId tidNode3;
-        tcommaNode2 = (TComma)nodeArrayList1.get(0);
-        tidNode3 = (TId)nodeArrayList2.get(0);
-
-        pidlisttailNode1 = new AIdListTail(tcommaNode2, tidNode3);
-        }
-	nodeList.add(pidlisttailNode1);
+        TId tidNode1;
+        tidNode1 = (TId)nodeArrayList2.get(0);
+	nodeList.add(tidNode1);
         return nodeList;
     }
 
@@ -6057,20 +6722,18 @@ public class Parser
         PTokens ptokensNode1;
         {
             // Block
-        TTokens ttokensNode2;
-        LinkedList listNode4 = new LinkedList();
-        ttokensNode2 = (TTokens)nodeArrayList1.get(0);
+        LinkedList listNode3 = new LinkedList();
         {
             // Block
-        LinkedList listNode3 = new LinkedList();
-        listNode3 = (LinkedList)nodeArrayList2.get(0);
-	if(listNode3 != null)
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList2.get(0);
+	if(listNode2 != null)
 	{
-	  listNode4.addAll(listNode3);
+	  listNode3.addAll(listNode2);
 	}
         }
 
-        ptokensNode1 = new ATokens(ttokensNode2, listNode4);
+        ptokensNode1 = new ATokens(listNode3);
         }
 	nodeList.add(ptokensNode1);
         return nodeList;
@@ -6092,16 +6755,13 @@ public class Parser
             // Block
         @SuppressWarnings("unused") Object nullNode2 = null;
         TId tidNode3;
-        TEqual tequalNode4;
-        PRegExp pregexpNode5;
+        PRegExp pregexpNode4;
+        @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
-        TSemicolon tsemicolonNode7;
         tidNode3 = (TId)nodeArrayList1.get(0);
-        tequalNode4 = (TEqual)nodeArrayList2.get(0);
-        pregexpNode5 = (PRegExp)nodeArrayList3.get(0);
-        tsemicolonNode7 = (TSemicolon)nodeArrayList4.get(0);
+        pregexpNode4 = (PRegExp)nodeArrayList3.get(0);
 
-        ptokendefNode1 = new ATokenDef(null, tidNode3, tequalNode4, pregexpNode5, null, tsemicolonNode7);
+        ptokendefNode1 = new ATokenDef(null, tidNode3, pregexpNode4, null, null);
         }
 	nodeList.add(ptokendefNode1);
         return nodeList;
@@ -6124,17 +6784,14 @@ public class Parser
             // Block
         PStateList pstatelistNode2;
         TId tidNode3;
-        TEqual tequalNode4;
-        PRegExp pregexpNode5;
+        PRegExp pregexpNode4;
+        @SuppressWarnings("unused") Object nullNode5 = null;
         @SuppressWarnings("unused") Object nullNode6 = null;
-        TSemicolon tsemicolonNode7;
         pstatelistNode2 = (PStateList)nodeArrayList1.get(0);
         tidNode3 = (TId)nodeArrayList2.get(0);
-        tequalNode4 = (TEqual)nodeArrayList3.get(0);
-        pregexpNode5 = (PRegExp)nodeArrayList4.get(0);
-        tsemicolonNode7 = (TSemicolon)nodeArrayList5.get(0);
+        pregexpNode4 = (PRegExp)nodeArrayList4.get(0);
 
-        ptokendefNode1 = new ATokenDef(pstatelistNode2, tidNode3, tequalNode4, pregexpNode5, null, tsemicolonNode7);
+        ptokendefNode1 = new ATokenDef(pstatelistNode2, tidNode3, pregexpNode4, null, null);
         }
 	nodeList.add(ptokendefNode1);
         return nodeList;
@@ -6157,17 +6814,15 @@ public class Parser
             // Block
         @SuppressWarnings("unused") Object nullNode2 = null;
         TId tidNode3;
-        TEqual tequalNode4;
-        PRegExp pregexpNode5;
-        PLookAhead plookaheadNode6;
-        TSemicolon tsemicolonNode7;
+        PRegExp pregexpNode4;
+        TSlash tslashNode5;
+        PRegExp pregexpNode6;
         tidNode3 = (TId)nodeArrayList1.get(0);
-        tequalNode4 = (TEqual)nodeArrayList2.get(0);
-        pregexpNode5 = (PRegExp)nodeArrayList3.get(0);
-        plookaheadNode6 = (PLookAhead)nodeArrayList4.get(0);
-        tsemicolonNode7 = (TSemicolon)nodeArrayList5.get(0);
+        pregexpNode4 = (PRegExp)nodeArrayList3.get(0);
+        tslashNode5 = (TSlash)nodeArrayList4.get(0);
+        pregexpNode6 = (PRegExp)nodeArrayList4.get(1);
 
-        ptokendefNode1 = new ATokenDef(null, tidNode3, tequalNode4, pregexpNode5, plookaheadNode6, tsemicolonNode7);
+        ptokendefNode1 = new ATokenDef(null, tidNode3, pregexpNode4, tslashNode5, pregexpNode6);
         }
 	nodeList.add(ptokendefNode1);
         return nodeList;
@@ -6191,18 +6846,16 @@ public class Parser
             // Block
         PStateList pstatelistNode2;
         TId tidNode3;
-        TEqual tequalNode4;
-        PRegExp pregexpNode5;
-        PLookAhead plookaheadNode6;
-        TSemicolon tsemicolonNode7;
+        PRegExp pregexpNode4;
+        TSlash tslashNode5;
+        PRegExp pregexpNode6;
         pstatelistNode2 = (PStateList)nodeArrayList1.get(0);
         tidNode3 = (TId)nodeArrayList2.get(0);
-        tequalNode4 = (TEqual)nodeArrayList3.get(0);
-        pregexpNode5 = (PRegExp)nodeArrayList4.get(0);
-        plookaheadNode6 = (PLookAhead)nodeArrayList5.get(0);
-        tsemicolonNode7 = (TSemicolon)nodeArrayList6.get(0);
+        pregexpNode4 = (PRegExp)nodeArrayList4.get(0);
+        tslashNode5 = (TSlash)nodeArrayList5.get(0);
+        pregexpNode6 = (PRegExp)nodeArrayList5.get(1);
 
-        ptokendefNode1 = new ATokenDef(pstatelistNode2, tidNode3, tequalNode4, pregexpNode5, plookaheadNode6, tsemicolonNode7);
+        ptokendefNode1 = new ATokenDef(pstatelistNode2, tidNode3, pregexpNode4, tslashNode5, pregexpNode6);
         }
 	nodeList.add(ptokendefNode1);
         return nodeList;
@@ -6221,19 +6874,15 @@ public class Parser
         PStateList pstatelistNode1;
         {
             // Block
-        TLBrace tlbraceNode2;
-        TId tidNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
-        LinkedList listNode5 = new LinkedList();
-        TRBrace trbraceNode6;
-        tlbraceNode2 = (TLBrace)nodeArrayList1.get(0);
-        tidNode3 = (TId)nodeArrayList2.get(0);
+        TId tidNode2;
+        @SuppressWarnings("unused") Object nullNode3 = null;
+        LinkedList listNode4 = new LinkedList();
+        tidNode2 = (TId)nodeArrayList2.get(0);
         {
             // Block
         }
-        trbraceNode6 = (TRBrace)nodeArrayList3.get(0);
 
-        pstatelistNode1 = new AStateList(tlbraceNode2, tidNode3, null, listNode5, trbraceNode6);
+        pstatelistNode1 = new AStateList(tidNode2, null, listNode4);
         }
 	nodeList.add(pstatelistNode1);
         return nodeList;
@@ -6253,20 +6902,16 @@ public class Parser
         PStateList pstatelistNode1;
         {
             // Block
-        TLBrace tlbraceNode2;
-        TId tidNode3;
-        PTransition ptransitionNode4;
-        LinkedList listNode5 = new LinkedList();
-        TRBrace trbraceNode6;
-        tlbraceNode2 = (TLBrace)nodeArrayList1.get(0);
-        tidNode3 = (TId)nodeArrayList2.get(0);
-        ptransitionNode4 = (PTransition)nodeArrayList3.get(0);
+        TId tidNode2;
+        PTransition ptransitionNode3;
+        LinkedList listNode4 = new LinkedList();
+        tidNode2 = (TId)nodeArrayList2.get(0);
+        ptransitionNode3 = (PTransition)nodeArrayList3.get(0);
         {
             // Block
         }
-        trbraceNode6 = (TRBrace)nodeArrayList4.get(0);
 
-        pstatelistNode1 = new AStateList(tlbraceNode2, tidNode3, ptransitionNode4, listNode5, trbraceNode6);
+        pstatelistNode1 = new AStateList(tidNode2, ptransitionNode3, listNode4);
         }
 	nodeList.add(pstatelistNode1);
         return nodeList;
@@ -6286,25 +6931,21 @@ public class Parser
         PStateList pstatelistNode1;
         {
             // Block
-        TLBrace tlbraceNode2;
-        TId tidNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
-        LinkedList listNode6 = new LinkedList();
-        TRBrace trbraceNode7;
-        tlbraceNode2 = (TLBrace)nodeArrayList1.get(0);
-        tidNode3 = (TId)nodeArrayList2.get(0);
+        TId tidNode2;
+        @SuppressWarnings("unused") Object nullNode3 = null;
+        LinkedList listNode5 = new LinkedList();
+        tidNode2 = (TId)nodeArrayList2.get(0);
         {
             // Block
-        LinkedList listNode5 = new LinkedList();
-        listNode5 = (LinkedList)nodeArrayList3.get(0);
-	if(listNode5 != null)
+        LinkedList listNode4 = new LinkedList();
+        listNode4 = (LinkedList)nodeArrayList3.get(0);
+	if(listNode4 != null)
 	{
-	  listNode6.addAll(listNode5);
+	  listNode5.addAll(listNode4);
 	}
         }
-        trbraceNode7 = (TRBrace)nodeArrayList4.get(0);
 
-        pstatelistNode1 = new AStateList(tlbraceNode2, tidNode3, null, listNode6, trbraceNode7);
+        pstatelistNode1 = new AStateList(tidNode2, null, listNode5);
         }
 	nodeList.add(pstatelistNode1);
         return nodeList;
@@ -6325,26 +6966,22 @@ public class Parser
         PStateList pstatelistNode1;
         {
             // Block
-        TLBrace tlbraceNode2;
-        TId tidNode3;
-        PTransition ptransitionNode4;
-        LinkedList listNode6 = new LinkedList();
-        TRBrace trbraceNode7;
-        tlbraceNode2 = (TLBrace)nodeArrayList1.get(0);
-        tidNode3 = (TId)nodeArrayList2.get(0);
-        ptransitionNode4 = (PTransition)nodeArrayList3.get(0);
+        TId tidNode2;
+        PTransition ptransitionNode3;
+        LinkedList listNode5 = new LinkedList();
+        tidNode2 = (TId)nodeArrayList2.get(0);
+        ptransitionNode3 = (PTransition)nodeArrayList3.get(0);
         {
             // Block
-        LinkedList listNode5 = new LinkedList();
-        listNode5 = (LinkedList)nodeArrayList4.get(0);
-	if(listNode5 != null)
+        LinkedList listNode4 = new LinkedList();
+        listNode4 = (LinkedList)nodeArrayList4.get(0);
+	if(listNode4 != null)
 	{
-	  listNode6.addAll(listNode5);
+	  listNode5.addAll(listNode4);
 	}
         }
-        trbraceNode7 = (TRBrace)nodeArrayList5.get(0);
 
-        pstatelistNode1 = new AStateList(tlbraceNode2, tidNode3, ptransitionNode4, listNode6, trbraceNode7);
+        pstatelistNode1 = new AStateList(tidNode2, ptransitionNode3, listNode5);
         }
 	nodeList.add(pstatelistNode1);
         return nodeList;
@@ -6362,13 +6999,11 @@ public class Parser
         PStateListTail pstatelisttailNode1;
         {
             // Block
-        TComma tcommaNode2;
-        TId tidNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
-        tcommaNode2 = (TComma)nodeArrayList1.get(0);
-        tidNode3 = (TId)nodeArrayList2.get(0);
+        TId tidNode2;
+        @SuppressWarnings("unused") Object nullNode3 = null;
+        tidNode2 = (TId)nodeArrayList2.get(0);
 
-        pstatelisttailNode1 = new AStateListTail(tcommaNode2, tidNode3, null);
+        pstatelisttailNode1 = new AStateListTail(tidNode2, null);
         }
 	nodeList.add(pstatelisttailNode1);
         return nodeList;
@@ -6387,14 +7022,12 @@ public class Parser
         PStateListTail pstatelisttailNode1;
         {
             // Block
-        TComma tcommaNode2;
-        TId tidNode3;
-        PTransition ptransitionNode4;
-        tcommaNode2 = (TComma)nodeArrayList1.get(0);
-        tidNode3 = (TId)nodeArrayList2.get(0);
-        ptransitionNode4 = (PTransition)nodeArrayList3.get(0);
+        TId tidNode2;
+        PTransition ptransitionNode3;
+        tidNode2 = (TId)nodeArrayList2.get(0);
+        ptransitionNode3 = (PTransition)nodeArrayList3.get(0);
 
-        pstatelisttailNode1 = new AStateListTail(tcommaNode2, tidNode3, ptransitionNode4);
+        pstatelisttailNode1 = new AStateListTail(tidNode2, ptransitionNode3);
         }
 	nodeList.add(pstatelisttailNode1);
         return nodeList;
@@ -6412,12 +7045,10 @@ public class Parser
         PTransition ptransitionNode1;
         {
             // Block
-        TArrow tarrowNode2;
-        TId tidNode3;
-        tarrowNode2 = (TArrow)nodeArrayList1.get(0);
-        tidNode3 = (TId)nodeArrayList2.get(0);
+        TId tidNode2;
+        tidNode2 = (TId)nodeArrayList2.get(0);
 
-        ptransitionNode1 = new ATransition(tarrowNode2, tidNode3);
+        ptransitionNode1 = new ATransition(tidNode2);
         }
 	nodeList.add(ptransitionNode1);
         return nodeList;
@@ -6436,15 +7067,12 @@ public class Parser
         PIgnTokens pigntokensNode1;
         {
             // Block
-        TIgnored tignoredNode2;
-        TTokens ttokensNode3;
-        @SuppressWarnings("unused") Object nullNode4 = null;
-        TSemicolon tsemicolonNode5;
-        tignoredNode2 = (TIgnored)nodeArrayList1.get(0);
-        ttokensNode3 = (TTokens)nodeArrayList2.get(0);
-        tsemicolonNode5 = (TSemicolon)nodeArrayList3.get(0);
+        LinkedList listNode2 = new LinkedList();
+        {
+            // Block
+        }
 
-        pigntokensNode1 = new AIgnTokens(tignoredNode2, ttokensNode3, null, tsemicolonNode5);
+        pigntokensNode1 = new AIgnTokens(listNode2);
         }
 	nodeList.add(pigntokensNode1);
         return nodeList;
@@ -6464,16 +7092,18 @@ public class Parser
         PIgnTokens pigntokensNode1;
         {
             // Block
-        TIgnored tignoredNode2;
-        TTokens ttokensNode3;
-        PIdList pidlistNode4;
-        TSemicolon tsemicolonNode5;
-        tignoredNode2 = (TIgnored)nodeArrayList1.get(0);
-        ttokensNode3 = (TTokens)nodeArrayList2.get(0);
-        pidlistNode4 = (PIdList)nodeArrayList3.get(0);
-        tsemicolonNode5 = (TSemicolon)nodeArrayList4.get(0);
+        LinkedList listNode3 = new LinkedList();
+        {
+            // Block
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList3.get(0);
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
+	}
+        }
 
-        pigntokensNode1 = new AIgnTokens(tignoredNode2, ttokensNode3, pidlistNode4, tsemicolonNode5);
+        pigntokensNode1 = new AIgnTokens(listNode3);
         }
 	nodeList.add(pigntokensNode1);
         return nodeList;
@@ -6488,17 +7118,12 @@ public class Parser
 
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PLookAhead plookaheadNode1;
-        {
-            // Block
-        TSlash tslashNode2;
-        PRegExp pregexpNode3;
-        tslashNode2 = (TSlash)nodeArrayList1.get(0);
-        pregexpNode3 = (PRegExp)nodeArrayList2.get(0);
-
-        plookaheadNode1 = new ALookAhead(tslashNode2, pregexpNode3);
-        }
-	nodeList.add(plookaheadNode1);
+        TSlash tslashNode1;
+        PRegExp pregexpNode2;
+        tslashNode1 = (TSlash)nodeArrayList1.get(0);
+        pregexpNode2 = (PRegExp)nodeArrayList2.get(0);
+	nodeList.add(tslashNode1);
+	nodeList.add(pregexpNode2);
         return nodeList;
     }
 
@@ -6513,14 +7138,18 @@ public class Parser
         PRegExp pregexpNode1;
         {
             // Block
-        PConcat pconcatNode2;
         LinkedList listNode3 = new LinkedList();
-        pconcatNode2 = (PConcat)nodeArrayList1.get(0);
         {
             // Block
+        PConcat pconcatNode2;
+        pconcatNode2 = (PConcat)nodeArrayList1.get(0);
+	if(pconcatNode2 != null)
+	{
+	  listNode3.add(pconcatNode2);
+	}
         }
 
-        pregexpNode1 = new ARegExp(pconcatNode2, listNode3);
+        pregexpNode1 = new ARegExp(listNode3);
         }
 	nodeList.add(pregexpNode1);
         return nodeList;
@@ -6538,20 +7167,24 @@ public class Parser
         PRegExp pregexpNode1;
         {
             // Block
-        PConcat pconcatNode2;
         LinkedList listNode4 = new LinkedList();
-        pconcatNode2 = (PConcat)nodeArrayList1.get(0);
         {
             // Block
+        PConcat pconcatNode2;
         LinkedList listNode3 = new LinkedList();
+        pconcatNode2 = (PConcat)nodeArrayList1.get(0);
         listNode3 = (LinkedList)nodeArrayList2.get(0);
+	if(pconcatNode2 != null)
+	{
+	  listNode4.add(pconcatNode2);
+	}
 	if(listNode3 != null)
 	{
 	  listNode4.addAll(listNode3);
 	}
         }
 
-        pregexpNode1 = new ARegExp(pconcatNode2, listNode4);
+        pregexpNode1 = new ARegExp(listNode4);
         }
 	nodeList.add(pregexpNode1);
         return nodeList;
@@ -6566,17 +7199,9 @@ public class Parser
 
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PRegExpTail pregexptailNode1;
-        {
-            // Block
-        TBar tbarNode2;
-        PConcat pconcatNode3;
-        tbarNode2 = (TBar)nodeArrayList1.get(0);
-        pconcatNode3 = (PConcat)nodeArrayList2.get(0);
-
-        pregexptailNode1 = new ARegExpTail(tbarNode2, pconcatNode3);
-        }
-	nodeList.add(pregexptailNode1);
+        PConcat pconcatNode1;
+        pconcatNode1 = (PConcat)nodeArrayList2.get(0);
+	nodeList.add(pconcatNode1);
         return nodeList;
     }
 
@@ -6766,14 +7391,10 @@ public class Parser
         PBasic pbasicNode1;
         {
             // Block
-        TLPar tlparNode2;
-        PRegExp pregexpNode3;
-        TRPar trparNode4;
-        tlparNode2 = (TLPar)nodeArrayList1.get(0);
-        pregexpNode3 = (PRegExp)nodeArrayList2.get(0);
-        trparNode4 = (TRPar)nodeArrayList3.get(0);
+        PRegExp pregexpNode2;
+        pregexpNode2 = (PRegExp)nodeArrayList2.get(0);
 
-        pbasicNode1 = new ARegExpBasic(tlparNode2, pregexpNode3, trparNode4);
+        pbasicNode1 = new ARegExpBasic(pregexpNode2);
         }
 	nodeList.add(pbasicNode1);
         return nodeList;
@@ -6854,18 +7475,14 @@ public class Parser
         PSet psetNode1;
         {
             // Block
-        TLBkt tlbktNode2;
-        PBasic pbasicNode3;
-        PBinOp pbinopNode4;
-        PBasic pbasicNode5;
-        TRBkt trbktNode6;
-        tlbktNode2 = (TLBkt)nodeArrayList1.get(0);
-        pbasicNode3 = (PBasic)nodeArrayList2.get(0);
-        pbinopNode4 = (PBinOp)nodeArrayList3.get(0);
-        pbasicNode5 = (PBasic)nodeArrayList4.get(0);
-        trbktNode6 = (TRBkt)nodeArrayList5.get(0);
+        PBasic pbasicNode2;
+        PBinOp pbinopNode3;
+        PBasic pbasicNode4;
+        pbasicNode2 = (PBasic)nodeArrayList2.get(0);
+        pbinopNode3 = (PBinOp)nodeArrayList3.get(0);
+        pbasicNode4 = (PBasic)nodeArrayList4.get(0);
 
-        psetNode1 = new AOperationSet(tlbktNode2, pbasicNode3, pbinopNode4, pbasicNode5, trbktNode6);
+        psetNode1 = new AOperationSet(pbasicNode2, pbinopNode3, pbasicNode4);
         }
 	nodeList.add(psetNode1);
         return nodeList;
@@ -6886,18 +7503,12 @@ public class Parser
         PSet psetNode1;
         {
             // Block
-        TLBkt tlbktNode2;
+        PChar pcharNode2;
         PChar pcharNode3;
-        TDDot tddotNode4;
-        PChar pcharNode5;
-        TRBkt trbktNode6;
-        tlbktNode2 = (TLBkt)nodeArrayList1.get(0);
-        pcharNode3 = (PChar)nodeArrayList2.get(0);
-        tddotNode4 = (TDDot)nodeArrayList3.get(0);
-        pcharNode5 = (PChar)nodeArrayList4.get(0);
-        trbktNode6 = (TRBkt)nodeArrayList5.get(0);
+        pcharNode2 = (PChar)nodeArrayList2.get(0);
+        pcharNode3 = (PChar)nodeArrayList4.get(0);
 
-        psetNode1 = new AIntervalSet(tlbktNode2, pcharNode3, tddotNode4, pcharNode5, trbktNode6);
+        psetNode1 = new AIntervalSet(pcharNode2, pcharNode3);
         }
 	nodeList.add(psetNode1);
         return nodeList;
@@ -6974,10 +7585,8 @@ public class Parser
         PBinOp pbinopNode1;
         {
             // Block
-        TPlus tplusNode2;
-        tplusNode2 = (TPlus)nodeArrayList1.get(0);
 
-        pbinopNode1 = new APlusBinOp(tplusNode2);
+        pbinopNode1 = new APlusBinOp();
         }
 	nodeList.add(pbinopNode1);
         return nodeList;
@@ -6994,10 +7603,8 @@ public class Parser
         PBinOp pbinopNode1;
         {
             // Block
-        TMinus tminusNode2;
-        tminusNode2 = (TMinus)nodeArrayList1.get(0);
 
-        pbinopNode1 = new AMinusBinOp(tminusNode2);
+        pbinopNode1 = new AMinusBinOp();
         }
 	nodeList.add(pbinopNode1);
         return nodeList;
@@ -7015,20 +7622,18 @@ public class Parser
         PProductions pproductionsNode1;
         {
             // Block
-        TProductions tproductionsNode2;
-        LinkedList listNode4 = new LinkedList();
-        tproductionsNode2 = (TProductions)nodeArrayList1.get(0);
+        LinkedList listNode3 = new LinkedList();
         {
             // Block
-        LinkedList listNode3 = new LinkedList();
-        listNode3 = (LinkedList)nodeArrayList2.get(0);
-	if(listNode3 != null)
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList2.get(0);
+	if(listNode2 != null)
 	{
-	  listNode4.addAll(listNode3);
+	  listNode3.addAll(listNode2);
 	}
         }
 
-        pproductionsNode1 = new AProductions(tproductionsNode2, listNode4);
+        pproductionsNode1 = new AProductions(listNode3);
         }
 	nodeList.add(pproductionsNode1);
         return nodeList;
@@ -7050,15 +7655,23 @@ public class Parser
             // Block
         TId tidNode2;
         @SuppressWarnings("unused") Object nullNode3 = null;
-        TEqual tequalNode4;
-        PAlts paltsNode5;
-        TSemicolon tsemicolonNode6;
+        LinkedList listNode4 = new LinkedList();
+        LinkedList listNode6 = new LinkedList();
         tidNode2 = (TId)nodeArrayList1.get(0);
-        tequalNode4 = (TEqual)nodeArrayList2.get(0);
-        paltsNode5 = (PAlts)nodeArrayList3.get(0);
-        tsemicolonNode6 = (TSemicolon)nodeArrayList4.get(0);
+        {
+            // Block
+        }
+        {
+            // Block
+        LinkedList listNode5 = new LinkedList();
+        listNode5 = (LinkedList)nodeArrayList3.get(0);
+	if(listNode5 != null)
+	{
+	  listNode6.addAll(listNode5);
+	}
+        }
 
-        pprodNode1 = new AProd(tidNode2, null, tequalNode4, paltsNode5, tsemicolonNode6);
+        pprodNode1 = new AProd(tidNode2, null, listNode4, listNode6);
         }
 	nodeList.add(pprodNode1);
         return nodeList;
@@ -7080,17 +7693,31 @@ public class Parser
         {
             // Block
         TId tidNode2;
-        PProdTransform pprodtransformNode3;
-        TEqual tequalNode4;
-        PAlts paltsNode5;
-        TSemicolon tsemicolonNode6;
+        TArrow tarrowNode3;
+        LinkedList listNode5 = new LinkedList();
+        LinkedList listNode7 = new LinkedList();
         tidNode2 = (TId)nodeArrayList1.get(0);
-        pprodtransformNode3 = (PProdTransform)nodeArrayList2.get(0);
-        tequalNode4 = (TEqual)nodeArrayList3.get(0);
-        paltsNode5 = (PAlts)nodeArrayList4.get(0);
-        tsemicolonNode6 = (TSemicolon)nodeArrayList5.get(0);
+        tarrowNode3 = (TArrow)nodeArrayList2.get(0);
+        {
+            // Block
+        LinkedList listNode4 = new LinkedList();
+        listNode4 = (LinkedList)nodeArrayList2.get(1);
+	if(listNode4 != null)
+	{
+	  listNode5.addAll(listNode4);
+	}
+        }
+        {
+            // Block
+        LinkedList listNode6 = new LinkedList();
+        listNode6 = (LinkedList)nodeArrayList4.get(0);
+	if(listNode6 != null)
+	{
+	  listNode7.addAll(listNode6);
+	}
+        }
 
-        pprodNode1 = new AProd(tidNode2, pprodtransformNode3, tequalNode4, paltsNode5, tsemicolonNode6);
+        pprodNode1 = new AProd(tidNode2, tarrowNode3, listNode5, listNode7);
         }
 	nodeList.add(pprodNode1);
         return nodeList;
@@ -7106,23 +7733,14 @@ public class Parser
         @SuppressWarnings("unused") ArrayList nodeArrayList3 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PProdTransform pprodtransformNode1;
-        {
-            // Block
-        TLBrace tlbraceNode2;
-        TArrow tarrowNode3;
-        LinkedList listNode4 = new LinkedList();
-        TRBrace trbraceNode5;
-        tlbraceNode2 = (TLBrace)nodeArrayList1.get(0);
-        tarrowNode3 = (TArrow)nodeArrayList2.get(0);
+        TArrow tarrowNode1;
+        LinkedList listNode2 = new LinkedList();
+        tarrowNode1 = (TArrow)nodeArrayList2.get(0);
         {
             // Block
         }
-        trbraceNode5 = (TRBrace)nodeArrayList3.get(0);
-
-        pprodtransformNode1 = new AProdTransform(tlbraceNode2, tarrowNode3, listNode4, trbraceNode5);
-        }
-	nodeList.add(pprodtransformNode1);
+	nodeList.add(tarrowNode1);
+	nodeList.add(listNode2);
         return nodeList;
     }
 
@@ -7137,29 +7755,20 @@ public class Parser
         @SuppressWarnings("unused") ArrayList nodeArrayList3 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PProdTransform pprodtransformNode1;
+        TArrow tarrowNode1;
+        LinkedList listNode3 = new LinkedList();
+        tarrowNode1 = (TArrow)nodeArrayList2.get(0);
         {
             // Block
-        TLBrace tlbraceNode2;
-        TArrow tarrowNode3;
-        LinkedList listNode5 = new LinkedList();
-        TRBrace trbraceNode6;
-        tlbraceNode2 = (TLBrace)nodeArrayList1.get(0);
-        tarrowNode3 = (TArrow)nodeArrayList2.get(0);
-        {
-            // Block
-        LinkedList listNode4 = new LinkedList();
-        listNode4 = (LinkedList)nodeArrayList3.get(0);
-	if(listNode4 != null)
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList3.get(0);
+	if(listNode2 != null)
 	{
-	  listNode5.addAll(listNode4);
+	  listNode3.addAll(listNode2);
 	}
         }
-        trbraceNode6 = (TRBrace)nodeArrayList4.get(0);
-
-        pprodtransformNode1 = new AProdTransform(tlbraceNode2, tarrowNode3, listNode5, trbraceNode6);
-        }
-	nodeList.add(pprodtransformNode1);
+	nodeList.add(tarrowNode1);
+	nodeList.add(listNode3);
         return nodeList;
     }
 
@@ -7171,19 +7780,17 @@ public class Parser
         @SuppressWarnings("hiding") ArrayList nodeList = new ArrayList();
 
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PAlts paltsNode1;
+        LinkedList listNode2 = new LinkedList();
         {
             // Block
-        PAlt paltNode2;
-        LinkedList listNode3 = new LinkedList();
-        paltNode2 = (PAlt)nodeArrayList1.get(0);
-        {
-            // Block
+        PAlt paltNode1;
+        paltNode1 = (PAlt)nodeArrayList1.get(0);
+	if(paltNode1 != null)
+	{
+	  listNode2.add(paltNode1);
+	}
         }
-
-        paltsNode1 = new AAlts(paltNode2, listNode3);
-        }
-	nodeList.add(paltsNode1);
+	nodeList.add(listNode2);
         return nodeList;
     }
 
@@ -7196,25 +7803,23 @@ public class Parser
 
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PAlts paltsNode1;
-        {
-            // Block
-        PAlt paltNode2;
-        LinkedList listNode4 = new LinkedList();
-        paltNode2 = (PAlt)nodeArrayList1.get(0);
-        {
-            // Block
         LinkedList listNode3 = new LinkedList();
-        listNode3 = (LinkedList)nodeArrayList2.get(0);
-	if(listNode3 != null)
+        {
+            // Block
+        PAlt paltNode1;
+        LinkedList listNode2 = new LinkedList();
+        paltNode1 = (PAlt)nodeArrayList1.get(0);
+        listNode2 = (LinkedList)nodeArrayList2.get(0);
+	if(paltNode1 != null)
 	{
-	  listNode4.addAll(listNode3);
+	  listNode3.add(paltNode1);
+	}
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
 	}
         }
-
-        paltsNode1 = new AAlts(paltNode2, listNode4);
-        }
-	nodeList.add(paltsNode1);
+	nodeList.add(listNode3);
         return nodeList;
     }
 
@@ -7227,17 +7832,9 @@ public class Parser
 
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PAltsTail paltstailNode1;
-        {
-            // Block
-        TBar tbarNode2;
-        PAlt paltNode3;
-        tbarNode2 = (TBar)nodeArrayList1.get(0);
-        paltNode3 = (PAlt)nodeArrayList2.get(0);
-
-        paltstailNode1 = new AAltsTail(tbarNode2, paltNode3);
-        }
-	nodeList.add(paltstailNode1);
+        PAlt paltNode1;
+        paltNode1 = (PAlt)nodeArrayList2.get(0);
+	nodeList.add(paltNode1);
         return nodeList;
     }
 
@@ -7275,15 +7872,15 @@ public class Parser
         PAlt paltNode1;
         {
             // Block
-        PAltName paltnameNode2;
+        TId tidNode2;
         LinkedList listNode3 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode4 = null;
-        paltnameNode2 = (PAltName)nodeArrayList1.get(0);
+        tidNode2 = (TId)nodeArrayList1.get(0);
         {
             // Block
         }
 
-        paltNode1 = new AAlt(paltnameNode2, listNode3, null);
+        paltNode1 = new AAlt(tidNode2, listNode3, null);
         }
 	nodeList.add(paltNode1);
         return nodeList;
@@ -7331,10 +7928,10 @@ public class Parser
         PAlt paltNode1;
         {
             // Block
-        PAltName paltnameNode2;
+        TId tidNode2;
         LinkedList listNode4 = new LinkedList();
         @SuppressWarnings("unused") Object nullNode5 = null;
-        paltnameNode2 = (PAltName)nodeArrayList1.get(0);
+        tidNode2 = (TId)nodeArrayList1.get(0);
         {
             // Block
         LinkedList listNode3 = new LinkedList();
@@ -7345,7 +7942,7 @@ public class Parser
 	}
         }
 
-        paltNode1 = new AAlt(paltnameNode2, listNode4, null);
+        paltNode1 = new AAlt(tidNode2, listNode4, null);
         }
 	nodeList.add(paltNode1);
         return nodeList;
@@ -7388,16 +7985,16 @@ public class Parser
         PAlt paltNode1;
         {
             // Block
-        PAltName paltnameNode2;
+        TId tidNode2;
         LinkedList listNode3 = new LinkedList();
         PAltTransform palttransformNode4;
-        paltnameNode2 = (PAltName)nodeArrayList1.get(0);
+        tidNode2 = (TId)nodeArrayList1.get(0);
         {
             // Block
         }
         palttransformNode4 = (PAltTransform)nodeArrayList2.get(0);
 
-        paltNode1 = new AAlt(paltnameNode2, listNode3, palttransformNode4);
+        paltNode1 = new AAlt(tidNode2, listNode3, palttransformNode4);
         }
 	nodeList.add(paltNode1);
         return nodeList;
@@ -7448,10 +8045,10 @@ public class Parser
         PAlt paltNode1;
         {
             // Block
-        PAltName paltnameNode2;
+        TId tidNode2;
         LinkedList listNode4 = new LinkedList();
         PAltTransform palttransformNode5;
-        paltnameNode2 = (PAltName)nodeArrayList1.get(0);
+        tidNode2 = (TId)nodeArrayList1.get(0);
         {
             // Block
         LinkedList listNode3 = new LinkedList();
@@ -7463,7 +8060,7 @@ public class Parser
         }
         palttransformNode5 = (PAltTransform)nodeArrayList3.get(0);
 
-        paltNode1 = new AAlt(paltnameNode2, listNode4, palttransformNode5);
+        paltNode1 = new AAlt(tidNode2, listNode4, palttransformNode5);
         }
 	nodeList.add(paltNode1);
         return nodeList;
@@ -7483,17 +8080,15 @@ public class Parser
         {
             // Block
         TLBrace tlbraceNode2;
-        TArrow tarrowNode3;
-        LinkedList listNode4 = new LinkedList();
-        TRBrace trbraceNode5;
+        LinkedList listNode3 = new LinkedList();
+        TRBrace trbraceNode4;
         tlbraceNode2 = (TLBrace)nodeArrayList1.get(0);
-        tarrowNode3 = (TArrow)nodeArrayList2.get(0);
         {
             // Block
         }
-        trbraceNode5 = (TRBrace)nodeArrayList3.get(0);
+        trbraceNode4 = (TRBrace)nodeArrayList3.get(0);
 
-        palttransformNode1 = new AAltTransform(tlbraceNode2, tarrowNode3, listNode4, trbraceNode5);
+        palttransformNode1 = new AAltTransform(tlbraceNode2, listNode3, trbraceNode4);
         }
 	nodeList.add(palttransformNode1);
         return nodeList;
@@ -7514,23 +8109,21 @@ public class Parser
         {
             // Block
         TLBrace tlbraceNode2;
-        TArrow tarrowNode3;
-        LinkedList listNode5 = new LinkedList();
-        TRBrace trbraceNode6;
+        LinkedList listNode4 = new LinkedList();
+        TRBrace trbraceNode5;
         tlbraceNode2 = (TLBrace)nodeArrayList1.get(0);
-        tarrowNode3 = (TArrow)nodeArrayList2.get(0);
         {
             // Block
-        LinkedList listNode4 = new LinkedList();
-        listNode4 = (LinkedList)nodeArrayList3.get(0);
-	if(listNode4 != null)
+        LinkedList listNode3 = new LinkedList();
+        listNode3 = (LinkedList)nodeArrayList3.get(0);
+	if(listNode3 != null)
 	{
-	  listNode5.addAll(listNode4);
+	  listNode4.addAll(listNode3);
 	}
         }
-        trbraceNode6 = (TRBrace)nodeArrayList4.get(0);
+        trbraceNode5 = (TRBrace)nodeArrayList4.get(0);
 
-        palttransformNode1 = new AAltTransform(tlbraceNode2, tarrowNode3, listNode5, trbraceNode6);
+        palttransformNode1 = new AAltTransform(tlbraceNode2, listNode4, trbraceNode5);
         }
 	nodeList.add(palttransformNode1);
         return nodeList;
@@ -7550,17 +8143,16 @@ public class Parser
         PTerm ptermNode1;
         {
             // Block
-        TNew tnewNode2;
-        PProdName pprodnameNode3;
-        TLPar tlparNode4;
-        @SuppressWarnings("unused") Object nullNode5 = null;
-        TRPar trparNode6;
-        tnewNode2 = (TNew)nodeArrayList1.get(0);
-        pprodnameNode3 = (PProdName)nodeArrayList2.get(0);
-        tlparNode4 = (TLPar)nodeArrayList3.get(0);
-        trparNode6 = (TRPar)nodeArrayList4.get(0);
+        PProdName pprodnameNode2;
+        TLPar tlparNode3;
+        LinkedList listNode4 = new LinkedList();
+        pprodnameNode2 = (PProdName)nodeArrayList2.get(0);
+        tlparNode3 = (TLPar)nodeArrayList3.get(0);
+        {
+            // Block
+        }
 
-        ptermNode1 = new ANewTerm(tnewNode2, pprodnameNode3, tlparNode4, null, trparNode6);
+        ptermNode1 = new ANewTerm(pprodnameNode2, tlparNode3, listNode4);
         }
 	nodeList.add(ptermNode1);
         return nodeList;
@@ -7581,18 +8173,22 @@ public class Parser
         PTerm ptermNode1;
         {
             // Block
-        TNew tnewNode2;
-        PProdName pprodnameNode3;
-        TLPar tlparNode4;
-        PParams pparamsNode5;
-        TRPar trparNode6;
-        tnewNode2 = (TNew)nodeArrayList1.get(0);
-        pprodnameNode3 = (PProdName)nodeArrayList2.get(0);
-        tlparNode4 = (TLPar)nodeArrayList3.get(0);
-        pparamsNode5 = (PParams)nodeArrayList4.get(0);
-        trparNode6 = (TRPar)nodeArrayList5.get(0);
+        PProdName pprodnameNode2;
+        TLPar tlparNode3;
+        LinkedList listNode5 = new LinkedList();
+        pprodnameNode2 = (PProdName)nodeArrayList2.get(0);
+        tlparNode3 = (TLPar)nodeArrayList3.get(0);
+        {
+            // Block
+        LinkedList listNode4 = new LinkedList();
+        listNode4 = (LinkedList)nodeArrayList4.get(0);
+	if(listNode4 != null)
+	{
+	  listNode5.addAll(listNode4);
+	}
+        }
 
-        ptermNode1 = new ANewTerm(tnewNode2, pprodnameNode3, tlparNode4, pparamsNode5, trparNode6);
+        ptermNode1 = new ANewTerm(pprodnameNode2, tlparNode3, listNode5);
         }
 	nodeList.add(ptermNode1);
         return nodeList;
@@ -7611,12 +8207,13 @@ public class Parser
         {
             // Block
         TLBkt tlbktNode2;
-        @SuppressWarnings("unused") Object nullNode3 = null;
-        TRBkt trbktNode4;
+        LinkedList listNode3 = new LinkedList();
         tlbktNode2 = (TLBkt)nodeArrayList1.get(0);
-        trbktNode4 = (TRBkt)nodeArrayList2.get(0);
+        {
+            // Block
+        }
 
-        ptermNode1 = new AListTerm(tlbktNode2, null, trbktNode4);
+        ptermNode1 = new AListTerm(tlbktNode2, listNode3);
         }
 	nodeList.add(ptermNode1);
         return nodeList;
@@ -7636,13 +8233,19 @@ public class Parser
         {
             // Block
         TLBkt tlbktNode2;
-        PListOfListTerm plistoflisttermNode3;
-        TRBkt trbktNode4;
+        LinkedList listNode4 = new LinkedList();
         tlbktNode2 = (TLBkt)nodeArrayList1.get(0);
-        plistoflisttermNode3 = (PListOfListTerm)nodeArrayList2.get(0);
-        trbktNode4 = (TRBkt)nodeArrayList3.get(0);
+        {
+            // Block
+        LinkedList listNode3 = new LinkedList();
+        listNode3 = (LinkedList)nodeArrayList2.get(0);
+	if(listNode3 != null)
+	{
+	  listNode4.addAll(listNode3);
+	}
+        }
 
-        ptermNode1 = new AListTerm(tlbktNode2, plistoflisttermNode3, trbktNode4);
+        ptermNode1 = new AListTerm(tlbktNode2, listNode4);
         }
 	nodeList.add(ptermNode1);
         return nodeList;
@@ -7708,11 +8311,11 @@ public class Parser
             // Block
         @SuppressWarnings("unused") Object nullNode2 = null;
         TId tidNode3;
-        PSimpleTermTail psimpletermtailNode4;
+        TId tidNode4;
         tidNode3 = (TId)nodeArrayList1.get(0);
-        psimpletermtailNode4 = (PSimpleTermTail)nodeArrayList2.get(0);
+        tidNode4 = (TId)nodeArrayList2.get(0);
 
-        ptermNode1 = new ASimpleTerm(null, tidNode3, psimpletermtailNode4);
+        ptermNode1 = new ASimpleTerm(null, tidNode3, tidNode4);
         }
 	nodeList.add(ptermNode1);
         return nodeList;
@@ -7733,12 +8336,12 @@ public class Parser
             // Block
         PSpecifier pspecifierNode2;
         TId tidNode3;
-        PSimpleTermTail psimpletermtailNode4;
+        TId tidNode4;
         pspecifierNode2 = (PSpecifier)nodeArrayList1.get(0);
         tidNode3 = (TId)nodeArrayList2.get(0);
-        psimpletermtailNode4 = (PSimpleTermTail)nodeArrayList3.get(0);
+        tidNode4 = (TId)nodeArrayList3.get(0);
 
-        ptermNode1 = new ASimpleTerm(pspecifierNode2, tidNode3, psimpletermtailNode4);
+        ptermNode1 = new ASimpleTerm(pspecifierNode2, tidNode3, tidNode4);
         }
 	nodeList.add(ptermNode1);
         return nodeList;
@@ -7755,10 +8358,8 @@ public class Parser
         PTerm ptermNode1;
         {
             // Block
-        TNull tnullNode2;
-        tnullNode2 = (TNull)nodeArrayList1.get(0);
 
-        ptermNode1 = new ANullTerm(tnullNode2);
+        ptermNode1 = new ANullTerm();
         }
 	nodeList.add(ptermNode1);
         return nodeList;
@@ -7772,19 +8373,17 @@ public class Parser
         @SuppressWarnings("hiding") ArrayList nodeList = new ArrayList();
 
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PListOfListTerm plistoflisttermNode1;
+        LinkedList listNode2 = new LinkedList();
         {
             // Block
-        PListTerm plisttermNode2;
-        LinkedList listNode3 = new LinkedList();
-        plisttermNode2 = (PListTerm)nodeArrayList1.get(0);
-        {
-            // Block
+        PListTerm plisttermNode1;
+        plisttermNode1 = (PListTerm)nodeArrayList1.get(0);
+	if(plisttermNode1 != null)
+	{
+	  listNode2.add(plisttermNode1);
+	}
         }
-
-        plistoflisttermNode1 = new AListOfListTerm(plisttermNode2, listNode3);
-        }
-	nodeList.add(plistoflisttermNode1);
+	nodeList.add(listNode2);
         return nodeList;
     }
 
@@ -7797,25 +8396,23 @@ public class Parser
 
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PListOfListTerm plistoflisttermNode1;
-        {
-            // Block
-        PListTerm plisttermNode2;
-        LinkedList listNode4 = new LinkedList();
-        plisttermNode2 = (PListTerm)nodeArrayList1.get(0);
-        {
-            // Block
         LinkedList listNode3 = new LinkedList();
-        listNode3 = (LinkedList)nodeArrayList2.get(0);
-	if(listNode3 != null)
+        {
+            // Block
+        PListTerm plisttermNode1;
+        LinkedList listNode2 = new LinkedList();
+        plisttermNode1 = (PListTerm)nodeArrayList1.get(0);
+        listNode2 = (LinkedList)nodeArrayList2.get(0);
+	if(plisttermNode1 != null)
 	{
-	  listNode4.addAll(listNode3);
+	  listNode3.add(plisttermNode1);
+	}
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
 	}
         }
-
-        plistoflisttermNode1 = new AListOfListTerm(plisttermNode2, listNode4);
-        }
-	nodeList.add(plistoflisttermNode1);
+	nodeList.add(listNode3);
         return nodeList;
     }
 
@@ -7833,17 +8430,16 @@ public class Parser
         PListTerm plisttermNode1;
         {
             // Block
-        TNew tnewNode2;
-        PProdName pprodnameNode3;
-        TLPar tlparNode4;
-        @SuppressWarnings("unused") Object nullNode5 = null;
-        TRPar trparNode6;
-        tnewNode2 = (TNew)nodeArrayList1.get(0);
-        pprodnameNode3 = (PProdName)nodeArrayList2.get(0);
-        tlparNode4 = (TLPar)nodeArrayList3.get(0);
-        trparNode6 = (TRPar)nodeArrayList4.get(0);
+        PProdName pprodnameNode2;
+        TLPar tlparNode3;
+        LinkedList listNode4 = new LinkedList();
+        pprodnameNode2 = (PProdName)nodeArrayList2.get(0);
+        tlparNode3 = (TLPar)nodeArrayList3.get(0);
+        {
+            // Block
+        }
 
-        plisttermNode1 = new ANewListTerm(tnewNode2, pprodnameNode3, tlparNode4, null, trparNode6);
+        plisttermNode1 = new ANewListTerm(pprodnameNode2, tlparNode3, listNode4);
         }
 	nodeList.add(plisttermNode1);
         return nodeList;
@@ -7864,18 +8460,22 @@ public class Parser
         PListTerm plisttermNode1;
         {
             // Block
-        TNew tnewNode2;
-        PProdName pprodnameNode3;
-        TLPar tlparNode4;
-        PParams pparamsNode5;
-        TRPar trparNode6;
-        tnewNode2 = (TNew)nodeArrayList1.get(0);
-        pprodnameNode3 = (PProdName)nodeArrayList2.get(0);
-        tlparNode4 = (TLPar)nodeArrayList3.get(0);
-        pparamsNode5 = (PParams)nodeArrayList4.get(0);
-        trparNode6 = (TRPar)nodeArrayList5.get(0);
+        PProdName pprodnameNode2;
+        TLPar tlparNode3;
+        LinkedList listNode5 = new LinkedList();
+        pprodnameNode2 = (PProdName)nodeArrayList2.get(0);
+        tlparNode3 = (TLPar)nodeArrayList3.get(0);
+        {
+            // Block
+        LinkedList listNode4 = new LinkedList();
+        listNode4 = (LinkedList)nodeArrayList4.get(0);
+	if(listNode4 != null)
+	{
+	  listNode5.addAll(listNode4);
+	}
+        }
 
-        plisttermNode1 = new ANewListTerm(tnewNode2, pprodnameNode3, tlparNode4, pparamsNode5, trparNode6);
+        plisttermNode1 = new ANewListTerm(pprodnameNode2, tlparNode3, listNode5);
         }
 	nodeList.add(plisttermNode1);
         return nodeList;
@@ -7941,11 +8541,11 @@ public class Parser
             // Block
         @SuppressWarnings("unused") Object nullNode2 = null;
         TId tidNode3;
-        PSimpleTermTail psimpletermtailNode4;
+        TId tidNode4;
         tidNode3 = (TId)nodeArrayList1.get(0);
-        psimpletermtailNode4 = (PSimpleTermTail)nodeArrayList2.get(0);
+        tidNode4 = (TId)nodeArrayList2.get(0);
 
-        plisttermNode1 = new ASimpleListTerm(null, tidNode3, psimpletermtailNode4);
+        plisttermNode1 = new ASimpleListTerm(null, tidNode3, tidNode4);
         }
 	nodeList.add(plisttermNode1);
         return nodeList;
@@ -7966,12 +8566,12 @@ public class Parser
             // Block
         PSpecifier pspecifierNode2;
         TId tidNode3;
-        PSimpleTermTail psimpletermtailNode4;
+        TId tidNode4;
         pspecifierNode2 = (PSpecifier)nodeArrayList1.get(0);
         tidNode3 = (TId)nodeArrayList2.get(0);
-        psimpletermtailNode4 = (PSimpleTermTail)nodeArrayList3.get(0);
+        tidNode4 = (TId)nodeArrayList3.get(0);
 
-        plisttermNode1 = new ASimpleListTerm(pspecifierNode2, tidNode3, psimpletermtailNode4);
+        plisttermNode1 = new ASimpleListTerm(pspecifierNode2, tidNode3, tidNode4);
         }
 	nodeList.add(plisttermNode1);
         return nodeList;
@@ -7986,17 +8586,9 @@ public class Parser
 
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PListTermTail plisttermtailNode1;
-        {
-            // Block
-        TComma tcommaNode2;
-        PListTerm plisttermNode3;
-        tcommaNode2 = (TComma)nodeArrayList1.get(0);
-        plisttermNode3 = (PListTerm)nodeArrayList2.get(0);
-
-        plisttermtailNode1 = new AListTermTail(tcommaNode2, plisttermNode3);
-        }
-	nodeList.add(plisttermtailNode1);
+        PListTerm plisttermNode1;
+        plisttermNode1 = (PListTerm)nodeArrayList2.get(0);
+	nodeList.add(plisttermNode1);
         return nodeList;
     }
 
@@ -8009,17 +8601,9 @@ public class Parser
 
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PSimpleTermTail psimpletermtailNode1;
-        {
-            // Block
-        TDot tdotNode2;
-        TId tidNode3;
-        tdotNode2 = (TDot)nodeArrayList1.get(0);
-        tidNode3 = (TId)nodeArrayList2.get(0);
-
-        psimpletermtailNode1 = new ASimpleTermTail(tdotNode2, tidNode3);
-        }
-	nodeList.add(psimpletermtailNode1);
+        TId tidNode1;
+        tidNode1 = (TId)nodeArrayList2.get(0);
+	nodeList.add(tidNode1);
         return nodeList;
     }
 
@@ -8057,11 +8641,11 @@ public class Parser
         {
             // Block
         TId tidNode2;
-        PProdNameTail pprodnametailNode3;
+        TId tidNode3;
         tidNode2 = (TId)nodeArrayList1.get(0);
-        pprodnametailNode3 = (PProdNameTail)nodeArrayList2.get(0);
+        tidNode3 = (TId)nodeArrayList2.get(0);
 
-        pprodnameNode1 = new AProdName(tidNode2, pprodnametailNode3);
+        pprodnameNode1 = new AProdName(tidNode2, tidNode3);
         }
 	nodeList.add(pprodnameNode1);
         return nodeList;
@@ -8076,17 +8660,9 @@ public class Parser
 
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PProdNameTail pprodnametailNode1;
-        {
-            // Block
-        TDot tdotNode2;
-        TId tidNode3;
-        tdotNode2 = (TDot)nodeArrayList1.get(0);
-        tidNode3 = (TId)nodeArrayList2.get(0);
-
-        pprodnametailNode1 = new AProdNameTail(tdotNode2, tidNode3);
-        }
-	nodeList.add(pprodnametailNode1);
+        TId tidNode1;
+        tidNode1 = (TId)nodeArrayList2.get(0);
+	nodeList.add(tidNode1);
         return nodeList;
     }
 
@@ -8098,19 +8674,17 @@ public class Parser
         @SuppressWarnings("hiding") ArrayList nodeList = new ArrayList();
 
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PParams pparamsNode1;
+        LinkedList listNode2 = new LinkedList();
         {
             // Block
-        PTerm ptermNode2;
-        LinkedList listNode3 = new LinkedList();
-        ptermNode2 = (PTerm)nodeArrayList1.get(0);
-        {
-            // Block
+        PTerm ptermNode1;
+        ptermNode1 = (PTerm)nodeArrayList1.get(0);
+	if(ptermNode1 != null)
+	{
+	  listNode2.add(ptermNode1);
+	}
         }
-
-        pparamsNode1 = new AParams(ptermNode2, listNode3);
-        }
-	nodeList.add(pparamsNode1);
+	nodeList.add(listNode2);
         return nodeList;
     }
 
@@ -8123,25 +8697,23 @@ public class Parser
 
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PParams pparamsNode1;
-        {
-            // Block
-        PTerm ptermNode2;
-        LinkedList listNode4 = new LinkedList();
-        ptermNode2 = (PTerm)nodeArrayList1.get(0);
-        {
-            // Block
         LinkedList listNode3 = new LinkedList();
-        listNode3 = (LinkedList)nodeArrayList2.get(0);
-	if(listNode3 != null)
+        {
+            // Block
+        PTerm ptermNode1;
+        LinkedList listNode2 = new LinkedList();
+        ptermNode1 = (PTerm)nodeArrayList1.get(0);
+        listNode2 = (LinkedList)nodeArrayList2.get(0);
+	if(ptermNode1 != null)
 	{
-	  listNode4.addAll(listNode3);
+	  listNode3.add(ptermNode1);
+	}
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
 	}
         }
-
-        pparamsNode1 = new AParams(ptermNode2, listNode4);
-        }
-	nodeList.add(pparamsNode1);
+	nodeList.add(listNode3);
         return nodeList;
     }
 
@@ -8154,17 +8726,9 @@ public class Parser
 
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PParamsTail pparamstailNode1;
-        {
-            // Block
-        TComma tcommaNode2;
-        PTerm ptermNode3;
-        tcommaNode2 = (TComma)nodeArrayList1.get(0);
-        ptermNode3 = (PTerm)nodeArrayList2.get(0);
-
-        pparamstailNode1 = new AParamsTail(tcommaNode2, ptermNode3);
-        }
-	nodeList.add(pparamstailNode1);
+        PTerm ptermNode1;
+        ptermNode1 = (PTerm)nodeArrayList2.get(0);
+	nodeList.add(ptermNode1);
         return nodeList;
     }
 
@@ -8178,19 +8742,9 @@ public class Parser
         @SuppressWarnings("unused") ArrayList nodeArrayList3 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PAltName paltnameNode1;
-        {
-            // Block
-        TLBrace tlbraceNode2;
-        TId tidNode3;
-        TRBrace trbraceNode4;
-        tlbraceNode2 = (TLBrace)nodeArrayList1.get(0);
-        tidNode3 = (TId)nodeArrayList2.get(0);
-        trbraceNode4 = (TRBrace)nodeArrayList3.get(0);
-
-        paltnameNode1 = new AAltName(tlbraceNode2, tidNode3, trbraceNode4);
-        }
-	nodeList.add(paltnameNode1);
+        TId tidNode1;
+        tidNode1 = (TId)nodeArrayList2.get(0);
+	nodeList.add(tidNode1);
         return nodeList;
     }
 
@@ -8229,14 +8783,14 @@ public class Parser
         PElem pelemNode1;
         {
             // Block
-        PElemName pelemnameNode2;
+        TId tidNode2;
         @SuppressWarnings("unused") Object nullNode3 = null;
         TId tidNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
-        pelemnameNode2 = (PElemName)nodeArrayList1.get(0);
+        tidNode2 = (TId)nodeArrayList1.get(0);
         tidNode4 = (TId)nodeArrayList2.get(0);
 
-        pelemNode1 = new AElem(pelemnameNode2, null, tidNode4, null);
+        pelemNode1 = new AElem(tidNode2, null, tidNode4, null);
         }
 	nodeList.add(pelemNode1);
         return nodeList;
@@ -8280,15 +8834,15 @@ public class Parser
         PElem pelemNode1;
         {
             // Block
-        PElemName pelemnameNode2;
+        TId tidNode2;
         PSpecifier pspecifierNode3;
         TId tidNode4;
         @SuppressWarnings("unused") Object nullNode5 = null;
-        pelemnameNode2 = (PElemName)nodeArrayList1.get(0);
+        tidNode2 = (TId)nodeArrayList1.get(0);
         pspecifierNode3 = (PSpecifier)nodeArrayList2.get(0);
         tidNode4 = (TId)nodeArrayList3.get(0);
 
-        pelemNode1 = new AElem(pelemnameNode2, pspecifierNode3, tidNode4, null);
+        pelemNode1 = new AElem(tidNode2, pspecifierNode3, tidNode4, null);
         }
 	nodeList.add(pelemNode1);
         return nodeList;
@@ -8332,15 +8886,15 @@ public class Parser
         PElem pelemNode1;
         {
             // Block
-        PElemName pelemnameNode2;
+        TId tidNode2;
         @SuppressWarnings("unused") Object nullNode3 = null;
         TId tidNode4;
         PUnOp punopNode5;
-        pelemnameNode2 = (PElemName)nodeArrayList1.get(0);
+        tidNode2 = (TId)nodeArrayList1.get(0);
         tidNode4 = (TId)nodeArrayList2.get(0);
         punopNode5 = (PUnOp)nodeArrayList3.get(0);
 
-        pelemNode1 = new AElem(pelemnameNode2, null, tidNode4, punopNode5);
+        pelemNode1 = new AElem(tidNode2, null, tidNode4, punopNode5);
         }
 	nodeList.add(pelemNode1);
         return nodeList;
@@ -8387,16 +8941,16 @@ public class Parser
         PElem pelemNode1;
         {
             // Block
-        PElemName pelemnameNode2;
+        TId tidNode2;
         PSpecifier pspecifierNode3;
         TId tidNode4;
         PUnOp punopNode5;
-        pelemnameNode2 = (PElemName)nodeArrayList1.get(0);
+        tidNode2 = (TId)nodeArrayList1.get(0);
         pspecifierNode3 = (PSpecifier)nodeArrayList2.get(0);
         tidNode4 = (TId)nodeArrayList3.get(0);
         punopNode5 = (PUnOp)nodeArrayList4.get(0);
 
-        pelemNode1 = new AElem(pelemnameNode2, pspecifierNode3, tidNode4, punopNode5);
+        pelemNode1 = new AElem(tidNode2, pspecifierNode3, tidNode4, punopNode5);
         }
 	nodeList.add(pelemNode1);
         return nodeList;
@@ -8413,21 +8967,9 @@ public class Parser
         @SuppressWarnings("unused") ArrayList nodeArrayList3 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PElemName pelemnameNode1;
-        {
-            // Block
-        TLBkt tlbktNode2;
-        TId tidNode3;
-        TRBkt trbktNode4;
-        TColon tcolonNode5;
-        tlbktNode2 = (TLBkt)nodeArrayList1.get(0);
-        tidNode3 = (TId)nodeArrayList2.get(0);
-        trbktNode4 = (TRBkt)nodeArrayList3.get(0);
-        tcolonNode5 = (TColon)nodeArrayList4.get(0);
-
-        pelemnameNode1 = new AElemName(tlbktNode2, tidNode3, trbktNode4, tcolonNode5);
-        }
-	nodeList.add(pelemnameNode1);
+        TId tidNode1;
+        tidNode1 = (TId)nodeArrayList2.get(0);
+	nodeList.add(tidNode1);
         return nodeList;
     }
 
@@ -8443,12 +8985,8 @@ public class Parser
         PSpecifier pspecifierNode1;
         {
             // Block
-        TTokenSpecifier ttokenspecifierNode2;
-        TDot tdotNode3;
-        ttokenspecifierNode2 = (TTokenSpecifier)nodeArrayList1.get(0);
-        tdotNode3 = (TDot)nodeArrayList2.get(0);
 
-        pspecifierNode1 = new ATokenSpecifier(ttokenspecifierNode2, tdotNode3);
+        pspecifierNode1 = new ATokenSpecifier();
         }
 	nodeList.add(pspecifierNode1);
         return nodeList;
@@ -8466,12 +9004,8 @@ public class Parser
         PSpecifier pspecifierNode1;
         {
             // Block
-        TProductionSpecifier tproductionspecifierNode2;
-        TDot tdotNode3;
-        tproductionspecifierNode2 = (TProductionSpecifier)nodeArrayList1.get(0);
-        tdotNode3 = (TDot)nodeArrayList2.get(0);
 
-        pspecifierNode1 = new AProductionSpecifier(tproductionspecifierNode2, tdotNode3);
+        pspecifierNode1 = new AProductionSpecifier();
         }
 	nodeList.add(pspecifierNode1);
         return nodeList;
@@ -8491,24 +9025,18 @@ public class Parser
         PAst pastNode1;
         {
             // Block
-        TAbstract tabstractNode2;
-        TSyntax tsyntaxNode3;
-        TTree ttreeNode4;
-        LinkedList listNode6 = new LinkedList();
-        tabstractNode2 = (TAbstract)nodeArrayList1.get(0);
-        tsyntaxNode3 = (TSyntax)nodeArrayList2.get(0);
-        ttreeNode4 = (TTree)nodeArrayList3.get(0);
+        LinkedList listNode3 = new LinkedList();
         {
             // Block
-        LinkedList listNode5 = new LinkedList();
-        listNode5 = (LinkedList)nodeArrayList4.get(0);
-	if(listNode5 != null)
+        LinkedList listNode2 = new LinkedList();
+        listNode2 = (LinkedList)nodeArrayList4.get(0);
+	if(listNode2 != null)
 	{
-	  listNode6.addAll(listNode5);
+	  listNode3.addAll(listNode2);
 	}
         }
 
-        pastNode1 = new AAst(tabstractNode2, tsyntaxNode3, ttreeNode4, listNode6);
+        pastNode1 = new AAst(listNode3);
         }
 	nodeList.add(pastNode1);
         return nodeList;
@@ -8529,15 +9057,19 @@ public class Parser
         {
             // Block
         TId tidNode2;
-        TEqual tequalNode3;
-        PAstAlts pastaltsNode4;
-        TSemicolon tsemicolonNode5;
+        LinkedList listNode4 = new LinkedList();
         tidNode2 = (TId)nodeArrayList1.get(0);
-        tequalNode3 = (TEqual)nodeArrayList2.get(0);
-        pastaltsNode4 = (PAstAlts)nodeArrayList3.get(0);
-        tsemicolonNode5 = (TSemicolon)nodeArrayList4.get(0);
+        {
+            // Block
+        LinkedList listNode3 = new LinkedList();
+        listNode3 = (LinkedList)nodeArrayList3.get(0);
+	if(listNode3 != null)
+	{
+	  listNode4.addAll(listNode3);
+	}
+        }
 
-        pastprodNode1 = new AAstProd(tidNode2, tequalNode3, pastaltsNode4, tsemicolonNode5);
+        pastprodNode1 = new AAstProd(tidNode2, listNode4);
         }
 	nodeList.add(pastprodNode1);
         return nodeList;
@@ -8551,19 +9083,17 @@ public class Parser
         @SuppressWarnings("hiding") ArrayList nodeList = new ArrayList();
 
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PAstAlts pastaltsNode1;
+        LinkedList listNode2 = new LinkedList();
         {
             // Block
-        PAstAlt pastaltNode2;
-        LinkedList listNode3 = new LinkedList();
-        pastaltNode2 = (PAstAlt)nodeArrayList1.get(0);
-        {
-            // Block
+        PAstAlt pastaltNode1;
+        pastaltNode1 = (PAstAlt)nodeArrayList1.get(0);
+	if(pastaltNode1 != null)
+	{
+	  listNode2.add(pastaltNode1);
+	}
         }
-
-        pastaltsNode1 = new AAstAlts(pastaltNode2, listNode3);
-        }
-	nodeList.add(pastaltsNode1);
+	nodeList.add(listNode2);
         return nodeList;
     }
 
@@ -8576,25 +9106,23 @@ public class Parser
 
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PAstAlts pastaltsNode1;
-        {
-            // Block
-        PAstAlt pastaltNode2;
-        LinkedList listNode4 = new LinkedList();
-        pastaltNode2 = (PAstAlt)nodeArrayList1.get(0);
-        {
-            // Block
         LinkedList listNode3 = new LinkedList();
-        listNode3 = (LinkedList)nodeArrayList2.get(0);
-	if(listNode3 != null)
+        {
+            // Block
+        PAstAlt pastaltNode1;
+        LinkedList listNode2 = new LinkedList();
+        pastaltNode1 = (PAstAlt)nodeArrayList1.get(0);
+        listNode2 = (LinkedList)nodeArrayList2.get(0);
+	if(pastaltNode1 != null)
 	{
-	  listNode4.addAll(listNode3);
+	  listNode3.add(pastaltNode1);
+	}
+	if(listNode2 != null)
+	{
+	  listNode3.addAll(listNode2);
 	}
         }
-
-        pastaltsNode1 = new AAstAlts(pastaltNode2, listNode4);
-        }
-	nodeList.add(pastaltsNode1);
+	nodeList.add(listNode3);
         return nodeList;
     }
 
@@ -8607,17 +9135,9 @@ public class Parser
 
         @SuppressWarnings("unused") ArrayList nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList nodeArrayList1 = pop();
-        PAstAltsTail pastaltstailNode1;
-        {
-            // Block
-        TBar tbarNode2;
-        PAstAlt pastaltNode3;
-        tbarNode2 = (TBar)nodeArrayList1.get(0);
-        pastaltNode3 = (PAstAlt)nodeArrayList2.get(0);
-
-        pastaltstailNode1 = new AAstAltsTail(tbarNode2, pastaltNode3);
-        }
-	nodeList.add(pastaltstailNode1);
+        PAstAlt pastaltNode1;
+        pastaltNode1 = (PAstAlt)nodeArrayList2.get(0);
+	nodeList.add(pastaltNode1);
         return nodeList;
     }
 
@@ -8654,14 +9174,14 @@ public class Parser
         PAstAlt pastaltNode1;
         {
             // Block
-        PAltName paltnameNode2;
+        TId tidNode2;
         LinkedList listNode3 = new LinkedList();
-        paltnameNode2 = (PAltName)nodeArrayList1.get(0);
+        tidNode2 = (TId)nodeArrayList1.get(0);
         {
             // Block
         }
 
-        pastaltNode1 = new AAstAlt(paltnameNode2, listNode3);
+        pastaltNode1 = new AAstAlt(tidNode2, listNode3);
         }
 	nodeList.add(pastaltNode1);
         return nodeList;
@@ -8708,9 +9228,9 @@ public class Parser
         PAstAlt pastaltNode1;
         {
             // Block
-        PAltName paltnameNode2;
+        TId tidNode2;
         LinkedList listNode4 = new LinkedList();
-        paltnameNode2 = (PAltName)nodeArrayList1.get(0);
+        tidNode2 = (TId)nodeArrayList1.get(0);
         {
             // Block
         LinkedList listNode3 = new LinkedList();
@@ -8721,7 +9241,7 @@ public class Parser
 	}
         }
 
-        pastaltNode1 = new AAstAlt(paltnameNode2, listNode4);
+        pastaltNode1 = new AAstAlt(tidNode2, listNode4);
         }
 	nodeList.add(pastaltNode1);
         return nodeList;
@@ -8738,11 +9258,11 @@ public class Parser
         LinkedList listNode2 = new LinkedList();
         {
             // Block
-        PPkgNameTail ppkgnametailNode1;
-        ppkgnametailNode1 = (PPkgNameTail)nodeArrayList1.get(0);
-	if(ppkgnametailNode1 != null)
+        TPkgId tpkgidNode1;
+        tpkgidNode1 = (TPkgId)nodeArrayList1.get(0);
+	if(tpkgidNode1 != null)
 	{
-	  listNode2.add(ppkgnametailNode1);
+	  listNode2.add(tpkgidNode1);
 	}
         }
 	nodeList.add(listNode2);
@@ -8762,16 +9282,16 @@ public class Parser
         {
             // Block
         LinkedList listNode1 = new LinkedList();
-        PPkgNameTail ppkgnametailNode2;
+        TPkgId tpkgidNode2;
         listNode1 = (LinkedList)nodeArrayList1.get(0);
-        ppkgnametailNode2 = (PPkgNameTail)nodeArrayList2.get(0);
+        tpkgidNode2 = (TPkgId)nodeArrayList2.get(0);
 	if(listNode1 != null)
 	{
 	  listNode3.addAll(listNode1);
 	}
-	if(ppkgnametailNode2 != null)
+	if(tpkgidNode2 != null)
 	{
-	  listNode3.add(ppkgnametailNode2);
+	  listNode3.add(tpkgidNode2);
 	}
         }
 	nodeList.add(listNode3);
@@ -8840,11 +9360,11 @@ public class Parser
         LinkedList listNode2 = new LinkedList();
         {
             // Block
-        PIdListTail pidlisttailNode1;
-        pidlisttailNode1 = (PIdListTail)nodeArrayList1.get(0);
-	if(pidlisttailNode1 != null)
+        TId tidNode1;
+        tidNode1 = (TId)nodeArrayList1.get(0);
+	if(tidNode1 != null)
 	{
-	  listNode2.add(pidlisttailNode1);
+	  listNode2.add(tidNode1);
 	}
         }
 	nodeList.add(listNode2);
@@ -8864,16 +9384,16 @@ public class Parser
         {
             // Block
         LinkedList listNode1 = new LinkedList();
-        PIdListTail pidlisttailNode2;
+        TId tidNode2;
         listNode1 = (LinkedList)nodeArrayList1.get(0);
-        pidlisttailNode2 = (PIdListTail)nodeArrayList2.get(0);
+        tidNode2 = (TId)nodeArrayList2.get(0);
 	if(listNode1 != null)
 	{
 	  listNode3.addAll(listNode1);
 	}
-	if(pidlisttailNode2 != null)
+	if(tidNode2 != null)
 	{
-	  listNode3.add(pidlisttailNode2);
+	  listNode3.add(tidNode2);
 	}
         }
 	nodeList.add(listNode3);
@@ -8993,11 +9513,11 @@ public class Parser
         LinkedList listNode2 = new LinkedList();
         {
             // Block
-        PRegExpTail pregexptailNode1;
-        pregexptailNode1 = (PRegExpTail)nodeArrayList1.get(0);
-	if(pregexptailNode1 != null)
+        PConcat pconcatNode1;
+        pconcatNode1 = (PConcat)nodeArrayList1.get(0);
+	if(pconcatNode1 != null)
 	{
-	  listNode2.add(pregexptailNode1);
+	  listNode2.add(pconcatNode1);
 	}
         }
 	nodeList.add(listNode2);
@@ -9017,16 +9537,16 @@ public class Parser
         {
             // Block
         LinkedList listNode1 = new LinkedList();
-        PRegExpTail pregexptailNode2;
+        PConcat pconcatNode2;
         listNode1 = (LinkedList)nodeArrayList1.get(0);
-        pregexptailNode2 = (PRegExpTail)nodeArrayList2.get(0);
+        pconcatNode2 = (PConcat)nodeArrayList2.get(0);
 	if(listNode1 != null)
 	{
 	  listNode3.addAll(listNode1);
 	}
-	if(pregexptailNode2 != null)
+	if(pconcatNode2 != null)
 	{
-	  listNode3.add(pregexptailNode2);
+	  listNode3.add(pconcatNode2);
 	}
         }
 	nodeList.add(listNode3);
@@ -9197,11 +9717,11 @@ public class Parser
         LinkedList listNode2 = new LinkedList();
         {
             // Block
-        PAltsTail paltstailNode1;
-        paltstailNode1 = (PAltsTail)nodeArrayList1.get(0);
-	if(paltstailNode1 != null)
+        PAlt paltNode1;
+        paltNode1 = (PAlt)nodeArrayList1.get(0);
+	if(paltNode1 != null)
 	{
-	  listNode2.add(paltstailNode1);
+	  listNode2.add(paltNode1);
 	}
         }
 	nodeList.add(listNode2);
@@ -9221,16 +9741,16 @@ public class Parser
         {
             // Block
         LinkedList listNode1 = new LinkedList();
-        PAltsTail paltstailNode2;
+        PAlt paltNode2;
         listNode1 = (LinkedList)nodeArrayList1.get(0);
-        paltstailNode2 = (PAltsTail)nodeArrayList2.get(0);
+        paltNode2 = (PAlt)nodeArrayList2.get(0);
 	if(listNode1 != null)
 	{
 	  listNode3.addAll(listNode1);
 	}
-	if(paltstailNode2 != null)
+	if(paltNode2 != null)
 	{
-	  listNode3.add(paltstailNode2);
+	  listNode3.add(paltNode2);
 	}
         }
 	nodeList.add(listNode3);
@@ -9299,11 +9819,11 @@ public class Parser
         LinkedList listNode2 = new LinkedList();
         {
             // Block
-        PListTermTail plisttermtailNode1;
-        plisttermtailNode1 = (PListTermTail)nodeArrayList1.get(0);
-	if(plisttermtailNode1 != null)
+        PListTerm plisttermNode1;
+        plisttermNode1 = (PListTerm)nodeArrayList1.get(0);
+	if(plisttermNode1 != null)
 	{
-	  listNode2.add(plisttermtailNode1);
+	  listNode2.add(plisttermNode1);
 	}
         }
 	nodeList.add(listNode2);
@@ -9323,16 +9843,16 @@ public class Parser
         {
             // Block
         LinkedList listNode1 = new LinkedList();
-        PListTermTail plisttermtailNode2;
+        PListTerm plisttermNode2;
         listNode1 = (LinkedList)nodeArrayList1.get(0);
-        plisttermtailNode2 = (PListTermTail)nodeArrayList2.get(0);
+        plisttermNode2 = (PListTerm)nodeArrayList2.get(0);
 	if(listNode1 != null)
 	{
 	  listNode3.addAll(listNode1);
 	}
-	if(plisttermtailNode2 != null)
+	if(plisttermNode2 != null)
 	{
-	  listNode3.add(plisttermtailNode2);
+	  listNode3.add(plisttermNode2);
 	}
         }
 	nodeList.add(listNode3);
@@ -9350,11 +9870,11 @@ public class Parser
         LinkedList listNode2 = new LinkedList();
         {
             // Block
-        PParamsTail pparamstailNode1;
-        pparamstailNode1 = (PParamsTail)nodeArrayList1.get(0);
-	if(pparamstailNode1 != null)
+        PTerm ptermNode1;
+        ptermNode1 = (PTerm)nodeArrayList1.get(0);
+	if(ptermNode1 != null)
 	{
-	  listNode2.add(pparamstailNode1);
+	  listNode2.add(ptermNode1);
 	}
         }
 	nodeList.add(listNode2);
@@ -9374,16 +9894,16 @@ public class Parser
         {
             // Block
         LinkedList listNode1 = new LinkedList();
-        PParamsTail pparamstailNode2;
+        PTerm ptermNode2;
         listNode1 = (LinkedList)nodeArrayList1.get(0);
-        pparamstailNode2 = (PParamsTail)nodeArrayList2.get(0);
+        ptermNode2 = (PTerm)nodeArrayList2.get(0);
 	if(listNode1 != null)
 	{
 	  listNode3.addAll(listNode1);
 	}
-	if(pparamstailNode2 != null)
+	if(ptermNode2 != null)
 	{
-	  listNode3.add(pparamstailNode2);
+	  listNode3.add(ptermNode2);
 	}
         }
 	nodeList.add(listNode3);
@@ -9452,11 +9972,11 @@ public class Parser
         LinkedList listNode2 = new LinkedList();
         {
             // Block
-        PAstAltsTail pastaltstailNode1;
-        pastaltstailNode1 = (PAstAltsTail)nodeArrayList1.get(0);
-	if(pastaltstailNode1 != null)
+        PAstAlt pastaltNode1;
+        pastaltNode1 = (PAstAlt)nodeArrayList1.get(0);
+	if(pastaltNode1 != null)
 	{
-	  listNode2.add(pastaltstailNode1);
+	  listNode2.add(pastaltNode1);
 	}
         }
 	nodeList.add(listNode2);
@@ -9476,16 +9996,16 @@ public class Parser
         {
             // Block
         LinkedList listNode1 = new LinkedList();
-        PAstAltsTail pastaltstailNode2;
+        PAstAlt pastaltNode2;
         listNode1 = (LinkedList)nodeArrayList1.get(0);
-        pastaltstailNode2 = (PAstAltsTail)nodeArrayList2.get(0);
+        pastaltNode2 = (PAstAlt)nodeArrayList2.get(0);
 	if(listNode1 != null)
 	{
 	  listNode3.addAll(listNode1);
 	}
-	if(pastaltstailNode2 != null)
+	if(pastaltNode2 != null)
 	{
-	  listNode3.add(pastaltstailNode2);
+	  listNode3.add(pastaltNode2);
 	}
         }
 	nodeList.add(listNode3);

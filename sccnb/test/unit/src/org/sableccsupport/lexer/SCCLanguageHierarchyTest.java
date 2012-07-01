@@ -28,7 +28,7 @@ public class SCCLanguageHierarchyTest {
 
 	@Test
 	public void testGetToken() {
-		SCCTokenId tid;
+		SCCLexerTokenId tid;
 		for (int i = -1; i<10; ++i)
 		{
 			tid = SCCLanguageHierarchy.getToken(i);

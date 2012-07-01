@@ -7,11 +7,9 @@ import org.sableccsupport.sccparser.analysis.*;
 @SuppressWarnings("nls")
 public final class AOperationSet extends PSet
 {
-    private TLBkt _lBkt_;
     private PBasic _left_;
     private PBinOp _binOp_;
     private PBasic _right_;
-    private TRBkt _rBkt_;
 
     public AOperationSet()
     {
@@ -19,22 +17,16 @@ public final class AOperationSet extends PSet
     }
 
     public AOperationSet(
-        @SuppressWarnings("hiding") TLBkt _lBkt_,
         @SuppressWarnings("hiding") PBasic _left_,
         @SuppressWarnings("hiding") PBinOp _binOp_,
-        @SuppressWarnings("hiding") PBasic _right_,
-        @SuppressWarnings("hiding") TRBkt _rBkt_)
+        @SuppressWarnings("hiding") PBasic _right_)
     {
         // Constructor
-        setLBkt(_lBkt_);
-
         setLeft(_left_);
 
         setBinOp(_binOp_);
 
         setRight(_right_);
-
-        setRBkt(_rBkt_);
 
     }
 
@@ -42,41 +34,14 @@ public final class AOperationSet extends PSet
     public Object clone()
     {
         return new AOperationSet(
-            cloneNode(this._lBkt_),
             cloneNode(this._left_),
             cloneNode(this._binOp_),
-            cloneNode(this._right_),
-            cloneNode(this._rBkt_));
+            cloneNode(this._right_));
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAOperationSet(this);
-    }
-
-    public TLBkt getLBkt()
-    {
-        return this._lBkt_;
-    }
-
-    public void setLBkt(TLBkt node)
-    {
-        if(this._lBkt_ != null)
-        {
-            this._lBkt_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._lBkt_ = node;
     }
 
     public PBasic getLeft()
@@ -154,52 +119,19 @@ public final class AOperationSet extends PSet
         this._right_ = node;
     }
 
-    public TRBkt getRBkt()
-    {
-        return this._rBkt_;
-    }
-
-    public void setRBkt(TRBkt node)
-    {
-        if(this._rBkt_ != null)
-        {
-            this._rBkt_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._rBkt_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
-            + toString(this._lBkt_)
             + toString(this._left_)
             + toString(this._binOp_)
-            + toString(this._right_)
-            + toString(this._rBkt_);
+            + toString(this._right_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._lBkt_ == child)
-        {
-            this._lBkt_ = null;
-            return;
-        }
-
         if(this._left_ == child)
         {
             this._left_ = null;
@@ -218,12 +150,6 @@ public final class AOperationSet extends PSet
             return;
         }
 
-        if(this._rBkt_ == child)
-        {
-            this._rBkt_ = null;
-            return;
-        }
-
         throw new RuntimeException("Not a child.");
     }
 
@@ -231,12 +157,6 @@ public final class AOperationSet extends PSet
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._lBkt_ == oldChild)
-        {
-            setLBkt((TLBkt) newChild);
-            return;
-        }
-
         if(this._left_ == oldChild)
         {
             setLeft((PBasic) newChild);
@@ -252,12 +172,6 @@ public final class AOperationSet extends PSet
         if(this._right_ == oldChild)
         {
             setRight((PBasic) newChild);
-            return;
-        }
-
-        if(this._rBkt_ == oldChild)
-        {
-            setRBkt((TRBkt) newChild);
             return;
         }
 
