@@ -9,5 +9,7 @@ so it hat version number 0. The second one is the minor
 number of version. I increment it if the plug-in has some new features.
 
 
-
+change in version notation
+the last two digits denote the version of SableCC, which is used 
+in the plugin.
 
