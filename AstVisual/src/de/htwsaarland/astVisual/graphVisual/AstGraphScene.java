@@ -106,7 +106,7 @@ public class AstGraphScene
 		//ConnectionWidget nodeWidget = new ConnectionWidget (this);
         widget.setTargetAnchorShape (AnchorShape.TRIANGLE_FILLED);
 			
-		// TODO classsify the edge using a method
+		// classsify the edge using a method
 		widget.setLineColor(EdgeClass.mapToColor(edge.getEdgeClass()) );
 		// set color of the edge green
         
