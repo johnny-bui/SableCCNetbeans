@@ -10,6 +10,8 @@ import java.io.PushbackReader;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.netbeans.modules.csl.api.Error;
 import org.netbeans.modules.csl.api.Severity;
 import org.netbeans.modules.parsing.api.Snapshot;
@@ -43,18 +45,26 @@ public class SCCParserWrapper {
 		this.sns = sns;
 	}
 	
-	private void recoverParseErr(ParserException ex) throws IOException
+	private void recoverParseErr(ParserException ex) 
 	{
 		parseError.add(ex);
+		/*
 		try {
-			Token t = lex.next();
+			Token t = lex.peek();
+			Logger.getLogger (SCCParserWrapper.class.getName()).log 
+					(Level.INFO, "Last read Token:>>" + t.getText() + " "+ t.getLine() + "<<", ex);
+			t = lex.next();
 			int idx = tokenIdxConverter.indexOf(t);
-			while (idx < ParserTokenId.EOF.idx() // skip to next semicolon
-					&& idx != ParserTokenId.SEMICOLON.idx()
-					 )
+			while (idx != ParserTokenId.SEMICOLON.idx())
 			{
-				idx=  tokenIdxConverter.indexOf(lex.next());
+				t = lex.next();
+				idx =  tokenIdxConverter.indexOf(t);
+				if (idx == ParserTokenId.EOF.idx())
+				{
+					break;
+				}
 			}
+			//lex.next();
 			parser.parse();
 		}catch (ParserException ex1)
 		{
@@ -68,19 +78,25 @@ public class SCCParserWrapper {
 			parser = new Parser(lex);
 			parse();
 		}
+		*/
+		 
 	}
 	
-	private void recoverLexErr(LexerException ex) throws IOException
+	private void recoverLexErr(LexerException ex) 
 	{
 		lexError.add(ex);
+		/*
 		try {
 			Token t = lex.next();
 			int idx = tokenIdxConverter.indexOf(t);
-			while (idx < ParserTokenId.EOF.idx() // skip to next semicolon
-					&& idx != ParserTokenId.SEMICOLON.idx()
-					)
+			while (idx != ParserTokenId.SEMICOLON.idx())
 			{
-				idx=  tokenIdxConverter.indexOf(lex.next());
+				t = lex.next();
+				idx =  tokenIdxConverter.indexOf(t);
+				if (idx == ParserTokenId.EOF.idx())
+				{
+					break;
+				}
 			}
 			parser.parse();
 		} catch (LexerException ex1) {
@@ -95,9 +111,11 @@ public class SCCParserWrapper {
 			parser = new Parser(lex);
 			parse();
 		}
+		*/
+		 
 	}
 	
-	public void parse() throws IOException
+	public void parse() 
 	{
 		try {
 			parser.parse();
