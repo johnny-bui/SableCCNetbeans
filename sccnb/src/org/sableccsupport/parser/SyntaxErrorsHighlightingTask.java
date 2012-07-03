@@ -12,6 +12,7 @@ import org.netbeans.spi.editor.hints.ErrorDescriptionFactory;
 import org.netbeans.spi.editor.hints.HintsController;
 import org.netbeans.spi.editor.hints.Severity;
 import org.sableccsupport.parser.SCCParser.SCCParserResult;
+import org.sableccsupport.sccparser.node.Token;
 import org.sableccsupport.sccparser.parser.ParserException;
 
 /**
@@ -35,7 +36,8 @@ public class SyntaxErrorsHighlightingTask extends ParserResultTask
 			List<ParserException> excepts = sccParserResult.getPError();
 			for(ParserException pex : excepts)
 			{
-				String message = pex.getMessage();
+				Token t = pex.getToken();
+				String message = pex.getMessage() + t.getLine();
 				int line = pex.getToken().getLine();
 				
 				ErrorDescription errorDescription = ErrorDescriptionFactory.createErrorDescription(
