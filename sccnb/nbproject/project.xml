@@ -211,7 +211,6 @@
                 </test-type>
             </test-dependencies>
             <public-packages>
-<<<<<<< HEAD
                 <package>org.jivesoftware.smack</package>
                 <package>org.jivesoftware.smack.debugger</package>
                 <package>org.jivesoftware.smack.filter</package>
@@ -222,7 +221,6 @@
                 <package>org.jivesoftware.smack.util</package>
                 <package>org.jivesoftware.smack.util.collections</package>
                 <package>org.sablecc.sablecc</package>
-=======
                 <package>org.sablecc.ant.taskdef</package>
                 <package>org.sablecc.sablecc</package>
                 <package>org.sablecc.sablecc.analysis</package>
@@ -233,7 +231,6 @@
                 <package>org.sableccsupport.action</package>
                 <package>org.sableccsupport.lexer</package>
                 <package>org.sableccsupport.parser</package>
->>>>>>> parser
                 <package>org.xmlpull.mxp1</package>
                 <package>org.xmlpull.v1</package>
             </public-packages>
