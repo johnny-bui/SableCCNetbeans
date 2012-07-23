@@ -9,7 +9,6 @@ import org.sableccsupport.sccparser.analysis.*;
 public final class AAltTransform extends PAltTransform
 {
     private TLBrace _lBrace_;
-    private TArrow _arrow_;
     private final LinkedList<PTerm> _terms_ = new LinkedList<PTerm>();
     private TRBrace _rBrace_;
 
@@ -20,14 +19,11 @@ public final class AAltTransform extends PAltTransform
 
     public AAltTransform(
         @SuppressWarnings("hiding") TLBrace _lBrace_,
-        @SuppressWarnings("hiding") TArrow _arrow_,
         @SuppressWarnings("hiding") List<PTerm> _terms_,
         @SuppressWarnings("hiding") TRBrace _rBrace_)
     {
         // Constructor
         setLBrace(_lBrace_);
-
-        setArrow(_arrow_);
 
         setTerms(_terms_);
 
@@ -40,7 +36,6 @@ public final class AAltTransform extends PAltTransform
     {
         return new AAltTransform(
             cloneNode(this._lBrace_),
-            cloneNode(this._arrow_),
             cloneList(this._terms_),
             cloneNode(this._rBrace_));
     }
@@ -73,31 +68,6 @@ public final class AAltTransform extends PAltTransform
         }
 
         this._lBrace_ = node;
-    }
-
-    public TArrow getArrow()
-    {
-        return this._arrow_;
-    }
-
-    public void setArrow(TArrow node)
-    {
-        if(this._arrow_ != null)
-        {
-            this._arrow_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._arrow_ = node;
     }
 
     public LinkedList<PTerm> getTerms()
@@ -150,7 +120,6 @@ public final class AAltTransform extends PAltTransform
     {
         return ""
             + toString(this._lBrace_)
-            + toString(this._arrow_)
             + toString(this._terms_)
             + toString(this._rBrace_);
     }
@@ -162,12 +131,6 @@ public final class AAltTransform extends PAltTransform
         if(this._lBrace_ == child)
         {
             this._lBrace_ = null;
-            return;
-        }
-
-        if(this._arrow_ == child)
-        {
-            this._arrow_ = null;
             return;
         }
 
@@ -192,12 +155,6 @@ public final class AAltTransform extends PAltTransform
         if(this._lBrace_ == oldChild)
         {
             setLBrace((TLBrace) newChild);
-            return;
-        }
-
-        if(this._arrow_ == oldChild)
-        {
-            setArrow((TArrow) newChild);
             return;
         }
 

@@ -7,9 +7,7 @@ import org.sableccsupport.sccparser.analysis.*;
 @SuppressWarnings("nls")
 public final class ARegExpBasic extends PBasic
 {
-    private TLPar _lPar_;
     private PRegExp _regExp_;
-    private TRPar _rPar_;
 
     public ARegExpBasic()
     {
@@ -17,16 +15,10 @@ public final class ARegExpBasic extends PBasic
     }
 
     public ARegExpBasic(
-        @SuppressWarnings("hiding") TLPar _lPar_,
-        @SuppressWarnings("hiding") PRegExp _regExp_,
-        @SuppressWarnings("hiding") TRPar _rPar_)
+        @SuppressWarnings("hiding") PRegExp _regExp_)
     {
         // Constructor
-        setLPar(_lPar_);
-
         setRegExp(_regExp_);
-
-        setRPar(_rPar_);
 
     }
 
@@ -34,39 +26,12 @@ public final class ARegExpBasic extends PBasic
     public Object clone()
     {
         return new ARegExpBasic(
-            cloneNode(this._lPar_),
-            cloneNode(this._regExp_),
-            cloneNode(this._rPar_));
+            cloneNode(this._regExp_));
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseARegExpBasic(this);
-    }
-
-    public TLPar getLPar()
-    {
-        return this._lPar_;
-    }
-
-    public void setLPar(TLPar node)
-    {
-        if(this._lPar_ != null)
-        {
-            this._lPar_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._lPar_ = node;
     }
 
     public PRegExp getRegExp()
@@ -94,59 +59,20 @@ public final class ARegExpBasic extends PBasic
         this._regExp_ = node;
     }
 
-    public TRPar getRPar()
-    {
-        return this._rPar_;
-    }
-
-    public void setRPar(TRPar node)
-    {
-        if(this._rPar_ != null)
-        {
-            this._rPar_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._rPar_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
-            + toString(this._lPar_)
-            + toString(this._regExp_)
-            + toString(this._rPar_);
+            + toString(this._regExp_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._lPar_ == child)
-        {
-            this._lPar_ = null;
-            return;
-        }
-
         if(this._regExp_ == child)
         {
             this._regExp_ = null;
-            return;
-        }
-
-        if(this._rPar_ == child)
-        {
-            this._rPar_ = null;
             return;
         }
 
@@ -157,21 +83,9 @@ public final class ARegExpBasic extends PBasic
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._lPar_ == oldChild)
-        {
-            setLPar((TLPar) newChild);
-            return;
-        }
-
         if(this._regExp_ == oldChild)
         {
             setRegExp((PRegExp) newChild);
-            return;
-        }
-
-        if(this._rPar_ == oldChild)
-        {
-            setRPar((TRPar) newChild);
             return;
         }
 

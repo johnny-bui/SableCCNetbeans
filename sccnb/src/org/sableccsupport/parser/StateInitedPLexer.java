@@ -2,27 +2,25 @@ package org.sableccsupport.parser;
 
 import java.io.PushbackReader;
 import org.sableccsupport.sccparser.lexer.Lexer;
-import org.sableccsupport.sccparser.node.Token;
 
 /**
  *
  * @author phucluoi
  */
-public class ExtendLexerToken extends Lexer
+public class StateInitedPLexer extends Lexer
 {
-	public ExtendLexerToken(PushbackReader reader)
+	public StateInitedPLexer(PushbackReader reader, Lexer.State state)
 	{
 		super(reader);
+		this.state = state;
 	}
 	public Lexer.State getState()
 	{
 		return this.state;
 	}
-	
-	@Override
-	public Token getToken()
+	public String getText()
 	{
-		return this.token;
+		return this.text.toString();
 	}
 
 }

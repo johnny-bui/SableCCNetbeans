@@ -8,7 +8,6 @@ import org.sableccsupport.sccparser.analysis.*;
 @SuppressWarnings("nls")
 public final class AProductions extends PProductions
 {
-    private TProductions _productions_;
     private final LinkedList<PProd> _prods_ = new LinkedList<PProd>();
 
     public AProductions()
@@ -17,12 +16,9 @@ public final class AProductions extends PProductions
     }
 
     public AProductions(
-        @SuppressWarnings("hiding") TProductions _productions_,
         @SuppressWarnings("hiding") List<PProd> _prods_)
     {
         // Constructor
-        setProductions(_productions_);
-
         setProds(_prods_);
 
     }
@@ -31,38 +27,12 @@ public final class AProductions extends PProductions
     public Object clone()
     {
         return new AProductions(
-            cloneNode(this._productions_),
             cloneList(this._prods_));
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAProductions(this);
-    }
-
-    public TProductions getProductions()
-    {
-        return this._productions_;
-    }
-
-    public void setProductions(TProductions node)
-    {
-        if(this._productions_ != null)
-        {
-            this._productions_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._productions_ = node;
     }
 
     public LinkedList<PProd> getProds()
@@ -89,7 +59,6 @@ public final class AProductions extends PProductions
     public String toString()
     {
         return ""
-            + toString(this._productions_)
             + toString(this._prods_);
     }
 
@@ -97,12 +66,6 @@ public final class AProductions extends PProductions
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._productions_ == child)
-        {
-            this._productions_ = null;
-            return;
-        }
-
         if(this._prods_.remove(child))
         {
             return;
@@ -115,12 +78,6 @@ public final class AProductions extends PProductions
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._productions_ == oldChild)
-        {
-            setProductions((TProductions) newChild);
-            return;
-        }
-
         for(ListIterator<PProd> i = this._prods_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)

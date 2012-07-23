@@ -2,15 +2,13 @@
 
 package org.sableccsupport.sccparser.node;
 
+import java.util.*;
 import org.sableccsupport.sccparser.analysis.*;
 
 @SuppressWarnings("nls")
 public final class AIgnTokens extends PIgnTokens
 {
-    private TIgnored _ignored_;
-    private TTokens _tokens_;
-    private PIdList _idList_;
-    private TSemicolon _semicolon_;
+    private final LinkedList<TId> _listId_ = new LinkedList<TId>();
 
     public AIgnTokens()
     {
@@ -18,19 +16,10 @@ public final class AIgnTokens extends PIgnTokens
     }
 
     public AIgnTokens(
-        @SuppressWarnings("hiding") TIgnored _ignored_,
-        @SuppressWarnings("hiding") TTokens _tokens_,
-        @SuppressWarnings("hiding") PIdList _idList_,
-        @SuppressWarnings("hiding") TSemicolon _semicolon_)
+        @SuppressWarnings("hiding") List<TId> _listId_)
     {
         // Constructor
-        setIgnored(_ignored_);
-
-        setTokens(_tokens_);
-
-        setIdList(_idList_);
-
-        setSemicolon(_semicolon_);
+        setListId(_listId_);
 
     }
 
@@ -38,10 +27,7 @@ public final class AIgnTokens extends PIgnTokens
     public Object clone()
     {
         return new AIgnTokens(
-            cloneNode(this._ignored_),
-            cloneNode(this._tokens_),
-            cloneNode(this._idList_),
-            cloneNode(this._semicolon_));
+            cloneList(this._listId_));
     }
 
     public void apply(Switch sw)
@@ -49,141 +35,39 @@ public final class AIgnTokens extends PIgnTokens
         ((Analysis) sw).caseAIgnTokens(this);
     }
 
-    public TIgnored getIgnored()
+    public LinkedList<TId> getListId()
     {
-        return this._ignored_;
+        return this._listId_;
     }
 
-    public void setIgnored(TIgnored node)
+    public void setListId(List<TId> list)
     {
-        if(this._ignored_ != null)
+        this._listId_.clear();
+        this._listId_.addAll(list);
+        for(TId e : list)
         {
-            this._ignored_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
         }
-
-        this._ignored_ = node;
-    }
-
-    public TTokens getTokens()
-    {
-        return this._tokens_;
-    }
-
-    public void setTokens(TTokens node)
-    {
-        if(this._tokens_ != null)
-        {
-            this._tokens_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._tokens_ = node;
-    }
-
-    public PIdList getIdList()
-    {
-        return this._idList_;
-    }
-
-    public void setIdList(PIdList node)
-    {
-        if(this._idList_ != null)
-        {
-            this._idList_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._idList_ = node;
-    }
-
-    public TSemicolon getSemicolon()
-    {
-        return this._semicolon_;
-    }
-
-    public void setSemicolon(TSemicolon node)
-    {
-        if(this._semicolon_ != null)
-        {
-            this._semicolon_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._semicolon_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._ignored_)
-            + toString(this._tokens_)
-            + toString(this._idList_)
-            + toString(this._semicolon_);
+            + toString(this._listId_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._ignored_ == child)
+        if(this._listId_.remove(child))
         {
-            this._ignored_ = null;
-            return;
-        }
-
-        if(this._tokens_ == child)
-        {
-            this._tokens_ = null;
-            return;
-        }
-
-        if(this._idList_ == child)
-        {
-            this._idList_ = null;
-            return;
-        }
-
-        if(this._semicolon_ == child)
-        {
-            this._semicolon_ = null;
             return;
         }
 
@@ -194,28 +78,22 @@ public final class AIgnTokens extends PIgnTokens
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._ignored_ == oldChild)
+        for(ListIterator<TId> i = this._listId_.listIterator(); i.hasNext();)
         {
-            setIgnored((TIgnored) newChild);
-            return;
-        }
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((TId) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
 
-        if(this._tokens_ == oldChild)
-        {
-            setTokens((TTokens) newChild);
-            return;
-        }
-
-        if(this._idList_ == oldChild)
-        {
-            setIdList((PIdList) newChild);
-            return;
-        }
-
-        if(this._semicolon_ == oldChild)
-        {
-            setSemicolon((TSemicolon) newChild);
-            return;
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         throw new RuntimeException("Not a child.");

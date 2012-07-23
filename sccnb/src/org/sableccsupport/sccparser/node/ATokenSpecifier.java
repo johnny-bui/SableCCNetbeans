@@ -7,31 +7,16 @@ import org.sableccsupport.sccparser.analysis.*;
 @SuppressWarnings("nls")
 public final class ATokenSpecifier extends PSpecifier
 {
-    private TTokenSpecifier _tokenSpecifier_;
-    private TDot _dot_;
 
     public ATokenSpecifier()
     {
         // Constructor
     }
 
-    public ATokenSpecifier(
-        @SuppressWarnings("hiding") TTokenSpecifier _tokenSpecifier_,
-        @SuppressWarnings("hiding") TDot _dot_)
-    {
-        // Constructor
-        setTokenSpecifier(_tokenSpecifier_);
-
-        setDot(_dot_);
-
-    }
-
     @Override
     public Object clone()
     {
-        return new ATokenSpecifier(
-            cloneNode(this._tokenSpecifier_),
-            cloneNode(this._dot_));
+        return new ATokenSpecifier();
     }
 
     public void apply(Switch sw)
@@ -39,80 +24,16 @@ public final class ATokenSpecifier extends PSpecifier
         ((Analysis) sw).caseATokenSpecifier(this);
     }
 
-    public TTokenSpecifier getTokenSpecifier()
-    {
-        return this._tokenSpecifier_;
-    }
-
-    public void setTokenSpecifier(TTokenSpecifier node)
-    {
-        if(this._tokenSpecifier_ != null)
-        {
-            this._tokenSpecifier_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._tokenSpecifier_ = node;
-    }
-
-    public TDot getDot()
-    {
-        return this._dot_;
-    }
-
-    public void setDot(TDot node)
-    {
-        if(this._dot_ != null)
-        {
-            this._dot_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._dot_ = node;
-    }
-
     @Override
     public String toString()
     {
-        return ""
-            + toString(this._tokenSpecifier_)
-            + toString(this._dot_);
+        return "";
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._tokenSpecifier_ == child)
-        {
-            this._tokenSpecifier_ = null;
-            return;
-        }
-
-        if(this._dot_ == child)
-        {
-            this._dot_ = null;
-            return;
-        }
-
         throw new RuntimeException("Not a child.");
     }
 
@@ -120,18 +41,6 @@ public final class ATokenSpecifier extends PSpecifier
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._tokenSpecifier_ == oldChild)
-        {
-            setTokenSpecifier((TTokenSpecifier) newChild);
-            return;
-        }
-
-        if(this._dot_ == oldChild)
-        {
-            setDot((TDot) newChild);
-            return;
-        }
-
         throw new RuntimeException("Not a child.");
     }
 }

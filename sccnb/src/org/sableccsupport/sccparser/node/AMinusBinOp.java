@@ -7,26 +7,16 @@ import org.sableccsupport.sccparser.analysis.*;
 @SuppressWarnings("nls")
 public final class AMinusBinOp extends PBinOp
 {
-    private TMinus _minus_;
 
     public AMinusBinOp()
     {
         // Constructor
     }
 
-    public AMinusBinOp(
-        @SuppressWarnings("hiding") TMinus _minus_)
-    {
-        // Constructor
-        setMinus(_minus_);
-
-    }
-
     @Override
     public Object clone()
     {
-        return new AMinusBinOp(
-            cloneNode(this._minus_));
+        return new AMinusBinOp();
     }
 
     public void apply(Switch sw)
@@ -34,48 +24,16 @@ public final class AMinusBinOp extends PBinOp
         ((Analysis) sw).caseAMinusBinOp(this);
     }
 
-    public TMinus getMinus()
-    {
-        return this._minus_;
-    }
-
-    public void setMinus(TMinus node)
-    {
-        if(this._minus_ != null)
-        {
-            this._minus_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._minus_ = node;
-    }
-
     @Override
     public String toString()
     {
-        return ""
-            + toString(this._minus_);
+        return "";
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._minus_ == child)
-        {
-            this._minus_ = null;
-            return;
-        }
-
         throw new RuntimeException("Not a child.");
     }
 
@@ -83,12 +41,6 @@ public final class AMinusBinOp extends PBinOp
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._minus_ == oldChild)
-        {
-            setMinus((TMinus) newChild);
-            return;
-        }
-
         throw new RuntimeException("Not a child.");
     }
 }

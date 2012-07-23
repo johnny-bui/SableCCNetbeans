@@ -7,26 +7,16 @@ import org.sableccsupport.sccparser.analysis.*;
 @SuppressWarnings("nls")
 public final class APlusBinOp extends PBinOp
 {
-    private TPlus _plus_;
 
     public APlusBinOp()
     {
         // Constructor
     }
 
-    public APlusBinOp(
-        @SuppressWarnings("hiding") TPlus _plus_)
-    {
-        // Constructor
-        setPlus(_plus_);
-
-    }
-
     @Override
     public Object clone()
     {
-        return new APlusBinOp(
-            cloneNode(this._plus_));
+        return new APlusBinOp();
     }
 
     public void apply(Switch sw)
@@ -34,48 +24,16 @@ public final class APlusBinOp extends PBinOp
         ((Analysis) sw).caseAPlusBinOp(this);
     }
 
-    public TPlus getPlus()
-    {
-        return this._plus_;
-    }
-
-    public void setPlus(TPlus node)
-    {
-        if(this._plus_ != null)
-        {
-            this._plus_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._plus_ = node;
-    }
-
     @Override
     public String toString()
     {
-        return ""
-            + toString(this._plus_);
+        return "";
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._plus_ == child)
-        {
-            this._plus_ = null;
-            return;
-        }
-
         throw new RuntimeException("Not a child.");
     }
 
@@ -83,12 +41,6 @@ public final class APlusBinOp extends PBinOp
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._plus_ == oldChild)
-        {
-            setPlus((TPlus) newChild);
-            return;
-        }
-
         throw new RuntimeException("Not a child.");
     }
 }

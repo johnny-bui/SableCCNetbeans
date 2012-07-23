@@ -8,7 +8,6 @@ import org.sableccsupport.sccparser.analysis.*;
 @SuppressWarnings("nls")
 public final class AHelpers extends PHelpers
 {
-    private THelpers _helpers_;
     private final LinkedList<PHelperDef> _helperDefs_ = new LinkedList<PHelperDef>();
 
     public AHelpers()
@@ -17,12 +16,9 @@ public final class AHelpers extends PHelpers
     }
 
     public AHelpers(
-        @SuppressWarnings("hiding") THelpers _helpers_,
         @SuppressWarnings("hiding") List<PHelperDef> _helperDefs_)
     {
         // Constructor
-        setHelpers(_helpers_);
-
         setHelperDefs(_helperDefs_);
 
     }
@@ -31,38 +27,12 @@ public final class AHelpers extends PHelpers
     public Object clone()
     {
         return new AHelpers(
-            cloneNode(this._helpers_),
             cloneList(this._helperDefs_));
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAHelpers(this);
-    }
-
-    public THelpers getHelpers()
-    {
-        return this._helpers_;
-    }
-
-    public void setHelpers(THelpers node)
-    {
-        if(this._helpers_ != null)
-        {
-            this._helpers_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._helpers_ = node;
     }
 
     public LinkedList<PHelperDef> getHelperDefs()
@@ -89,7 +59,6 @@ public final class AHelpers extends PHelpers
     public String toString()
     {
         return ""
-            + toString(this._helpers_)
             + toString(this._helperDefs_);
     }
 
@@ -97,12 +66,6 @@ public final class AHelpers extends PHelpers
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._helpers_ == child)
-        {
-            this._helpers_ = null;
-            return;
-        }
-
         if(this._helperDefs_.remove(child))
         {
             return;
@@ -115,12 +78,6 @@ public final class AHelpers extends PHelpers
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._helpers_ == oldChild)
-        {
-            setHelpers((THelpers) newChild);
-            return;
-        }
-
         for(ListIterator<PHelperDef> i = this._helperDefs_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)

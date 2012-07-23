@@ -8,7 +8,7 @@ import org.sableccsupport.sccparser.analysis.*;
 public final class AProdName extends PProdName
 {
     private TId _id_;
-    private PProdNameTail _prodNameTail_;
+    private TId _prodNameTail_;
 
     public AProdName()
     {
@@ -17,7 +17,7 @@ public final class AProdName extends PProdName
 
     public AProdName(
         @SuppressWarnings("hiding") TId _id_,
-        @SuppressWarnings("hiding") PProdNameTail _prodNameTail_)
+        @SuppressWarnings("hiding") TId _prodNameTail_)
     {
         // Constructor
         setId(_id_);
@@ -64,12 +64,12 @@ public final class AProdName extends PProdName
         this._id_ = node;
     }
 
-    public PProdNameTail getProdNameTail()
+    public TId getProdNameTail()
     {
         return this._prodNameTail_;
     }
 
-    public void setProdNameTail(PProdNameTail node)
+    public void setProdNameTail(TId node)
     {
         if(this._prodNameTail_ != null)
         {
@@ -128,7 +128,7 @@ public final class AProdName extends PProdName
 
         if(this._prodNameTail_ == oldChild)
         {
-            setProdNameTail((PProdNameTail) newChild);
+            setProdNameTail((TId) newChild);
             return;
         }
 

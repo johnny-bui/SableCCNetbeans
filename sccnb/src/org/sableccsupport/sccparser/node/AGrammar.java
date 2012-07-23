@@ -2,12 +2,13 @@
 
 package org.sableccsupport.sccparser.node;
 
+import java.util.*;
 import org.sableccsupport.sccparser.analysis.*;
 
 @SuppressWarnings("nls")
 public final class AGrammar extends PGrammar
 {
-    private PPackage _package_;
+    private final LinkedList<TPkgId> _package_ = new LinkedList<TPkgId>();
     private PHelpers _helpers_;
     private PStates _states_;
     private PTokens _tokens_;
@@ -21,7 +22,7 @@ public final class AGrammar extends PGrammar
     }
 
     public AGrammar(
-        @SuppressWarnings("hiding") PPackage _package_,
+        @SuppressWarnings("hiding") List<TPkgId> _package_,
         @SuppressWarnings("hiding") PHelpers _helpers_,
         @SuppressWarnings("hiding") PStates _states_,
         @SuppressWarnings("hiding") PTokens _tokens_,
@@ -50,7 +51,7 @@ public final class AGrammar extends PGrammar
     public Object clone()
     {
         return new AGrammar(
-            cloneNode(this._package_),
+            cloneList(this._package_),
             cloneNode(this._helpers_),
             cloneNode(this._states_),
             cloneNode(this._tokens_),
@@ -64,29 +65,24 @@ public final class AGrammar extends PGrammar
         ((Analysis) sw).caseAGrammar(this);
     }
 
-    public PPackage getPackage()
+    public LinkedList<TPkgId> getPackage()
     {
         return this._package_;
     }
 
-    public void setPackage(PPackage node)
+    public void setPackage(List<TPkgId> list)
     {
-        if(this._package_ != null)
+        this._package_.clear();
+        this._package_.addAll(list);
+        for(TPkgId e : list)
         {
-            this._package_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
         }
-
-        this._package_ = node;
     }
 
     public PHelpers getHelpers()
@@ -256,9 +252,8 @@ public final class AGrammar extends PGrammar
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._package_ == child)
+        if(this._package_.remove(child))
         {
-            this._package_ = null;
             return;
         }
 
@@ -305,10 +300,22 @@ public final class AGrammar extends PGrammar
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._package_ == oldChild)
+        for(ListIterator<TPkgId> i = this._package_.listIterator(); i.hasNext();)
         {
-            setPackage((PPackage) newChild);
-            return;
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((TPkgId) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         if(this._helpers_ == oldChild)

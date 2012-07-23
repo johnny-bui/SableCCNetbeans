@@ -7,31 +7,16 @@ import org.sableccsupport.sccparser.analysis.*;
 @SuppressWarnings("nls")
 public final class AProductionSpecifier extends PSpecifier
 {
-    private TProductionSpecifier _productionSpecifier_;
-    private TDot _dot_;
 
     public AProductionSpecifier()
     {
         // Constructor
     }
 
-    public AProductionSpecifier(
-        @SuppressWarnings("hiding") TProductionSpecifier _productionSpecifier_,
-        @SuppressWarnings("hiding") TDot _dot_)
-    {
-        // Constructor
-        setProductionSpecifier(_productionSpecifier_);
-
-        setDot(_dot_);
-
-    }
-
     @Override
     public Object clone()
     {
-        return new AProductionSpecifier(
-            cloneNode(this._productionSpecifier_),
-            cloneNode(this._dot_));
+        return new AProductionSpecifier();
     }
 
     public void apply(Switch sw)
@@ -39,80 +24,16 @@ public final class AProductionSpecifier extends PSpecifier
         ((Analysis) sw).caseAProductionSpecifier(this);
     }
 
-    public TProductionSpecifier getProductionSpecifier()
-    {
-        return this._productionSpecifier_;
-    }
-
-    public void setProductionSpecifier(TProductionSpecifier node)
-    {
-        if(this._productionSpecifier_ != null)
-        {
-            this._productionSpecifier_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._productionSpecifier_ = node;
-    }
-
-    public TDot getDot()
-    {
-        return this._dot_;
-    }
-
-    public void setDot(TDot node)
-    {
-        if(this._dot_ != null)
-        {
-            this._dot_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._dot_ = node;
-    }
-
     @Override
     public String toString()
     {
-        return ""
-            + toString(this._productionSpecifier_)
-            + toString(this._dot_);
+        return "";
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._productionSpecifier_ == child)
-        {
-            this._productionSpecifier_ = null;
-            return;
-        }
-
-        if(this._dot_ == child)
-        {
-            this._dot_ = null;
-            return;
-        }
-
         throw new RuntimeException("Not a child.");
     }
 
@@ -120,18 +41,6 @@ public final class AProductionSpecifier extends PSpecifier
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._productionSpecifier_ == oldChild)
-        {
-            setProductionSpecifier((TProductionSpecifier) newChild);
-            return;
-        }
-
-        if(this._dot_ == oldChild)
-        {
-            setDot((TDot) newChild);
-            return;
-        }
-
         throw new RuntimeException("Not a child.");
     }
 }

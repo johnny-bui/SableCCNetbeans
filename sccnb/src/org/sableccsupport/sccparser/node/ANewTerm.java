@@ -2,16 +2,15 @@
 
 package org.sableccsupport.sccparser.node;
 
+import java.util.*;
 import org.sableccsupport.sccparser.analysis.*;
 
 @SuppressWarnings("nls")
 public final class ANewTerm extends PTerm
 {
-    private TNew _new_;
     private PProdName _prodName_;
     private TLPar _lPar_;
-    private PParams _params_;
-    private TRPar _rPar_;
+    private final LinkedList<PTerm> _params_ = new LinkedList<PTerm>();
 
     public ANewTerm()
     {
@@ -19,22 +18,16 @@ public final class ANewTerm extends PTerm
     }
 
     public ANewTerm(
-        @SuppressWarnings("hiding") TNew _new_,
         @SuppressWarnings("hiding") PProdName _prodName_,
         @SuppressWarnings("hiding") TLPar _lPar_,
-        @SuppressWarnings("hiding") PParams _params_,
-        @SuppressWarnings("hiding") TRPar _rPar_)
+        @SuppressWarnings("hiding") List<PTerm> _params_)
     {
         // Constructor
-        setNew(_new_);
-
         setProdName(_prodName_);
 
         setLPar(_lPar_);
 
         setParams(_params_);
-
-        setRPar(_rPar_);
 
     }
 
@@ -42,41 +35,14 @@ public final class ANewTerm extends PTerm
     public Object clone()
     {
         return new ANewTerm(
-            cloneNode(this._new_),
             cloneNode(this._prodName_),
             cloneNode(this._lPar_),
-            cloneNode(this._params_),
-            cloneNode(this._rPar_));
+            cloneList(this._params_));
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseANewTerm(this);
-    }
-
-    public TNew getNew()
-    {
-        return this._new_;
-    }
-
-    public void setNew(TNew node)
-    {
-        if(this._new_ != null)
-        {
-            this._new_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._new_ = node;
     }
 
     public PProdName getProdName()
@@ -129,77 +95,39 @@ public final class ANewTerm extends PTerm
         this._lPar_ = node;
     }
 
-    public PParams getParams()
+    public LinkedList<PTerm> getParams()
     {
         return this._params_;
     }
 
-    public void setParams(PParams node)
+    public void setParams(List<PTerm> list)
     {
-        if(this._params_ != null)
+        this._params_.clear();
+        this._params_.addAll(list);
+        for(PTerm e : list)
         {
-            this._params_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
         }
-
-        this._params_ = node;
-    }
-
-    public TRPar getRPar()
-    {
-        return this._rPar_;
-    }
-
-    public void setRPar(TRPar node)
-    {
-        if(this._rPar_ != null)
-        {
-            this._rPar_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._rPar_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._new_)
             + toString(this._prodName_)
             + toString(this._lPar_)
-            + toString(this._params_)
-            + toString(this._rPar_);
+            + toString(this._params_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._new_ == child)
-        {
-            this._new_ = null;
-            return;
-        }
-
         if(this._prodName_ == child)
         {
             this._prodName_ = null;
@@ -212,15 +140,8 @@ public final class ANewTerm extends PTerm
             return;
         }
 
-        if(this._params_ == child)
+        if(this._params_.remove(child))
         {
-            this._params_ = null;
-            return;
-        }
-
-        if(this._rPar_ == child)
-        {
-            this._rPar_ = null;
             return;
         }
 
@@ -231,12 +152,6 @@ public final class ANewTerm extends PTerm
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._new_ == oldChild)
-        {
-            setNew((TNew) newChild);
-            return;
-        }
-
         if(this._prodName_ == oldChild)
         {
             setProdName((PProdName) newChild);
@@ -249,16 +164,22 @@ public final class ANewTerm extends PTerm
             return;
         }
 
-        if(this._params_ == oldChild)
+        for(ListIterator<PTerm> i = this._params_.listIterator(); i.hasNext();)
         {
-            setParams((PParams) newChild);
-            return;
-        }
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PTerm) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
 
-        if(this._rPar_ == oldChild)
-        {
-            setRPar((TRPar) newChild);
-            return;
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         throw new RuntimeException("Not a child.");

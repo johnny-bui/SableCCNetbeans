@@ -13,35 +13,35 @@ import org.netbeans.spi.lexer.LexerRestartInfo;
  *
  * @author phucluoi
  */
-public class SCCLanguageHierarchy extends LanguageHierarchy<SCCTokenId> 
+public class SCCLanguageHierarchy extends LanguageHierarchy<SCCLexerTokenId> 
 {
-	private static final List<SCCTokenId> tokens = new ArrayList<SCCTokenId>();
-	private static final Map<Integer, SCCTokenId> idToToken = new HashMap<Integer, SCCTokenId>();
+	private static final List<SCCLexerTokenId> tokens = new ArrayList<SCCLexerTokenId>();
+	private static final Map<Integer, SCCLexerTokenId> idToToken = new HashMap<Integer, SCCLexerTokenId>();
 
 	static {
-		SCCTokenId[] tokenTypes = SCCTokenId.values();
-		for (SCCTokenId tokenType : tokenTypes) {
+		SCCLexerTokenId[] tokenTypes = SCCLexerTokenId.values();
+		for (SCCLexerTokenId tokenType : tokenTypes) {
 			tokens.add(
 				tokenType
 			);
 		}
-		for (SCCTokenId token : tokens) {
+		for (SCCLexerTokenId token : tokens) {
 			idToToken.put(token.id, token);
 		}
 	}
 
-	public static synchronized SCCTokenId getToken(int id) {
+	public static synchronized SCCLexerTokenId getToken(int id) {
 		return idToToken.get(id);
 	}
 
 
 	@Override
-	protected synchronized Collection<SCCTokenId> createTokenIds() {
+	protected synchronized Collection<SCCLexerTokenId> createTokenIds() {
 		return tokens;
 	}
 
 	@Override
-	protected synchronized Lexer<SCCTokenId> createLexer(LexerRestartInfo<SCCTokenId> info) {
+	protected synchronized Lexer<SCCLexerTokenId> createLexer(LexerRestartInfo<SCCLexerTokenId> info) {
 		return new SCCLexer(info);
 	}
 

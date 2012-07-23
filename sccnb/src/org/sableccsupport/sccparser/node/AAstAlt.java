@@ -8,7 +8,7 @@ import org.sableccsupport.sccparser.analysis.*;
 @SuppressWarnings("nls")
 public final class AAstAlt extends PAstAlt
 {
-    private PAltName _altName_;
+    private TId _altName_;
     private final LinkedList<PElem> _elems_ = new LinkedList<PElem>();
 
     public AAstAlt()
@@ -17,7 +17,7 @@ public final class AAstAlt extends PAstAlt
     }
 
     public AAstAlt(
-        @SuppressWarnings("hiding") PAltName _altName_,
+        @SuppressWarnings("hiding") TId _altName_,
         @SuppressWarnings("hiding") List<PElem> _elems_)
     {
         // Constructor
@@ -40,12 +40,12 @@ public final class AAstAlt extends PAstAlt
         ((Analysis) sw).caseAAstAlt(this);
     }
 
-    public PAltName getAltName()
+    public TId getAltName()
     {
         return this._altName_;
     }
 
-    public void setAltName(PAltName node)
+    public void setAltName(TId node)
     {
         if(this._altName_ != null)
         {
@@ -117,7 +117,7 @@ public final class AAstAlt extends PAstAlt
         // Replace child
         if(this._altName_ == oldChild)
         {
-            setAltName((PAltName) newChild);
+            setAltName((TId) newChild);
             return;
         }
 

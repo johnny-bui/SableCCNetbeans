@@ -7,7 +7,6 @@ import org.sableccsupport.sccparser.analysis.*;
 @SuppressWarnings("nls")
 public final class ATransition extends PTransition
 {
-    private TArrow _arrow_;
     private TId _id_;
 
     public ATransition()
@@ -16,12 +15,9 @@ public final class ATransition extends PTransition
     }
 
     public ATransition(
-        @SuppressWarnings("hiding") TArrow _arrow_,
         @SuppressWarnings("hiding") TId _id_)
     {
         // Constructor
-        setArrow(_arrow_);
-
         setId(_id_);
 
     }
@@ -30,38 +26,12 @@ public final class ATransition extends PTransition
     public Object clone()
     {
         return new ATransition(
-            cloneNode(this._arrow_),
             cloneNode(this._id_));
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseATransition(this);
-    }
-
-    public TArrow getArrow()
-    {
-        return this._arrow_;
-    }
-
-    public void setArrow(TArrow node)
-    {
-        if(this._arrow_ != null)
-        {
-            this._arrow_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._arrow_ = node;
     }
 
     public TId getId()
@@ -93,7 +63,6 @@ public final class ATransition extends PTransition
     public String toString()
     {
         return ""
-            + toString(this._arrow_)
             + toString(this._id_);
     }
 
@@ -101,12 +70,6 @@ public final class ATransition extends PTransition
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._arrow_ == child)
-        {
-            this._arrow_ = null;
-            return;
-        }
-
         if(this._id_ == child)
         {
             this._id_ = null;
@@ -120,12 +83,6 @@ public final class ATransition extends PTransition
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._arrow_ == oldChild)
-        {
-            setArrow((TArrow) newChild);
-            return;
-        }
-
         if(this._id_ == oldChild)
         {
             setId((TId) newChild);

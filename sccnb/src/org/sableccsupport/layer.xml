@@ -5,6 +5,10 @@
         <folder name="text">
             <folder name="x-sablecc">
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="org.sableccsupport.Bundle"/>
+				<file name="org-sableccsupport-parser-SyntaxErrorsHighlightingTaskFactory.instance"/>
+					
+				<file name="org-sableccsupport-parser-SCCParserFactory.instance"/>
+				
                 <folder name="FontsColors">
                     <folder name="NetBeans">
                         <folder name="Defaults">
@@ -23,12 +27,7 @@
                     <attr name="instanceCreate" methodvalue="org.sableccsupport.lexer.SCCTokenId.getLanguage"/>
                     <attr name="instanceOf" stringvalue="org.netbeans.api.lexer.Language"/>
                 </file>
-				<!--
-                <file name="org-sableccsupport-parser-SCCParserFactory.instance"/>
-                <file name="org-sableccsupport-parser-SyntaxErrorsHighlightingTaskFactory.instance"/>
-				<file name="org-sableccsupport-parser-SCCIndentTaskFactory.instance"/>
-				-->
-				<!-- -->
+				
             </folder>
         </folder>
     </folder>

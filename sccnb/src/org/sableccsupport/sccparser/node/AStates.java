@@ -2,14 +2,13 @@
 
 package org.sableccsupport.sccparser.node;
 
+import java.util.*;
 import org.sableccsupport.sccparser.analysis.*;
 
 @SuppressWarnings("nls")
 public final class AStates extends PStates
 {
-    private TStates _states_;
-    private PIdList _idList_;
-    private TSemicolon _semicolon_;
+    private final LinkedList<TId> _listId_ = new LinkedList<TId>();
 
     public AStates()
     {
@@ -17,16 +16,10 @@ public final class AStates extends PStates
     }
 
     public AStates(
-        @SuppressWarnings("hiding") TStates _states_,
-        @SuppressWarnings("hiding") PIdList _idList_,
-        @SuppressWarnings("hiding") TSemicolon _semicolon_)
+        @SuppressWarnings("hiding") List<TId> _listId_)
     {
         // Constructor
-        setStates(_states_);
-
-        setIdList(_idList_);
-
-        setSemicolon(_semicolon_);
+        setListId(_listId_);
 
     }
 
@@ -34,9 +27,7 @@ public final class AStates extends PStates
     public Object clone()
     {
         return new AStates(
-            cloneNode(this._states_),
-            cloneNode(this._idList_),
-            cloneNode(this._semicolon_));
+            cloneList(this._listId_));
     }
 
     public void apply(Switch sw)
@@ -44,109 +35,39 @@ public final class AStates extends PStates
         ((Analysis) sw).caseAStates(this);
     }
 
-    public TStates getStates()
+    public LinkedList<TId> getListId()
     {
-        return this._states_;
+        return this._listId_;
     }
 
-    public void setStates(TStates node)
+    public void setListId(List<TId> list)
     {
-        if(this._states_ != null)
+        this._listId_.clear();
+        this._listId_.addAll(list);
+        for(TId e : list)
         {
-            this._states_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
         }
-
-        this._states_ = node;
-    }
-
-    public PIdList getIdList()
-    {
-        return this._idList_;
-    }
-
-    public void setIdList(PIdList node)
-    {
-        if(this._idList_ != null)
-        {
-            this._idList_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._idList_ = node;
-    }
-
-    public TSemicolon getSemicolon()
-    {
-        return this._semicolon_;
-    }
-
-    public void setSemicolon(TSemicolon node)
-    {
-        if(this._semicolon_ != null)
-        {
-            this._semicolon_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._semicolon_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._states_)
-            + toString(this._idList_)
-            + toString(this._semicolon_);
+            + toString(this._listId_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._states_ == child)
+        if(this._listId_.remove(child))
         {
-            this._states_ = null;
-            return;
-        }
-
-        if(this._idList_ == child)
-        {
-            this._idList_ = null;
-            return;
-        }
-
-        if(this._semicolon_ == child)
-        {
-            this._semicolon_ = null;
             return;
         }
 
@@ -157,22 +78,22 @@ public final class AStates extends PStates
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._states_ == oldChild)
+        for(ListIterator<TId> i = this._listId_.listIterator(); i.hasNext();)
         {
-            setStates((TStates) newChild);
-            return;
-        }
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((TId) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
 
-        if(this._idList_ == oldChild)
-        {
-            setIdList((PIdList) newChild);
-            return;
-        }
-
-        if(this._semicolon_ == oldChild)
-        {
-            setSemicolon((TSemicolon) newChild);
-            return;
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         throw new RuntimeException("Not a child.");

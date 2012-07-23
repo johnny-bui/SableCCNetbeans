@@ -9,10 +9,9 @@ public final class ATokenDef extends PTokenDef
 {
     private PStateList _stateList_;
     private TId _id_;
-    private TEqual _equal_;
     private PRegExp _regExp_;
-    private PLookAhead _lookAhead_;
-    private TSemicolon _semicolon_;
+    private TSlash _slash_;
+    private PRegExp _lookAhead_;
 
     public ATokenDef()
     {
@@ -22,23 +21,20 @@ public final class ATokenDef extends PTokenDef
     public ATokenDef(
         @SuppressWarnings("hiding") PStateList _stateList_,
         @SuppressWarnings("hiding") TId _id_,
-        @SuppressWarnings("hiding") TEqual _equal_,
         @SuppressWarnings("hiding") PRegExp _regExp_,
-        @SuppressWarnings("hiding") PLookAhead _lookAhead_,
-        @SuppressWarnings("hiding") TSemicolon _semicolon_)
+        @SuppressWarnings("hiding") TSlash _slash_,
+        @SuppressWarnings("hiding") PRegExp _lookAhead_)
     {
         // Constructor
         setStateList(_stateList_);
 
         setId(_id_);
 
-        setEqual(_equal_);
-
         setRegExp(_regExp_);
 
-        setLookAhead(_lookAhead_);
+        setSlash(_slash_);
 
-        setSemicolon(_semicolon_);
+        setLookAhead(_lookAhead_);
 
     }
 
@@ -48,10 +44,9 @@ public final class ATokenDef extends PTokenDef
         return new ATokenDef(
             cloneNode(this._stateList_),
             cloneNode(this._id_),
-            cloneNode(this._equal_),
             cloneNode(this._regExp_),
-            cloneNode(this._lookAhead_),
-            cloneNode(this._semicolon_));
+            cloneNode(this._slash_),
+            cloneNode(this._lookAhead_));
     }
 
     public void apply(Switch sw)
@@ -109,31 +104,6 @@ public final class ATokenDef extends PTokenDef
         this._id_ = node;
     }
 
-    public TEqual getEqual()
-    {
-        return this._equal_;
-    }
-
-    public void setEqual(TEqual node)
-    {
-        if(this._equal_ != null)
-        {
-            this._equal_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._equal_ = node;
-    }
-
     public PRegExp getRegExp()
     {
         return this._regExp_;
@@ -159,12 +129,37 @@ public final class ATokenDef extends PTokenDef
         this._regExp_ = node;
     }
 
-    public PLookAhead getLookAhead()
+    public TSlash getSlash()
+    {
+        return this._slash_;
+    }
+
+    public void setSlash(TSlash node)
+    {
+        if(this._slash_ != null)
+        {
+            this._slash_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._slash_ = node;
+    }
+
+    public PRegExp getLookAhead()
     {
         return this._lookAhead_;
     }
 
-    public void setLookAhead(PLookAhead node)
+    public void setLookAhead(PRegExp node)
     {
         if(this._lookAhead_ != null)
         {
@@ -184,41 +179,15 @@ public final class ATokenDef extends PTokenDef
         this._lookAhead_ = node;
     }
 
-    public TSemicolon getSemicolon()
-    {
-        return this._semicolon_;
-    }
-
-    public void setSemicolon(TSemicolon node)
-    {
-        if(this._semicolon_ != null)
-        {
-            this._semicolon_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._semicolon_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
             + toString(this._stateList_)
             + toString(this._id_)
-            + toString(this._equal_)
             + toString(this._regExp_)
-            + toString(this._lookAhead_)
-            + toString(this._semicolon_);
+            + toString(this._slash_)
+            + toString(this._lookAhead_);
     }
 
     @Override
@@ -237,27 +206,21 @@ public final class ATokenDef extends PTokenDef
             return;
         }
 
-        if(this._equal_ == child)
-        {
-            this._equal_ = null;
-            return;
-        }
-
         if(this._regExp_ == child)
         {
             this._regExp_ = null;
             return;
         }
 
-        if(this._lookAhead_ == child)
+        if(this._slash_ == child)
         {
-            this._lookAhead_ = null;
+            this._slash_ = null;
             return;
         }
 
-        if(this._semicolon_ == child)
+        if(this._lookAhead_ == child)
         {
-            this._semicolon_ = null;
+            this._lookAhead_ = null;
             return;
         }
 
@@ -280,27 +243,21 @@ public final class ATokenDef extends PTokenDef
             return;
         }
 
-        if(this._equal_ == oldChild)
-        {
-            setEqual((TEqual) newChild);
-            return;
-        }
-
         if(this._regExp_ == oldChild)
         {
             setRegExp((PRegExp) newChild);
             return;
         }
 
-        if(this._lookAhead_ == oldChild)
+        if(this._slash_ == oldChild)
         {
-            setLookAhead((PLookAhead) newChild);
+            setSlash((TSlash) newChild);
             return;
         }
 
-        if(this._semicolon_ == oldChild)
+        if(this._lookAhead_ == oldChild)
         {
-            setSemicolon((TSemicolon) newChild);
+            setLookAhead((PRegExp) newChild);
             return;
         }
 

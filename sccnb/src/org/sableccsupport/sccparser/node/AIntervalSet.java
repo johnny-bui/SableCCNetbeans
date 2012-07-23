@@ -7,11 +7,8 @@ import org.sableccsupport.sccparser.analysis.*;
 @SuppressWarnings("nls")
 public final class AIntervalSet extends PSet
 {
-    private TLBkt _lBkt_;
     private PChar _left_;
-    private TDDot _dDot_;
     private PChar _right_;
-    private TRBkt _rBkt_;
 
     public AIntervalSet()
     {
@@ -19,22 +16,13 @@ public final class AIntervalSet extends PSet
     }
 
     public AIntervalSet(
-        @SuppressWarnings("hiding") TLBkt _lBkt_,
         @SuppressWarnings("hiding") PChar _left_,
-        @SuppressWarnings("hiding") TDDot _dDot_,
-        @SuppressWarnings("hiding") PChar _right_,
-        @SuppressWarnings("hiding") TRBkt _rBkt_)
+        @SuppressWarnings("hiding") PChar _right_)
     {
         // Constructor
-        setLBkt(_lBkt_);
-
         setLeft(_left_);
 
-        setDDot(_dDot_);
-
         setRight(_right_);
-
-        setRBkt(_rBkt_);
 
     }
 
@@ -42,41 +30,13 @@ public final class AIntervalSet extends PSet
     public Object clone()
     {
         return new AIntervalSet(
-            cloneNode(this._lBkt_),
             cloneNode(this._left_),
-            cloneNode(this._dDot_),
-            cloneNode(this._right_),
-            cloneNode(this._rBkt_));
+            cloneNode(this._right_));
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAIntervalSet(this);
-    }
-
-    public TLBkt getLBkt()
-    {
-        return this._lBkt_;
-    }
-
-    public void setLBkt(TLBkt node)
-    {
-        if(this._lBkt_ != null)
-        {
-            this._lBkt_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._lBkt_ = node;
     }
 
     public PChar getLeft()
@@ -104,31 +64,6 @@ public final class AIntervalSet extends PSet
         this._left_ = node;
     }
 
-    public TDDot getDDot()
-    {
-        return this._dDot_;
-    }
-
-    public void setDDot(TDDot node)
-    {
-        if(this._dDot_ != null)
-        {
-            this._dDot_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._dDot_ = node;
-    }
-
     public PChar getRight()
     {
         return this._right_;
@@ -154,73 +89,27 @@ public final class AIntervalSet extends PSet
         this._right_ = node;
     }
 
-    public TRBkt getRBkt()
-    {
-        return this._rBkt_;
-    }
-
-    public void setRBkt(TRBkt node)
-    {
-        if(this._rBkt_ != null)
-        {
-            this._rBkt_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._rBkt_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
-            + toString(this._lBkt_)
             + toString(this._left_)
-            + toString(this._dDot_)
-            + toString(this._right_)
-            + toString(this._rBkt_);
+            + toString(this._right_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._lBkt_ == child)
-        {
-            this._lBkt_ = null;
-            return;
-        }
-
         if(this._left_ == child)
         {
             this._left_ = null;
             return;
         }
 
-        if(this._dDot_ == child)
-        {
-            this._dDot_ = null;
-            return;
-        }
-
         if(this._right_ == child)
         {
             this._right_ = null;
-            return;
-        }
-
-        if(this._rBkt_ == child)
-        {
-            this._rBkt_ = null;
             return;
         }
 
@@ -231,33 +120,15 @@ public final class AIntervalSet extends PSet
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._lBkt_ == oldChild)
-        {
-            setLBkt((TLBkt) newChild);
-            return;
-        }
-
         if(this._left_ == oldChild)
         {
             setLeft((PChar) newChild);
             return;
         }
 
-        if(this._dDot_ == oldChild)
-        {
-            setDDot((TDDot) newChild);
-            return;
-        }
-
         if(this._right_ == oldChild)
         {
             setRight((PChar) newChild);
-            return;
-        }
-
-        if(this._rBkt_ == oldChild)
-        {
-            setRBkt((TRBkt) newChild);
             return;
         }
 

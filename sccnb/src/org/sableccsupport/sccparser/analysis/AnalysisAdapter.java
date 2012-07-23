@@ -74,21 +74,6 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAPackage(APackage node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAPkgName(APkgName node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAPkgNameTail(APkgNameTail node)
-    {
-        defaultCase(node);
-    }
-
     public void caseAHelpers(AHelpers node)
     {
         defaultCase(node);
@@ -100,16 +85,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     public void caseAStates(AStates node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAIdList(AIdList node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAIdListTail(AIdListTail node)
     {
         defaultCase(node);
     }
@@ -144,17 +119,7 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseALookAhead(ALookAhead node)
-    {
-        defaultCase(node);
-    }
-
     public void caseARegExp(ARegExp node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseARegExpTail(ARegExpTail node)
     {
         defaultCase(node);
     }
@@ -254,21 +219,6 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAProdTransform(AProdTransform node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAAlts(AAlts node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAAltsTail(AAltsTail node)
-    {
-        defaultCase(node);
-    }
-
     public void caseAAlt(AAlt node)
     {
         defaultCase(node);
@@ -299,11 +249,6 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAListOfListTerm(AListOfListTerm node)
-    {
-        defaultCase(node);
-    }
-
     public void caseANewListTerm(ANewListTerm node)
     {
         defaultCase(node);
@@ -314,47 +259,12 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAListTermTail(AListTermTail node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseASimpleTermTail(ASimpleTermTail node)
-    {
-        defaultCase(node);
-    }
-
     public void caseAProdName(AProdName node)
     {
         defaultCase(node);
     }
 
-    public void caseAProdNameTail(AProdNameTail node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAParams(AParams node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAParamsTail(AParamsTail node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAAltName(AAltName node)
-    {
-        defaultCase(node);
-    }
-
     public void caseAElem(AElem node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAElemName(AElemName node)
     {
         defaultCase(node);
     }
@@ -375,16 +285,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     public void caseAAstProd(AAstProd node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAAstAlts(AAstAlts node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAAstAltsTail(AAstAltsTail node)
     {
         defaultCase(node);
     }
