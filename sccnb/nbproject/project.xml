@@ -221,12 +221,6 @@
                 <package>org.jivesoftware.smack.util</package>
                 <package>org.jivesoftware.smack.util.collections</package>
                 <package>org.sablecc.sablecc</package>
-                <package>org.sablecc.ant.taskdef</package>
-                <package>org.sablecc.sablecc</package>
-                <package>org.sablecc.sablecc.analysis</package>
-                <package>org.sablecc.sablecc.lexer</package>
-                <package>org.sablecc.sablecc.node</package>
-                <package>org.sablecc.sablecc.parser</package>
                 <package>org.sableccsupport</package>
                 <package>org.sableccsupport.action</package>
                 <package>org.sableccsupport.lexer</package>

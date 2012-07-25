@@ -425,7 +425,8 @@ public class MetaInfServicesLookupTest extends NbTestCase {
             }
         }
         W w = new W();
-        MetaInfServicesLookup.RP.execute(w);
+        //MetaInfServicesLookup.RP.execute(w);
+        MetaInfServicesLookup.getRP().execute(w);
         w.await();
         assertEquals("Now two", 2, res.allInstances().size());
     }
