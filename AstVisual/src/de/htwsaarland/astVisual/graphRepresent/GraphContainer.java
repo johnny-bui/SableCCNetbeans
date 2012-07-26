@@ -111,7 +111,7 @@ public class GraphContainer
 	}
 	
 	/**
-	 * return the root vertex
+	 * return the root vertex.
 	 */
 	public String getRoot()
 	{
@@ -127,7 +127,10 @@ public class GraphContainer
 	 * @param parent the first vertex
 	 * @param child  the second vertex.
 	 */
-	public void addDepend(String parent, VertexType parentType, String child, VertexType childType)
+	public void addDepend(String parent, 
+			VertexType parentType, 
+			String child, 
+			VertexType childType)
 	{
 		// loop is not allowed
 		if (! parent.equals(child))

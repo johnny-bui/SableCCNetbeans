@@ -51,7 +51,7 @@ import org.netbeans.junit.NbTestCase;
 import org.netbeans.modules.editor.mimelookup.EditorTestLookup;
 import org.netbeans.modules.editor.mimelookup.TestUtilities;
 import org.openide.util.Lookup;
-
+import static org.junit.Assert.*;
 /**
  *
  * @author Martin Roskanin, Vita Stejskal
@@ -63,12 +63,12 @@ public class MimeLookupMemoryGCTest extends NbTestCase {
     }
 
     public void testLookupsRelease() {
-        int idA = System.identityHashCode(MimeLookup.getLookup(MimePath.get("text/x-java")));
+        int idA = System.identityHashCode(MimeLookup.getLookup(MimePath.get("text/x-sablecc")));
 
         TestUtilities.consumeAllMemory();
         TestUtilities.gc();
 
-        MimePath mp = MimePath.get("text/x-java");
+        MimePath mp = MimePath.get("text/x-sablecc");
         Object obj = MimeLookup.getLookup(mp);
         int idB = System.identityHashCode(obj);
         assertEquals("Lookup instance was lost", idA, idB);
@@ -83,7 +83,7 @@ public class MimeLookupMemoryGCTest extends NbTestCase {
         mp = null;
         assertGC("Can disappear", ref);
         
-        int idC = System.identityHashCode(MimeLookup.getLookup(MimePath.get("text/x-java")));
+        int idC = System.identityHashCode(MimeLookup.getLookup(MimePath.get("text/x-sablecc")));
         assertTrue("Lookup instance was not released", idA != idC);
     }
 }

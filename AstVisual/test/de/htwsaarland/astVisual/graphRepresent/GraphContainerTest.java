@@ -3,9 +3,8 @@ package de.htwsaarland.astVisual.graphRepresent;
 import java.util.Map;
 import java.util.Set;
 import org.jgrapht.Graph;
-import org.jgrapht.graph.ListenableDirectedGraph;
-import org.junit.*;
 import static org.junit.Assert.*;
+import org.junit.*;
 
 /**
  *

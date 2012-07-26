@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.io.PrintStream;
 import org.sablecc.sablecc.EmbeddedSableCC;
 import org.sablecc.sablecc.SableCC;
+import org.sablecc.sablecc.Version;
 
 /**
  *
@@ -46,6 +47,17 @@ class SableCCHelper extends Thread
 			IORedirect.redirectSystemStreams();
 			String msg = "+++++++++++++++++" + filename + "+++++++++++++";
 			System.out.println (msg);
+			String arg[] = {};
+			try{// print version and copyright of SableCC
+				System.out.println();
+				System.out.println("SableCC version " + Version.VERSION);
+				System.out.println("Copyright (C) 1997-2012 Etienne M. Gagnon <egagnon@j-meg.com> and");
+				System.out.println("others.  All rights reserved.");
+				System.out.println();
+				System.out.println("This software comes with ABSOLUTELY NO WARRANTY.  This is free software,");
+				System.out.println("and you are welcome to redistribute it under certain conditions.");
+				System.out.println();
+			}catch(Exception ex){}// Nothing to do
 			SableCC.processGrammar(filename,null);
 			msg = "================= build success  =================" ;
 			System.out.println (msg);

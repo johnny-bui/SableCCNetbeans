@@ -16,8 +16,6 @@ public class Lexer
     private int pos;
     private boolean cr;
     private boolean eof;
-    //private final StringBuffer text = new StringBuffer();
-	/* modi this to extend */
     protected final StringBuffer text = new StringBuffer();
 
     @SuppressWarnings("unused")

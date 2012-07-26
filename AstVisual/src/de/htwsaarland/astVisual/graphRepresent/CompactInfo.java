@@ -4,7 +4,6 @@
  */
 package de.htwsaarland.astVisual.graphRepresent;
 
-import com.sun.jndi.toolkit.dir.SearchFilter;
 import java.io.Serializable;
 
 /**
@@ -85,6 +84,4 @@ public class CompactInfo
 	public String toString() {
 		return name + ":" + d + ":" + f;
 	}
-
-	
 }
