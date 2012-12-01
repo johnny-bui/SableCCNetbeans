@@ -40,11 +40,11 @@ public abstract class Node implements Switchable, Cloneable
         return "";
     }
 
-    protected String toString(List list)
+    protected String toString(List<?> list)
     {
         StringBuffer s = new StringBuffer();
 
-        for(Iterator i = list.iterator(); i.hasNext();)
+        for(Iterator<?> i = list.iterator(); i.hasNext();)
         {
             s.append(i.next());
         }

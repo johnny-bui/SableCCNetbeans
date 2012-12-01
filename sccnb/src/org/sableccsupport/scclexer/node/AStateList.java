@@ -20,7 +20,7 @@ public final class AStateList extends PStateList
     public AStateList(
         @SuppressWarnings("hiding") TId _id_,
         @SuppressWarnings("hiding") PTransition _transition_,
-        @SuppressWarnings("hiding") List<PStateListTail> _stateLists_)
+        @SuppressWarnings("hiding") List<?> _stateLists_)
     {
         // Constructor
         setId(_id_);
@@ -40,6 +40,7 @@ public final class AStateList extends PStateList
             cloneList(this._stateLists_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAStateList(this);
@@ -100,18 +101,24 @@ public final class AStateList extends PStateList
         return this._stateLists_;
     }
 
-    public void setStateLists(List<PStateListTail> list)
+    public void setStateLists(List<?> list)
     {
-        this._stateLists_.clear();
-        this._stateLists_.addAll(list);
-        for(PStateListTail e : list)
+        for(PStateListTail e : this._stateLists_)
         {
+            e.parent(null);
+        }
+        this._stateLists_.clear();
+
+        for(Object obj_e : list)
+        {
+            PStateListTail e = (PStateListTail) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._stateLists_.add(e);
         }
     }
 

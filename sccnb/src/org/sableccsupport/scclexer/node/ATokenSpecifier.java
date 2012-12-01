@@ -19,6 +19,7 @@ public final class ATokenSpecifier extends PSpecifier
         return new ATokenSpecifier();
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseATokenSpecifier(this);

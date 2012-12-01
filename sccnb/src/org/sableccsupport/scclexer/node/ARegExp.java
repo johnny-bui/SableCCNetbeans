@@ -16,7 +16,7 @@ public final class ARegExp extends PRegExp
     }
 
     public ARegExp(
-        @SuppressWarnings("hiding") List<PConcat> _concats_)
+        @SuppressWarnings("hiding") List<?> _concats_)
     {
         // Constructor
         setConcats(_concats_);
@@ -30,6 +30,7 @@ public final class ARegExp extends PRegExp
             cloneList(this._concats_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseARegExp(this);
@@ -40,18 +41,24 @@ public final class ARegExp extends PRegExp
         return this._concats_;
     }
 
-    public void setConcats(List<PConcat> list)
+    public void setConcats(List<?> list)
     {
-        this._concats_.clear();
-        this._concats_.addAll(list);
-        for(PConcat e : list)
+        for(PConcat e : this._concats_)
         {
+            e.parent(null);
+        }
+        this._concats_.clear();
+
+        for(Object obj_e : list)
+        {
+            PConcat e = (PConcat) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._concats_.add(e);
         }
     }
 

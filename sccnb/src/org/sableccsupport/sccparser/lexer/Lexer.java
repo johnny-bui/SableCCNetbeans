@@ -11,12 +11,12 @@ public class Lexer
     protected Token token;
     protected State state = State.NORMAL;
 
-    private PushbackReader in;
+    private IPushbackReader in;
     private int line;
     private int pos;
     private boolean cr;
     private boolean eof;
-    protected final StringBuffer text = new StringBuffer();
+    public final StringBuffer text = new StringBuffer();
 
     @SuppressWarnings("unused")
     protected void filter() throws LexerException, IOException
@@ -24,7 +24,25 @@ public class Lexer
         // Do nothing
     }
 
-    public Lexer(@SuppressWarnings("hiding") PushbackReader in)
+    public Lexer(@SuppressWarnings("hiding") final PushbackReader in)
+    {
+        this.in = new IPushbackReader() {
+
+            private PushbackReader pushbackReader = in;
+            
+            @Override
+            public void unread(int c) throws IOException {
+                pushbackReader.unread(c);
+            }
+            
+            @Override
+            public int read() throws IOException {
+                return pushbackReader.read();
+            }
+        };
+    }
+ 
+    public Lexer(@SuppressWarnings("hiding") IPushbackReader in)
     {
         this.in = in;
     }
@@ -114,7 +132,8 @@ public class Lexer
 
                     while(low <= high)
                     {
-                        int middle = (low + high) / 2;
+                        // int middle = (low + high) / 2;
+                        int middle = (low + high) >>> 1;
                         int[] tmp2 = tmp1[middle];
 
                         if(c < tmp2[0])
@@ -583,6 +602,7 @@ public class Lexer
                     if(this.text.length() > 0)
                     {
                         throw new LexerException(
+                            new InvalidToken(this.text.substring(0, 1), start_line + 1, start_pos + 1),
                             "[" + (start_line + 1) + "," + (start_pos + 1) + "]" +
                             " Unknown token: " + this.text);
                     }

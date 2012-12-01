@@ -2,6 +2,7 @@ package org.sableccsupport.lexer;
 
 import java.io.IOException;
 import org.netbeans.spi.lexer.LexerRestartInfo;
+import org.sableccsupport.scclexer.lexer.IPushbackReader;
 import org.sableccsupport.scclexer.lexer.Lexer.State;
 import org.sableccsupport.scclexer.lexer.LexerException;
 

@@ -25,6 +25,7 @@ public final class TQMark extends Token
       return new TQMark(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTQMark(this);

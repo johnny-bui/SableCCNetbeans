@@ -16,7 +16,7 @@ public final class AAst extends PAst
     }
 
     public AAst(
-        @SuppressWarnings("hiding") List<PAstProd> _prods_)
+        @SuppressWarnings("hiding") List<?> _prods_)
     {
         // Constructor
         setProds(_prods_);
@@ -30,6 +30,7 @@ public final class AAst extends PAst
             cloneList(this._prods_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAAst(this);
@@ -40,18 +41,24 @@ public final class AAst extends PAst
         return this._prods_;
     }
 
-    public void setProds(List<PAstProd> list)
+    public void setProds(List<?> list)
     {
-        this._prods_.clear();
-        this._prods_.addAll(list);
-        for(PAstProd e : list)
+        for(PAstProd e : this._prods_)
         {
+            e.parent(null);
+        }
+        this._prods_.clear();
+
+        for(Object obj_e : list)
+        {
+            PAstProd e = (PAstProd) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._prods_.add(e);
         }
     }
 

@@ -49,6 +49,7 @@ public final class ATokenDef extends PTokenDef
             cloneNode(this._lookAhead_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseATokenDef(this);

@@ -25,6 +25,7 @@ public final class TProductions extends Token
       return new TProductions(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTProductions(this);

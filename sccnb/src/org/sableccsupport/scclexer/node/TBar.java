@@ -25,6 +25,7 @@ public final class TBar extends Token
       return new TBar(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTBar(this);

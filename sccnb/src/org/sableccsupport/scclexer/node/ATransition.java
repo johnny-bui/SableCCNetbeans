@@ -29,6 +29,7 @@ public final class ATransition extends PTransition
             cloneNode(this._id_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseATransition(this);

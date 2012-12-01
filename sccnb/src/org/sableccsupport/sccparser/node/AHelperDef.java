@@ -34,6 +34,7 @@ public final class AHelperDef extends PHelperDef
             cloneNode(this._regExp_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAHelperDef(this);

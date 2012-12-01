@@ -16,7 +16,7 @@ public final class AStates extends PStates
     }
 
     public AStates(
-        @SuppressWarnings("hiding") List<TId> _listId_)
+        @SuppressWarnings("hiding") List<?> _listId_)
     {
         // Constructor
         setListId(_listId_);
@@ -30,6 +30,7 @@ public final class AStates extends PStates
             cloneList(this._listId_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAStates(this);
@@ -40,18 +41,24 @@ public final class AStates extends PStates
         return this._listId_;
     }
 
-    public void setListId(List<TId> list)
+    public void setListId(List<?> list)
     {
-        this._listId_.clear();
-        this._listId_.addAll(list);
-        for(TId e : list)
+        for(TId e : this._listId_)
         {
+            e.parent(null);
+        }
+        this._listId_.clear();
+
+        for(Object obj_e : list)
+        {
+            TId e = (TId) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._listId_.add(e);
         }
     }
 

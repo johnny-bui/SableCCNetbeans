@@ -25,6 +25,7 @@ public final class TComment extends Token
       return new TComment(getText(), getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTComment(this);

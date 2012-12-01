@@ -25,6 +25,7 @@ public final class TChar extends Token
       return new TChar(getText(), getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTChar(this);

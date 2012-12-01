@@ -25,6 +25,7 @@ public final class THelpers extends Token
       return new THelpers(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTHelpers(this);

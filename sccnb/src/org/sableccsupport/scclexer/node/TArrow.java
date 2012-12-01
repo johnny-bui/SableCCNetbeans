@@ -25,6 +25,7 @@ public final class TArrow extends Token
       return new TArrow(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTArrow(this);

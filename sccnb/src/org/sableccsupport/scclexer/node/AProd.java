@@ -21,8 +21,8 @@ public final class AProd extends PProd
     public AProd(
         @SuppressWarnings("hiding") TId _id_,
         @SuppressWarnings("hiding") TArrow _arrow_,
-        @SuppressWarnings("hiding") List<PElem> _prodTransform_,
-        @SuppressWarnings("hiding") List<PAlt> _alts_)
+        @SuppressWarnings("hiding") List<?> _prodTransform_,
+        @SuppressWarnings("hiding") List<?> _alts_)
     {
         // Constructor
         setId(_id_);
@@ -45,6 +45,7 @@ public final class AProd extends PProd
             cloneList(this._alts_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAProd(this);
@@ -105,18 +106,24 @@ public final class AProd extends PProd
         return this._prodTransform_;
     }
 
-    public void setProdTransform(List<PElem> list)
+    public void setProdTransform(List<?> list)
     {
-        this._prodTransform_.clear();
-        this._prodTransform_.addAll(list);
-        for(PElem e : list)
+        for(PElem e : this._prodTransform_)
         {
+            e.parent(null);
+        }
+        this._prodTransform_.clear();
+
+        for(Object obj_e : list)
+        {
+            PElem e = (PElem) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._prodTransform_.add(e);
         }
     }
 
@@ -125,18 +132,24 @@ public final class AProd extends PProd
         return this._alts_;
     }
 
-    public void setAlts(List<PAlt> list)
+    public void setAlts(List<?> list)
     {
-        this._alts_.clear();
-        this._alts_.addAll(list);
-        for(PAlt e : list)
+        for(PAlt e : this._alts_)
         {
+            e.parent(null);
+        }
+        this._alts_.clear();
+
+        for(Object obj_e : list)
+        {
+            PAlt e = (PAlt) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._alts_.add(e);
         }
     }
 

@@ -19,6 +19,7 @@ public final class AProductionSpecifier extends PSpecifier
         return new AProductionSpecifier();
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAProductionSpecifier(this);

@@ -99,4 +99,5 @@ public interface Analysis extends Switch
     void caseTBlank(TBlank node);
     void caseTComment(TComment node);
     void caseEOF(EOF node);
+    void caseInvalidToken(InvalidToken node);
 }

@@ -16,7 +16,7 @@ public final class AProductions extends PProductions
     }
 
     public AProductions(
-        @SuppressWarnings("hiding") List<PProd> _prods_)
+        @SuppressWarnings("hiding") List<?> _prods_)
     {
         // Constructor
         setProds(_prods_);
@@ -30,6 +30,7 @@ public final class AProductions extends PProductions
             cloneList(this._prods_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAProductions(this);
@@ -40,18 +41,24 @@ public final class AProductions extends PProductions
         return this._prods_;
     }
 
-    public void setProds(List<PProd> list)
+    public void setProds(List<?> list)
     {
-        this._prods_.clear();
-        this._prods_.addAll(list);
-        for(PProd e : list)
+        for(PProd e : this._prods_)
         {
+            e.parent(null);
+        }
+        this._prods_.clear();
+
+        for(Object obj_e : list)
+        {
+            PProd e = (PProd) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._prods_.add(e);
         }
     }
 

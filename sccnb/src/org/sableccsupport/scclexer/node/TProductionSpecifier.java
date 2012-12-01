@@ -25,6 +25,7 @@ public final class TProductionSpecifier extends Token
       return new TProductionSpecifier(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTProductionSpecifier(this);

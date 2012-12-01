@@ -29,6 +29,7 @@ public final class AStarUnOp extends PUnOp
             cloneNode(this._star_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAStarUnOp(this);

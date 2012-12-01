@@ -25,6 +25,7 @@ public final class TPackage extends Token
       return new TPackage(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTPackage(this);

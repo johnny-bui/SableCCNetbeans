@@ -25,6 +25,7 @@ public final class TRBkt extends Token
       return new TRBkt(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTRBkt(this);

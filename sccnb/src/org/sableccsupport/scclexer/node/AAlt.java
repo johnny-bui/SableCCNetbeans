@@ -19,7 +19,7 @@ public final class AAlt extends PAlt
 
     public AAlt(
         @SuppressWarnings("hiding") TId _altName_,
-        @SuppressWarnings("hiding") List<PElem> _elems_,
+        @SuppressWarnings("hiding") List<?> _elems_,
         @SuppressWarnings("hiding") PAltTransform _altTransform_)
     {
         // Constructor
@@ -40,6 +40,7 @@ public final class AAlt extends PAlt
             cloneNode(this._altTransform_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAAlt(this);
@@ -75,18 +76,24 @@ public final class AAlt extends PAlt
         return this._elems_;
     }
 
-    public void setElems(List<PElem> list)
+    public void setElems(List<?> list)
     {
-        this._elems_.clear();
-        this._elems_.addAll(list);
-        for(PElem e : list)
+        for(PElem e : this._elems_)
         {
+            e.parent(null);
+        }
+        this._elems_.clear();
+
+        for(Object obj_e : list)
+        {
+            PElem e = (PElem) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._elems_.add(e);
         }
     }
 

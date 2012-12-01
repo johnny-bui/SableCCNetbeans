@@ -25,6 +25,7 @@ public final class TTree extends Token
       return new TTree(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTTree(this);

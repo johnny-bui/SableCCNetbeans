@@ -29,6 +29,7 @@ public final class AHexChar extends PChar
             cloneNode(this._hexChar_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAHexChar(this);

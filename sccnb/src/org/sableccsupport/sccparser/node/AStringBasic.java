@@ -29,6 +29,7 @@ public final class AStringBasic extends PBasic
             cloneNode(this._string_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAStringBasic(this);

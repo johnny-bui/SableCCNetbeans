@@ -25,6 +25,7 @@ public final class THexChar extends Token
       return new THexChar(getText(), getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTHexChar(this);
