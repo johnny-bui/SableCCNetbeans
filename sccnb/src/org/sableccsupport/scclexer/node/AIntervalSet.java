@@ -34,6 +34,7 @@ public final class AIntervalSet extends PSet
             cloneNode(this._right_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAIntervalSet(this);

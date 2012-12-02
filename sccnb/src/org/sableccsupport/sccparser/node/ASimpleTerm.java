@@ -39,6 +39,7 @@ public final class ASimpleTerm extends PTerm
             cloneNode(this._simpleTermTail_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseASimpleTerm(this);

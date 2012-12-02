@@ -1,7 +1,9 @@
 package org.sableccsupport.parser;
 
 import java.io.PushbackReader;
+import org.sableccsupport.sccparser.lexer.IPushbackReader;
 import org.sableccsupport.sccparser.lexer.Lexer;
+
 
 /**
  *
@@ -9,7 +11,11 @@ import org.sableccsupport.sccparser.lexer.Lexer;
  */
 public class StateInitedPLexer extends Lexer
 {
-	public StateInitedPLexer(PushbackReader reader, Lexer.State state)
+	public StateInitedPLexer(PushbackReader reader, Lexer.State state){
+		super(reader);
+		this.state = state;
+	}
+	public StateInitedPLexer(IPushbackReader reader, Lexer.State state)
 	{
 		super(reader);
 		this.state = state;

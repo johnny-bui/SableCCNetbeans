@@ -19,7 +19,7 @@ public final class AAltTransform extends PAltTransform
 
     public AAltTransform(
         @SuppressWarnings("hiding") TLBrace _lBrace_,
-        @SuppressWarnings("hiding") List<PTerm> _terms_,
+        @SuppressWarnings("hiding") List<?> _terms_,
         @SuppressWarnings("hiding") TRBrace _rBrace_)
     {
         // Constructor
@@ -40,6 +40,7 @@ public final class AAltTransform extends PAltTransform
             cloneNode(this._rBrace_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAAltTransform(this);
@@ -75,18 +76,24 @@ public final class AAltTransform extends PAltTransform
         return this._terms_;
     }
 
-    public void setTerms(List<PTerm> list)
+    public void setTerms(List<?> list)
     {
-        this._terms_.clear();
-        this._terms_.addAll(list);
-        for(PTerm e : list)
+        for(PTerm e : this._terms_)
         {
+            e.parent(null);
+        }
+        this._terms_.clear();
+
+        for(Object obj_e : list)
+        {
+            PTerm e = (PTerm) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._terms_.add(e);
         }
     }
 

@@ -34,6 +34,7 @@ public final class AStateListTail extends PStateListTail
             cloneNode(this._transition_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAStateListTail(this);

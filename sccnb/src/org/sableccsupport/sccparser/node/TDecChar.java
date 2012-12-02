@@ -25,6 +25,7 @@ public final class TDecChar extends Token
       return new TDecChar(getText(), getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTDecChar(this);

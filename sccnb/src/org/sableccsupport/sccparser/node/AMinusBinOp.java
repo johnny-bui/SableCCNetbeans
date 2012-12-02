@@ -19,6 +19,7 @@ public final class AMinusBinOp extends PBinOp
         return new AMinusBinOp();
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAMinusBinOp(this);

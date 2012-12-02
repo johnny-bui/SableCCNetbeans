@@ -25,6 +25,7 @@ public final class TStar extends Token
       return new TStar(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTStar(this);

@@ -16,7 +16,7 @@ public final class AConcat extends PConcat
     }
 
     public AConcat(
-        @SuppressWarnings("hiding") List<PUnExp> _unExps_)
+        @SuppressWarnings("hiding") List<?> _unExps_)
     {
         // Constructor
         setUnExps(_unExps_);
@@ -30,6 +30,7 @@ public final class AConcat extends PConcat
             cloneList(this._unExps_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAConcat(this);
@@ -40,18 +41,24 @@ public final class AConcat extends PConcat
         return this._unExps_;
     }
 
-    public void setUnExps(List<PUnExp> list)
+    public void setUnExps(List<?> list)
     {
-        this._unExps_.clear();
-        this._unExps_.addAll(list);
-        for(PUnExp e : list)
+        for(PUnExp e : this._unExps_)
         {
+            e.parent(null);
+        }
+        this._unExps_.clear();
+
+        for(Object obj_e : list)
+        {
+            PUnExp e = (PUnExp) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._unExps_.add(e);
         }
     }
 

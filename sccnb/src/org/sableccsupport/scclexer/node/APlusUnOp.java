@@ -29,6 +29,7 @@ public final class APlusUnOp extends PUnOp
             cloneNode(this._plus_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAPlusUnOp(this);

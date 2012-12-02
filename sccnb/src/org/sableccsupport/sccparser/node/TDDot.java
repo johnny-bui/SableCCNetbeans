@@ -25,6 +25,7 @@ public final class TDDot extends Token
       return new TDDot(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTDDot(this);

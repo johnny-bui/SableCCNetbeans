@@ -19,6 +19,7 @@ public final class ANullTerm extends PTerm
         return new ANullTerm();
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseANullTerm(this);

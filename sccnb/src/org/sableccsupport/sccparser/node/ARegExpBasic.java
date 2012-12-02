@@ -29,6 +29,7 @@ public final class ARegExpBasic extends PBasic
             cloneNode(this._regExp_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseARegExpBasic(this);

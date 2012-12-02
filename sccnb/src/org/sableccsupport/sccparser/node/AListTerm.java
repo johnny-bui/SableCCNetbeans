@@ -18,7 +18,7 @@ public final class AListTerm extends PTerm
 
     public AListTerm(
         @SuppressWarnings("hiding") TLBkt _lBkt_,
-        @SuppressWarnings("hiding") List<PListTerm> _listTerms_)
+        @SuppressWarnings("hiding") List<?> _listTerms_)
     {
         // Constructor
         setLBkt(_lBkt_);
@@ -35,6 +35,7 @@ public final class AListTerm extends PTerm
             cloneList(this._listTerms_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAListTerm(this);
@@ -70,18 +71,24 @@ public final class AListTerm extends PTerm
         return this._listTerms_;
     }
 
-    public void setListTerms(List<PListTerm> list)
+    public void setListTerms(List<?> list)
     {
-        this._listTerms_.clear();
-        this._listTerms_.addAll(list);
-        for(PListTerm e : list)
+        for(PListTerm e : this._listTerms_)
         {
+            e.parent(null);
+        }
+        this._listTerms_.clear();
+
+        for(Object obj_e : list)
+        {
+            PListTerm e = (PListTerm) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._listTerms_.add(e);
         }
     }
 

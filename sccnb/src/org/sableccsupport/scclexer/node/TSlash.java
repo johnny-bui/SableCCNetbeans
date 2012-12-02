@@ -25,6 +25,7 @@ public final class TSlash extends Token
       return new TSlash(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTSlash(this);

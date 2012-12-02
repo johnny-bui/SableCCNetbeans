@@ -29,6 +29,7 @@ public final class ACharBasic extends PBasic
             cloneNode(this._char_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseACharBasic(this);

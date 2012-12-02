@@ -29,6 +29,7 @@ public final class ACharChar extends PChar
             cloneNode(this._char_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseACharChar(this);

@@ -25,6 +25,7 @@ public final class TSyntax extends Token
       return new TSyntax(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTSyntax(this);

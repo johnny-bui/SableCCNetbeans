@@ -5,14 +5,14 @@ package org.sableccsupport.scclexer.node;
 import org.sableccsupport.scclexer.analysis.*;
 
 @SuppressWarnings("nls")
-public final class THexChar extends Token
+public final class InvalidToken extends Token
 {
-    public THexChar(String text)
+    public InvalidToken(String text)
     {
         setText(text);
     }
 
-    public THexChar(String text, int line, int pos)
+    public InvalidToken(String text, int line, int pos)
     {
         setText(text);
         setLine(line);
@@ -22,12 +22,12 @@ public final class THexChar extends Token
     @Override
     public Object clone()
     {
-      return new THexChar(getText(), getLine(), getPos());
+        return new InvalidToken(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTHexChar(this);
+        ((Analysis) sw).caseInvalidToken(this);
     }
 }

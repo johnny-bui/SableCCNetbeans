@@ -25,6 +25,7 @@ public final class TTokens extends Token
       return new TTokens(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTTokens(this);

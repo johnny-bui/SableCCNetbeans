@@ -20,7 +20,7 @@ public final class ANewListTerm extends PListTerm
     public ANewListTerm(
         @SuppressWarnings("hiding") PProdName _prodName_,
         @SuppressWarnings("hiding") TLPar _lPar_,
-        @SuppressWarnings("hiding") List<PTerm> _params_)
+        @SuppressWarnings("hiding") List<?> _params_)
     {
         // Constructor
         setProdName(_prodName_);
@@ -40,6 +40,7 @@ public final class ANewListTerm extends PListTerm
             cloneList(this._params_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseANewListTerm(this);
@@ -100,18 +101,24 @@ public final class ANewListTerm extends PListTerm
         return this._params_;
     }
 
-    public void setParams(List<PTerm> list)
+    public void setParams(List<?> list)
     {
-        this._params_.clear();
-        this._params_.addAll(list);
-        for(PTerm e : list)
+        for(PTerm e : this._params_)
         {
+            e.parent(null);
+        }
+        this._params_.clear();
+
+        for(Object obj_e : list)
+        {
+            PTerm e = (PTerm) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._params_.add(e);
         }
     }
 

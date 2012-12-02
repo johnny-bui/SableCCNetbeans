@@ -7,7 +7,7 @@ import org.sableccsupport.scclexer.node.*;
 @SuppressWarnings("serial")
 public class ParserException extends Exception
 {
-    Token token;
+    private Token token;
 
     public ParserException(@SuppressWarnings("hiding") Token token, String  message)
     {

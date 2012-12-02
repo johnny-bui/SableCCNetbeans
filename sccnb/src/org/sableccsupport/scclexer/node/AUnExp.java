@@ -34,6 +34,7 @@ public final class AUnExp extends PUnExp
             cloneNode(this._unOp_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAUnExp(this);

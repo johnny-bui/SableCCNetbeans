@@ -34,6 +34,7 @@ public final class AProdName extends PProdName
             cloneNode(this._prodNameTail_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAProdName(this);

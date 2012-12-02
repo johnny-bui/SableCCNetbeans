@@ -25,6 +25,7 @@ public final class TPkgId extends Token
       return new TPkgId(getText(), getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTPkgId(this);

@@ -22,7 +22,7 @@ public final class AGrammar extends PGrammar
     }
 
     public AGrammar(
-        @SuppressWarnings("hiding") List<TPkgId> _package_,
+        @SuppressWarnings("hiding") List<?> _package_,
         @SuppressWarnings("hiding") PHelpers _helpers_,
         @SuppressWarnings("hiding") PStates _states_,
         @SuppressWarnings("hiding") PTokens _tokens_,
@@ -60,6 +60,7 @@ public final class AGrammar extends PGrammar
             cloneNode(this._ast_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAGrammar(this);
@@ -70,18 +71,24 @@ public final class AGrammar extends PGrammar
         return this._package_;
     }
 
-    public void setPackage(List<TPkgId> list)
+    public void setPackage(List<?> list)
     {
-        this._package_.clear();
-        this._package_.addAll(list);
-        for(TPkgId e : list)
+        for(TPkgId e : this._package_)
         {
+            e.parent(null);
+        }
+        this._package_.clear();
+
+        for(Object obj_e : list)
+        {
+            TPkgId e = (TPkgId) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._package_.add(e);
         }
     }
 

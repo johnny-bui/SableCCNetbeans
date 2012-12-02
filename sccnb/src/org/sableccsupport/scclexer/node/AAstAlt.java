@@ -18,7 +18,7 @@ public final class AAstAlt extends PAstAlt
 
     public AAstAlt(
         @SuppressWarnings("hiding") TId _altName_,
-        @SuppressWarnings("hiding") List<PElem> _elems_)
+        @SuppressWarnings("hiding") List<?> _elems_)
     {
         // Constructor
         setAltName(_altName_);
@@ -35,6 +35,7 @@ public final class AAstAlt extends PAstAlt
             cloneList(this._elems_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAAstAlt(this);
@@ -70,18 +71,24 @@ public final class AAstAlt extends PAstAlt
         return this._elems_;
     }
 
-    public void setElems(List<PElem> list)
+    public void setElems(List<?> list)
     {
-        this._elems_.clear();
-        this._elems_.addAll(list);
-        for(PElem e : list)
+        for(PElem e : this._elems_)
         {
+            e.parent(null);
+        }
+        this._elems_.clear();
+
+        for(Object obj_e : list)
+        {
+            PElem e = (PElem) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._elems_.add(e);
         }
     }
 

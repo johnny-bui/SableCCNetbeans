@@ -25,6 +25,7 @@ public final class TStates extends Token
       return new TStates(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTStates(this);

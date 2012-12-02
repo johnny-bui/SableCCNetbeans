@@ -16,7 +16,7 @@ public final class AHelpers extends PHelpers
     }
 
     public AHelpers(
-        @SuppressWarnings("hiding") List<PHelperDef> _helperDefs_)
+        @SuppressWarnings("hiding") List<?> _helperDefs_)
     {
         // Constructor
         setHelperDefs(_helperDefs_);
@@ -30,6 +30,7 @@ public final class AHelpers extends PHelpers
             cloneList(this._helperDefs_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAHelpers(this);
@@ -40,18 +41,24 @@ public final class AHelpers extends PHelpers
         return this._helperDefs_;
     }
 
-    public void setHelperDefs(List<PHelperDef> list)
+    public void setHelperDefs(List<?> list)
     {
-        this._helperDefs_.clear();
-        this._helperDefs_.addAll(list);
-        for(PHelperDef e : list)
+        for(PHelperDef e : this._helperDefs_)
         {
+            e.parent(null);
+        }
+        this._helperDefs_.clear();
+
+        for(Object obj_e : list)
+        {
+            PHelperDef e = (PHelperDef) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._helperDefs_.add(e);
         }
     }
 
