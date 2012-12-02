@@ -6,7 +6,7 @@
 	<fontcolor name="PkgId" default="identifier" foreColor="009900">
 		<font style="bold"/>
 	</fontcolor>
-	<fontcolor name="Package" default="keyword" foreColor="blue">
+	<fontcolor name="Package" default="keyword"  foreColor="blue">
 		<font style="bold"/>
 	</fontcolor>
 	<fontcolor name="States" default="keyword" foreColor="blue">
@@ -103,24 +103,24 @@
 	</fontcolor>	
 	
 	<!-- ============= brace ======================================= -->	
-	<fontcolor name="LBkt" default="brace" foreColor="D55000"> 
+	<fontcolor name="LBkt" default="operator" foreColor="D55000"> 
 		<font style="bold"/>
 	</fontcolor>
-	<fontcolor name="RBkt" default="brace" foreColor="D55000">
-		<font style="bold"/>
-	</fontcolor>
-	
-	<fontcolor name="LPar" default="brace" foreColor="D55000">
-		<font style="bold"/>
-	</fontcolor>
-	<fontcolor name="RPar" default="brace" foreColor="D55000">
+	<fontcolor name="RBkt" default="operator" foreColor="D55000">
 		<font style="bold"/>
 	</fontcolor>
 	
-	<fontcolor name="LBrace" default="brace" foreColor="D55000">
+	<fontcolor name="LPar" default="operator" foreColor="D55000">
 		<font style="bold"/>
 	</fontcolor>
-	<fontcolor name="RBrace" default="brace" foreColor="D55000">
+	<fontcolor name="RPar" default="operator" foreColor="D55000">
+		<font style="bold"/>
+	</fontcolor>
+	
+	<fontcolor name="LBrace" default="operator" foreColor="D55000">
+		<font style="bold"/>
+	</fontcolor>
+	<fontcolor name="RBrace" default="operator" foreColor="D55000">
 		<font style="bold"/>
 	</fontcolor>
 
