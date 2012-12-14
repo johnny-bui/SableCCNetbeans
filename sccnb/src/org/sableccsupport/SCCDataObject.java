@@ -3,6 +3,7 @@ package org.sableccsupport;
 import java.io.IOException;
 import org.openide.filesystems.FileObject;
 import org.openide.loaders.DataNode;
+import org.openide.loaders.DataObject.Registration;
 import org.openide.loaders.DataObjectExistsException;
 import org.openide.loaders.MultiDataObject;
 import org.openide.loaders.MultiFileLoader;

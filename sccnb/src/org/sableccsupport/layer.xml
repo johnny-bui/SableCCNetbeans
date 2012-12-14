@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
 <filesystem>
-	<folder name="Editors">
+    <folder name="Editors">
         <folder name="text">
             <folder name="x-sablecc">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="org.sableccsupport.Bundle"/>
-				<file name="org-sableccsupport-parser-SyntaxErrorsHighlightingTaskFactory.instance"/>
+				<attr name="displayName" bundlevalue="org.sableccsupport.Bundle#Editors/text/x-sablecc"/>
+                <file name="org-sableccsupport-parser-SyntaxErrorsHighlightingTaskFactory.instance"/>
 					
 				<file name="org-sableccsupport-parser-SCCParserFactory.instance"/>
 				
@@ -18,10 +18,6 @@
                         </folder>
                     </folder>
                 </folder>
-				
-                <!-- folder name="MultiView">
-                    <file name="org-sableccsupport-SCCVisualElement.instance_hidden"/>
-                </folder -->
 				
                 <file name="language.instance">
                     <attr name="instanceCreate" methodvalue="org.sableccsupport.lexer.SCCTokenId.getLanguage"/>

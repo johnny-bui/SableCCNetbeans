@@ -18,7 +18,7 @@ displayName = "#CTL_VisualizeGrammar")
 	@ActionReference(path = "Menu/RunProject", position = 433, separatorBefore = 349),
 	@ActionReference(path = "Toolbars/Debug", position = 1060),
 	@ActionReference(path = "Loaders/text/x-sablecc/Actions", position = 180),
-	@ActionReference(path = "Editors/text/x-sablecc/Popup", position = 5200,separatorAfter=5250)
+	@ActionReference(path = "Editors/text/x-sablecc/Popup", position = 5300,separatorAfter=5350)
 })
 @Messages("CTL_VisualizeGrammar=Visualize Grammar")
 public final class VisualizeGrammar implements ActionListener 

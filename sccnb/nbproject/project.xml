@@ -29,7 +29,7 @@
                     <compile-dependency/>
                     <run-dependency>
                         <release-version>2</release-version>
-                        <specification-version>2.23.2.2.1.1.6</specification-version>
+                        <specification-version>2.28.2.2.1.1.6</specification-version>
                     </run-dependency>
                 </dependency>
                 <dependency>
@@ -102,6 +102,15 @@
                     <run-dependency>
                         <release-version>0</release-version>
                         <specification-version>1.14.1.7.2</specification-version>
+                    </run-dependency>
+                </dependency>
+                <dependency>
+                    <code-name-base>org.netbeans.spi.navigator</code-name-base>
+                    <build-prerequisite/>
+                    <compile-dependency/>
+                    <run-dependency>
+                        <release-version>1</release-version>
+                        <specification-version>1.23.1</specification-version>
                     </run-dependency>
                 </dependency>
                 <dependency>

@@ -63,7 +63,6 @@ public abstract class Node implements Switchable, Cloneable
         return null;
     }
 
-    protected <T> List<T> cloneList(List<T> list)
     @SuppressWarnings("unchecked")
     protected <T extends Node> List<T> cloneList(List<T> list)
     {
