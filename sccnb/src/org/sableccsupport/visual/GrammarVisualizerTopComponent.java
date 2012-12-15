@@ -30,8 +30,8 @@ persistenceType = TopComponent.PERSISTENCE_NEVER)
 preferredID = "GrammarVisualizerTopComponent")
 @Messages({
 	"CTL_GrammarVisualizerAction=GrammarVisualizer",
-	"CTL_GrammarVisualizerTopComponent=GrammarVisualizer Window",
-	"HINT_GrammarVisualizerTopComponent=This is a GrammarVisualizer window"
+	"CTL_GrammarVisualizerTopComponent=Grammar Visualizer",
+	"HINT_GrammarVisualizerTopComponent=This is a Grammar Visualizer"
 })
 public final class GrammarVisualizerTopComponent 
 	extends TopComponent implements Visualizer

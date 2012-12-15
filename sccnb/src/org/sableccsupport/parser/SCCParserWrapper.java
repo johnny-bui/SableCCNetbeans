@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package org.sableccsupport.parser;
 
@@ -10,8 +6,6 @@ import java.io.PushbackReader;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.netbeans.modules.csl.api.Error;
 import org.netbeans.modules.csl.api.Severity;
 import org.netbeans.modules.parsing.api.Snapshot;
@@ -48,71 +42,11 @@ public class SCCParserWrapper {
 	private void recoverParseErr(ParserException ex) 
 	{
 		parseError.add(ex);
-		/*
-		try {
-			Token t = lex.peek();
-			Logger.getLogger (SCCParserWrapper.class.getName()).log 
-					(Level.INFO, "Last read Token:>>" + t.getText() + " "+ t.getLine() + "<<", ex);
-			t = lex.next();
-			int idx = tokenIdxConverter.indexOf(t);
-			while (idx != ParserTokenId.SEMICOLON.idx())
-			{
-				t = lex.next();
-				idx =  tokenIdxConverter.indexOf(t);
-				if (idx == ParserTokenId.EOF.idx())
-				{
-					break;
-				}
-			}
-			//lex.next();
-			parser.parse();
-		}catch (ParserException ex1)
-		{
-			recoverParseErr(ex1);
-		}catch (LexerException ex1) {
-			recoverLexErr(ex1);
-		}catch (IOException ex1)
-		{
-			PushbackReader text = new PushbackReader(new StringReader(sns.getText().toString()) );
-			lex = new StateInitedPLexer(text, Lexer.State.PACKAGE);
-			parser = new Parser(lex);
-			parse();
-		}
-		*/
-		 
 	}
 	
 	private void recoverLexErr(LexerException ex) 
 	{
 		lexError.add(ex);
-		/*
-		try {
-			Token t = lex.next();
-			int idx = tokenIdxConverter.indexOf(t);
-			while (idx != ParserTokenId.SEMICOLON.idx())
-			{
-				t = lex.next();
-				idx =  tokenIdxConverter.indexOf(t);
-				if (idx == ParserTokenId.EOF.idx())
-				{
-					break;
-				}
-			}
-			parser.parse();
-		} catch (LexerException ex1) {
-			recoverLexErr(ex1);// call itself !!!
-		} catch (ParserException ex1)
-		{
-			recoverParseErr(ex1);
-		}catch (IOException ex1)
-		{
-			PushbackReader text = new PushbackReader(new StringReader(sns.getText().toString()) );
-			lex = new StateInitedPLexer(text, Lexer.State.PACKAGE);
-			parser = new Parser(lex);
-			parse();
-		}
-		*/
-		 
 	}
 	
 	public void parse() 

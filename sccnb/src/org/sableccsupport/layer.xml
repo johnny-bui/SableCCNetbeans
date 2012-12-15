@@ -6,9 +6,9 @@
             <folder name="x-sablecc">
 				<attr name="displayName" bundlevalue="org.sableccsupport.Bundle#Editors/text/x-sablecc"/>
                 <file name="org-sableccsupport-parser-SyntaxErrorsHighlightingTaskFactory.instance"/>
-					
 				<file name="org-sableccsupport-parser-SCCParserFactory.instance"/>
-				
+                
+
                 <folder name="FontsColors">
                     <folder name="NetBeans">
                         <folder name="Defaults">
