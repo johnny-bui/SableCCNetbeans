@@ -14,14 +14,10 @@ public class StateInitedLLexer extends Lexer
 	{
 		super(reader);
 		this.state = state;
+		//System.out.println(">>>>>>>>>>>>>>>>>>>" + " Lexer is used " + "<<<<<<<<<<<<<<<<");
 	}
 	public Lexer.State getState()
 	{
 		return this.state;
 	}
-	public String getText()
-	{
-		return this.text.toString();
-	}
-
 }

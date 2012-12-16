@@ -6,12 +6,14 @@ import java.io.PushbackReader;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.text.Document;
 import org.netbeans.modules.csl.api.Error;
 import org.netbeans.modules.csl.api.Severity;
 import org.netbeans.modules.parsing.api.Snapshot;
 import org.openide.filesystems.FileObject;
 import org.sableccsupport.sccparser.lexer.Lexer;
 import org.sableccsupport.sccparser.lexer.LexerException;
+import org.sableccsupport.sccparser.node.Start;
 import org.sableccsupport.sccparser.node.Token;
 import org.sableccsupport.sccparser.parser.Parser;
 import org.sableccsupport.sccparser.parser.ParserException;
@@ -28,9 +30,11 @@ public class SCCParserWrapper {
 	private final ExtendTokenIndex tokenIdxConverter;
 	private final Snapshot sns;
 	// TODO: make switch state here
+	PushbackReader text;
+	private Start ast;
 	SCCParserWrapper(Snapshot sns) 
 	{
-		PushbackReader text = new PushbackReader(new StringReader(sns.getText().toString()) );
+		text = new PushbackReader(new StringReader(sns.getText().toString()) );
 		lex = new StateInitedPLexer(text, Lexer.State.NORMAL);
 		parser = new Parser(lex);
 		parseError = new ArrayList<ParserException>();
@@ -38,6 +42,38 @@ public class SCCParserWrapper {
 		tokenIdxConverter = new ExtendTokenIndex();
 		this.sns = sns;
 	}
+	
+	public void checkSyntaxErr() 
+	{
+		try {
+			ast = parser.parse();
+		} catch (ParserException ex) {
+			recoverParseErr(ex);
+		} catch (LexerException ex) {
+			recoverLexErr(ex);
+		} catch (IOException ex1)
+		{
+			//text = new PushbackReader(new StringReader(sns.getText().toString()) );
+			//lex = new StateInitedPLexer(text, Lexer.State.PACKAGE);
+			//parser = new Parser(lex);
+			//parse();
+			recoverIOException();
+		}
+	}
+	
+	public Start getAst(){
+		if (ast != null) {
+			// if the ast is already constructed 
+			// (it means the sablecc grammar ist syntactical OK)
+			// just return it
+			return ast;
+		}else{
+			// if not try to parse the doc agains
+			Document doc = sns.getSource().getDocument(true);
+			return ast;	
+		}
+	}
+
 	
 	private void recoverParseErr(ParserException ex) 
 	{
@@ -47,25 +83,24 @@ public class SCCParserWrapper {
 	private void recoverLexErr(LexerException ex) 
 	{
 		lexError.add(ex);
-	}
-	
-	public void parse() 
-	{
 		try {
-			parser.parse();
-		} catch (ParserException ex) {
-			recoverParseErr(ex);
-		} catch (LexerException ex) {
-			recoverLexErr(ex);
-		} catch (IOException ex1)
-		{
-			PushbackReader text = new PushbackReader(new StringReader(sns.getText().toString()) );
-			lex = new StateInitedPLexer(text, Lexer.State.PACKAGE);
-			parser = new Parser(lex);
-			parse();
+			int length = ex.getToken().getText().length();
+			while (length > 0) {
+				--length;
+				text.read();
+			}
+			checkSyntaxErr();
+		} catch (IOException ex1) {
+			recoverIOException();
 		}
 	}
-
+	
+	private void recoverIOException(){
+		text = new PushbackReader(new StringReader(sns.getText().toString()) );
+		lex = new StateInitedPLexer(text, Lexer.State.PACKAGE);
+		parser = new Parser(lex);
+		checkSyntaxErr();
+	}
 	
 	public List<ParserException> getPExcep()
 	{
@@ -75,7 +110,7 @@ public class SCCParserWrapper {
 	{
 		return lexError;
 	}
-	
+/*	
 	public class SCCParserError implements Error
 	{
 		private final String displayName;
@@ -139,6 +174,6 @@ public class SCCParserWrapper {
 		public Object[] getParameters() {
 			return null;
 		}
-		
 	}
+*/ 
 }

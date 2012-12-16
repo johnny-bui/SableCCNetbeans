@@ -14,6 +14,7 @@ public class StateInitedPLexer extends Lexer
 	public StateInitedPLexer(PushbackReader reader, Lexer.State state){
 		super(reader);
 		this.state = state;
+		//System.out.println("<<<<<<<<<<<<<<<<"+ " Parser is used " + ">>>>>>>>>>>>>>>>>>>" );
 	}
 	public StateInitedPLexer(IPushbackReader reader, Lexer.State state)
 	{
@@ -24,9 +25,4 @@ public class StateInitedPLexer extends Lexer
 	{
 		return this.state;
 	}
-	public String getText()
-	{
-		return this.text.toString();
-	}
-
 }

@@ -2,7 +2,6 @@ package org.sableccsupport.lexer;
 
 import java.io.IOException;
 import org.netbeans.spi.lexer.LexerRestartInfo;
-import org.sableccsupport.scclexer.lexer.IPushbackReader;
 import org.sableccsupport.scclexer.lexer.Lexer.State;
 import org.sableccsupport.scclexer.lexer.LexerException;
 
@@ -38,27 +37,24 @@ public class SCCLexer implements org.netbeans.spi.lexer.Lexer<SCCLexerTokenId> {
 	@Override
 	public org.netbeans.api.lexer.Token<SCCLexerTokenId> nextToken()
 	{
-		//Token token = javaParserTokenManager.getNextToken();
 		org.sableccsupport.scclexer.node.Token token = null;
 		SCCLexerTokenId tokenId = SCCLexerTokenId.ERROR;
 		try {
 			token = lexer.next();
 			if (token == null)
 			{
-				throw new RuntimeException("lexer.next() returns null");
+				// I know, it's taboo to return null, but...
+				return null;
 			}
 			if (token.getText().length() ==0 )
 			{
-				//throw new RuntimeException("lexer.next() returns empty token:>>" +
-				// token.getClass().getSimpleName() + "<<");
 				return null;
 			}
 		} catch (LexerException ex) {
-			//throw new RuntimeException("lexer.next() gets Lexer Error, token:>>" +
-			//		lexer.getText() + "<<" );
 			return info.tokenFactory().createToken(
 				SCCLanguageHierarchy.getToken(tokenId.id), 
-				lexer.getText().length()
+				ex.getToken().getText().length()
+				//lexer.getText().length()
 			);
 		} catch (IOException ex) {
 			throw new RuntimeException("lexer.next() gets IOException");

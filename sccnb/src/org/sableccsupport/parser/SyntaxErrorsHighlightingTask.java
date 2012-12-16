@@ -8,43 +8,27 @@ import org.netbeans.modules.parsing.spi.Scheduler;
 import org.netbeans.modules.parsing.spi.SchedulerEvent;
 import org.netbeans.spi.editor.hints.ErrorDescription;
 import org.netbeans.spi.editor.hints.HintsController;
-import org.sableccsupport.parser.SCCParser.SCCParserResult;
 
 /**
  *
  * @author phucluoi
  */
-public class SyntaxErrorsHighlightingTask extends ParserResultTask
-{
-	public SyntaxErrorsHighlightingTask()
-	{
+public class SyntaxErrorsHighlightingTask extends ParserResultTask {
+
+	public SyntaxErrorsHighlightingTask() {
 	}
 
 	@Override
-	public void run(Result result, SchedulerEvent event)
-	{
+	public void run(Result result, SchedulerEvent event) {
+		try{
 			SCCParserResult sccParserResult =
-					(SCCParserResult) result;
+					(SCCParserResult) result; // <-- source of error
 			Document document = result.getSnapshot().getSource().getDocument(false);
-		 	List<ErrorDescription> syntaxErr = sccParserResult.getSyntaxErrorDesc();
-			
-//			List<ParserException> excepts = sccParserResult.getPError();
-//			for(ParserException pex : excepts)
-//			{
-//				Token t = pex.getToken();
-//				String message = pex.getMessage() + t.getLine();
-//				int line = pex.getToken().getLine();
-//				
-//				ErrorDescription errorDescription = ErrorDescriptionFactory.createErrorDescription(
-//						Severity.ERROR,/*standard*/
-//						message,       /*String*/
-//						document,      /*document*/
-//						line
-//						);
-//				errors.add(errorDescription);
-//			}
+			List<ErrorDescription> syntaxErr = sccParserResult.getSyntaxErrorDesc();
 			HintsController.setErrors(document, "sablecc grammar", syntaxErr);
-
+		}catch (ClassCastException ex){
+			// nothing do do here
+		}
 	}
 
 	@Override
