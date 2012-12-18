@@ -31,6 +31,7 @@ public class SCCParserResult extends ParserResult {
 	private boolean valid = true;
 	private final SCCParserWrapper wrapper;
 	private final Document doc;
+	private List<? extends StructureItem> items;
 	
 	/**
 	 * 
@@ -67,10 +68,15 @@ public class SCCParserResult extends ParserResult {
 	}
 
 	public List<? extends StructureItem> getStructure(){
-		List<? extends StructureItem> items = new ArrayList<StructureItem>();
+		if (items == null) {
+			items = new ArrayList<StructureItem>();
+		}
 		return items;
 	}
-
+	
+	public void setStructure(List<? extends StructureItem> items){
+		this.items = items;
+	}
 			
 	@Override
 	protected void invalidate() {

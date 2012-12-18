@@ -16,14 +16,14 @@ public class NBPushbackReader implements IPushbackReader{
 	//private PushbackReader reader;
 	Object lock;
 	
-	public NBPushbackReader(LexerInput input, int size) {
+	public NBPushbackReader(LexerInput input, int bufferSize) {
 		//super(new StringReader(""));
 		//reader = new PushbackReader(new StringReader(""));
-		if(size < 0){
+		if(bufferSize < 0){
 			throw new IllegalArgumentException("size <= 0");
 		}
-		this.buf = new char[size];
-		this.pos = size;
+		this.buf = new char[bufferSize];
+		this.pos = bufferSize;
 		this.input = input;
 		lock = this;
 	}
@@ -37,7 +37,6 @@ public class NBPushbackReader implements IPushbackReader{
 	    if (pos < buf.length) {
 			return buf[pos++];
 		}else {
-	   
 			return input.read();
 		}
 	}
