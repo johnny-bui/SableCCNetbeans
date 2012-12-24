@@ -101,7 +101,8 @@ public abstract class SCCStructureItem implements StructureItem {
 			this.childItems = childItems;
 		}
 	}
-
+	
+	/** create a section item. */
 	public static SCCStructureItem createSectionItem (
 			Token<SCCLexerTokenId> token, 
 			long offset,
@@ -109,34 +110,41 @@ public abstract class SCCStructureItem implements StructureItem {
 		 return new SectionItem(token, offset, null, prefix);
 	}
 
+	/** create a state item. */
 	public static SCCStructureItem createStateItem(
 			Token<SCCLexerTokenId> token,
 			long offset
 			){
-		return new StatesItem(token, offset);
+		return new StateItem(token, offset);
 	}
 
+	/** create a helper item. */
 	public static SCCStructureItem createHelperItem(
 			Token<SCCLexerTokenId> token,
-			long offset
-			)
-	{
+			long offset){
 		return new HelperItem(token, offset);
 	}
-}
+	
+	/** create token item. */
+	public static SCCStructureItem createTokenItem(
+			Token<SCCLexerTokenId> token,
+			long offset){
+		return new TokenItem(token, offset);
+	}
 
-
-
-
-class HelperItem extends StatesItem{
-	HelperItem(Token<SCCLexerTokenId> token, long offset){
-		super(token, offset);
+	public static SCCStructureItem createProductItem(
+			Token<SCCLexerTokenId> token,
+			long offset
+			){
+		return new ProductItem(token, offset);
 	}
 }
 
-class StatesItem extends SCCStructureItem{
+
+
+class SimpleItem extends SCCStructureItem{
 	
-	StatesItem(Token<SCCLexerTokenId> token,
+	SimpleItem(Token<SCCLexerTokenId> token,
 			long offset)
 	{
 		super(token, offset, null);
@@ -148,6 +156,52 @@ class StatesItem extends SCCStructureItem{
 	}
 }
 
+/** represents the helpers in Helper Section.
+ * TODO: make a new Icon for it
+ */
+class HelperItem extends SimpleItem{
+	HelperItem(Token<SCCLexerTokenId> token, long offset){
+		super(token, offset);
+	}
+	@Override
+	public ElementKind getKind() {
+		return ElementKind.FIELD;
+	}
+}
+
+/**
+ * represents the states in States Section.
+ * TODO: make new Icons
+ */
+class StateItem extends SimpleItem{
+	public StateItem(Token<SCCLexerTokenId> token, long offset) {
+		super(token, offset);
+	}
+}
+
+/**
+ * represents the product definition in the Products section.
+ * Object to change
+ */
+class ProductItem extends SimpleItem{
+	public ProductItem(Token<SCCLexerTokenId> token, long offset) {
+		super(token, offset);
+	}
+}
+
+/**
+ * represents the token in tokens Section.
+ * TODO: s.o.
+ */
+class TokenItem extends SimpleItem{
+	public TokenItem(Token<SCCLexerTokenId> token, long offset) {
+		super(token, offset);
+	}
+}
+
+/**
+ * represents the sections in a sablecc file
+ */
 class SectionItem extends SCCStructureItem{
 	private final SectionSortKey prefix;
 	public SectionItem(Token<SCCLexerTokenId> token, 

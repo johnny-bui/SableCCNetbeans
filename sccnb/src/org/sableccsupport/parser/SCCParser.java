@@ -119,6 +119,7 @@ public class SCCParser extends Parser {
 										SectionSortKey.IGNORED);
 							System.out.println("add " + token.id() + " in item");
 							structure.add(ignoredItems);
+							scanIgnoreTokenDef(ignoredItems, ts);
 							isInIgnoredTokens = true;
 							ts.moveNext();
 						}break;
@@ -129,6 +130,7 @@ public class SCCParser extends Parser {
 										offset, 
 										SectionSortKey.PRODUCT);
 							structure.add(productItems);
+							scanProductionDef(productItems, ts);
 						}break;
 						case ABSTRACT:
 						{
@@ -138,6 +140,7 @@ public class SCCParser extends Parser {
 										offset,
 										SectionSortKey.AST);
 							structure.add(abstractItems);
+							scanAST(abstractItems, ts);
 						}break;
 						default:{
 							break;
@@ -163,6 +166,10 @@ public class SCCParser extends Parser {
 	public void removeChangeListener(ChangeListener changeListener) {
 	}
 
+
+	/**
+	 * partial finish.
+	 */
 	private void scanHelperDef(SCCStructureItem helperItems, TokenSequence<SCCLexerTokenId> ts){
 		List<StructureItem> helper = new ArrayList<StructureItem>();
 		helperItems.setChild(helper);
@@ -182,12 +189,10 @@ public class SCCParser extends Parser {
 			
 			currentToken = ts.token();
 			currentOffset = ts.offset();
-
-			if (currentToken.id() == SCCLexerTokenId.STATES || 
-					currentToken.id() == SCCLexerTokenId.TOKENS ||
-					currentToken.id() == SCCLexerTokenId.IGNORED ||
-					currentToken.id() == SCCLexerTokenId.PRODUCTIONS ||
-					currentToken.id() == SCCLexerTokenId.ABSTRACT){
+			
+			if (isOneOf(currentToken.id(), 
+				SCCLexerTokenId.STATES, SCCLexerTokenId.TOKENS, SCCLexerTokenId.IGNORED,
+				SCCLexerTokenId.PRODUCTIONS, SCCLexerTokenId.ABSTRACT)){
 				ts.movePrevious();
 				break;
 			}else{
@@ -200,17 +205,73 @@ public class SCCParser extends Parser {
 	
 	}
 	
+	/**
+	 * TODO: subject of change do not repeat yourself
+	 */
 	private void scanTokenDef(SCCStructureItem tokenItems, TokenSequence<SCCLexerTokenId> ts) {
-		/*while(ts.moveNext()){
+		List<StructureItem> tokens = new ArrayList<StructureItem>();
+		tokenItems.setChild(tokens);
+
+		Token<SCCLexerTokenId> currentToken = ts.token();
+		int currentOffset = ts.offset();
+		
+		Token<SCCLexerTokenId> lastToken;
+		int lastOffset = 0;
+
+		while (ts.moveNext()){
+			if (isOneOf(ts.token().id(), 
+					SCCLexerTokenId.BLANK, SCCLexerTokenId.COMMENT )){
+				continue;
+			}
+			lastToken = currentToken;
+			lastOffset = currentOffset;
 			
-		}*/
+			currentToken = ts.token();
+			currentOffset = ts.offset();
+			
+			if (isOneOf(currentToken.id(), 
+				SCCLexerTokenId.IGNORED,
+				SCCLexerTokenId.PRODUCTIONS, SCCLexerTokenId.ABSTRACT)){
+				ts.movePrevious();
+				break;
+			}else{
+				if (currentToken.id() == SCCLexerTokenId.EQUAL){
+					SCCStructureItem item = SCCStructureItem.createTokenItem(lastToken, lastOffset);
+					tokens.add(item);
+				}
+			}
+		}
 	}
 
+	private void scanIgnoreTokenDef(SCCStructureItem stateItems, 
+			TokenSequence<SCCLexerTokenId> ts) {
+		List<StructureItem> states = new ArrayList<StructureItem>();
+		stateItems.setChild(states);
+		while (ts.moveNext()){
+			if (isOneOf(ts.token().id(), SCCLexerTokenId.BLANK, SCCLexerTokenId.COMMENT)){
+				continue;
+			}
+			Token<SCCLexerTokenId> token = ts.token();
+			int offset = ts.offset();
+			if (token.id() != SCCLexerTokenId.SEMICOLON){
+				if (token.id() == SCCLexerTokenId.ID){
+					StructureItem state = SCCStructureItem.createTokenItem(token, offset);
+					states.add(state);
+				}
+			}else {
+				break;
+			}
+		}
+	}
+	
 	private void scanStateDef(SCCStructureItem stateItems, 
 			TokenSequence<SCCLexerTokenId> ts) {
 		List<StructureItem> states = new ArrayList<StructureItem>();
 		stateItems.setChild(states);
 		while (ts.moveNext()){
+			if (isOneOf(ts.token().id(), SCCLexerTokenId.BLANK, SCCLexerTokenId.COMMENT)){
+				continue;
+			}
 			Token<SCCLexerTokenId> token = ts.token();
 			int offset = ts.offset();
 			if (token.id() != SCCLexerTokenId.SEMICOLON){
@@ -223,4 +284,113 @@ public class SCCParser extends Parser {
 			}
 		}
 	}
+
+	private void scanProductionDef(SCCStructureItem productItems, TokenSequence<SCCLexerTokenId> ts) {
+		List<StructureItem> products = new ArrayList<StructureItem>();
+		productItems.setChild(products);
+
+		Token<SCCLexerTokenId> currentToken = ts.token();
+		int currentOffset = ts.offset();
+		
+		Token<SCCLexerTokenId> productToken = ts.token();
+		int productOffset = 0;
+
+		boolean beginNewProduct = true;
+		while (ts.moveNext()){
+			// ignore blank and comments
+			currentToken = ts.token();
+			currentOffset = ts.offset();
+					
+			if (isOneOf(currentToken.id(), 
+					SCCLexerTokenId.BLANK, SCCLexerTokenId.COMMENT )){
+				continue;
+			}
+			if (currentToken.id() == SCCLexerTokenId.ABSTRACT){
+				ts.movePrevious();
+				break;
+			}
+			if (currentToken.id() == SCCLexerTokenId.SEMICOLON){
+				beginNewProduct = true;
+				continue;
+			}
+			if (beginNewProduct){// if begin new product definition, mark it in the vairable productToken
+				if (currentToken.id() == SCCLexerTokenId.ID){
+					productToken = currentToken;
+					productOffset = currentOffset;
+					beginNewProduct = false; 
+					// set this variable to false sothat the productToken is not override
+					continue;// and continues
+				}else{
+					System.out.println("!!!! Parsing error expected an id but was " + currentToken.id());
+					break;
+				}
+			}
+			if (currentToken.id() == SCCLexerTokenId.EQUAL){
+				SCCStructureItem item = SCCStructureItem.createProductItem(productToken, productOffset);
+				products.add(item);
+				continue;
+			}
+		}
+		
+	}
+	
+	private void scanAST(SCCStructureItem productItems, TokenSequence<SCCLexerTokenId> ts) {
+		List<StructureItem> products = new ArrayList<StructureItem>();
+		productItems.setChild(products);
+
+		Token<SCCLexerTokenId> currentToken = ts.token();
+		int currentOffset = ts.offset();
+		
+		Token<SCCLexerTokenId> productToken = ts.token();
+		int productOffset = 0;
+
+		boolean beginNewProduct = true;
+		while (ts.moveNext()){
+			// ignore blank and comments
+			currentToken = ts.token();
+			currentOffset = ts.offset();
+					
+			if (isOneOf(currentToken.id(), 
+					SCCLexerTokenId.BLANK, SCCLexerTokenId.COMMENT,
+					SCCLexerTokenId.SYNTAX, SCCLexerTokenId.TREE)){
+				continue;
+			}
+			if (currentToken.id() == SCCLexerTokenId.EOF ){
+				break;
+			}
+			if (currentToken.id() == SCCLexerTokenId.SEMICOLON){
+				beginNewProduct = true;
+				continue;
+			}
+			if (beginNewProduct){// if begin new product definition, mark it in the vairable productToken
+				if (currentToken.id() == SCCLexerTokenId.ID){
+					productToken = currentToken;
+					productOffset = currentOffset;
+					beginNewProduct = false; 
+					// set this variable to false sothat the productToken is not override
+					continue;// and continues
+				}else{
+					System.out.println("!!!! Parsing error expected an id but was " + currentToken.id());
+					break;
+				}
+			}
+			if (currentToken.id() == SCCLexerTokenId.EQUAL){
+				SCCStructureItem item = SCCStructureItem.createProductItem(productToken, productOffset);
+				products.add(item);
+				continue;
+			}
+		}
+		
+	}
+	
+	private boolean isOneOf(SCCLexerTokenId checkedToken, SCCLexerTokenId... tokens){
+		for (SCCLexerTokenId t : tokens){
+			if (checkedToken == t){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	
 }
