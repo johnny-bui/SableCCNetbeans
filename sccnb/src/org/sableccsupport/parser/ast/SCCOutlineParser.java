@@ -21,6 +21,7 @@ import org.sableccsupport.navi.SectionSortKey;
  * @version Dec 24, 2012
  */
 public class SCCOutlineParser {
+	
 	public List<StructureItem> scanStructure(Snapshot snapshot){
 		List<StructureItem> docStructure = new ArrayList<StructureItem>();
 		SCCStructureItem packageItems;

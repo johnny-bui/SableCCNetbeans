@@ -1,5 +1,5 @@
 
-package org.sableccsupport.navi;
+package org.sableccsupport.parser.ast;
 
 /**
  * presents the abstract structure node
