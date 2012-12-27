@@ -1,10 +1,10 @@
 package org.sableccsupport.parser;
 
-import org.sableccsupport.navi.SCCStructureScanner;
 import org.netbeans.api.lexer.Language;
 import org.netbeans.modules.csl.spi.DefaultLanguageConfig;
 import org.netbeans.modules.csl.spi.LanguageRegistration;
 import org.sableccsupport.lexer.SCCLexerTokenId;
+import org.sableccsupport.navi.SCCStructureScanner;
 
 /**
  *

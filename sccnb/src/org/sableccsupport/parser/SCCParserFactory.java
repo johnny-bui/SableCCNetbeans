@@ -13,6 +13,6 @@ public class SCCParserFactory extends ParserFactory {
 
 	@Override
 	public Parser createParser(Collection<Snapshot> snapshots) {
-		return new SCCParser();
+		return new SCCParserFasader();
 	}
 }

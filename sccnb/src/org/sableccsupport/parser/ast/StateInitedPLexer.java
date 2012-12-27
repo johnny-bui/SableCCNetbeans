@@ -1,4 +1,4 @@
-package org.sableccsupport.parser;
+package org.sableccsupport.parser.ast;
 
 import java.io.PushbackReader;
 import org.sableccsupport.sccparser.lexer.IPushbackReader;

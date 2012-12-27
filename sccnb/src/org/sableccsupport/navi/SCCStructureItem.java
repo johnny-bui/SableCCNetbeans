@@ -167,6 +167,11 @@ class HelperItem extends SimpleItem{
 	public ElementKind getKind() {
 		return ElementKind.FIELD;
 	}
+
+	@Override
+	public ImageIcon getCustomIcon() {
+		return new ImageIcon(ImageUtilities.loadImage("org/sableccsupport/img/helper.png"));
+	}
 }
 
 /**
@@ -176,6 +181,11 @@ class HelperItem extends SimpleItem{
 class StateItem extends SimpleItem{
 	public StateItem(Token<SCCLexerTokenId> token, long offset) {
 		super(token, offset);
+	}
+
+	@Override
+	public ImageIcon getCustomIcon() {
+		return new ImageIcon(ImageUtilities.loadImage("org/sableccsupport/img/state.png"));
 	}
 }
 
@@ -196,6 +206,11 @@ class ProductItem extends SimpleItem{
 class TokenItem extends SimpleItem{
 	public TokenItem(Token<SCCLexerTokenId> token, long offset) {
 		super(token, offset);
+	}
+
+	@Override
+	public ImageIcon getCustomIcon() {
+		return new ImageIcon(ImageUtilities.loadImage("org/sableccsupport/img/token.png"));
 	}
 }
 

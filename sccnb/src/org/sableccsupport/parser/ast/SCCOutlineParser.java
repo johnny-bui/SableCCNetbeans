@@ -1,58 +1,28 @@
-package org.sableccsupport.parser;
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package org.sableccsupport.parser.ast;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.event.ChangeListener;
 import org.netbeans.api.lexer.Token;
 import org.netbeans.api.lexer.TokenSequence;
 import org.netbeans.modules.csl.api.StructureItem;
 import org.netbeans.modules.parsing.api.Snapshot;
-import org.netbeans.modules.parsing.api.Task;
-import org.netbeans.modules.parsing.spi.Parser;
-import org.netbeans.modules.parsing.spi.SourceModificationEvent;
 import org.sableccsupport.lexer.SCCLexerTokenId;
 import org.sableccsupport.navi.SCCStructureItem;
 import org.sableccsupport.navi.SectionSortKey;
-import sun.awt.image.OffScreenImage;
 
 /**
  *
  * @author phucluoi
+ * @version Dec 24, 2012
  */
-public class SCCParser extends Parser {
-
-	private Snapshot snapshot;
-	private SCCParserWrapper pw;
-	private boolean cancelled = false;
-	private List<StructureItem> structure;
-	
-	@Override
-	public void parse(
-			Snapshot snapshot, Task task,SourceModificationEvent event)
-	{
-		this.snapshot = snapshot;
-		pw = new SCCParserWrapper(snapshot);
-		try{
-			pw.checkSyntaxErr();
-			scanStructure();
-		}catch(Exception ex)
-		{
-			Logger.getLogger (Parser.class.getName()).log (Level.WARNING, null, ex);
-		}
-	}
-
-	@Override
-	public SCCParserResult getResult(Task task)
-	{
-		SCCParserResult result = new SCCParserResult(snapshot, pw);
-		result.setStructure(this.structure);
-		return result;
-	}
-	
-	private void scanStructure(){
-		structure = new ArrayList<StructureItem>();
+public class SCCOutlineParser {
+	public List<StructureItem> scanStructure(Snapshot snapshot){
+		List<StructureItem> docStructure = new ArrayList<StructureItem>();
 		SCCStructureItem packageItems;
 		SCCStructureItem helperItems;
 		SCCStructureItem tokenItems;
@@ -75,7 +45,7 @@ public class SCCParser extends Parser {
 										token, 
 										offset,
 										SectionSortKey.PACKAGE);
-							structure.add(packageItems);
+							docStructure.add(packageItems);
 						}break;
 						case HELPERS:{
 							helperItems = SCCStructureItem
@@ -83,7 +53,7 @@ public class SCCParser extends Parser {
 										token, 
 										offset,
 										SectionSortKey.HELPER);
-							structure.add(helperItems);
+							docStructure.add(helperItems);
 							scanHelperDef(helperItems, ts);
 						}break;
 						case STATES:{
@@ -92,7 +62,7 @@ public class SCCParser extends Parser {
 										token, 
 										offset, 
 										SectionSortKey.STATE);
-							structure.add(stateItems);
+							docStructure.add(stateItems);
 							scanStateDef(stateItems, ts);
 						}break;
 						case TOKENS:{
@@ -104,7 +74,7 @@ public class SCCParser extends Parser {
 											offset,
 											SectionSortKey.TOKEN);
 								System.out.println("add " + token.id() + " in item");
-								structure.add(tokenItems);
+								docStructure.add(tokenItems);
 								scanTokenDef(tokenItems, ts);
 							}else{
 								System.out.println("!!! " + token.id() + " in IGNORE");
@@ -118,7 +88,7 @@ public class SCCParser extends Parser {
 										offset,
 										SectionSortKey.IGNORED);
 							System.out.println("add " + token.id() + " in item");
-							structure.add(ignoredItems);
+							docStructure.add(ignoredItems);
 							scanIgnoreTokenDef(ignoredItems, ts);
 							isInIgnoredTokens = true;
 							ts.moveNext();
@@ -129,7 +99,7 @@ public class SCCParser extends Parser {
 										token, 
 										offset, 
 										SectionSortKey.PRODUCT);
-							structure.add(productItems);
+							docStructure.add(productItems);
 							scanProductionDef(productItems, ts);
 						}break;
 						case ABSTRACT:
@@ -139,7 +109,7 @@ public class SCCParser extends Parser {
 										token, 
 										offset,
 										SectionSortKey.AST);
-							structure.add(abstractItems);
+							docStructure.add(abstractItems);
 							scanAST(abstractItems, ts);
 						}break;
 						default:{
@@ -149,23 +119,9 @@ public class SCCParser extends Parser {
 				}
 			}
 		}
-	}
-	
-	@Deprecated
-	@Override
-	public void cancel()
-	{
-		cancelled = true;
-	}
 
-	@Override
-	public void addChangeListener(ChangeListener changeListener) {
+		return docStructure;
 	}
-
-	@Override
-	public void removeChangeListener(ChangeListener changeListener) {
-	}
-
 
 	/**
 	 * partial finish.
@@ -204,8 +160,29 @@ public class SCCParser extends Parser {
 		}
 	
 	}
-	
-	/**
+
+	private void scanStateDef(SCCStructureItem stateItems, 
+			TokenSequence<SCCLexerTokenId> ts) {
+		List<StructureItem> states = new ArrayList<StructureItem>();
+		stateItems.setChild(states);
+		while (ts.moveNext()){
+			if (isOneOf(ts.token().id(), SCCLexerTokenId.BLANK, SCCLexerTokenId.COMMENT)){
+				continue;
+			}
+			Token<SCCLexerTokenId> token = ts.token();
+			int offset = ts.offset();
+			if (token.id() != SCCLexerTokenId.SEMICOLON){
+				if (token.id() == SCCLexerTokenId.ID){
+					StructureItem state = SCCStructureItem.createStateItem(token, offset);
+					states.add(state);
+				}
+			}else {
+				break;
+			}
+		}
+	}
+
+/**
 	 * TODO: subject of change do not repeat yourself
 	 */
 	private void scanTokenDef(SCCStructureItem tokenItems, TokenSequence<SCCLexerTokenId> ts) {
@@ -242,7 +219,7 @@ public class SCCParser extends Parser {
 			}
 		}
 	}
-
+	
 	private void scanIgnoreTokenDef(SCCStructureItem stateItems, 
 			TokenSequence<SCCLexerTokenId> ts) {
 		List<StructureItem> states = new ArrayList<StructureItem>();
@@ -256,27 +233,6 @@ public class SCCParser extends Parser {
 			if (token.id() != SCCLexerTokenId.SEMICOLON){
 				if (token.id() == SCCLexerTokenId.ID){
 					StructureItem state = SCCStructureItem.createTokenItem(token, offset);
-					states.add(state);
-				}
-			}else {
-				break;
-			}
-		}
-	}
-	
-	private void scanStateDef(SCCStructureItem stateItems, 
-			TokenSequence<SCCLexerTokenId> ts) {
-		List<StructureItem> states = new ArrayList<StructureItem>();
-		stateItems.setChild(states);
-		while (ts.moveNext()){
-			if (isOneOf(ts.token().id(), SCCLexerTokenId.BLANK, SCCLexerTokenId.COMMENT)){
-				continue;
-			}
-			Token<SCCLexerTokenId> token = ts.token();
-			int offset = ts.offset();
-			if (token.id() != SCCLexerTokenId.SEMICOLON){
-				if (token.id() == SCCLexerTokenId.ID){
-					StructureItem state = SCCStructureItem.createStateItem(token, offset);
 					states.add(state);
 				}
 			}else {
@@ -392,5 +348,4 @@ public class SCCParser extends Parser {
 		return false;
 	}
 
-	
 }

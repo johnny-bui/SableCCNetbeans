@@ -1,11 +1,11 @@
 
 package org.sableccsupport.parser;
 
+import org.sableccsupport.parser.ast.SCCErrorParser;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.text.Document;
-import org.netbeans.api.lexer.TokenSequence;
 import org.netbeans.modules.csl.api.Error;
 import org.netbeans.modules.csl.api.StructureItem;
 import org.netbeans.modules.csl.spi.ParserResult;
@@ -13,7 +13,6 @@ import org.netbeans.modules.parsing.api.Snapshot;
 import org.netbeans.spi.editor.hints.ErrorDescription;
 import org.netbeans.spi.editor.hints.ErrorDescriptionFactory;
 import org.netbeans.spi.editor.hints.Severity;
-import org.sableccsupport.lexer.SCCLexerTokenId;
 import org.sableccsupport.sccparser.lexer.LexerException;
 import org.sableccsupport.sccparser.node.Token;
 import org.sableccsupport.sccparser.parser.ParserException;
@@ -29,14 +28,14 @@ import org.sableccsupport.sccparser.parser.ParserException;
  */
 public class SCCParserResult extends ParserResult {
 	private boolean valid = true;
-	private final SCCParserWrapper wrapper;
+	private final SCCErrorParser wrapper;
 	private final Document doc;
 	private List<? extends StructureItem> items;
 	
 	/**
 	 * 
 	 */
-	SCCParserResult(Snapshot snapshot, SCCParserWrapper wrapper) {
+	SCCParserResult(Snapshot snapshot, SCCErrorParser wrapper) {
 		super(snapshot);
 		this.wrapper = wrapper;
 		doc = getSnapshot().getSource().getDocument(false);

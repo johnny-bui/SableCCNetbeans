@@ -4,8 +4,8 @@
 <fontscolors>
 	<!-- ============ keywords ================================ -->
 	<fontcolor name="PkgId" default="identifier" foreColor="009900">
-		<font style="bold"/>
 	</fontcolor>
+
 	<fontcolor name="Package" default="keyword">
 	</fontcolor>
 	
@@ -13,32 +13,30 @@
 	</fontcolor>
 	
 	<fontcolor name="Helpers" default="keyword">
-		<font style="bold"/>
 	</fontcolor>
 	
 	<fontcolor name="Tokens"  default="keyword" >
-		<font style="bold"/>
 	</fontcolor>
+
 	<fontcolor name="Ignored" default="keyword"> 
-		<font style="bold"/>
 	</fontcolor>
+
 	<fontcolor name="Productions" default="keyword" >
-		<font style="bold"/>
 	</fontcolor>
+
 	<fontcolor name="Abstract" default="keyword" >
-		<font style="bold"/>
 	</fontcolor>
+
 	<fontcolor name="Syntax" default="keyword" >
-		<font style="bold"/>
 	</fontcolor>
+
 	<fontcolor name="Tree" default="keyword" >
-		<font style="bold"/>
 	</fontcolor>
+
 	<fontcolor name="New" default="keyword" >
-		<font style="bold"/>
 	</fontcolor>
+
 	<fontcolor name="Null" default="keyword" >
-		<font style="bold"/>
 	</fontcolor>
 	
 	<!-- ============ identifyer ================================ -->
