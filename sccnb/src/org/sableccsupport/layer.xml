@@ -35,6 +35,20 @@
                     <attr name="instanceOf" stringvalue="org.netbeans.api.lexer.Language"/>
                 </file>
 				
+				<!-- maybe it could be useful for old version of Netbeans 
+					newer version (since 7.2) does not need this folder. Just
+					declare the Mimetype in SCCHyperlinkProvider
+				-->
+				<!--
+				<folder name="HyperlinkProviders">
+					<file name="SCCHyperlinkProvider.instance">
+						<attr name="instanceClass" 
+							  stringvalue="org.sableccsupport.hyperlink.SCCHyperlinkProvider"/>
+						<attr name="instanceOf" 
+							  stringvalue="org.netbeans.lib.editor.hyperlink.spi.HyperlinkProvider"/>
+					</file>
+            	</folder>
+				-->
             </folder>
         </folder>
     </folder>

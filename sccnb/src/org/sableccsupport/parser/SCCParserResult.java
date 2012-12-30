@@ -1,7 +1,6 @@
 
 package org.sableccsupport.parser;
 
-import org.sableccsupport.parser.ast.SCCErrorParser;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,6 +12,7 @@ import org.netbeans.modules.parsing.api.Snapshot;
 import org.netbeans.spi.editor.hints.ErrorDescription;
 import org.netbeans.spi.editor.hints.ErrorDescriptionFactory;
 import org.netbeans.spi.editor.hints.Severity;
+import org.sableccsupport.parser.ast.SCCErrorParser;
 import org.sableccsupport.sccparser.lexer.LexerException;
 import org.sableccsupport.sccparser.node.Token;
 import org.sableccsupport.sccparser.parser.ParserException;

@@ -6,7 +6,6 @@ import java.io.PushbackReader;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.text.Document;
 import org.netbeans.modules.parsing.api.Snapshot;
 import org.sableccsupport.sccparser.lexer.Lexer;
 import org.sableccsupport.sccparser.lexer.LexerException;

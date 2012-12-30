@@ -1,16 +1,18 @@
 package org.sableccsupport.parser;
 
-import org.sableccsupport.parser.ast.SCCOutlineParser;
-import org.sableccsupport.parser.ast.SCCErrorParser;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.event.ChangeListener;
+import org.netbeans.api.lexer.TokenSequence;
 import org.netbeans.modules.csl.api.StructureItem;
 import org.netbeans.modules.parsing.api.Snapshot;
 import org.netbeans.modules.parsing.api.Task;
 import org.netbeans.modules.parsing.spi.Parser;
 import org.netbeans.modules.parsing.spi.SourceModificationEvent;
+import org.sableccsupport.lexer.SCCLexerTokenId;
+import org.sableccsupport.parser.ast.SCCErrorParser;
+import org.sableccsupport.parser.ast.SCCOutlineParser;
 
 /**
  *
@@ -21,7 +23,7 @@ public class SCCParserFasader extends Parser {
 	private Snapshot snapshot;
 	private SCCErrorParser pw;
 	private boolean cancelled = false;
-	private List<StructureItem> structure;
+	private List<? extends StructureItem> structure;
 	private SCCOutlineParser outlineScanner;
 
 	public SCCParserFasader() {
@@ -36,7 +38,9 @@ public class SCCParserFasader extends Parser {
 		pw = new SCCErrorParser(snapshot);
 		try{
 			pw.checkSyntaxErr();
-			structure = outlineScanner.scanStructure(snapshot);
+			TokenSequence<SCCLexerTokenId> ts = 
+					snapshot.getTokenHierarchy().tokenSequence(SCCLexerTokenId.getLanguage());
+			structure = outlineScanner.scanStructure(ts);
 		}catch(Exception ex)
 		{
 			Logger.getLogger (Parser.class.getName()).log (Level.WARNING, null, ex);

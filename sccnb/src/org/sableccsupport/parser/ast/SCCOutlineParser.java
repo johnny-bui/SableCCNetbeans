@@ -10,7 +10,6 @@ import java.util.List;
 import org.netbeans.api.lexer.Token;
 import org.netbeans.api.lexer.TokenSequence;
 import org.netbeans.modules.csl.api.StructureItem;
-import org.netbeans.modules.parsing.api.Snapshot;
 import org.sableccsupport.lexer.SCCLexerTokenId;
 import org.sableccsupport.navi.SCCStructureItem;
 import org.sableccsupport.navi.SectionSortKey;
@@ -22,8 +21,12 @@ import org.sableccsupport.navi.SectionSortKey;
  */
 public class SCCOutlineParser {
 	
-	public List<StructureItem> scanStructure(Snapshot snapshot){
-		List<StructureItem> docStructure = new ArrayList<StructureItem>();
+	private List<? extends SCCStructureItem> structure;
+	
+	public List<? extends StructureItem> scanStructure(/*Snapshot snapshot*/
+			TokenSequence<SCCLexerTokenId> ts
+			){
+		List<SCCStructureItem> docStructure = new ArrayList<SCCStructureItem>();
 		SCCStructureItem packageItems;
 		SCCStructureItem helperItems;
 		SCCStructureItem tokenItems;
@@ -32,8 +35,8 @@ public class SCCOutlineParser {
 		SCCStructureItem productItems;
 		SCCStructureItem abstractItems;
 		boolean isInIgnoredTokens = false;
-		TokenSequence<SCCLexerTokenId> ts = 
-				snapshot.getTokenHierarchy().tokenSequence(SCCLexerTokenId.getLanguage());
+		
+		ts.moveStart();
 		if (ts != null){
 			if (!ts.isEmpty()){
 				while (ts.moveNext()){
@@ -120,7 +123,7 @@ public class SCCOutlineParser {
 				}
 			}
 		}
-
+		structure = docStructure;
 		return docStructure;
 	}
 
@@ -340,7 +343,7 @@ public class SCCOutlineParser {
 		
 	}
 	
-	private boolean isOneOf(SCCLexerTokenId checkedToken, SCCLexerTokenId... tokens){
+	public static boolean isOneOf(SCCLexerTokenId checkedToken, SCCLexerTokenId... tokens){
 		for (SCCLexerTokenId t : tokens){
 			if (checkedToken == t){
 				return true;
@@ -348,5 +351,40 @@ public class SCCOutlineParser {
 		}
 		return false;
 	}
+	
+	public static Token<SCCLexerTokenId> getNextToken(
+		final TokenSequence<SCCLexerTokenId> ts, final int offset){
+		
+		final int oldOffset = ts.offset();
+		ts.move(offset);
+		Token<SCCLexerTokenId> nextToken = null;
+		if(ts.moveNext()){
+			while(ts.moveNext()){
+				nextToken = ts.token();
+				if (! isOneOf(nextToken.id(), SCCLexerTokenId.BLANK, SCCLexerTokenId.COMMENT)){
+					break;
+				}
+			}
+			ts.move(oldOffset);// move back to the origin position
+		}
+		return nextToken;
+	}
 
+	public static Token<SCCLexerTokenId> getPreviousToken(
+		final TokenSequence<SCCLexerTokenId> ts, final int offset){
+		
+		final int oldOffset = ts.offset();
+		ts.move(offset);
+		Token<SCCLexerTokenId> previousToken = null;
+		if(ts.moveNext()){
+			while(ts.movePrevious()){
+				previousToken = ts.token();
+				if (! isOneOf(previousToken.id(), SCCLexerTokenId.BLANK, SCCLexerTokenId.COMMENT)){
+					break;
+				}
+			}
+			ts.move(oldOffset);// move back to the origin position
+		}
+		return previousToken;
+	}
 }

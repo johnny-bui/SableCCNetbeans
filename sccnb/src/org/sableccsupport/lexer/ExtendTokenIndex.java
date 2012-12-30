@@ -1,6 +1,6 @@
 package org.sableccsupport.lexer;
-import org.sableccsupport.scclexer.node.*;
 import org.sableccsupport.scclexer.analysis.AnalysisAdapter;
+import org.sableccsupport.scclexer.node.*;
 
 /**
  *
