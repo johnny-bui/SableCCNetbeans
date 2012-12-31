@@ -1,4 +1,4 @@
-package org.sableccsupport.parser;
+package org.sableccsupport.parserfasader;
 import java.util.Collection;
 import java.util.Collections;
 import org.netbeans.modules.parsing.api.Snapshot;

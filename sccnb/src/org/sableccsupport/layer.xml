@@ -16,8 +16,8 @@
         <folder name="text">
             <folder name="x-sablecc">
 				<attr name="displayName" bundlevalue="org.sableccsupport.Bundle#Editors/text/x-sablecc"/>
-                <file name="org-sableccsupport-parser-SyntaxErrorsHighlightingTaskFactory.instance"/>
-				<file name="org-sableccsupport-parser-SCCParserFactory.instance"/>
+                <file name="org-sableccsupport-parserfasader-SyntaxErrorsHighlightingTaskFactory.instance"/>
+				<file name="org-sableccsupport-parserfasader-SCCParserFactory.instance"/>
                 
 
                 <folder name="FontsColors">

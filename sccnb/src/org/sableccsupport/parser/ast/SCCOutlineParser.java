@@ -352,6 +352,9 @@ public class SCCOutlineParser {
 		return false;
 	}
 	
+	/**
+	 * move to the nearest token after the given offset.
+	 */
 	public static Token<SCCLexerTokenId> getNextToken(
 		final TokenSequence<SCCLexerTokenId> ts, final int offset){
 		
@@ -369,11 +372,32 @@ public class SCCOutlineParser {
 		}
 		return nextToken;
 	}
-
-	public static Token<SCCLexerTokenId> getPreviousToken(
-		final TokenSequence<SCCLexerTokenId> ts, final int offset){
+	
+	public static Token<SCCLexerTokenId> getNextToken(
+		final TokenSequence<SCCLexerTokenId> ts, final int oldOffset, final int offset){
 		
-		final int oldOffset = ts.offset();
+		ts.move(offset);
+		Token<SCCLexerTokenId> nextToken = null;
+		if(ts.moveNext()){
+			while(ts.moveNext()){
+				nextToken = ts.token();
+				if (! isOneOf(nextToken.id(), SCCLexerTokenId.BLANK, SCCLexerTokenId.COMMENT)){
+					break;
+				}
+			}
+			ts.move(oldOffset);// move back to the origin position
+		}
+		return nextToken;
+	}
+	
+
+	/**
+	 * get the nearest Token before the given offset and jump back to 
+	 * original position. 
+	 */
+	public static Token<SCCLexerTokenId> getPreviousToken(
+		final TokenSequence<SCCLexerTokenId> ts,final int oldOffset, final int offset){
+		
 		ts.move(offset);
 		Token<SCCLexerTokenId> previousToken = null;
 		if(ts.moveNext()){
@@ -387,4 +411,6 @@ public class SCCOutlineParser {
 		}
 		return previousToken;
 	}
+	
+	
 }

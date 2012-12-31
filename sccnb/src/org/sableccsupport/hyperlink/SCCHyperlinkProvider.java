@@ -8,21 +8,15 @@ import java.util.EnumSet;
 import java.util.Set;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
-import javax.swing.text.JTextComponent;
-import javax.swing.text.StyledDocument;
-import org.netbeans.api.editor.EditorRegistry;
 import org.netbeans.api.editor.mimelookup.MimeRegistration;
 import org.netbeans.api.lexer.Token;
 import org.netbeans.api.lexer.TokenHierarchy;
 import org.netbeans.api.lexer.TokenSequence;
-import org.netbeans.lib.editor.hyperlink.spi.HyperlinkProvider;
 import org.netbeans.lib.editor.hyperlink.spi.HyperlinkProviderExt;
 import org.netbeans.lib.editor.hyperlink.spi.HyperlinkType;
 import org.netbeans.modules.editor.NbEditorUtilities;
-import org.openide.cookies.LineCookie;
 import org.openide.filesystems.FileObject;
 import org.openide.loaders.DataObject;
-import org.openide.loaders.DataObjectNotFoundException;
 import org.openide.text.Line;
 import org.openide.util.Exceptions;
 import org.sableccsupport.lexer.SCCLexerTokenId;
@@ -89,21 +83,55 @@ public class SCCHyperlinkProvider implements HyperlinkProviderExt {
 		if (ts.moveNext()) {
 			Token<SCCLexerTokenId> testToken = ts.token();
 			startOffset = ts.offset();
+			endOffset = startOffset + testToken.text().length();
 			if (testToken.id() == SCCLexerTokenId.ID) {
-				Token<SCCLexerTokenId> nextToken = SCCOutlineParser.getNextToken(ts, offset);
-				if (!SCCOutlineParser.isOneOf(nextToken.id(),
-						SCCLexerTokenId.EQUAL,
-						SCCLexerTokenId.R_BKT)) {
-					endOffset = startOffset + testToken.text().length();
-					int[] span = {startOffset, endOffset};
-					return span;
-				}
-				if (nextToken.id() == SCCLexerTokenId.R_BRACE) {
-					Token<SCCLexerTokenId> previousToken = SCCOutlineParser.getPreviousToken(ts, offset);
-					if (previousToken.id() == SCCLexerTokenId.ARROW) {
-						endOffset = startOffset + testToken.text().length();
+				Token<SCCLexerTokenId> nextToken = SCCOutlineParser.getNextToken(ts, startOffset, offset);
+				if (nextToken != null){
+					if (!SCCOutlineParser.isOneOf(nextToken.id(),
+							SCCLexerTokenId.EQUAL,
+							SCCLexerTokenId.R_BRACE,
+							SCCLexerTokenId.R_BKT
+							)) {
 						int[] span = {startOffset, endOffset};
 						return span;
+					}
+					if (nextToken.id() == SCCLexerTokenId.R_BRACE) {
+						Token<SCCLexerTokenId> previousToken 
+								= SCCOutlineParser.getPreviousToken(ts, offset, offset);
+						if (previousToken.id() != SCCLexerTokenId.L_BRACE) {
+							int[] span = {startOffset, endOffset};
+							return span;
+						}else{
+							Token<SCCLexerTokenId> secondPreviousToken
+									= SCCOutlineParser.getPreviousToken(
+										ts, 
+										startOffset, 
+										offset - testToken.text().length() );
+							System.out.println("========== secondPreviousToken >>"
+										+ secondPreviousToken 
+										+ "<< =============");
+							if (secondPreviousToken != null){
+								if (secondPreviousToken.id() == SCCLexerTokenId.SEMICOLON){ 
+									int[] span = {startOffset, endOffset};
+									System.out.println("========== Jump to State >>"
+											+ secondPreviousToken.text() 
+											+ "<< =============");
+									return span;
+								}
+							}
+						}
+						
+					}
+					if (nextToken.id() == SCCLexerTokenId.R_BKT){
+						Token<SCCLexerTokenId> secondNextToken = 
+								SCCOutlineParser.getNextToken(
+									ts, 
+									startOffset, 
+									endOffset );
+						if (secondNextToken.id() != SCCLexerTokenId.COLON){
+							int[] span = {startOffset, endOffset};
+							return span;
+						}
 					}
 				}
 			}

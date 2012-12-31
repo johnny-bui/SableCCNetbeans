@@ -1,4 +1,4 @@
-package org.sableccsupport.parser;
+package org.sableccsupport.parserfasader;
 
 import org.netbeans.api.lexer.Language;
 import org.netbeans.modules.csl.spi.DefaultLanguageConfig;

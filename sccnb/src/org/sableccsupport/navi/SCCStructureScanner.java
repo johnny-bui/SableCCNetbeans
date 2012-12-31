@@ -13,7 +13,7 @@ import org.netbeans.modules.csl.api.OffsetRange;
 import org.netbeans.modules.csl.api.StructureItem;
 import org.netbeans.modules.csl.api.StructureScanner;
 import org.netbeans.modules.csl.spi.ParserResult;
-import org.sableccsupport.parser.SCCParserResult;
+import org.sableccsupport.parserfasader.SCCParserResult;
 
 /**
  *
