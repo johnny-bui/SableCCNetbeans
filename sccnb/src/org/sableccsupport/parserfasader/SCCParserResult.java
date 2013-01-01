@@ -12,6 +12,7 @@ import org.netbeans.modules.parsing.api.Snapshot;
 import org.netbeans.spi.editor.hints.ErrorDescription;
 import org.netbeans.spi.editor.hints.ErrorDescriptionFactory;
 import org.netbeans.spi.editor.hints.Severity;
+import org.sableccsupport.parser.ast.GrammarStructure;
 import org.sableccsupport.parser.ast.SCCErrorParser;
 import org.sableccsupport.sccparser.lexer.LexerException;
 import org.sableccsupport.sccparser.node.Token;
@@ -31,7 +32,7 @@ public class SCCParserResult extends ParserResult {
 	private final SCCErrorParser wrapper;
 	private final Document doc;
 	private List<? extends StructureItem> items;
-	
+	private GrammarStructure structure;
 	/**
 	 * 
 	 */

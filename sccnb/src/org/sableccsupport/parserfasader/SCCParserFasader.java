@@ -40,7 +40,7 @@ public class SCCParserFasader extends Parser {
 			pw.checkSyntaxErr();
 			TokenSequence<SCCLexerTokenId> ts = 
 					snapshot.getTokenHierarchy().tokenSequence(SCCLexerTokenId.getLanguage());
-			structure = outlineScanner.scanStructure(ts);
+			structure = outlineScanner._scanStructure(ts);
 		}catch(Exception ex)
 		{
 			Logger.getLogger (Parser.class.getName()).log (Level.WARNING, null, ex);

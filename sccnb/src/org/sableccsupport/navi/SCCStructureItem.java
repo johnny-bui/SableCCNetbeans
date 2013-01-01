@@ -25,11 +25,11 @@ import org.sableccsupport.lexer.SCCLexerTokenId;
  */
 public abstract class SCCStructureItem implements StructureItem {
 
-	protected final Token<SCCLexerTokenId> token;
+	protected final String token;
 	private final long offset;
 	protected List childItems;
 			
-	public SCCStructureItem(Token<SCCLexerTokenId> token, 
+	public SCCStructureItem(String token, 
 			long offset, 
 			List<? extends SCCStructureItem> childItems)
 	{
@@ -46,7 +46,7 @@ public abstract class SCCStructureItem implements StructureItem {
 
 	@Override
 	public String getName() {
-		return token.text().toString();
+		return token;
 	}
 
 	@Override
@@ -104,7 +104,7 @@ public abstract class SCCStructureItem implements StructureItem {
 	
 	/** create a section item. */
 	public static SCCStructureItem createSectionItem (
-			Token<SCCLexerTokenId> token, 
+			String token, 
 			long offset,
 			SectionSortKey prefix) {
 		 return new SectionItem(token, offset, null, prefix);
@@ -112,7 +112,7 @@ public abstract class SCCStructureItem implements StructureItem {
 
 	/** create a state item. */
 	public static SCCStructureItem createStateItem(
-			Token<SCCLexerTokenId> token,
+			String token,
 			long offset
 			){
 		return new StateItem(token, offset);
@@ -120,20 +120,20 @@ public abstract class SCCStructureItem implements StructureItem {
 
 	/** create a helper item. */
 	public static SCCStructureItem createHelperItem(
-			Token<SCCLexerTokenId> token,
+			String token,
 			long offset){
 		return new HelperItem(token, offset);
 	}
 	
 	/** create token item. */
 	public static SCCStructureItem createTokenItem(
-			Token<SCCLexerTokenId> token,
+			String token,
 			long offset){
 		return new TokenItem(token, offset);
 	}
 
 	public static SCCStructureItem createProductItem(
-			Token<SCCLexerTokenId> token,
+			String token,
 			long offset
 			){
 		return new ProductItem(token, offset);
@@ -144,7 +144,7 @@ public abstract class SCCStructureItem implements StructureItem {
 
 class SimpleItem extends SCCStructureItem{
 	
-	SimpleItem(Token<SCCLexerTokenId> token,
+	SimpleItem(String token,
 			long offset)
 	{
 		super(token, offset, null);
@@ -160,7 +160,7 @@ class SimpleItem extends SCCStructureItem{
  * TODO: make a new Icon for it
  */
 class HelperItem extends SimpleItem{
-	HelperItem(Token<SCCLexerTokenId> token, long offset){
+	HelperItem(String token, long offset){
 		super(token, offset);
 	}
 	@Override
@@ -179,7 +179,7 @@ class HelperItem extends SimpleItem{
  * TODO: make new Icons
  */
 class StateItem extends SimpleItem{
-	public StateItem(Token<SCCLexerTokenId> token, long offset) {
+	public StateItem(String token, long offset) {
 		super(token, offset);
 	}
 
@@ -194,7 +194,7 @@ class StateItem extends SimpleItem{
  * Object to change
  */
 class ProductItem extends SimpleItem{
-	public ProductItem(Token<SCCLexerTokenId> token, long offset) {
+	public ProductItem(String token, long offset) {
 		super(token, offset);
 	}
 }
@@ -204,7 +204,7 @@ class ProductItem extends SimpleItem{
  * TODO: s.o.
  */
 class TokenItem extends SimpleItem{
-	public TokenItem(Token<SCCLexerTokenId> token, long offset) {
+	public TokenItem(String token, long offset) {
 		super(token, offset);
 	}
 
@@ -219,7 +219,7 @@ class TokenItem extends SimpleItem{
  */
 class SectionItem extends SCCStructureItem{
 	private final SectionSortKey prefix;
-	public SectionItem(Token<SCCLexerTokenId> token, 
+	public SectionItem(String token, 
 			long offset, 
 			List<? extends SCCStructureItem> childItems,
 			SectionSortKey prefix)
