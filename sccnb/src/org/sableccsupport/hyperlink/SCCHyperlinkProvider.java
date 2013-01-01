@@ -56,15 +56,7 @@ public class SCCHyperlinkProvider implements HyperlinkProviderExt {
 
 	@Override
 	public void performClickAction(Document doc, int offset, HyperlinkType type) {
-		//TODO delegiert es in eine thread
 		try {
-			//int targetOffset = 1; //TODO: obtain the value from token
-			// sequence, now allways jump to the first line
-			//Line line =  NbEditorUtilities.getLine(doc, targetOffset,true);
-			//line.show(Line.ShowOpenType.OPEN, Line.ShowVisibilityType.FRONT);
-			//Jumper j = new Jumper();
-			//j.assign(doc, offset, identifier);
-			//RequestProcessor.getDefault().post(j);
 			
 			if (doc == null || offset < 0) {
 				return;
@@ -120,7 +112,11 @@ public class SCCHyperlinkProvider implements HyperlinkProviderExt {
 						return span;
 					}
 					if (nextToken.id() == SCCLexerTokenId.R_BRACE) {
-						Token<SCCLexerTokenId> previousToken = SCCOutlineParser.getPreviousToken(ts, offset, offset);
+						Token<SCCLexerTokenId> previousToken = 
+								SCCOutlineParser.getPreviousToken(
+								ts, 
+								offset, 
+								offset);
 						if (previousToken.id() != SCCLexerTokenId.L_BRACE) {
 							int[] span = {startOffset, endOffset};
 							identifier = testToken.text().toString();
@@ -129,7 +125,10 @@ public class SCCHyperlinkProvider implements HyperlinkProviderExt {
 							Token<SCCLexerTokenId> secondPreviousToken = SCCOutlineParser.getPreviousToken(
 									ts,
 									startOffset,
-									offset - testToken.text().length());
+									startOffset - previousToken.text().length() );
+							System.out.println("++++++++ secondPreviousToken is >>"+
+									secondPreviousToken +
+									"<< +++++++++");
 							if (secondPreviousToken != null) {
 								if (!SCCOutlineParser.isOneOf(secondPreviousToken.id(),
 										SCCLexerTokenId.BAR,

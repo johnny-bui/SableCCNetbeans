@@ -67,17 +67,29 @@ public class SCCParserResult extends ParserResult {
 		return errorDescription;	
 	}
 
-	public List<? extends StructureItem> getStructure(){
+	public GrammarStructure getStructure(){
+		return this.structure;
+	}
+	public void setStructure(GrammarStructure structure){
+		this.structure = structure;
+	}
+/*	
+	@Deprecated
+	public List<? extends StructureItem> _getStructure(){
 		if (items == null) {
 			items = new ArrayList<StructureItem>();
 		}
 		return items;
 	}
 	
-	public void setStructure(List<? extends StructureItem> items){
+	@Deprecated
+	public void _setStructure(List<? extends StructureItem> items){
 		this.items = items;
 	}
-			
+* 
+*/
+
+
 	@Override
 	protected void invalidate() {
 		valid = false;

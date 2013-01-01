@@ -11,17 +11,17 @@ import java.util.List;
  * @version Dec 31, 2012
  */
 public class GrammarStructure {
-	private SCCNode packages;
-	private SCCNode helpers;
-	private SCCNode states;
-	private SCCNode tokens;
-	private SCCNode ignoredTokens;
-	private SCCNode products;
-	private SCCNode ast;
+	private ComposeNode packages;
+	private ComposeNode helpers;
+	private ComposeNode states;
+	private ComposeNode tokens;
+	private ComposeNode ignoredTokens;
+	private ComposeNode products;
+	private ComposeNode ast;
 
 	/*package section*/
 	public void createPackageSection(long offset){
-		packages = new SectionNode("Packages", offset);
+		packages = new ComposeNode("Packages", offset);
 	}
 
 	public List<? extends SCCNode> getPackageSection(){
@@ -34,7 +34,7 @@ public class GrammarStructure {
 	
 	/*helper section*/
 	public void createHelperSection(long offset){
-		helpers = new SectionNode("Helper", offset);
+		helpers = new ComposeNode("Helper", offset);
 	}
 
 	public List<? extends SCCNode> getHelperSection(){
@@ -50,7 +50,7 @@ public class GrammarStructure {
 	}
 	/*state section*/
 	public void createStateSection(long offset){
-		states = new SectionNode("States", offset);
+		states = new ComposeNode("States", offset);
 	}
 
 	public List<? extends SCCNode> getStateSection(){
@@ -66,7 +66,7 @@ public class GrammarStructure {
 	}
 	/*token section*/
 	public void createTokenSection(long offset){
-		tokens = new SectionNode("Tokens", offset);
+		tokens = new ComposeNode("Tokens", offset);
 	}
 
 	public List<? extends SCCNode> getTokenSection(){
@@ -83,7 +83,7 @@ public class GrammarStructure {
 	
 	/* ignored token section*/
 	public void createIgnoredTokenSection(long offset){
-		ignoredTokens = new SectionNode("Ignored Token", offset);
+		ignoredTokens = new ComposeNode("Ignored Token", offset);
 	}
 
 	public List<? extends SCCNode> getIgnoredTokenSection(){
@@ -98,7 +98,7 @@ public class GrammarStructure {
 	}
 	/*production*/
 	public void createProductSection(long offset){
-		products = new SectionNode("Products", offset);
+		products = new ComposeNode("Products", offset);
 	}
 
 	public List<SCCNode> getProductSection(){
@@ -113,7 +113,7 @@ public class GrammarStructure {
 	}
 	/*ast section*/
 	public void creatASTSection(long offset){
-		ast = new SectionNode("Abstract Syntax Tree", offset);
+		ast = new ComposeNode("Abstract Syntax Tree", offset);
 	}
 
 	public List<? extends SCCNode> getASTSection(){
@@ -179,36 +179,4 @@ public class GrammarStructure {
 		}
 		return -1;
 	}
-}
-class SectionNode implements SCCNode{
-	private String name;
-	private List<SCCNode> child = null;
-	private long offset;
-
-	public SectionNode(String sectionName, long offset){
-		this.name = sectionName;
-		this.offset = offset;
-		child = new ArrayList<SCCNode>();
-	}
-	
-	@Override
-	public String name() {
-		return name;
-	}
-
-	@Override
-	public long offset() {
-		return offset;
-	}
-
-	@Override
-	public List<? extends SCCNode> getChildNodes() {
-		return child == null ? Collections.EMPTY_LIST : child;
-	}
-
-	@Override
-	public void addChild(SCCNode node) {
-		child.add(node);
-	}
-	
 }

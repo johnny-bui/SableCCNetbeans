@@ -96,7 +96,7 @@ public abstract class SCCStructureItem implements StructureItem {
 		return new ImageIcon(ImageUtilities.loadImage("org/sableccsupport/img/value.png"));
 	}
 
-	public void setChild(List<StructureItem> childItems){
+	public void setChild(List<? extends StructureItem> childItems){
 		if (childItems != null){
 			this.childItems = childItems;
 		}

@@ -11,6 +11,7 @@ import org.netbeans.modules.parsing.api.Task;
 import org.netbeans.modules.parsing.spi.Parser;
 import org.netbeans.modules.parsing.spi.SourceModificationEvent;
 import org.sableccsupport.lexer.SCCLexerTokenId;
+import org.sableccsupport.parser.ast.GrammarStructure;
 import org.sableccsupport.parser.ast.SCCErrorParser;
 import org.sableccsupport.parser.ast.SCCOutlineParser;
 
@@ -23,7 +24,8 @@ public class SCCParserFasader extends Parser {
 	private Snapshot snapshot;
 	private SCCErrorParser pw;
 	private boolean cancelled = false;
-	private List<? extends StructureItem> structure;
+	private List<? extends StructureItem> _structure;
+	private GrammarStructure structure;
 	private SCCOutlineParser outlineScanner;
 
 	public SCCParserFasader() {
@@ -40,7 +42,8 @@ public class SCCParserFasader extends Parser {
 			pw.checkSyntaxErr();
 			TokenSequence<SCCLexerTokenId> ts = 
 					snapshot.getTokenHierarchy().tokenSequence(SCCLexerTokenId.getLanguage());
-			structure = outlineScanner._scanStructure(ts);
+			//_structure = outlineScanner._scanStructure(ts);
+			structure = outlineScanner.scanStructure(ts);
 		}catch(Exception ex)
 		{
 			Logger.getLogger (Parser.class.getName()).log (Level.WARNING, null, ex);
@@ -51,7 +54,8 @@ public class SCCParserFasader extends Parser {
 	public SCCParserResult getResult(Task task)
 	{
 		SCCParserResult result = new SCCParserResult(snapshot, pw);
-		result.setStructure(this.structure);
+		//result._setStructure(this._structure);
+		result.setStructure(structure);
 		return result;
 	}
 	
