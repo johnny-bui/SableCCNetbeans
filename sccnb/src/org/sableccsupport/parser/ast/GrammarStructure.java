@@ -11,16 +11,19 @@ import java.util.List;
  * @version Dec 31, 2012
  */
 public class GrammarStructure {
-	private ComposeNode packages;
-	private ComposeNode helpers;
-	private ComposeNode states;
-	private ComposeNode tokens;
-	private ComposeNode ignoredTokens;
-	private ComposeNode products;
-	private ComposeNode ast;
+	private ComposeNode packages = newComposedNode("Package", -1);
+	private ComposeNode helpers = newComposedNode("Helpers", -1);
+	private ComposeNode states = newComposedNode("States", -1);
+	private ComposeNode tokens = newComposedNode("Tokens", -1);
+	private ComposeNode ignoredTokens = newComposedNode("Ignored Token", -1);
+	private ComposeNode products = newComposedNode("Productions", -1) ;
+	private ComposeNode ast = newComposedNode("Abstract Syntax Tree", -1);
 
 	/*package section*/
 	public void createPackageSection(long offset){
+		if (offset < 0){
+			throw new IllegalArgumentException("Offset cannot be set to negative: " + offset);
+		}
 		packages = new ComposeNode("Packages", offset);
 	}
 
@@ -34,6 +37,9 @@ public class GrammarStructure {
 	
 	/*helper section*/
 	public void createHelperSection(long offset){
+		if (offset < 0){
+			throw new IllegalArgumentException("Offset cannot be set to negative: " + offset);
+		}
 		helpers = new ComposeNode("Helper", offset);
 	}
 
@@ -50,6 +56,9 @@ public class GrammarStructure {
 	}
 	/*state section*/
 	public void createStateSection(long offset){
+		if (offset < 0){
+			throw new IllegalArgumentException("Offset cannot be set to negative: " + offset);
+		}
 		states = new ComposeNode("States", offset);
 	}
 
@@ -66,6 +75,9 @@ public class GrammarStructure {
 	}
 	/*token section*/
 	public void createTokenSection(long offset){
+		if (offset < 0){
+			throw new IllegalArgumentException("Offset cannot be set to negative: " + offset);
+		}
 		tokens = new ComposeNode("Tokens", offset);
 	}
 
@@ -83,6 +95,9 @@ public class GrammarStructure {
 	
 	/* ignored token section*/
 	public void createIgnoredTokenSection(long offset){
+		if (offset < 0){
+			throw new IllegalArgumentException("Offset cannot be set to negative: " + offset);
+		}
 		ignoredTokens = new ComposeNode("Ignored Token", offset);
 	}
 
@@ -98,6 +113,9 @@ public class GrammarStructure {
 	}
 	/*production*/
 	public void createProductSection(long offset){
+		if (offset < 0){
+			throw new IllegalArgumentException("Offset cannot be set to negative: " + offset);
+		}
 		products = new ComposeNode("Products", offset);
 	}
 
@@ -128,40 +146,20 @@ public class GrammarStructure {
 		return ast;
 	}
 	
-	public static SCCNode newLeafNode(String name, long offset){
+	public static LeafNode newLeafNode(String name, long offset){
 		return new LeafNode(name, offset);
 	}
 
-	public static SCCNode newComposedNode(String name, long offset){
+	public static ComposeNode newComposedNode(String name, long offset){
 		return new ComposeNode(name, offset);
 	}
-/*
-	public long getPackageSectionOffset(){
-		return packages == null ? -1 : packages.offset();
-	}
-
-	public long getHelperSectionOffset(){
-		return helpers == null ? -1 : helpers.offset();
-	}
-
-	public long getStateSectionOfffset(){
-		return states == null ? -1 : states.offset();
-	}
-
-	public long getTokenSectionOffset(){
-		return tokens == null ? -1 : tokens.offset();
-	}
-
-	public long getProductSectionOffset(){
-		return tokens == null ? -1 : products.offset();
-	}
-
-	public long getASTSectionOffset(){
-		return ast == null ? -1 : ast.offset();
-	}
-*/
 
 	public long getOffsetFirstOccurence(String identifier) {
+		for (SCCNode n : helpers.getChildNodes()){
+			if (n.name().equals(identifier)){
+				return n.offset();
+			}
+		}
 		for (SCCNode n : tokens.getChildNodes()){
 			if (n.name().equals(identifier)){
 				return n.offset();

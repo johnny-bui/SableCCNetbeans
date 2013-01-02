@@ -125,7 +125,8 @@ public class SCCStructureScanner implements StructureScanner {
 			SCCNode section,
 			ItemBuilder builder,
 			List<StructureItem> grammar) {
-		if (section == null) {
+		assert section != null;
+		if (section.getChildNodes().isEmpty() ) {
 			return ;
 		} else {
 			SCCStructureItem newSection = SCCStructureItem.createSectionItem(

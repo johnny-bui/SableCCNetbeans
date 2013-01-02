@@ -15,13 +15,10 @@ import org.netbeans.api.lexer.TokenSequence;
 import org.netbeans.lib.editor.hyperlink.spi.HyperlinkProviderExt;
 import org.netbeans.lib.editor.hyperlink.spi.HyperlinkType;
 import org.netbeans.modules.editor.NbEditorUtilities;
-import org.netbeans.modules.parsing.api.Snapshot;
-import org.netbeans.modules.parsing.api.Source;
 import org.openide.filesystems.FileObject;
 import org.openide.loaders.DataObject;
 import org.openide.text.Line;
 import org.openide.util.Exceptions;
-import org.openide.util.RequestProcessor;
 import org.sableccsupport.lexer.SCCLexerTokenId;
 import org.sableccsupport.parser.ast.GrammarStructure;
 import org.sableccsupport.parser.ast.SCCOutlineParser;
@@ -36,7 +33,7 @@ public class SCCHyperlinkProvider implements HyperlinkProviderExt {
 
 	private int startOffset;
 	private int endOffset;
-	private String identifier;
+	//private String identifier;
 	private int lineNumber;
 
 	@Override
@@ -46,26 +43,28 @@ public class SCCHyperlinkProvider implements HyperlinkProviderExt {
 
 	@Override
 	public boolean isHyperlinkPoint(Document dcmnt, int offset, HyperlinkType type) {
-		return getHyperlinkSpan(dcmnt, offset) != null;
+		DeterminateHyperlink dhl = new DeterminateHyperlink();
+		getHyperlinkTarget(dcmnt, offset, dhl);
+		return dhl.isHyperLink();
 	}
 
 	@Override
 	public int[] getHyperlinkSpan(Document dcmnt, int offset, HyperlinkType type) {
-		return getHyperlinkSpan(dcmnt, offset);
+		CalculateHyperlinkSpan chs = new CalculateHyperlinkSpan();
+		getHyperlinkTarget(dcmnt, offset, chs);
+		return chs.getSpan();
+		//return getHyperlinkSpan(dcmnt, offset);
 	}
 
 	@Override
 	public void performClickAction(Document doc, int offset, HyperlinkType type) {
 		try {
-			
 			if (doc == null || offset < 0) {
 				return;
 			}
-			Snapshot sns = Source.create(doc).createSnapshot();
-			TokenSequence<SCCLexerTokenId> ts =
-					sns.getTokenHierarchy().tokenSequence(SCCLexerTokenId.getLanguage());
-			GrammarStructure structure = new SCCOutlineParser().scanStructure(ts);
-			long targetOffset = structure.getOffsetFirstOccurence(identifier);
+			CalculateHyperlinkTarget cht = new CalculateHyperlinkTarget();
+			getHyperlinkTarget(doc, offset, cht);
+			long targetOffset = cht.getTargetOffset(doc);
 			// sequence, now allways jump to the first line
 			if (targetOffset > 0) {
 				Line line = NbEditorUtilities.getLine(doc, (int) targetOffset, true);
@@ -90,8 +89,9 @@ public class SCCHyperlinkProvider implements HyperlinkProviderExt {
 		return "Click to jump to declaration of: " + text;
 	}
 
-	private int[] getHyperlinkSpan(Document doc, int offset) {
 
+	private void getHyperlinkTarget(Document doc, int offset, PrepairAction p) {
+		//String __identifier = null;
 		TokenHierarchy hi = TokenHierarchy.get(doc);
 		TokenSequence<SCCLexerTokenId> ts = hi.tokenSequence(SCCLexerTokenId.getLanguage());
 
@@ -106,41 +106,50 @@ public class SCCHyperlinkProvider implements HyperlinkProviderExt {
 					if (!SCCOutlineParser.isOneOf(nextToken.id(),
 							SCCLexerTokenId.EQUAL,
 							SCCLexerTokenId.R_BRACE,
-							SCCLexerTokenId.R_BKT)) {
-						int[] span = {startOffset, endOffset};
-						identifier = testToken.text().toString();
-						return span;
+							SCCLexerTokenId.R_BKT,
+							SCCLexerTokenId.L_BRACE)) {
+						//int[] span = {startOffset, endOffset};
+						//identifier = testToken.text().toString();
+						p.setHyperlinkInfo(ts, startOffset, endOffset, testToken);
+						return;
 					}
+					// case of EQUAL is obviously a define of a 
+					// helper/token/production so it is never a h<perlink.
+					
+					// case of R_BRACE
 					if (nextToken.id() == SCCLexerTokenId.R_BRACE) {
-						Token<SCCLexerTokenId> previousToken = 
+						Token<SCCLexerTokenId> previousToken =
 								SCCOutlineParser.getPreviousToken(
-								ts, 
-								offset, 
-								offset);
+								ts,
+								startOffset,
+								startOffset - nextToken.text().length());
 						if (previousToken.id() != SCCLexerTokenId.L_BRACE) {
-							int[] span = {startOffset, endOffset};
-							identifier = testToken.text().toString();
-							return span;
+							//int[] span = {startOffset, endOffset};
+							//identifier = testToken.text().toString();
+							p.setHyperlinkInfo(ts, startOffset, endOffset, testToken);
+							return;
 						} else {
 							Token<SCCLexerTokenId> secondPreviousToken = SCCOutlineParser.getPreviousToken(
 									ts,
 									startOffset,
-									startOffset - previousToken.text().length() );
-							System.out.println("++++++++ secondPreviousToken is >>"+
-									secondPreviousToken +
-									"<< +++++++++");
+									startOffset - previousToken.text().length());
+							System.out.println("++++++++ secondPreviousToken is >>"
+									+ secondPreviousToken
+									+ "<< +++++++++");
 							if (secondPreviousToken != null) {
 								if (!SCCOutlineParser.isOneOf(secondPreviousToken.id(),
 										SCCLexerTokenId.BAR,
 										SCCLexerTokenId.EQUAL)) {
-									int[] span = {startOffset, endOffset};
-									identifier = testToken.text().toString();
-									return span;
+									//int[] span = {startOffset, endOffset};
+									//identifier = testToken.text().toString();
+									p.setHyperlinkInfo(ts, startOffset, endOffset, testToken);
+									return;
 								}
 							}
 						}
 
 					}
+					// case of R_BKT
 					if (nextToken.id() == SCCLexerTokenId.R_BKT) {
 						Token<SCCLexerTokenId> secondNextToken =
 								SCCOutlineParser.getNextToken(
@@ -148,20 +157,112 @@ public class SCCHyperlinkProvider implements HyperlinkProviderExt {
 								startOffset,
 								endOffset);
 						if (secondNextToken.id() != SCCLexerTokenId.COLON) {
-							int[] span = {startOffset, endOffset};
-							identifier = testToken.text().toString();
-							return span;
+							//int[] span = {startOffset, endOffset};
+							//__identifier = testToken.text().toString();
+							p.setHyperlinkInfo(ts, startOffset, endOffset, testToken);
+							return;
+						}
+					}
+					// case of L_BRACE
+					if (nextToken.id() == SCCLexerTokenId.L_BRACE){
+						Token<SCCLexerTokenId> previousToken = 
+								SCCOutlineParser.getPreviousToken(ts, 
+								offset, 
+								offset);
+						if (previousToken.id() != SCCLexerTokenId.SEMICOLON) {
+							// if not the case of definition a production with a transform rule
+							p.setHyperlinkInfo(ts, startOffset, endOffset, testToken);
+							return;
 						}
 					}
 				}
 			}
 		}
-		identifier = null;
-		return null;
+		p.setVoid();
+		return;
 	}
 
-	private static FileObject getFileObject(Document doc) {
-		DataObject od = (DataObject) doc.getProperty(Document.StreamDescriptionProperty);
-		return od != null ? od.getPrimaryFile() : null;
+	/**
+	 * static prevents to accidently access to any member of this class
+	 */
+	private static interface PrepairAction {
+
+		void setHyperlinkInfo(
+				final TokenSequence<SCCLexerTokenId> ts,
+				final long startOffset,
+				final long endOffset,
+				final Token<SCCLexerTokenId> id);
+
+		void setVoid();
+	}
+
+	private static final class DeterminateHyperlink implements PrepairAction {
+
+		private boolean isHyperLink = false;
+
+		@Override
+		public void setHyperlinkInfo(
+				TokenSequence<SCCLexerTokenId> ts,
+				long startOffset,
+				long endOffset,
+				Token<SCCLexerTokenId> id) {
+			this.isHyperLink = true;
+		}
+
+		@Override
+		public void setVoid() {
+		}
+
+		private boolean isHyperLink() {
+			return isHyperLink;
+		}
+	}
+
+	private static final class CalculateHyperlinkSpan implements PrepairAction {
+
+		int[] span = {-1, -1};
+
+		@Override
+		public void setHyperlinkInfo(
+				TokenSequence<SCCLexerTokenId> ts,
+				final long startOffset,
+				final long endOffset,
+				final Token<SCCLexerTokenId> id) {
+			span[0] = (int) startOffset;
+			span[1] = (int) endOffset;
+		}
+
+		@Override
+		public void setVoid() {
+		}
+
+		private int[] getSpan() {
+			return span[0] < 0 ? null : span;
+		}
+	}
+
+	private static final class CalculateHyperlinkTarget implements PrepairAction {
+		private String identifier;
+
+		@Override
+		public void setHyperlinkInfo(
+				final TokenSequence<SCCLexerTokenId> ts,
+				final long startOffset,
+				final long endOffset,
+				final Token<SCCLexerTokenId> id) {
+			identifier = id.text().toString();
+		}
+
+		@Override
+		public void setVoid() {
+		}
+
+		private long getTargetOffset(final Document doc) {
+			TokenHierarchy hi = TokenHierarchy.get(doc);
+			TokenSequence<SCCLexerTokenId> ts = hi.tokenSequence(SCCLexerTokenId.getLanguage());
+			GrammarStructure structure = new SCCOutlineParser().scanStructure(ts);
+			long targetOffset = structure.getOffsetFirstOccurence(identifier);
+			return targetOffset;
+		}
 	}
 }
