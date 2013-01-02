@@ -101,7 +101,11 @@ public class SCCHyperlinkProvider implements HyperlinkProviderExt {
 			startOffset = ts.offset();
 			endOffset = startOffset + testToken.text().length();
 			if (testToken.id() == SCCLexerTokenId.ID) {
-				Token<SCCLexerTokenId> nextToken = SCCOutlineParser.getNextToken(ts, startOffset, offset);
+				Token<SCCLexerTokenId> nextToken = 
+						SCCOutlineParser.getNextToken(ts, startOffset, offset);
+				System.out.println("++++++++ nextToken is >>"
+									+ nextToken
+									+ "<< +++++++++");
 				if (nextToken != null) {
 					if (!SCCOutlineParser.isOneOf(nextToken.id(),
 							SCCLexerTokenId.EQUAL,
@@ -122,7 +126,7 @@ public class SCCHyperlinkProvider implements HyperlinkProviderExt {
 								SCCOutlineParser.getPreviousToken(
 								ts,
 								startOffset,
-								startOffset - nextToken.text().length());
+								startOffset );
 						if (previousToken.id() != SCCLexerTokenId.L_BRACE) {
 							//int[] span = {startOffset, endOffset};
 							//identifier = testToken.text().toString();
@@ -133,9 +137,6 @@ public class SCCHyperlinkProvider implements HyperlinkProviderExt {
 									ts,
 									startOffset,
 									startOffset - previousToken.text().length());
-							System.out.println("++++++++ secondPreviousToken is >>"
-									+ secondPreviousToken
-									+ "<< +++++++++");
 							if (secondPreviousToken != null) {
 								if (!SCCOutlineParser.isOneOf(secondPreviousToken.id(),
 										SCCLexerTokenId.BAR,
@@ -167,8 +168,8 @@ public class SCCHyperlinkProvider implements HyperlinkProviderExt {
 					if (nextToken.id() == SCCLexerTokenId.L_BRACE){
 						Token<SCCLexerTokenId> previousToken = 
 								SCCOutlineParser.getPreviousToken(ts, 
-								offset, 
-								offset);
+								startOffset, 
+								startOffset);
 						if (previousToken.id() != SCCLexerTokenId.SEMICOLON) {
 							// if not the case of definition a production with a transform rule
 							p.setHyperlinkInfo(ts, startOffset, endOffset, testToken);

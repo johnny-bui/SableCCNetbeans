@@ -300,7 +300,6 @@ public class SCCOutlineParser {
 					productToken = currentToken;
 					productOffset = currentOffset;
 					beginNewProduct = false; 
-					// set this variable to false sothat the productToken is not override
 					continue;// and continues
 				}else{
 					System.out.println("!!!! Parsing error expected an id but was " + currentToken.id());
@@ -308,12 +307,12 @@ public class SCCOutlineParser {
 				}
 			}
 			if (currentToken.id() == SCCLexerTokenId.EQUAL){
-				//SCCStructureItem item = SCCStructureItem.createProductItem(productToken, productOffset);
-				//products.add(item);
-				structure.addNewProduct(
-						GrammarStructure.newComposedNode(
-							productToken.text().toString(), 
-							productOffset));
+				ComposeNode production 
+					= GrammarStructure.newComposedNode(
+						productToken.text().toString(), 
+						productOffset);
+				structure.addNewProduct(production);
+				scanAlt(production, ts);
 				continue;
 			}
 		}
@@ -370,6 +369,38 @@ public class SCCOutlineParser {
 			}
 		}
 		
+	}
+	
+	private void scanAlt(ComposeNode production, TokenSequence<SCCLexerTokenId> ts){
+		assert production != null;
+		boolean beginAlternative = false;
+		while(ts.moveNext()){
+			Token<SCCLexerTokenId> currentToken = ts.token();
+			int currentOffset = ts.offset();
+			if (isOneOf(currentToken.id(), 
+					SCCLexerTokenId.BLANK,
+					SCCLexerTokenId.COMMENT)){
+				continue;
+			}
+			if (currentToken.id() == SCCLexerTokenId.SEMICOLON){// end of product
+				ts.movePrevious();// move back to semicolon, so the caller can even see the semicolon
+				break;
+			}
+			if (currentToken.id() == SCCLexerTokenId.L_BRACE){// if a "{" is saw, mark begin a alt name
+				beginAlternative = true;
+				continue;
+			}
+			if (currentToken.id() == SCCLexerTokenId.ID){
+				if (beginAlternative){// if a identifier is found directly after a "{"
+					SCCNode alt = GrammarStructure.newLeafNode(
+							currentToken.text().toString(), currentOffset);
+					production.addChild(alt);
+				}
+			}
+			// finally we must set beginAlternative to false to prevent the case of transition rule : 
+			// {-> ... } an other cases, which we don't expected
+			beginAlternative = false;
+		}
 	}
 	
 	public static boolean isOneOf(SCCLexerTokenId checkedToken, SCCLexerTokenId... tokens){

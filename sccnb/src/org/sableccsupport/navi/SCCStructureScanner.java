@@ -134,8 +134,16 @@ public class SCCStructureScanner implements StructureScanner {
 
 			List<SCCStructureItem> sectionItem = new ArrayList<SCCStructureItem>();
 			for (SCCNode n : section.getChildNodes()) {
-				SCCStructureItem i = builder.buildItem(n.name(), n.offset());
-				sectionItem.add(i);
+				SCCStructureItem s = builder.buildItem(n.name(), n.offset());
+				sectionItem.add(s);
+				if (!n.getChildNodes().isEmpty()){
+					List<SCCStructureItem> c = new ArrayList<SCCStructureItem>();
+					for (SCCNode nn : n.getChildNodes()){
+						SCCStructureItem ii = builder.buildItem(nn.name(), nn.offset());
+						c.add(ii);
+					}
+					s.setChild(c);
+				}
 			}
 			newSection.setChild(sectionItem);
 			grammar.add(newSection);
