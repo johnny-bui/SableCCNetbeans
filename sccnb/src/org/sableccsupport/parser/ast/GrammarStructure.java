@@ -155,7 +155,13 @@ public class GrammarStructure {
 	}
 
 	public long getOffsetFirstOccurence(String identifier) {
+		
 		for (SCCNode n : helpers.getChildNodes()){
+			if (n.name().equals(identifier)){
+				return n.offset();
+			}
+		}
+		for (SCCNode n : states.getChildNodes()){
 			if (n.name().equals(identifier)){
 				return n.offset();
 			}

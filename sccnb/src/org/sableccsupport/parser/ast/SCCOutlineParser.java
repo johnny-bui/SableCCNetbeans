@@ -5,14 +5,11 @@
 
 package org.sableccsupport.parser.ast;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.netbeans.api.lexer.Token;
 import org.netbeans.api.lexer.TokenSequence;
-import org.netbeans.modules.csl.api.StructureItem;
 import org.sableccsupport.lexer.SCCLexerTokenId;
 import org.sableccsupport.navi.SCCStructureItem;
-import org.sableccsupport.navi.SectionSortKey;
 
 /**
  *
@@ -66,7 +63,6 @@ public class SCCOutlineParser {
 							scanStateDef(structure, ts);
 						}break;
 						case TOKENS:{
-							System.out.println("token is " + token.id());
 							if (!isInIgnoredTokens){/*
 								tokenItems = SCCStructureItem
 										.createSectionItem(
@@ -79,17 +75,14 @@ public class SCCOutlineParser {
 								structure.createTokenSection(offset);
 								scanTokenDef(structure, ts);
 							}else{
-								System.out.println("!!! " + token.id() + " in IGNORE");
 							}
 						}break;
 						case IGNORED:{
-							System.out.println("token is " + token.id());
 							/*ignoredItems = SCCStructureItem
 									.createSectionItem(
 										token, 
 										offset,
 										SectionSortKey.IGNORED);*/
-							System.out.println("add " + token.id() + " in item");
 							/* docStructure.add(ignoredItems);
 							_scanIgnoreTokenDef(ignoredItems, ts); */
 							structure.createIgnoredTokenSection(offset);
@@ -361,10 +354,11 @@ public class SCCOutlineParser {
 			if (currentToken.id() == SCCLexerTokenId.EQUAL){
 				//SCCStructureItem item = SCCStructureItem.createProductItem(productToken, productOffset);
 				//products.add(item);
-				structure.addNewAST(
-						GrammarStructure.newComposedNode(
+				ComposeNode alt = GrammarStructure.newComposedNode(
 							productToken.text().toString(), 
-							productOffset));
+							productOffset);
+				structure.addNewAST(alt);
+				scanAlt(alt, ts);
 				continue;
 			}
 		}

@@ -103,9 +103,6 @@ public class SCCHyperlinkProvider implements HyperlinkProviderExt {
 			if (testToken.id() == SCCLexerTokenId.ID) {
 				Token<SCCLexerTokenId> nextToken = 
 						SCCOutlineParser.getNextToken(ts, startOffset, offset);
-				System.out.println("++++++++ nextToken is >>"
-									+ nextToken
-									+ "<< +++++++++");
 				if (nextToken != null) {
 					if (!SCCOutlineParser.isOneOf(nextToken.id(),
 							SCCLexerTokenId.EQUAL,

@@ -109,7 +109,7 @@ public class SCCStructureScanner implements StructureScanner {
 			}
 		},grammar);
 		// add ast section
-		SCCNode ast = structure.getProducts();
+		SCCNode ast = structure.getAST();
 		makeSection(
 				SectionSortKey.AST, ast, new ItemBuilder() {
 			@Override
