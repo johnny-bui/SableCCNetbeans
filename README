@@ -4,6 +4,11 @@ Read me
 :Author verylazyboy
 :Version
 
+New in this version
+	
+	Add navigation in the Navigation Window
+	Implement GOTO (just simple goto the first occurrence)
+
 .. contents::
 
 This is repository SableCC Plugin for Netbeans
