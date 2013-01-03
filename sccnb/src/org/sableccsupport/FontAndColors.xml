@@ -4,40 +4,39 @@
 <fontscolors>
 	<!-- ============ keywords ================================ -->
 	<fontcolor name="PkgId" default="identifier" foreColor="009900">
-		<font style="bold"/>
 	</fontcolor>
-	<fontcolor name="Package" default="keyword"  foreColor="blue">
-		<font style="bold"/>
+
+	<fontcolor name="Package" default="keyword">
 	</fontcolor>
-	<fontcolor name="States" default="keyword" foreColor="blue">
-		<font style="bold"/>
+	
+	<fontcolor name="States" default="keyword">
 	</fontcolor>
-	<fontcolor name="Helpers" default="keyword" foreColor="blue">
-		<font style="bold"/>
+	
+	<fontcolor name="Helpers" default="keyword">
 	</fontcolor>
-	<fontcolor name="Tokens"  default="keyword" foreColor="blue">
-		<font style="bold"/>
+	
+	<fontcolor name="Tokens"  default="keyword" >
 	</fontcolor>
-	<fontcolor name="Ignored" default="keyword" foreColor="blue">
-		<font style="bold"/>
+
+	<fontcolor name="Ignored" default="keyword"> 
 	</fontcolor>
-	<fontcolor name="Productions" default="keyword" foreColor="blue">
-		<font style="bold"/>
+
+	<fontcolor name="Productions" default="keyword" >
 	</fontcolor>
-	<fontcolor name="Abstract" default="keyword" foreColor="blue">
-		<font style="bold"/>
+
+	<fontcolor name="Abstract" default="keyword" >
 	</fontcolor>
-	<fontcolor name="Syntax" default="keyword" foreColor="blue">
-		<font style="bold"/>
+
+	<fontcolor name="Syntax" default="keyword" >
 	</fontcolor>
-	<fontcolor name="Tree" default="keyword" foreColor="blue">
-		<font style="bold"/>
+
+	<fontcolor name="Tree" default="keyword" >
 	</fontcolor>
-	<fontcolor name="New" default="keyword" foreColor="blue">
-		<font style="bold"/>
+
+	<fontcolor name="New" default="keyword" >
 	</fontcolor>
-	<fontcolor name="Null" default="keyword" foreColor="blue">
-		<font style="bold"/>
+
+	<fontcolor name="Null" default="keyword" >
 	</fontcolor>
 	
 	<!-- ============ identifyer ================================ -->

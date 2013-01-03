@@ -29,7 +29,16 @@
                     <compile-dependency/>
                     <run-dependency>
                         <release-version>2</release-version>
-                        <specification-version>2.23.2.2.1.1.6</specification-version>
+                        <specification-version>2.28.2.2.1.1.6</specification-version>
+                    </run-dependency>
+                </dependency>
+                <dependency>
+                    <code-name-base>org.netbeans.modules.editor</code-name-base>
+                    <build-prerequisite/>
+                    <compile-dependency/>
+                    <run-dependency>
+                        <release-version>3</release-version>
+                        <specification-version>1.63.1.5.20.32</specification-version>
                     </run-dependency>
                 </dependency>
                 <dependency>
@@ -39,6 +48,15 @@
                     <run-dependency>
                         <release-version>3</release-version>
                         <specification-version>3.9.1.13.10</specification-version>
+                    </run-dependency>
+                </dependency>
+                <dependency>
+                    <code-name-base>org.netbeans.modules.editor.lib2</code-name-base>
+                    <build-prerequisite/>
+                    <compile-dependency/>
+                    <run-dependency>
+                        <release-version>1</release-version>
+                        <specification-version>1.61.1.32</specification-version>
                     </run-dependency>
                 </dependency>
                 <dependency>
@@ -102,6 +120,15 @@
                     <run-dependency>
                         <release-version>0</release-version>
                         <specification-version>1.14.1.7.2</specification-version>
+                    </run-dependency>
+                </dependency>
+                <dependency>
+                    <code-name-base>org.netbeans.spi.navigator</code-name-base>
+                    <build-prerequisite/>
+                    <compile-dependency/>
+                    <run-dependency>
+                        <release-version>1</release-version>
+                        <specification-version>1.23.1</specification-version>
                     </run-dependency>
                 </dependency>
                 <dependency>
@@ -233,16 +260,16 @@
                 <binary-origin>release/modules/ext/smack-3.2.1.jar</binary-origin>
             </class-path-extension>
             <class-path-extension>
+                <runtime-relative-path>ext/sablecc-3.7.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/sablecc-3.7.jar</binary-origin>
+            </class-path-extension>
+            <class-path-extension>
                 <runtime-relative-path>ext/AstVisual.jar</runtime-relative-path>
                 <binary-origin>release/modules/ext/AstVisual.jar</binary-origin>
             </class-path-extension>
             <class-path-extension>
                 <runtime-relative-path>ext/com-dreamer-outputhandler.jar</runtime-relative-path>
                 <binary-origin>release/modules/ext/com-dreamer-outputhandler.jar</binary-origin>
-            </class-path-extension>
-            <class-path-extension>
-                <runtime-relative-path>ext/sablecc.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/sablecc.jar</binary-origin>
             </class-path-extension>
             <class-path-extension>
                 <runtime-relative-path>ext/jgrapht-jdk1.6.jar</runtime-relative-path>

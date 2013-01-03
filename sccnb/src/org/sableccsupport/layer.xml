@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
 <filesystem>
-	<folder name="Editors">
+    <folder name="CslPlugins">
         <folder name="text">
             <folder name="x-sablecc">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="org.sableccsupport.Bundle"/>
-				<file name="org-sableccsupport-parser-SyntaxErrorsHighlightingTaskFactory.instance"/>
-					
-				<file name="org-sableccsupport-parser-SCCParserFactory.instance"/>
-				
+                <file name="language.instance" url="language.instance"/>
+				<file name="structure.instance">
+					<attr name="instanceClass" 
+						  stringvalue="org.sableccsupport.navi.SCCStructureScanner"/>
+				</file>
+            </folder>
+        </folder>
+    </folder>
+    <folder name="Editors">
+        <folder name="text">
+            <folder name="x-sablecc">
+				<attr name="displayName" bundlevalue="org.sableccsupport.Bundle#Editors/text/x-sablecc"/>
+                <file name="org-sableccsupport-parserfasader-SyntaxErrorsHighlightingTaskFactory.instance"/>
+				<file name="org-sableccsupport-parserfasader-SCCParserFactory.instance"/>
+                
+
                 <folder name="FontsColors">
                     <folder name="NetBeans">
                         <folder name="Defaults">
@@ -19,15 +30,25 @@
                     </folder>
                 </folder>
 				
-                <!-- folder name="MultiView">
-                    <file name="org-sableccsupport-SCCVisualElement.instance_hidden"/>
-                </folder -->
-				
                 <file name="language.instance">
                     <attr name="instanceCreate" methodvalue="org.sableccsupport.lexer.SCCTokenId.getLanguage"/>
                     <attr name="instanceOf" stringvalue="org.netbeans.api.lexer.Language"/>
                 </file>
 				
+				<!-- maybe it could be useful for old version of Netbeans 
+					newer version (since 7.2) does not need this folder. Just
+					declare the Mimetype in SCCHyperlinkProvider
+				-->
+				<!--
+				<folder name="HyperlinkProviders">
+					<file name="SCCHyperlinkProvider.instance">
+						<attr name="instanceClass" 
+							  stringvalue="org.sableccsupport.hyperlink.SCCHyperlinkProvider"/>
+						<attr name="instanceOf" 
+							  stringvalue="org.netbeans.lib.editor.hyperlink.spi.HyperlinkProvider"/>
+					</file>
+            	</folder>
+				-->
             </folder>
         </folder>
     </folder>

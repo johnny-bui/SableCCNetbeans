@@ -1,7 +1,7 @@
 
 package org.sableccsupport.lexer;
 
-import java.io.PushbackReader;
+import org.sableccsupport.scclexer.lexer.IPushbackReader;
 import org.sableccsupport.scclexer.lexer.Lexer;
 
 /**
@@ -10,18 +10,14 @@ import org.sableccsupport.scclexer.lexer.Lexer;
  */
 public class StateInitedLLexer extends Lexer
 {
-	public StateInitedLLexer(PushbackReader reader, State state)
+	public StateInitedLLexer(IPushbackReader reader, State state)
 	{
 		super(reader);
 		this.state = state;
+		//System.out.println(">>>>>>>>>>>>>>>>>>>" + " Lexer is used " + "<<<<<<<<<<<<<<<<");
 	}
 	public Lexer.State getState()
 	{
 		return this.state;
 	}
-	public String getText()
-	{
-		return this.text.toString();
-	}
-
 }

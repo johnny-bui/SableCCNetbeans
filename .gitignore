@@ -7,6 +7,15 @@ dist/
 /NBVisualTest/nbproject/private/
 /AstVisual/nbproject/private/
 /callJavaC/nbproject/private/
-SableCCNetbeans/sccnb/nbproject/genfiles.properties
+/sccnb4/nbproject/private/
+#SableCCNetbeans/sccnb/nbproject/genfiles.properties
 #SableCCNetbeans/sccnb/nbproject/project.xml
 
+/sccnb/src/org/sableccsupport/scclexer/parser/
+/sccnb/src/org/sableccsupport/sccparser/lexer/
+/sccnb/src/org/sableccsupport/sccparser/analysis/
+/sccnb/src/org/sableccsupport/scclexer/analysis/
+/sccnb/src/org/sableccsupport/sccparser/parser/
+/sccnb/src/org/sableccsupport/scclexer/node/
+/sccnb/src/org/sableccsupport/scclexer/lexer/
+/sccnb/src/org/sableccsupport/sccparser/node/
