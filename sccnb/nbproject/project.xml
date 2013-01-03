@@ -247,13 +247,9 @@
                 <package>org.jivesoftware.smack.sasl</package>
                 <package>org.jivesoftware.smack.util</package>
                 <package>org.jivesoftware.smack.util.collections</package>
-                <package>org.sablecc.sablecc</package>
                 <package>org.sableccsupport</package>
                 <package>org.sableccsupport.action</package>
                 <package>org.sableccsupport.lexer</package>
-                <package>org.sableccsupport.parser</package>
-                <package>org.xmlpull.mxp1</package>
-                <package>org.xmlpull.v1</package>
             </public-packages>
             <class-path-extension>
                 <runtime-relative-path>ext/smack-3.2.1.jar</runtime-relative-path>

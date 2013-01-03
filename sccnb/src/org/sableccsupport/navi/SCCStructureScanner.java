@@ -22,7 +22,7 @@ import org.sableccsupport.parserfasader.SCCParserResult;
  * @version Dec 16, 2012
  */
 public class SCCStructureScanner implements StructureScanner {
-
+	
 	@Override
 	public List<? extends StructureItem> scan(ParserResult pr) {
 		try {
@@ -64,20 +64,17 @@ public class SCCStructureScanner implements StructureScanner {
 		}
 		// add helper section
 		SCCNode helpers = structure.getHelpers();
-		makeSection(
-				SectionSortKey.HELPER, 
-				helpers, new ItemBuilder() {
-					@Override
-					SCCStructureItem buildItem(String name, long offset) {
-						return SCCStructureItem.createHelperItem(name, offset);
-					}
-				},
-				grammar);
+		makeSection(SectionSortKey.HELPER,helpers, new ItemBuilder() {
+			@Override
+			SCCStructureItem buildItem(String name, long offset) {
+				return SCCStructureItem.createHelperItem(name, offset);
+			}
+		},grammar);
+				
 		//grammar.add(helpersSection);
 		// add state section
 		SCCNode states = structure.getStates();
-		makeSection(
-				SectionSortKey.STATE, states, new ItemBuilder() {
+		makeSection(SectionSortKey.STATE, states, new ItemBuilder() {
 			@Override
 			SCCStructureItem buildItem(String name, long offset) {
 				return SCCStructureItem.createStateItem(name, offset);
@@ -85,7 +82,7 @@ public class SCCStructureScanner implements StructureScanner {
 		},grammar);
 		// add token section
 		SCCNode tokens = structure.getTokens();
-				makeSection(SectionSortKey.TOKEN, tokens, new ItemBuilder() {
+		makeSection(SectionSortKey.TOKEN, tokens, new ItemBuilder() {
 			@Override
 			SCCStructureItem buildItem(String name, long offset) {
 				return SCCStructureItem.createTokenItem(name, offset);
@@ -93,7 +90,7 @@ public class SCCStructureScanner implements StructureScanner {
 		},grammar);
 		// add ignored token section
 		SCCNode ignoredTokens = structure.getIgnoredTokens();
-				makeSection(SectionSortKey.IGNORED, ignoredTokens, new ItemBuilder() {
+		makeSection(SectionSortKey.IGNORED, ignoredTokens, new ItemBuilder() {
 			@Override
 			SCCStructureItem buildItem(String name, long offset) {
 				return SCCStructureItem.createTokenItem(name, offset);
@@ -101,8 +98,7 @@ public class SCCStructureScanner implements StructureScanner {
 		},grammar);
 		// add production section
 		SCCNode products = structure.getProducts();
-		makeSection(
-				SectionSortKey.PRODUCT, products, new ItemBuilder() {
+		makeSection(SectionSortKey.PRODUCT, products, new ItemBuilder() {
 			@Override
 			SCCStructureItem buildItem(String name, long offset) {
 				return SCCStructureItem.createProductItem(name, offset);
@@ -110,8 +106,7 @@ public class SCCStructureScanner implements StructureScanner {
 		},grammar);
 		// add ast section
 		SCCNode ast = structure.getAST();
-		makeSection(
-				SectionSortKey.AST, ast, new ItemBuilder() {
+		makeSection(SectionSortKey.AST, ast, new ItemBuilder() {
 			@Override
 			SCCStructureItem buildItem(String name, long offset) {
 				return SCCStructureItem.createProductItem(name, offset);
@@ -120,14 +115,14 @@ public class SCCStructureScanner implements StructureScanner {
 		return grammar;
 	}
 
-	private void makeSection(
+	private SCCStructureItem makeSection(
 			SectionSortKey key,
 			SCCNode section,
 			ItemBuilder builder,
 			List<StructureItem> grammar) {
 		assert section != null;
-		if (section.getChildNodes().isEmpty() ) {
-			return ;
+		if (section.getChildNodes().isEmpty()) {
+			return null;
 		} else {
 			SCCStructureItem newSection = SCCStructureItem.createSectionItem(
 					section.name(), section.offset(), key);
@@ -136,9 +131,9 @@ public class SCCStructureScanner implements StructureScanner {
 			for (SCCNode n : section.getChildNodes()) {
 				SCCStructureItem s = builder.buildItem(n.name(), n.offset());
 				sectionItem.add(s);
-				if (!n.getChildNodes().isEmpty()){
+				if (!n.getChildNodes().isEmpty()) {
 					List<SCCStructureItem> c = new ArrayList<SCCStructureItem>();
-					for (SCCNode nn : n.getChildNodes()){
+					for (SCCNode nn : n.getChildNodes()) {
 						SCCStructureItem ii = builder.buildItem(nn.name(), nn.offset());
 						c.add(ii);
 					}
@@ -147,7 +142,7 @@ public class SCCStructureScanner implements StructureScanner {
 			}
 			newSection.setChild(sectionItem);
 			grammar.add(newSection);
-			//return newSection;
+			return newSection;
 		}
 	}
 }
