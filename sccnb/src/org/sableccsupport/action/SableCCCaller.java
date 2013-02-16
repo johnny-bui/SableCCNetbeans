@@ -4,7 +4,6 @@ import java.io.PrintStream;
 import org.netbeans.api.progress.ProgressHandle;
 import org.netbeans.api.progress.ProgressHandleFactory;
 import org.openide.awt.StatusDisplayer;
-import org.openide.util.Cancellable;
 import org.sablecc.sablecc.SableCC;
 import org.sablecc.sablecc.Version;
 
@@ -77,6 +76,5 @@ final class SableCCHelper extends Thread
 			p.finish();
 		}
     }
-
 	
 }
