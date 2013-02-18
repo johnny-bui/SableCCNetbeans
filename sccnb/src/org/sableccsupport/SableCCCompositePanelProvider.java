@@ -4,12 +4,9 @@ import java.awt.BorderLayout;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import org.netbeans.api.project.Project;
 import org.netbeans.spi.project.ui.support.ProjectCustomizer;
 import org.netbeans.spi.project.ui.support.ProjectCustomizer.Category;
-import org.openide.filesystems.FileUtil;
 import org.openide.util.Lookup;
-import org.openide.util.NbBundle;
 // "org-netbeans-modules-java-j2seproject"
 
 public class SableCCCompositePanelProvider implements ProjectCustomizer.CompositeCategoryProvider {
@@ -28,9 +25,9 @@ private final String name;
     public JComponent createComponent(Category category, Lookup lkp) {
         JPanel jPanel1 = new JPanel();
         jPanel1.setLayout(new BorderLayout());
-		Project prj = Lookup.getDefault().lookup(Project.class);
-		String projectRoot = FileUtil.getFileDisplayName(prj.getProjectDirectory());
-        jPanel1.add(new JLabel(projectRoot), BorderLayout.CENTER);
+		//Project prj = Lookup.getDefault().lookup(Project.class);
+		//String projectRoot = FileUtil.getFileDisplayName(prj.getProjectDirectory());
+        jPanel1.add(new JLabel("xxxxxxxxxxx"), BorderLayout.CENTER);
         return jPanel1;
     }
 
