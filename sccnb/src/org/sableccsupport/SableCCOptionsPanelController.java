@@ -13,7 +13,7 @@ import org.openide.util.Lookup;
 
 @OptionsPanelController.TopLevelRegistration(
     categoryName = "#OptionsCategory_Name_SableCC",
-	iconBase = "org/sableccsupport/img/sablecc32.png",
+	iconBase = "org/sableccsupport/img/bigS2.png",
 	keywords = "#OptionsCategory_Keywords_SableCC",
 	keywordsCategory = "SableCC")
 @org.openide.util.NbBundle.Messages(

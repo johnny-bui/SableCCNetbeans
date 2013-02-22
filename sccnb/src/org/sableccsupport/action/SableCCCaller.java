@@ -6,7 +6,6 @@ import org.netbeans.api.progress.ProgressHandle;
 import org.netbeans.api.progress.ProgressHandleFactory;
 import org.openide.awt.StatusDisplayer;
 import org.openide.filesystems.FileObject;
-import org.openide.filesystems.FileUtil;
 import org.sablecc.sablecc.SableCC;
 import org.sablecc.sablecc.Version;
 
@@ -15,15 +14,14 @@ import org.sablecc.sablecc.Version;
  * @author verylazyboy
  * @version [too old to known]
  * @version May, 16 2012 * Remove the private static class to redirect out and
- * err in output windows and * use IORedirect to to that.
+ * err in output window[s] and * use IORedirect to to that.
  */
 final public class SableCCCaller {
 
 	static PrintStream orgOutStream = null;
 	static PrintStream orgErrStream = null;
 
-	public static void callSableCC(FileObject f/*SableCCArgument arg*/) {
-		String displayName = FileUtil.getFileDisplayName(f);
+	public static void callSableCC(FileObject f) {
 		SableCCHelper h = new SableCCHelper();
 		h.setup(f);
 		h.start();
@@ -52,8 +50,14 @@ final class SableCCHelper extends Thread {
 			arg.setSableCCFile(file);
 			String filename = arg.getSableCCFileName();
 			
-			String msg = "+++++++++++++++++" + filename + "+++++++++++++";
+			String msg = "================= The Grammar File is: " + filename + " =============";
+			String destination = arg.getDestinationDir();
+			File destianationDir = new File(destination);
+			if (!destianationDir.exists()){
+				destianationDir.mkdirs();
+			}
 			System.out.println(msg);
+			System.out.println("Generated files are saved in: " + destination);
 			System.out.println();
 			// copy from SableCC source
 			System.out.println("SableCC version " + Version.VERSION);
@@ -64,22 +68,13 @@ final class SableCCHelper extends Thread {
 			System.out.println("and you are welcome to redistribute it under certain conditions.");
 			System.out.println();
 			// end of copy
-			//}catch(Exception ex){}// Nothing to do
-			String destination = arg.getDestinationDir();
-			File destianationDir = new File(destination);
-			if (!destianationDir.exists()){
-				destianationDir.mkdirs();
-			}
-			// can not use SableCC.main(String[] argv) because it use 
-			// System.exit(1) to signal an error. So I must use this method.
-			// Therefore I can put some other options such as --no-inline into SableCC
-			SableCC.processGrammar(filename, arg.getDestinationDir());
+			
+			SableCC.processGrammar(filename, destination);
 			msg = "BUILD SUCCESS";
 
 			System.out.println(msg);
 			StatusDisplayer.getDefault().setStatusText(msg);
 		} catch (Exception ex) {
-			//Exceptions.printStackTrace(ex);
 			System.err.println(ex.getMessage());
 			StatusDisplayer.getDefault().setStatusText("BUILD FAIL");
 		} finally {

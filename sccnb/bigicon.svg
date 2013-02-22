@@ -60,16 +60,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="8.1644895"
-     inkscape:cx="234.71983"
-     inkscape:cy="925.16601"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="228.74914"
+     inkscape:cy="923.0889"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1280"
-     inkscape:window-height="728"
+     inkscape:window-width="1920"
+     inkscape:window-height="1119"
      inkscape:window-x="-2"
-     inkscape:window-y="22"
+     inkscape:window-y="23"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata7">
@@ -79,7 +79,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -95,16 +95,16 @@
        height="59"
        width="58" />
     <rect
-       style="fill:#e0fffd;fill-opacity:1;stroke:#05807d;stroke-width:0.30000001;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;fill-opacity:1;stroke:none;stroke-width:0.30000000999999998;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="rect4021"
        width="57.155842"
        height="57.155846"
        x="218.05055"
        y="100.67642"
        ry="0"
-       inkscape:export-filename="/home/phucluoi/Documents/hobby/SableCCNetbeans/sccnb/bigS.png"
-       inkscape:export-xdpi="500"
-       inkscape:export-ydpi="500" />
+       inkscape:export-filename="/home/hbui/NetBeansProjects/SableCCNetbeans/sccnb/bigS2.png"
+       inkscape:export-xdpi="50.389999"
+       inkscape:export-ydpi="50.389999" />
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#1a1a1a;fill-opacity:1;stroke:none;font-family:Sans"
@@ -112,24 +112,24 @@
        y="154.4088"
        id="text3961-3"
        sodipodi:linespacing="125%"
-       inkscape:export-filename="/home/phucluoi/Documents/hobby/SableCCNetbeans/sccnb/bigS.png"
-       inkscape:export-xdpi="500"
-       inkscape:export-ydpi="500"><tspan
+       inkscape:export-filename="/home/hbui/NetBeansProjects/SableCCNetbeans/sccnb/bigS2.png"
+       inkscape:export-xdpi="50.389999"
+       inkscape:export-ydpi="50.389999"><tspan
          sodipodi:role="line"
          id="tspan3963-9"
          x="223.79503"
          y="154.4088"
          style="font-size:72px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#1a1a1a;font-family:URWBookmanL;-inkscape-font-specification:URWBookmanL Bold">S</tspan></text>
     <g
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:url(#radialGradient4013);fill-opacity:1;stroke:#05807d;stroke-width:0.30000001;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Sans"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:url(#radialGradient4013);fill-opacity:1;stroke:none;stroke-width:0.30000000999999998;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Sans"
        id="text3961"
        transform="translate(-44.93934,22.525126)"
-       inkscape:export-filename="/home/phucluoi/Documents/hobby/SableCCNetbeans/sccnb/bigS.png"
-       inkscape:export-xdpi="500"
-       inkscape:export-ydpi="500">
+       inkscape:export-filename="/home/hbui/NetBeansProjects/SableCCNetbeans/sccnb/bigS2.png"
+       inkscape:export-xdpi="50.389999"
+       inkscape:export-ydpi="50.389999">
       <path
          d="m 300.47656,83.60437 0.84375,-2.285156 4.35938,0 4.71093,14.625 -5.13281,1.933594 c -1.94535,-2.67184 -3.43363,-4.546838 -4.46484,-5.625 -1.42972,-1.499961 -3.23441,-2.71871 -5.41406,-3.65625 -1.94534,-0.82027 -3.90237,-1.230426 -5.8711,-1.230469 -2.88283,4.3e-5 -5.10939,0.714886 -6.67969,2.144531 -0.84376,0.75004 -1.26563,1.710977 -1.26562,2.882813 -10e-6,1.546911 0.85545,2.707066 2.56641,3.480468 1.12498,0.515659 2.37888,0.925815 3.76171,1.230469 2.17967,0.49222 3.35154,0.750033 3.51563,0.773438 l 6.57422,1.757812 c 3.46871,0.93753 5.87106,1.67581 7.20703,2.21484 5.55464,2.27347 8.33199,6.32815 8.33203,12.16407 -4e-5,4.94532 -1.93364,9.08203 -5.80078,12.41015 -2.06254,1.75782 -4.61722,3.07032 -7.66406,3.9375 -2.25003,0.63281 -4.55862,0.94922 -6.92578,0.94922 -2.64846,0 -5.33206,-0.43359 -8.05079,-1.30078 -1.94532,-0.60937 -3.56251,-1.39453 -4.85156,-2.35547 l -0.98437,3.51563 -4.21875,0 -6.01172,-18.38672 5.41406,-1.79297 c 1.68749,3.00002 3.42187,5.43751 5.20313,7.3125 2.06248,2.20313 4.55857,3.84376 7.48828,4.92187 2.0156,0.72657 4.08982,1.08985 6.22265,1.08985 3.1406,0 5.53122,-0.78515 7.17188,-2.35547 1.24215,-1.1953 1.86325,-2.55468 1.86328,-4.07813 -3e-5,-1.49998 -0.668,-2.6367 -2.00391,-3.41015 -0.91409,-0.53905 -2.55471,-1.10155 -4.92187,-1.6875 l -7.17188,-1.79297 c -3.72658,-0.91404 -6.10548,-1.53514 -7.13672,-1.86328 -4.10157,-1.31248 -6.9375,-3.12888 -8.50781,-5.44922 -1.5,-2.22653 -2.25,-4.757782 -2.25,-7.593751 0,-5.062461 2.0625,-9.081988 6.1875,-12.058594 3.42187,-2.437451 7.54686,-3.6562 12.375,-3.65625 2.3906,5e-5 4.85154,0.421925 7.38281,1.265625 1.6406,0.539111 3.02341,1.19536 4.14844,1.96875"
-         style="font-size:72px;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:url(#radialGradient4088);fill-opacity:1;stroke:#05807d;stroke-width:0.30000001;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:URWBookmanL;-inkscape-font-specification:URWBookmanL Bold"
+         style="font-size:72px;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:url(#radialGradient4088);fill-opacity:1;stroke:none;stroke-width:0.30000000999999998;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:URWBookmanL;-inkscape-font-specification:URWBookmanL Bold"
          id="path3987"
          inkscape:connector-curvature="0" />
     </g>
